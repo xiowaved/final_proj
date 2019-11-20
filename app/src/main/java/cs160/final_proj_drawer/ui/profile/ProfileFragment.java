@@ -1,4 +1,4 @@
-package cs160.final_proj_drawer.ui.gallery;
+package cs160.final_proj_drawer.ui.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,14 +13,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cs160.final_proj_drawer.R;
 
-public class GalleryFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private ProfileViewModel galleryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+                ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         galleryViewModel.getText().observe(this, new Observer<String>() {
