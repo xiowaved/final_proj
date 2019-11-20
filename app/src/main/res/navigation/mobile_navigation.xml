@@ -36,8 +36,8 @@
         tools:layout="@layout/fragment_share" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="cs160.final_proj_drawer.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/nav_posted"
+        android:name="cs160.final_proj_drawer.ui.posted.PostedFragment"
+        android:label="@string/menu_posted"
+        tools:layout="@layout/fragment_posted" />
 </navigation>

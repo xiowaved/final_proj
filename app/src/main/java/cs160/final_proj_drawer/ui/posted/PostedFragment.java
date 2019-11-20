@@ -1,4 +1,4 @@
-package cs160.final_proj_drawer.ui.send;
+package cs160.final_proj_drawer.ui.posted;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,17 +13,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cs160.final_proj_drawer.R;
 
-public class SendFragment extends Fragment {
+public class PostedFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private PostedViewModel postedViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        postedViewModel =
+                ViewModelProviders.of(this).get(PostedViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_posted, container, false);
+        final TextView textView = root.findViewById(R.id.text_posted);
+        postedViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
