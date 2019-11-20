@@ -11,6 +11,6 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_create">Create</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_saved">Saved</string>
     <string name="menu_posted">Posted</string>
 </resources>

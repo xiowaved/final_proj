@@ -1,4 +1,4 @@
-package cs160.final_proj_drawer.ui.share;
+package cs160.final_proj_drawer.ui.saved;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,17 +13,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cs160.final_proj_drawer.R;
 
-public class ShareFragment extends Fragment {
+public class SavedFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private SavedViewModel savedViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
+        savedViewModel =
+                ViewModelProviders.of(this).get(SavedViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_saved, container, false);
+        final TextView textView = root.findViewById(R.id.text_saved);
+        savedViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

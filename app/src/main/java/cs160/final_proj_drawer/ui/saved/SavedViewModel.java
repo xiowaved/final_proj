@@ -1,16 +1,16 @@
-package cs160.final_proj_drawer.ui.share;
+package cs160.final_proj_drawer.ui.saved;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShareViewModel extends ViewModel {
+public class SavedViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ShareViewModel() {
+    public SavedViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is share fragment");
+        mText.setValue("This is saved fragment");
     }
 
     public LiveData<String> getText() {
