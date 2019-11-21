@@ -111,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String returned = dataSnapshot.toString();
+                TextView show = findViewById(R.id.textView6);
+                show.setText(returned);
 
             }
             @Override
