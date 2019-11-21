@@ -80,6 +80,10 @@ public class CreateFragment extends Fragment {
         Log.i("savedName", savedName);
         Log.i("savedLocation", savedLocation);
         Log.i("savedDescription", savedDescription);
+
+        name.getText().clear();
+        location.getText().clear();
+        description.getText().clear();
         //make itinerary object
     }
 
@@ -92,6 +96,10 @@ public class CreateFragment extends Fragment {
         Log.i("savedLocation", savedLocation);
         Log.i("savedDescription", savedDescription);
         Log.i("currentStopIndex", "" + currentStopIndex);
+
+        name.getText().clear();
+        location.getText().clear();
+        description.getText().clear();
         //make itinerary object
     }
 
