@@ -6,14 +6,16 @@ public class Stop {
     private List<String> photos;
     private String name;
     private String location;
+    private String description;
     private int index;
 
 
-    public void Stop(List<String> photos, String name, String location, int index) {
+    public Stop(List<String> photos, String name, String location, String description, int index) {
         // Create a Stop instance
         this.photos = photos;
         this.name = name;
         this.location = location;
+        this.description = description;
         this.index = index;
 
     }
@@ -25,6 +27,11 @@ public class Stop {
     public String getLocation() {
         return this.location;
     }
+
+    public String getDescription() {
+        return this.description;
+    }
+
     public List<String> getPhotos() {
         return this.photos;
     }

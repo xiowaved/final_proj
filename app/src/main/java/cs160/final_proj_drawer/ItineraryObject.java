@@ -13,8 +13,8 @@ public class ItineraryObject {
      private List<String> tags;
      private List<String> access;
 
-    public void ItineraryObject(String creatorName, String itineraryName, int numLikes,
-                                String coverPhoto, int numStops, List<Stop> Stops,List<String> tags,
+    public ItineraryObject(String creatorName, String itineraryName, int numLikes,
+                                String coverPhoto, int numStops, List<Stop> Stops, List<String> tags,
                                 List<String>access) {
         // Create an itinerary object
         this.creatorName = creatorName;
