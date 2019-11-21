@@ -15,7 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.Stop;
 
 public class CreateFragment extends Fragment {
 
@@ -29,6 +35,8 @@ public class CreateFragment extends Fragment {
     Button reviewItinerary;
     //list of itineraries
     int currentStopIndex;
+
+    List<Stop> stops;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +66,8 @@ public class CreateFragment extends Fragment {
         addNewStop = (Button) getView().findViewById(R.id.addNewStop);
         reviewItinerary = (Button) getView().findViewById(R.id.reviewItinerary);
 
+        stops = new ArrayList<Stop>();
+
         addNewStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,21 +87,43 @@ public class CreateFragment extends Fragment {
         String savedName = name.getText().toString();
         String savedLocation = location.getText().toString();
         String savedDescription = description.getText().toString();
+        if (!(savedName.equals("") && savedLocation.equals("") && savedDescription.equals(""))) {
+            currentStopIndex++;
+            Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+            stops.add(stop);
+        } else {
+            //incomplete fields
+        }
         Log.i("savedName", savedName);
         Log.i("savedLocation", savedLocation);
         Log.i("savedDescription", savedDescription);
+        Log.i("currentStopIndex", "" + currentStopIndex);
 
         name.getText().clear();
         location.getText().clear();
         description.getText().clear();
-        //make itinerary object
+
+        ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
+                "coverPhoto", currentStopIndex, stops, new ArrayList<String>(), new ArrayList<String>());
+
+        //commit to firebase
     }
 
     public void onAddNewStop(View view) {
         currentStopIndex++;
+        if (currentStopIndex < stops.size()) {
+            //etc
+        }
         String savedName = name.getText().toString();
         String savedLocation = location.getText().toString();
         String savedDescription = description.getText().toString();
+        if (!(savedName.equals("") && savedLocation.equals("") && savedDescription.equals(""))) {
+            currentStopIndex++;
+            Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+            stops.add(stop);
+        } else {
+            //incomplete fields
+        }
         Log.i("savedName", savedName);
         Log.i("savedLocation", savedLocation);
         Log.i("savedDescription", savedDescription);
@@ -104,7 +136,12 @@ public class CreateFragment extends Fragment {
     }
 
     public void onViewPreviousStop(View view) {
+        //hide and unhide previous stop button
         currentStopIndex--;
+        Stop previousStop = stops.get(currentStopIndex);
+        name.setText(previousStop.getName());
+        location.setText(previousStop.getLocation());
+        description.setText(previousStop.getDescription());
         Log.i("currentStopIndex", "" + currentStopIndex);
     }
 }
