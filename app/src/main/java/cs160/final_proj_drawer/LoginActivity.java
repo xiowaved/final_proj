@@ -28,7 +28,6 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Array;
 import java.net.URI;
 import com.google.android.material.snackbar.Snackbar;
-//delete later: Hi I'm Vron trying to figure out wth is happening
 
 public class LoginActivity extends AppCompatActivity {
 
