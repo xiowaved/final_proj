@@ -27,23 +27,38 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Array;
 import java.net.URI;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 //delete later: Hi I'm Vron trying to figure out wth is happening
 
 public class LoginActivity extends AppCompatActivity {
 
-    //private StorageReference mStorageRef;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("message");
+
+
+
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //mStorageRef = FirebaseStorage.getInstance().getReference();
+//        mStorageRef = FirebaseStorage.getInstance().getReference();
         //context = getApplicationContext();
 
     }
 
-    public void saveText (View view) {
+    public void saveText (final View view) {
         EditText username = findViewById(R.id.editText);
         String user = username.getText().toString();
         /*
@@ -67,10 +82,44 @@ public class LoginActivity extends AppCompatActivity {
                 });
         Snackbar.make(view, user, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();*/
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+        myRef.child("msg").child("incorrect").setValue(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Write was successful!
+                        myRef.push();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                        Snackbar.make(view,e.toString(),Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+
+                    }
+                });
+//        myRef.setValue("Hello, World!");
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
 
     }
+
+    public void readData () {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String returned = dataSnapshot.toString();
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+//                Log.e(TAG, "onCancelled", databaseError.toException());
+            }
+        });
+    }
+
     private void writeToFile(String data,Context context) {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
