@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        mStorageRef = FirebaseStorage.getInstance().getReference();
+        //mStorageRef = FirebaseStorage.getInstance().getReference();
         //context = getApplicationContext();
 
     }
@@ -53,7 +54,14 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
+
+
 //
+    }
+
+    public void login(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void readData(final View view) {
