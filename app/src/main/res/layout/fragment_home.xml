@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:hint="Ex. Bangkok, Thailand scenic"
-        android:queryHint="Ex. Bangkok, Thailand scenic"
+        android:queryHint="Ex. family-friendly"
         app:layout_constraintBottom_toBottomOf="@id/layout"
         app:layout_constraintEnd_toEndOf="@id/layout"
         app:layout_constraintHorizontal_bias="0.33"

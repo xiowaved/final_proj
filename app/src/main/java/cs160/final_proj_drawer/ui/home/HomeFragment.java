@@ -51,28 +51,6 @@ public class HomeFragment extends Fragment {
                 queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
             }
         });
-//        tagSearchBar.setOnEd(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                queryCallback(query);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
-
-        // THIS OVERRIDEN FUNCTION IS NOT BEING CALLED WHEN CLICK INSIDE SEARCHVIEW
-//        tagSearchBar.setOnSearchClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.i("user query", "TESTING");
-//                locationSearchBar = root.findViewById(R.id.locationSearchBar);
-//                locationSearchBar.setVisibility(View.VISIBLE);
-//            }
-//        });
 
 
 
