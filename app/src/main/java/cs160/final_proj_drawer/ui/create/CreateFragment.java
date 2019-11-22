@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -111,6 +112,11 @@ public class CreateFragment extends Fragment {
 
         Log.i("TAG", "load review fragment");
         //load review fragment
+
+        //delete later -V
+        Toast toast = Toast.makeText(this.getContext(), "The Review Frag should pop up",
+                Toast.LENGTH_SHORT); toast.show();
+
 
         ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
                 "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
