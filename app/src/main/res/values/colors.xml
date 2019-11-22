@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#184FA2</color>
+    <color name="colorPrimaryDark">#1C2974</color>
+    <color name="colorAccent">#00B8C4</color>
+    <color name="colorAccentLight">#018C9B</color>
+
+    <!-- these colors are for the nav drawer -->
+    <color name="centerColor">@color/colorPrimary</color>
+    <color name="endColor">@color/colorPrimaryDark</color>
+    <color name="startColor">@color/colorPrimary</color>
 </resources>
