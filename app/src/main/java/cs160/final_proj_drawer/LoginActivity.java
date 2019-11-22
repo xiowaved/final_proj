@@ -39,13 +39,21 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-//delete later: Hi I'm Vron trying to figure out wth is happening
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
-
+    DatabaseReference myRef = database.getReference("message").child("msg").child("incorrect");
+    String url = "https://travelr-7feac.firebaseio.com/message";
 
 
     Context context;
@@ -58,31 +66,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void saveText (final View view) {
+    public void saveText(final View view) {
         EditText username = findViewById(R.id.editText);
         String user = username.getText().toString();
-        /*
-        writeToFile(user, context);
-        Uri config = Uri.fromFile(new File("config.txt"));
-        StorageReference riversRef = mStorageRef;
-        riversRef.putFile(config)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
-                    }
-                });
-        Snackbar.make(view, user, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();*/
-
         myRef.child("msg").child("incorrect").setValue(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -95,75 +81,16 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Write failed
-                        Snackbar.make(view,e.toString(),Snackbar.LENGTH_LONG)
+                        Snackbar.make(view, e.toString(), Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
 
                     }
                 });
-//        myRef.setValue("Hello, World!");
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-
+//
     }
 
-    public void readData () {
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String returned = dataSnapshot.toString();
-                TextView show = findViewById(R.id.textView6);
-                show.setText(returned);
+    public void readData(final View view) {
 
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-//                Log.e(TAG, "onCancelled", databaseError.toException());
-            }
-        });
+
     }
-
-    private void writeToFile(String data,Context context) {
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
-
-
-
-    private String readFromFile(Context context) {
-
-        String ret = "";
-
-        try {
-            InputStream inputStream = context.openFileInput("config.txt");
-
-            if ( inputStream != null ) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
-                StringBuilder stringBuilder = new StringBuilder();
-
-                while ( (receiveString = bufferedReader.readLine()) != null ) {
-                    stringBuilder.append(receiveString);
-                }
-
-                inputStream.close();
-                ret = stringBuilder.toString();
-            }
-        }
-        catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-        } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
-        }
-
-        return ret;
-    }
-
-
 }
