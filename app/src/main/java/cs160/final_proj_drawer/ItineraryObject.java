@@ -14,7 +14,7 @@ public class ItineraryObject {
      private List<String> access;
 
     public ItineraryObject(String creatorName, String itineraryName, int numLikes,
-                                String coverPhoto, int numStops, List<Stop> Stops, List<String> tags,
+                                String coverPhoto, int numStops, List<Stop> stops, List<String> tags,
                                 List<String>access) {
         // Create an itinerary object
         this.creatorName = creatorName;

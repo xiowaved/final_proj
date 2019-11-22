@@ -34,7 +34,7 @@ public class CreateFragment extends Fragment {
     Button addNewStop;
     Button reviewItinerary;
     //list of itineraries
-    int currentStopIndex;
+    int currentStopIndex; // the itinerary index of what is displayed on the screen
 
     List<Stop> stops;
 
@@ -68,6 +68,13 @@ public class CreateFragment extends Fragment {
 
         stops = new ArrayList<Stop>();
 
+        viewPreviousStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onViewPreviousStop(v);
+            }
+        });
+
         addNewStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,64 +91,75 @@ public class CreateFragment extends Fragment {
     }
 
     public void onReviewItinerary(View view) {
-        String savedName = name.getText().toString();
-        String savedLocation = location.getText().toString();
-        String savedDescription = description.getText().toString();
-        if (!(savedName.equals("") && savedLocation.equals("") && savedDescription.equals(""))) {
-            currentStopIndex++;
-            Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
-            stops.add(stop);
-        } else {
-            //incomplete fields
+        if (currentStopIndex > stops.size() - 1) { // if you are adding a new stop
+            String savedName = name.getText().toString();
+            String savedLocation = location.getText().toString();
+            String savedDescription = description.getText().toString();
+            if (!(savedName.equals("")) && !(savedLocation.equals("")) && !(savedDescription.equals(""))) {
+                Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+                stops.add(stop);
+            } else {
+                //incomplete fields
+            }
+            Log.i("savedName", savedName);
+            Log.i("savedLocation", savedLocation);
+            Log.i("savedDescription", savedDescription);
         }
-        Log.i("savedName", savedName);
-        Log.i("savedLocation", savedLocation);
-        Log.i("savedDescription", savedDescription);
-        Log.i("currentStopIndex", "" + currentStopIndex);
-
         name.getText().clear();
         location.getText().clear();
         description.getText().clear();
 
+        Log.i("TAG", "load review fragment");
+        //load review fragment
+
         ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
-                "coverPhoto", currentStopIndex, stops, new ArrayList<String>(), new ArrayList<String>());
+                "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
         //commit to firebase
     }
 
     public void onAddNewStop(View view) {
-        currentStopIndex++;
-        if (currentStopIndex < stops.size()) {
-            //etc
-        }
-        String savedName = name.getText().toString();
-        String savedLocation = location.getText().toString();
-        String savedDescription = description.getText().toString();
-        if (!(savedName.equals("") && savedLocation.equals("") && savedDescription.equals(""))) {
+        if (currentStopIndex < stops.size() - 1) { // if before add is not the last added stop
             currentStopIndex++;
-            Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
-            stops.add(stop);
-        } else {
-            //incomplete fields
+            Stop existingStop = stops.get(currentStopIndex);
+            name.setText(existingStop.getName());
+            location.setText(existingStop.getLocation());
+            description.setText(existingStop.getDescription());
+        } else if (currentStopIndex == stops.size() - 1) { // if before add is the last stop
+            currentStopIndex++;
+            name.getText().clear();
+            location.getText().clear();
+            description.getText().clear();
+        } else { // if you are adding a new stop (currentStopIndex > stops.size() - 1)
+            String savedName = name.getText().toString();
+            String savedLocation = location.getText().toString();
+            String savedDescription = description.getText().toString();
+            if (!(savedName.equals("")) && !(savedLocation.equals("")) && !(savedDescription.equals(""))) {
+                Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+                stops.add(stop);
+                currentStopIndex++;
+            } else {
+                //incomplete fields
+            }
+            Log.i("savedName", savedName);
+            Log.i("savedLocation", savedLocation);
+            Log.i("savedDescription", savedDescription);
+            name.getText().clear();
+            location.getText().clear();
+            description.getText().clear();
         }
-        Log.i("savedName", savedName);
-        Log.i("savedLocation", savedLocation);
-        Log.i("savedDescription", savedDescription);
         Log.i("currentStopIndex", "" + currentStopIndex);
-
-        name.getText().clear();
-        location.getText().clear();
-        description.getText().clear();
-        //make itinerary object
     }
 
     public void onViewPreviousStop(View view) {
         //hide and unhide previous stop button
-        currentStopIndex--;
-        Stop previousStop = stops.get(currentStopIndex);
-        name.setText(previousStop.getName());
-        location.setText(previousStop.getLocation());
-        description.setText(previousStop.getDescription());
-        Log.i("currentStopIndex", "" + currentStopIndex);
+        if (currentStopIndex > 0) {
+            currentStopIndex--;
+            Stop previousStop = stops.get(currentStopIndex);
+            name.setText(previousStop.getName());
+            location.setText(previousStop.getLocation());
+            description.setText(previousStop.getDescription());
+            Log.i("currentStopIndex", "" + currentStopIndex);
+        }
     }
 }
