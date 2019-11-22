@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -16,11 +20,16 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message").child("msg").child("incorrect");
-    String url = "https://travelr-7feac.firebaseio.com/message";
+    DatabaseReference myRef = database.getReference("Locations");
+    String url = "https://travelr-7feac.firebaseio.com/Locations/Berkeley/Chemistry.json";
 
 
     Context context;
@@ -37,7 +46,18 @@ public class LoginActivity extends AppCompatActivity {
     public void saveText(final View view) {
         EditText username = findViewById(R.id.editText);
         String user = username.getText().toString();
-        myRef.child("msg").child("incorrect").setValue(user)
+        List<String> photolist = new ArrayList<>();
+        List<Stop> stoplist = new ArrayList<>();
+        List<String> taglist = new ArrayList<>();
+        List<String> acclist = new ArrayList<>();
+        Stop latimer = new Stop(photolist, "Latimer Hall", "UC Berkeley", "Mercury is stored here", 0);
+        stoplist.add(latimer);
+        taglist.add("chemistry");
+        acclist.add("elevator");
+        ItineraryObject itin = new ItineraryObject("Colby", "Chemistry lyfe", -1,
+         "blackness", 1, stoplist,taglist ,
+                acclist);
+        myRef.child("Berkeley").child("Chemistry").setValue(itin)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -65,6 +85,30 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void readData(final View view) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
+                new Response.Listener<JSONObject>() {
+                    public void onResponse(JSONObject response) {
+                        String name = null;
+                        try {
+                            name = response.getString("itineraryName");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Snackbar.make(view, name, Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
+                },new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(view, error.toString(), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+            }
+        });
+        MySingleton mySingleton = new MySingleton(this);
+        mySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
 
 
     }
