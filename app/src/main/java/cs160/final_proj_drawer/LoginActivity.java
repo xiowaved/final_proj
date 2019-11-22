@@ -23,12 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Locations");
+//    note this is hardcoded for now, but since the URL is a string its easily modifiable
     String url = "https://travelr-7feac.firebaseio.com/Locations/Berkeley/Chemistry.json";
 
 
@@ -42,10 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         //context = getApplicationContext();
 
     }
-
-    public void saveText(final View view) {
-        EditText username = findViewById(R.id.editText);
-        String user = username.getText().toString();
+    public ItineraryObject createTestItinerary(){
+//        create a test itinerary with my information
         List<String> photolist = new ArrayList<>();
         List<Stop> stoplist = new ArrayList<>();
         List<String> taglist = new ArrayList<>();
@@ -55,9 +55,20 @@ public class LoginActivity extends AppCompatActivity {
         taglist.add("chemistry");
         acclist.add("elevator");
         ItineraryObject itin = new ItineraryObject("Colby", "Chemistry lyfe", -1,
-         "blackness", 1, stoplist,taglist ,
+                "blackness", 1, stoplist,taglist ,
                 acclist);
-        myRef.child("Berkeley").child("Chemistry").setValue(itin)
+        return itin;
+    }
+
+    public void saveText(final View view) {
+        EditText username = findViewById(R.id.editText);
+        String user = username.getText().toString();
+//        I made a little Hashmap to test the functionality of it for later use for tags
+        HashMap<String,String> testmap = new HashMap<>();
+        testmap.put("test","successful");
+//        The URL is pretty hardcoded right now but easily changeable
+        ItineraryObject chem = createTestItinerary();
+        myRef.child("Berkeley").child("Chemistry").setValue(chem)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
