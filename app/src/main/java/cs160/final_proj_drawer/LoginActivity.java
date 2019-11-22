@@ -96,6 +96,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void readData(final View view) {
+        // kind of robust JSON reading but we can change it as needed.
+        // Right now this method isn't called but you can make one of the buttons in loginActivity to call this.
+//        it'll show my itinerary name at the bottom of the screen when called.
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
