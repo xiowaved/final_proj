@@ -48,7 +48,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.i("user searched", "TESTING BUTTON");
-                queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
+
+                //V: the line under this kills the app, dunno y. @selma, what was this line trying to do?
+                //queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
             }
         });
 
