@@ -9,7 +9,23 @@
         android:id="@+id/nav_home"
         android:name="cs160.final_proj_drawer.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_create"
+            app:destination="@id/nav_create" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_tools"
+            app:destination="@id/nav_tools" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_profile"
+            app:destination="@id/nav_profile" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_posted"
+            app:destination="@id/nav_posted" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_saved"
+            app:destination="@id/nav_saved" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_profile"

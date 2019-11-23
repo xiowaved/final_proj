@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">@color/colorGreen</color>
     <color name="colorPrimaryDark">@color/colorGreenDark</color>
-    <color name="colorAccent">#00B8C4</color>
-    <color name="colorAccentLight">#018C9B</color>
+    <color name="colorAccent">@color/colorTealLight</color>
+    <color name="colorAccentDark">@color/colorTeal</color>
 
     <!-- these are the hex codes from the color pallets on figma -->
     <color name="colorGreenLight">#093E42</color>
