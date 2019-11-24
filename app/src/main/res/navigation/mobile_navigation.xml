@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
 
         <action
-            android:id="@+id/action_nav_home_to_searchFragment"
+            android:id="@+id/action_nav_home_to_search"
             app:destination="@id/searchFragment" />
     </fragment>
 
