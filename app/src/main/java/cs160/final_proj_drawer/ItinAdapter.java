@@ -17,6 +17,8 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
     //        private ArrayList<DataNote> dataList;
     private ArrayList<ItineraryObject> dataList;
+    Context context;
+
 
 
 //        public Adapter(ArrayList<DataNote> data)
@@ -29,14 +31,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         this.dataList = data;
         this.context = context;
     }
-
-    //adding this stuff to try to give context
-    Context context;
-    //LayoutInflater layoutInflater;
-
-    //public ItinAdapter (Context context) {
-
-    //}
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
