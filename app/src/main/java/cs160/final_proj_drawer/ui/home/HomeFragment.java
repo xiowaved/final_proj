@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
 
 public class HomeFragment extends Fragment {
@@ -25,6 +26,10 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private Button searchButton;
     private NavController navController;
+
+
+    private RecyclerView mRecyclerView;
+    //private ListAdapter mListadapter;
 
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
