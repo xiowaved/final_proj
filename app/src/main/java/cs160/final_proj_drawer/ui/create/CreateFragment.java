@@ -20,6 +20,8 @@ import androidx.lifecycle.ViewModelProviders;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.Stop;
@@ -27,6 +29,7 @@ import cs160.final_proj_drawer.Stop;
 public class CreateFragment extends Fragment {
 
     private CreateViewModel createViewModel;
+    private NavController navController;
 
     EditText name;
     EditText location;
@@ -51,6 +54,7 @@ public class CreateFragment extends Fragment {
 //                textView.setText(s);
 //            }
 //        });
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         return root;
     }
@@ -116,6 +120,7 @@ public class CreateFragment extends Fragment {
         //delete later -V
         Toast toast = Toast.makeText(this.getContext(), "The Review Frag should pop up",
                 Toast.LENGTH_SHORT); toast.show();
+                navController.navigate(R.id.action_nav_create_to_review);
 
 
         ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,

@@ -13,7 +13,8 @@
 
         <action
             android:id="@+id/action_nav_home_to_search"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:launchSingleTop="false" />
     </fragment>
 
     <fragment
@@ -26,7 +27,11 @@
         android:id="@+id/nav_create"
         android:name="cs160.final_proj_drawer.ui.create.CreateFragment"
         android:label="@string/menu_create"
-        tools:layout="@layout/fragment_create" />
+        tools:layout="@layout/fragment_create" >
+        <action
+            android:id="@+id/action_nav_create_to_review"
+            app:destination="@id/reviewItineraryFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_tools"
@@ -50,4 +55,9 @@
         android:name="cs160.final_proj_drawer.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/reviewItineraryFragment"
+        android:name="cs160.final_proj_drawer.ui.create.ReviewItineraryFragment"
+        android:label="fragment_review_itinerary"
+        tools:layout="@layout/fragment_review_itinerary" />
 </navigation>
