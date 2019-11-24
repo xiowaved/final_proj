@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
     public String currentLocation = "Berkeley";
     public ArrayList<JSONObject> listOfItineraries = new ArrayList<>();
-    public JSONArray Tags;
+//    public JSONArray Tags;
+    public JSONObject Tags;
     public JSONObject itineraries;
 
 
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                         try {
-                            Tags = (JSONArray) itineraries.get("Tags");
+                            Tags = (JSONObject) itineraries.get("Tags");
                         } catch (JSONException e) {
 
                         }
