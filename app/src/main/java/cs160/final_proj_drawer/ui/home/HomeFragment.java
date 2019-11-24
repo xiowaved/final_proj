@@ -112,7 +112,6 @@ public class HomeFragment extends Fragment {
                 //Log.i("user searched", "TESTING BUTTON");
 
                 navController.navigate(R.id.action_nav_home_to_search);
-                Toast.makeText(root.getContext(),"button clicked",Toast.LENGTH_SHORT).show();
 
                 //the line under this kills the app
                 //queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());

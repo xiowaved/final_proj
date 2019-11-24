@@ -38,7 +38,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
 
                 navController.navigate(R.id.action_search_to_itin);
-                Toast.makeText(root.getContext(),"show that itin",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(root.getContext(),"show that itin",Toast.LENGTH_SHORT).show();
 
             }
         });
