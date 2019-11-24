@@ -52,8 +52,10 @@ public class HomeFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         //find stuff
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         tagSearchBar = root.findViewById(R.id.tagSearchBar);
         searchButton = root.findViewById(R.id.searchButton);
+
 
         //recycler views setup
         homeItins = (RecyclerView) root.findViewById(R.id.home_itins);
@@ -86,7 +88,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
 
 
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {

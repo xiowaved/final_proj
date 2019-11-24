@@ -13,8 +13,11 @@
 
         <action
             android:id="@+id/action_nav_home_to_search"
-            app:destination="@id/searchFragment"
+            app:destination="@id/fragment_search"
             app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_nav_home_to_itin"
+            app:destination="@id/fragment_itin" />
     </fragment>
 
     <fragment
@@ -51,13 +54,22 @@
         android:label="@string/menu_posted"
         tools:layout="@layout/fragment_posted" />
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/fragment_search"
         android:name="cs160.final_proj_drawer.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_search_to_itin"
+            app:destination="@id/fragment_itin" />
+    </fragment>
     <fragment
         android:id="@+id/reviewItineraryFragment"
         android:name="cs160.final_proj_drawer.ui.create.ReviewItineraryFragment"
         android:label="fragment_review_itinerary"
         tools:layout="@layout/fragment_review_itinerary" />
+    <fragment
+        android:id="@+id/fragment_itin"
+        android:name="cs160.final_proj_drawer.ui.itin.ItinFragment"
+        android:label="fragment_itin"
+        tools:layout="@layout/fragment_itin" />
 </navigation>
