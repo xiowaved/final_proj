@@ -22,6 +22,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import cs160.final_proj_drawer.CatAdapter;
 import cs160.final_proj_drawer.ItinAdapter;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -34,7 +35,9 @@ public class HomeFragment extends Fragment {
 
 
     private RecyclerView homeItins;
+    private RecyclerView catItins;
     private ItinAdapter itinAdapter;
+    private CatAdapter catAdapter;
 
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
@@ -54,12 +57,18 @@ public class HomeFragment extends Fragment {
 
         //recycler views setup
         homeItins = (RecyclerView) root.findViewById(R.id.home_itins);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        homeItins.setLayoutManager(layoutManager);
+        final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
+        itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        homeItins.setLayoutManager(itinLayoutManager);
+
+        catItins = (RecyclerView) root.findViewById(R.id.home_cats);
+        final LinearLayoutManager catLayoutManager = new LinearLayoutManager(getActivity());
+        catLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        catItins.setLayoutManager(catLayoutManager);
 
         //eventually wanna modularize this out of this func. just wanna call this
             ArrayList itineraries = new ArrayList<ItineraryObject>();
+            ArrayList cats = new ArrayList<String>();
             //make json call, find the length and that is your for loop upper bound
             for (int i = 0; i < 4; i++)
             {
@@ -67,10 +76,13 @@ public class HomeFragment extends Fragment {
                         "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
 
                 itineraries.add(itinerary);
+                cats.add("cat "+i);
             }
 
             itinAdapter = new ItinAdapter(getContext(), itineraries);
             homeItins.setAdapter(itinAdapter);
+            catAdapter = new CatAdapter(getContext(), cats);
+            catItins.setAdapter(catAdapter);
 
 
 
