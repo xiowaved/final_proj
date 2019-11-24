@@ -36,7 +36,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
-            android:text="text" />
+            android:text="text"
+            android:textSize="@dimen/card_text"/>
 
         <!--        <TextView-->
         <!--            android:id="@+id/comment"-->
