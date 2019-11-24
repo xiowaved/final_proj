@@ -4,6 +4,7 @@ package cs160.final_proj_drawer;
 import java.util.List;
 
 public class ItineraryObject {
+    //add itinerary location
      private String creatorName;
      private String itineraryName;
      private int numLikes;
