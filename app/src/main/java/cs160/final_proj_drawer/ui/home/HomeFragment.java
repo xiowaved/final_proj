@@ -39,8 +39,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 Log.i("user clicked", "TESTING CLICK");
-                locationSearchBar = root.findViewById(R.id.locationSearchBar);
-                locationSearchBar.setVisibility(View.VISIBLE);
+
+                //later, this is going to call the search fragment
+
+                //locationSearchBar = root.findViewById(R.id.locationSearchBar);
+                //locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
 

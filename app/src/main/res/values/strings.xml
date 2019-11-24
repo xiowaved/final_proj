@@ -12,6 +12,11 @@
     <string name="menu_saved">Saved</string>
     <string name="menu_posted">Posted</string>
 
+    <!-- strings for home page -->
+    <string name="search_hint_home">Search</string>
+    <string name="home_intro">Explore Itineraries in Berkeley!</string>
+
+    <!-- strings for profile page. -->
     <string name="profile_name">Jordan Doe</string>
     <string name="profile_location">Berkeley, CA</string>
 

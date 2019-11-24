@@ -6,7 +6,7 @@
     <color name="colorAccentDark">@color/colorTeal</color>
 
     <!-- these are the hex codes from the color pallets on figma -->
-    <color name="colorGreenLight">#093E42</color>
+    <color name="colorGreenLight">#007973</color>
     <color name= "colorGreen">#004E53</color>
     <color name= "colorGreenDark">#093E42</color>
     <color name="colorGrey">#E2E3E3</color>
