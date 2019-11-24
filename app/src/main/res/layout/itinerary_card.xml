@@ -20,23 +20,31 @@
             android:layout_alignParentLeft="true"
             android:text="text" />
 
-        <TextView
-            android:id="@+id/comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/text"
-            android:layout_toLeftOf="@+id/date"
-            android:text="comment"
-            android:paddingLeft="5dip"
-            android:ellipsize="end"
-            android:maxLines="1"/>
+<!--        <TextView-->
+<!--            android:id="@+id/comment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@+id/text"-->
+<!--            android:layout_toLeftOf="@+id/date"-->
+<!--            android:text="comment"-->
+<!--            android:paddingLeft="5dip"-->
+<!--            android:ellipsize="end"-->
+<!--            android:maxLines="1"/>-->
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="date" />
+<!--        <TextView-->
+<!--            android:id="@+id/date"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:text="date" />-->
+
+        <ImageView
+            android:id="@+id/like"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/like"
+            android:layout_toRightOf="@+id/text"/>
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

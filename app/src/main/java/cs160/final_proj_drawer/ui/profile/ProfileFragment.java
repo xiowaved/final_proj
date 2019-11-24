@@ -89,9 +89,15 @@ public class ProfileFragment extends Fragment {
 
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
-        private ArrayList<DataNote> dataList;
+//        private ArrayList<DataNote> dataList;
+        private ArrayList<ItineraryObject> dataList;
 
-        public ListAdapter(ArrayList<DataNote> data)
+//        public ListAdapter(ArrayList<DataNote> data)
+//        {
+//            this.dataList = data;
+//        }
+
+        public ListAdapter(ArrayList<ItineraryObject> data)
         {
             this.dataList = data;
         }
@@ -106,7 +112,7 @@ public class ProfileFragment extends Fragment {
             int numLikes;
             String coverPhoto;
             String bookmark;
-            String like;
+            ImageView like;
 
             public ViewHolder(View itemView)
             {
@@ -115,6 +121,7 @@ public class ProfileFragment extends Fragment {
 //                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
 //                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
                 this.itineraryName = (TextView) itemView.findViewById(R.id.text);
+                this.like = (ImageView) itemView.findViewById(R.id.like);
 
             }
         }
@@ -131,9 +138,11 @@ public class ProfileFragment extends Fragment {
         @Override
         public void onBindViewHolder(ListAdapter.ViewHolder holder, final int position)
         {
-            holder.textViewText.setText(dataList.get(position).getText());
-            holder.textViewComment.setText(dataList.get(position).getComment());
-            holder.textViewDate.setText(dataList.get(position).getDate());
+//            holder.textViewText.setText(dataList.get(position).getText());
+//            holder.textViewComment.setText(dataList.get(position).getComment());
+//            holder.textViewDate.setText(dataList.get(position).getDate());
+
+            holder.itineraryName.setText(dataList.get(position).getItineraryName());
 
             holder.itemView.setOnClickListener(new View.OnClickListener()
             {
