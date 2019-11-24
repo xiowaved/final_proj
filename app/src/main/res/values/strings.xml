@@ -23,4 +23,20 @@
     <string name="profile_location">Berkeley, CA</string>
 
     <string name="hello_blank_fragment">Hi Im blank</string>
+
+    <array name="categories">
+        <item> food </item>
+        <item> hike </item>
+        <item> music </item>
+        <item> art </item>
+    </array>
+
+    <array name="category_pics">
+        <item>@drawable/food</item>
+        <item>@drawable/music</item>
+        <item>@drawable/hike</item>
+        <item>@drawable/art</item>
+
+    </array>
+
 </resources>

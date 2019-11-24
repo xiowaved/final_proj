@@ -13,6 +13,23 @@
         android:orientation="horizontal"
         android:padding="5dip">
 
+<!--        <ImageView-->
+<!--            android:id="@+id/cover_img"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginStart="0dp"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:layout_marginEnd="0dp"-->
+<!--            android:layout_marginBottom="0dp"-->
+<!--            android:scaleX="1"-->
+<!--            android:scaleY="1"-->
+<!--            app:srcCompat="@android:drawable/star_big_on" />-->
+
+
         <ImageView
             android:id="@+id/cover_img"
             android:layout_width="20dp"
@@ -27,7 +44,8 @@
             android:layout_marginBottom="0dp"
             android:scaleX="1"
             android:scaleY="1"
-            app:srcCompat="@android:drawable/star_big_on" />
+            android:src="@drawable/sceniclookouts" />
+
 
         <TextView
             android:id="@+id/text"
@@ -37,6 +55,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
             android:text="text"
+            android:fontFamily="@font/manjaribold"
+            android:textColor="@color/colorOffWhite"
             android:textSize="@dimen/card_text"/>
 
         <!--        <TextView-->

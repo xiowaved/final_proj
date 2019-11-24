@@ -1,5 +1,6 @@
 package cs160.final_proj_drawer.ui.home;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView catItins;
     private ItinAdapter itinAdapter;
     private CatAdapter catAdapter;
+    private TypedArray categoryPics;
 
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
@@ -66,6 +68,10 @@ public class HomeFragment extends Fragment {
         catLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         catItins.setLayoutManager(catLayoutManager);
 
+
+        // get info for category data
+        categoryPics = getResources().obtainTypedArray(R.array.category_pics);
+
         //eventually wanna modularize this out of this func. just wanna call this
             ArrayList itineraries = new ArrayList<ItineraryObject>();
             ArrayList cats = new ArrayList<String>();
@@ -76,7 +82,9 @@ public class HomeFragment extends Fragment {
                         "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
 
                 itineraries.add(itinerary);
-                cats.add("cat "+i);
+                int drawableID = categoryPics.getResourceId(i,0);
+                cats.add("cat "+drawableID);
+
             }
 
             itinAdapter = new ItinAdapter(getContext(), itineraries);

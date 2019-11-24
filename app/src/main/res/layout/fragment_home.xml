@@ -70,6 +70,7 @@
         android:text="@string/home_intro"
         android:textColor="@color/colorGreenLight"
         android:textSize="@dimen/fun_text"
+        android:fontFamily="@font/manjaribold"
         app:layout_constraintBottom_toTopOf="@+id/home_itins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.416"
