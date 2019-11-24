@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     android:layout_marginLeft="5dip"
     android:layout_marginRight="5dip"
     android:foreground="?attr/selectableItemBackground">
@@ -16,10 +15,18 @@
 
         <ImageView
             android:id="@+id/cover_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="50"
-            android:scaleY="50"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:scaleX="1"
+            android:scaleY="1"
             app:srcCompat="@android:drawable/star_big_on" />
 
         <TextView
@@ -27,32 +34,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
             android:text="text" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/comment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_toRightOf="@+id/text"-->
-<!--            android:layout_toLeftOf="@+id/date"-->
-<!--            android:text="comment"-->
-<!--            android:paddingLeft="5dip"-->
-<!--            android:ellipsize="end"-->
-<!--            android:maxLines="1"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/comment"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_toRightOf="@+id/text"-->
+        <!--            android:layout_toLeftOf="@+id/date"-->
+        <!--            android:text="comment"-->
+        <!--            android:paddingLeft="5dip"-->
+        <!--            android:ellipsize="end"-->
+        <!--            android:maxLines="1"/>-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/date"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:text="date" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/date"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentRight="true"-->
+        <!--            android:text="date" />-->
 
         <ImageView
             android:id="@+id/like"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/like"
-            android:layout_toRightOf="@+id/text"/>
+            android:layout_width="@dimen/card_icons"
+            android:layout_height="@dimen/card_icons"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/like" />
+
+        <ImageView
+            android:id="@+id/bkmark"
+            android:layout_width="@dimen/card_icons"
+            android:layout_height="@dimen/card_icons"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            app:srcCompat="@drawable/bookmark_white" />
 
 
     </RelativeLayout>
