@@ -21,14 +21,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
 public class ProfileFragment extends Fragment {
 
     //private ProfileViewModel profileViewModel;
-    private TextView mTextViewEmpty;
-    private ProgressBar mProgressBarLoading;
-    private ImageView mImageViewEmpty;
+//    private TextView mTextViewEmpty;
+//    private ProgressBar mProgressBarLoading;
+//    private ImageView mImageViewEmpty;
     private RecyclerView mRecyclerView;
     private ListAdapter mListadapter;
 
@@ -37,27 +38,39 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        mTextViewEmpty = (TextView)view.findViewById(R.id.textViewEmpty);
-        mImageViewEmpty = (ImageView)view.findViewById(R.id.imageViewEmpty);
-        mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
+//        mTextViewEmpty = (TextView)view.findViewById(R.id.textViewEmpty);
+//        mImageViewEmpty = (ImageView)view.findViewById(R.id.imageViewEmpty);
+//        mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        ArrayList data = new ArrayList<DataNote>();
-        for (int i = 0; i < DataNoteInformation.id.length; i++)
+        //go to json and pull whatever we get from firebase (basically the itineraries)
+        //arraylist of itinerary objects
+//        ArrayList data = new ArrayList<DataNote>();
+//        for (int i = 0; i < DataNoteInformation.id.length; i++)
+//        {
+//            data.add(
+//                    new DataNote
+//                            (
+//                                    DataNoteInformation.id[i],
+//                                    DataNoteInformation.textArray[i],
+//                                    DataNoteInformation.dateArray[i]
+//                            ));
+//        }
+
+        ArrayList itineraries = new ArrayList<ItineraryObject>();
+        //make json call, find the length and that is your for loop upper bound
+        for (int i = 0; i < 4; i++)
         {
-            data.add(
-                    new DataNote
-                            (
-                                    DataNoteInformation.id[i],
-                                    DataNoteInformation.textArray[i],
-                                    DataNoteInformation.dateArray[i]
-                            ));
+            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
+                    "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
+
+            itineraries.add(itinerary);
         }
 
-        mListadapter = new ListAdapter(data);
+        mListadapter = new ListAdapter(itineraries);
         mRecyclerView.setAdapter(mListadapter);
 
         return view;
@@ -85,16 +98,24 @@ public class ProfileFragment extends Fragment {
 
         public class ViewHolder extends RecyclerView.ViewHolder
         {
-            TextView textViewText;
-            TextView textViewComment;
-            TextView textViewDate;
+            //this is all the stuff contained within your cardview, however you define it
+//            TextView textViewText;
+//            TextView textViewComment;
+//            TextView textViewDate;
+            TextView itineraryName;
+            int numLikes;
+            String coverPhoto;
+            String bookmark;
+            String like;
 
             public ViewHolder(View itemView)
             {
                 super(itemView);
-                this.textViewText = (TextView) itemView.findViewById(R.id.text);
-                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
-                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
+//                this.textViewText = (TextView) itemView.findViewById(R.id.text);
+//                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
+//                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
+                this.itineraryName = (TextView) itemView.findViewById(R.id.text);
+
             }
         }
 
