@@ -9,18 +9,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import cs160.final_proj_drawer.R;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private Button searchButton;
+    private NavController navController;
 
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
@@ -36,25 +40,31 @@ public class HomeFragment extends Fragment {
         tagSearchBar = root.findViewById(R.id.tagSearchBar);
         searchButton = root.findViewById(R.id.searchButton);
 
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
 
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
-                Log.i("user clicked", "TESTING CLICK");
+                ///Log.i("user clicked", "TESTING CLICK");
 
-                //later, this is going to call the search fragment
+                //why does this make everything else invisible?
+                Toast.makeText(root.getContext(),"in the search",Toast.LENGTH_SHORT).show();
 
-                //locationSearchBar = root.findViewById(R.id.locationSearchBar);
-                //locationSearchBar.setVisibility(View.VISIBLE);
+                locationSearchBar = root.findViewById(R.id.locationSearchBar);
+                locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("user searched", "TESTING BUTTON");
+                //Log.i("user searched", "TESTING BUTTON");
 
-                //V: the line under this kills the app, dunno y. @selma, what was this line trying to do?
+                //navController.navigate(R.id.action_nav_home_to_searchFragment);
+                Toast.makeText(root.getContext(),"button clicked",Toast.LENGTH_SHORT).show();
+
+                //V: the line under this kills the app
                 //queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
             }
         });
