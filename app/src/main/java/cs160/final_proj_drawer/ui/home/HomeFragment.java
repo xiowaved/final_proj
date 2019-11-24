@@ -11,6 +11,8 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,7 +20,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import cs160.final_proj_drawer.ItinAdapter;
+import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
 public class HomeFragment extends Fragment {
@@ -28,8 +33,8 @@ public class HomeFragment extends Fragment {
     private NavController navController;
 
 
-    private RecyclerView mRecyclerView;
-    //private ListAdapter mListadapter;
+    private RecyclerView homeItins;
+    private ItinAdapter itinAdapter;
 
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
@@ -42,8 +47,32 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //find stuff
         tagSearchBar = root.findViewById(R.id.tagSearchBar);
         searchButton = root.findViewById(R.id.searchButton);
+
+        //recycler views setup
+        homeItins = (RecyclerView) root.findViewById(R.id.home_itins);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        homeItins.setLayoutManager(layoutManager);
+
+        //eventually wanna modularize this out of this func. just wanna call this
+            ArrayList itineraries = new ArrayList<ItineraryObject>();
+            //make json call, find the length and that is your for loop upper bound
+            for (int i = 0; i < 4; i++)
+            {
+                ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
+                        "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
+
+                itineraries.add(itinerary);
+            }
+
+            itinAdapter = new ItinAdapter(getContext(), itineraries);
+            homeItins.setAdapter(itinAdapter);
+
+
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
