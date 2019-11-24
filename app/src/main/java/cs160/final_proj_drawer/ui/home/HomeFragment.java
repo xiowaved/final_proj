@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment {
          * If there is no text in the query yet, display the default home page results for the
          * user's current location
          */
-//        String currentQuery = tagSearchBar.getQuery().toString();
+            // String currentQuery = tagSearchBar.getQuery().toString();
         if (query == null) {
             // search bar query is not filled in, which means user just opened the home page
             // display itineraries in current location
