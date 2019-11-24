@@ -25,7 +25,7 @@
         android:layout_marginStart="131dp"
         android:layout_marginTop="45dp"
         android:layout_marginEnd="192dp"
-        android:onClick="saveText"
+        android:onClick="createTestItinerary"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
