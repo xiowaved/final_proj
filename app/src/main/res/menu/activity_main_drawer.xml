@@ -16,6 +16,7 @@
             android:id="@+id/nav_create"
             android:icon="@drawable/ic_menu_create"
             android:title="@string/menu_create" />
+        <!--
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
@@ -28,6 +29,7 @@
             android:id="@+id/nav_posted"
             android:icon="@drawable/ic_menu_posted"
             android:title="@string/menu_posted" />
+            -->
     </group>
     <!--
         <item android:title="Communicate">
