@@ -24,8 +24,12 @@ public class HomeFragment extends Fragment {
 
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
-    // lower search bar, appears after clicking inside top one (see Yelp as example); enter location
+    // lower search bar, appears after clicking inside top one (see Yelp as example);
+    // enter location
     private EditText locationSearchBar;
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
