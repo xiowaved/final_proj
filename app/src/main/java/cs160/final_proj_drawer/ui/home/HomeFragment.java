@@ -28,8 +28,6 @@ public class HomeFragment extends Fragment {
     // enter location
     private EditText locationSearchBar;
 
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
