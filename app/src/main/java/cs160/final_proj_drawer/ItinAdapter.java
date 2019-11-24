@@ -24,18 +24,19 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 //            this.dataList = data;
 //        }
 
-    public ItinAdapter(ArrayList<ItineraryObject> data)
+    public ItinAdapter(Context context, ArrayList<ItineraryObject> data)
     {
         this.dataList = data;
+        this.context = context;
     }
 
     //adding this stuff to try to give context
     Context context;
-    LayoutInflater layoutInflater;
+    //LayoutInflater layoutInflater;
 
-    public ItinAdapter (Context context) {
-        this.context = context;
-    }
+    //public ItinAdapter (Context context) {
+
+    //}
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -84,7 +85,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             @Override
             public void onClick(View v)
             {
-                //Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
             }
         });
     }

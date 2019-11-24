@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
             itineraries.add(itinerary);
         }
 
-        mItinAdapter = new ItinAdapter(itineraries);
+        mItinAdapter = new ItinAdapter(getContext(), itineraries);
         mRecyclerView.setAdapter(mItinAdapter);
 
         return view;
