@@ -108,7 +108,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Log.i("user searched", "TESTING BUTTON");
-                navController.navigate(R.id.action_nav_home_to_search);
 
 
                 //the line under this kills the app
@@ -117,6 +116,11 @@ public class HomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    public void goToSearch() {
+        navController.navigate(R.id.action_nav_home_to_search);
+
     }
 
     public void queryCallback(String query) {
