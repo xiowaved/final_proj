@@ -15,13 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
 public class SearchFragment extends Fragment {
     private HomeViewModel homeViewModel;
 
-    private Button temp;
+    private ImageButton searchButton;
     private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,9 +32,9 @@ public class SearchFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_search, container, false);
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        temp = root.findViewById(R.id.temp);
+        searchButton = root.findViewById(R.id.searchButton);
 
-        temp.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
