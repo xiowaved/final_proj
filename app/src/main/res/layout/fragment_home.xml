@@ -50,16 +50,29 @@
         app:layout_constraintVertical_bias="0.16000003" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_itins"
-        android:layout_width="353dp"
-        android:layout_height="300dp"
+        android:id="@+id/home_cats"
+        android:layout_width="361dp"
+        android:layout_height="99dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/home_intro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_itins"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/home_intro"
@@ -67,7 +80,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/manjaribold"
         android:text="@string/home_intro"
         android:textColor="@color/colorGreenLight"
@@ -75,19 +88,6 @@
         app:layout_constraintBottom_toTopOf="@+id/home_itins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_cats"
-        android:layout_width="361dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="44dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/home_intro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
