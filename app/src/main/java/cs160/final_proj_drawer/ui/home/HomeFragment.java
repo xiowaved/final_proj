@@ -103,8 +103,8 @@ public class HomeFragment extends Fragment {
 
                 Toast.makeText(root.getContext(),"in the search",Toast.LENGTH_SHORT).show();
 
-                locationSearchBar = root.findViewById(R.id.locationSearchBar);
-                locationSearchBar.setVisibility(View.VISIBLE);
+                //locationSearchBar = root.findViewById(R.id.locationSearchBar);
+                //locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
 
@@ -112,8 +112,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Log.i("user searched", "TESTING BUTTON");
-
                 navController.navigate(R.id.action_nav_home_to_search);
+
 
                 //the line under this kills the app
                 //queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
