@@ -35,17 +35,14 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
                 String d = dataList.get(i).toString();
                 int id = Integer.valueOf(d.substring(d.indexOf(" ") + 1));
                 drawableIds[i] = id;
-                Toast.makeText(context, "" + id, Toast.LENGTH_SHORT).show();
             }
             this.context = context;
-//            Toast.makeText(context, "" + dataList, Toast.LENGTH_SHORT).show();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder
         {
             //this is all the stuff contained within whatever obj we pass
             TextView catName;
-//            String coverPhoto;
             ImageView coverPhoto;
 
             public ViewHolder(View itemView)
@@ -60,7 +57,6 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
         public CatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cat_card, parent, false);
-
             CatAdapter.ViewHolder viewHolder = new CatAdapter.ViewHolder(view);
             return viewHolder;
         }
@@ -69,7 +65,7 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
         public void onBindViewHolder(CatAdapter.ViewHolder holder, final int position)
         {
             holder.catName.setText(categories[position]);
-            // set image resource to drawable id for the picture defined by the category name
+            // set image resource to drawable id for the picture
             holder.coverPhoto.setImageResource(drawableIds[position]);
             holder.itemView.setOnClickListener(new View.OnClickListener()
             {

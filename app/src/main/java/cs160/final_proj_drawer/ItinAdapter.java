@@ -51,7 +51,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 //                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
 //                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
             this.itineraryName = (TextView) itemView.findViewById(R.id.text);
-            this.like = (ImageView) itemView.findViewById(R.id.like);
+//            this.like = (ImageView) itemView.findViewById(R.id.like);
 
         }
     }
