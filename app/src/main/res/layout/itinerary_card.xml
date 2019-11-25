@@ -6,7 +6,7 @@
     android:layout_marginLeft="5dip"
     android:layout_marginRight="5dip"
     android:foreground="?attr/selectableItemBackground"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="@dimen/roundCorners">
 
     <RelativeLayout
         android:layout_width="match_parent"
