@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ import cs160.final_proj_drawer.R;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private Button searchButton;
+//    private Button searchButton;
+    private ImageButton searchButton;
     private NavController navController;
 
 

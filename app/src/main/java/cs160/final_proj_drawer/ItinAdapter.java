@@ -60,7 +60,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     public ItinAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itinerary_card, parent, false);
-
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

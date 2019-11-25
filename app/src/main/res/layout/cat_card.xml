@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="5dip"
     android:layout_marginRight="5dip"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/colorOffWhite"
+    app:cardCornerRadius="@dimen/roundCorners"
     android:foreground="?attr/selectableItemBackground">
 
     <RelativeLayout
@@ -52,9 +55,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
+            android:layout_alignBottom="@+id/bg_img"
             android:text="text"
+            android:paddingRight="@dimen/catPaddingRight"
             android:textColor="@color/colorOffWhite"
             android:fontFamily="@font/manjaribold"
             android:textSize="@dimen/card_text"/>
