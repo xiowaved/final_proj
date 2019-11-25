@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/itineraryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -34,7 +34,33 @@
             app:layout_constraintEnd_toStartOf="@+id/name"
             app:layout_constraintHorizontal_bias="0.481"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/itineraryName" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="36dp"
+            android:ems="10"
+            android:hint="Ex. Hogwarts"
+            android:inputType="textPersonName"
+            android:background="@drawable/rounded_corner_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itineraryName" />
+
+        <TextView
+            android:id="@+id/textDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/manjaribold"
+            android:text="Description"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.172"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textLocation" />
 
         <EditText
             android:id="@+id/description"
@@ -51,6 +77,32 @@
             app:layout_constraintHorizontal_bias="0.267"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textDescription" />
+
+        <TextView
+            android:id="@+id/textLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/manjaribold"
+            android:text="Location"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/location"
+            app:layout_constraintHorizontal_bias="0.654"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+        <EditText
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="36dp"
+            android:background="@drawable/rounded_corner_input"
+            android:ems="10"
+            android:hint="Ex. 123 Potter Lane, Scotland"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <TextView
             android:id="@+id/textPhotos"
@@ -80,57 +132,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textPhotos" />
 
-        <TextView
-            android:id="@+id/textDescription"
+        <Button
+            android:id="@+id/viewPreviousStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="Description"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.172"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/rounded_corner_button"
+            android:text="Previous Stop"
+            android:textColor="#F6F6F6"
+            android:drawableLeft="@drawable/bookmark"
+            app:layout_constraintEnd_toStartOf="@+id/addNewStop"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textLocation" />
-
-        <TextView
-            android:id="@+id/textLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="Location"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/location"
-            app:layout_constraintHorizontal_bias="0.654"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textName" />
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="36dp"
-            android:ems="10"
-            android:hint="Ex. Hogwarts"
-            android:inputType="textPersonName"
-            android:background="@drawable/rounded_corner_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <EditText
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="36dp"
-            android:background="@drawable/rounded_corner_input"
-            android:ems="10"
-            android:hint="Ex. 123 Potter Lane, Scotland"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/photos" />
 
         <Button
             android:id="@+id/addNewStop"
@@ -142,22 +157,9 @@
             android:background="@drawable/rounded_corner_button"
             android:text="Next Stop"
             android:textColor="#F6F6F6"
+            android:drawableRight="@drawable/bookmark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/viewPreviousStop"
-            app:layout_constraintTop_toBottomOf="@+id/photos" />
-
-        <Button
-            android:id="@+id/viewPreviousStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="44dp"
-            android:background="@drawable/rounded_corner_button"
-            android:text="Previous Stop"
-            android:textColor="#F6F6F6"
-            app:layout_constraintEnd_toStartOf="@+id/addNewStop"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/photos" />
 
         <Button
