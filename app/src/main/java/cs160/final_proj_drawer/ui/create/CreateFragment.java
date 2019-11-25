@@ -126,7 +126,7 @@ public class CreateFragment extends Fragment {
         ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
                 "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
-        //commit to firebase
+        //TODO commit to firebase
     }
 
     public void onAddNewStop(View view) {
