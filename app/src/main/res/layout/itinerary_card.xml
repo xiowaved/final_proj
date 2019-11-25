@@ -82,19 +82,29 @@
             android:layout_height="@dimen/card_icons"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="7dp"
             android:layout_marginBottom="5dp"
 
             android:src="@drawable/like" />
 
+
         <ImageView
             android:id="@+id/bkmark"
-            android:layout_width="@dimen/card_icons"
-            android:layout_height="@dimen/card_icons"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignRight="@+id/like"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
 
-            app:srcCompat="@drawable/ic_bkmark" />
+            android:src="@drawable/figmabkmkwhite" />
+<!--        <ImageView-->
+<!--            android:id="@+id/bkmark"-->
+<!--            android:layout_width="@dimen/card_icons"-->
+<!--            android:layout_height="@dimen/card_icons"-->
+<!--            android:layout_alignRight="@+id/like"-->
+<!--            android:layout_marginTop="5dp"-->
+
+<!--            app:srcCompat="@drawable/ic_bkmark" />-->
 
 
     </RelativeLayout>
