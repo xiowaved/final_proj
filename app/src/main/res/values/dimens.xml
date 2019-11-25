@@ -7,7 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- cards -->
-    <dimen name="card_icons">20dp</dimen>
+    <dimen name="card_icons">40dp</dimen>
     <dimen name="card_text">18sp</dimen>
 
     <!-- fun text sizes -->
