@@ -154,8 +154,9 @@ public class HomeFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         JSONObject info = response;
                         Iterator<String> keys = info.keys();
+                        String name = "";
                         while (keys.hasNext()) {
-                            String name = keys.next();
+                            name = keys.next();
                             if (name != "Tags") {
                                 try {
                                     JSONObject itin = (JSONObject) info.get(name);
@@ -197,6 +198,48 @@ public class HomeFragment extends Fragment {
                                 }
                             } else {}
                         }
+                        if (name != "Tags") {
+                            try {
+                                JSONObject itin = (JSONObject) info.get(name);
+                                String creator = (String) itin.get("creatorName");
+                                String itinName = (String) itin.get("itineraryName");
+                                String coverPhoto = (String) itin.get("coverPhoto");
+                                int numLikes = (int) itin.get("numLikes");
+                                int numStops = (int) itin.get("numStops");
+                                JSONArray tagsJSON = itin.getJSONArray("tags");
+                                ArrayList<String> tags = new ArrayList<>();
+                                for (int i = 0; i < tagsJSON.length(); i++) {
+                                    tags.add((String)tagsJSON.get(i));
+                                }
+                                JSONArray stopsJSON = itin.getJSONArray("stops");
+                                ArrayList<Stop> stops = new ArrayList<>();
+                                for (int i = 0; i < stopsJSON.length(); i++) {
+                                    JSONObject stopJSON = stopsJSON.getJSONObject(i);
+                                    String desc = (String) stopJSON.get("description");
+                                    int index = (int) stopJSON.get("index");
+                                    String location = (String) stopJSON.get("location");
+                                    String stopname = (String) stopJSON.get("name");
+                                    Stop newstop = new Stop(new ArrayList<String>(), stopname, location, desc,index);
+                                    stops.add(newstop);
+
+
+
+                                }
+                                JSONArray accessJSON = itin.getJSONArray("access");
+                                ArrayList<String> access = new ArrayList<>();
+                                for (int i = 0; i < accessJSON.length(); i++) {
+                                    access.add((String)accessJSON.get(i));
+                                }
+                                ItineraryObject itinerary = new ItineraryObject(creator,itinName, numLikes,
+                                        coverPhoto, numStops, stops, tags, access);
+                                list.add(itinerary);
+
+                            } catch (JSONException e) {
+//                                    this is required for code to work, ignore it
+                            }
+                        } else {}
+
+
                         try { Tags = (JSONObject) info.get("Tags"); }
                         catch (JSONException e) { }
                         itinAdapter = new ItinAdapter(getContext(), list);
