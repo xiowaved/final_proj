@@ -41,8 +41,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         TextView itineraryName;
         int numLikes;
         String coverPhoto;
-        String bookmark;
-        ImageView like;
+        TextView numLikesText;
 
         public ViewHolder(View itemView)
         {
@@ -51,8 +50,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 //                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
 //                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
             this.itineraryName = (TextView) itemView.findViewById(R.id.text);
-//            this.like = (ImageView) itemView.findViewById(R.id.like);
-
+            this.numLikesText = (TextView) itemView.findViewById(R.id.numLikes);
         }
     }
 
@@ -72,7 +70,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 //            holder.textViewDate.setText(dataList.get(position).getDate());
 
         holder.itineraryName.setText(dataList.get(position).getItineraryName());
-
+        holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override

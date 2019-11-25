@@ -94,22 +94,38 @@
             android:layout_height="25dp"
             android:layout_alignRight="@+id/like"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="7dp"
 
             android:src="@drawable/figmabkmkwhite" />
+
+
 
         <TextView
             android:id="@+id/numLikes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/like"
-            android:layout_alignEnd="@+id/like"
+            android:layout_alignRight="@+id/like"
+            android:layout_alignLeft="@+id/like"
             android:layout_alignBottom="@+id/cover_img"
-            android:layout_marginLeft="6dp"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
             android:text="100"
             android:fontFamily="@font/manjaribold"
             android:textColor="@color/colorOffWhite"
             android:textSize="14sp"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/numLikes"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignStart="@+id/like"-->
+<!--            android:layout_alignEnd="@+id/like"-->
+<!--            android:layout_alignBottom="@+id/cover_img"-->
+<!--            android:layout_marginLeft="6dp"-->
+<!--            android:text="100"-->
+<!--            android:fontFamily="@font/manjaribold"-->
+<!--            android:textColor="@color/colorOffWhite"-->
+<!--            android:textSize="14sp"/>-->
 
 <!--        <ImageView-->
 <!--            android:id="@+id/bkmark"-->
