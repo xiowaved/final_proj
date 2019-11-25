@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class SearchFragment extends Fragment {
     private HomeViewModel homeViewModel;
 
-    private Button search;
+    private Button temp;
     private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,9 +31,9 @@ public class SearchFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_search, container, false);
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        search = root.findViewById(R.id.search);
+        temp = root.findViewById(R.id.temp);
 
-        search.setOnClickListener(new View.OnClickListener() {
+        temp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

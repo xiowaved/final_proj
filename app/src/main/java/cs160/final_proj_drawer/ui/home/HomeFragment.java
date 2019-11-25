@@ -9,18 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SearchView;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -46,7 +43,8 @@ import cs160.final_proj_drawer.Stop;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private Button searchButton;
+//    private Button searchButton;
+    private ImageButton searchButton;
     private NavController navController;
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
     public String currentLocation = "Berkeley";
@@ -94,7 +92,6 @@ public class HomeFragment extends Fragment {
         catLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         catItins.setLayoutManager(catLayoutManager);
 
-
         // get info for category data
         categoryPics = getResources().obtainTypedArray(R.array.category_pics);
 
@@ -121,11 +118,6 @@ public class HomeFragment extends Fragment {
             catAdapter = new CatAdapter(getContext(), cats);
             catItins.setAdapter(catAdapter);
 
-
-
-
-
-
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -136,8 +128,8 @@ public class HomeFragment extends Fragment {
 
                 Toast.makeText(root.getContext(),"in the search",Toast.LENGTH_SHORT).show();
 
-                locationSearchBar = root.findViewById(R.id.locationSearchBar);
-                locationSearchBar.setVisibility(View.VISIBLE);
+                //locationSearchBar = root.findViewById(R.id.locationSearchBar);
+                //locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
 
@@ -145,8 +137,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Log.i("user searched", "TESTING BUTTON");
-
                 navController.navigate(R.id.action_nav_home_to_search);
+
 
                 //the line under this kills the app
                 //queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
@@ -219,6 +211,11 @@ public class HomeFragment extends Fragment {
         Context context = getContext();
         MySingleton mySingleton = new MySingleton(context);
         mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+
+    }
+
+    public void goToSearch() {
+        navController.navigate(R.id.action_nav_home_to_search);
 
     }
 

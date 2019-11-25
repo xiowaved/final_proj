@@ -18,7 +18,7 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
         //        private ArrayList<DataNote> dataList;
         private ArrayList<Object> dataList;
         Context context;
-        String[] categories = {"food", "hike", "music", "art"};
+        String[] categories = {"food", "music", "hike", "art"};
         int[] drawableIds;
 
 //        public Adapter(ArrayList<DataNote> data)
