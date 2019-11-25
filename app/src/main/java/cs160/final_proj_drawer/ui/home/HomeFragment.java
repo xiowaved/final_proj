@@ -70,7 +70,6 @@ public class HomeFragment extends Fragment {
         catLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         catItins.setLayoutManager(catLayoutManager);
 
-
         // get info for category data
         categoryPics = getResources().obtainTypedArray(R.array.category_pics);
 
@@ -93,11 +92,6 @@ public class HomeFragment extends Fragment {
             homeItins.setAdapter(itinAdapter);
             catAdapter = new CatAdapter(getContext(), cats);
             catItins.setAdapter(catAdapter);
-
-
-
-
-
 
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
