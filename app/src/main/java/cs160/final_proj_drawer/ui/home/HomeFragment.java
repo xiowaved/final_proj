@@ -1,5 +1,6 @@
 package cs160.final_proj_drawer.ui.home;
 
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -23,16 +26,31 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import cs160.final_proj_drawer.CatAdapter;
 import cs160.final_proj_drawer.ItinAdapter;
 import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.MySingleton;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.Stop;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private Button searchButton;
     private NavController navController;
+    public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
+    public String currentLocation = "Berkeley";
+    public JSONObject Tags;
 
 
     private RecyclerView homeItins;
@@ -46,6 +64,12 @@ public class HomeFragment extends Fragment {
     // lower search bar, appears after clicking inside top one (see Yelp as example);
     // enter location
     private EditText locationSearchBar;
+
+    @Nullable
+    @Override
+    public Context getContext() {
+        return super.getContext();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -78,19 +102,22 @@ public class HomeFragment extends Fragment {
             ArrayList itineraries = new ArrayList<ItineraryObject>();
             ArrayList cats = new ArrayList<String>();
             //make json call, find the length and that is your for loop upper bound
-            for (int i = 0; i < 4; i++)
-            {
-                ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
-                        "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
+            String url = urlRoot + "/" + currentLocation + ".json";
 
-                itineraries.add(itinerary);
+        for (int i = 0; i < 4; i++)
+            {
+//                ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
+//                        "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
+//
+//                itineraries.add(itinerary);
                 int drawableID = categoryPics.getResourceId(i,0);
                 cats.add("cat "+drawableID);
-
+//
             }
+        makeItineraries(itineraries,url);
 
-            itinAdapter = new ItinAdapter(getContext(), itineraries);
-            homeItins.setAdapter(itinAdapter);
+
+
             catAdapter = new CatAdapter(getContext(), cats);
             catItins.setAdapter(catAdapter);
 
@@ -127,6 +154,72 @@ public class HomeFragment extends Fragment {
         });
 
         return root;
+    }
+        public void makeItineraries(final ArrayList<ItineraryObject> list, String url){
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
+                new Response.Listener<JSONObject>() {
+                    public void onResponse(JSONObject response) {
+                        JSONObject info = response;
+                        Iterator<String> keys = info.keys();
+                        while (keys.hasNext()) {
+                            String name = keys.next();
+                            if (name != "Tags") {
+                                try {
+                                    JSONObject itin = (JSONObject) info.get(name);
+                                    String creator = (String) itin.get("creatorName");
+                                    String itinName = (String) itin.get("itineraryName");
+                                    String coverPhoto = (String) itin.get("coverPhoto");
+                                    int numLikes = (int) itin.get("numLikes");
+                                    int numStops = (int) itin.get("numStops");
+                                    JSONArray tagsJSON = itin.getJSONArray("tags");
+                                    ArrayList<String> tags = new ArrayList<>();
+                                    for (int i = 0; i < tagsJSON.length(); i++) {
+                                        tags.add((String)tagsJSON.get(i));
+                                    }
+                                    JSONArray stopsJSON = itin.getJSONArray("stops");
+                                    ArrayList<Stop> stops = new ArrayList<>();
+                                    for (int i = 0; i < stopsJSON.length(); i++) {
+                                        JSONObject stopJSON = stopsJSON.getJSONObject(i);
+                                        String desc = (String) stopJSON.get("description");
+                                        int index = (int) stopJSON.get("index");
+                                        String location = (String) stopJSON.get("location");
+                                        String stopname = (String) stopJSON.get("name");
+                                        Stop newstop = new Stop(new ArrayList<String>(), stopname, location, desc,index);
+                                        stops.add(newstop);
+
+
+
+                                    }
+                                    JSONArray accessJSON = itin.getJSONArray("access");
+                                    ArrayList<String> access = new ArrayList<>();
+                                    for (int i = 0; i < accessJSON.length(); i++) {
+                                        access.add((String)accessJSON.get(i));
+                                    }
+                                    ItineraryObject itinerary = new ItineraryObject(creator,itinName, numLikes,
+                                    coverPhoto, numStops, stops, tags, access);
+                                    list.add(itinerary);
+
+                                } catch (JSONException e) {
+//                                    this is required for code to work, ignore it
+                                }
+                            } else {}
+                        }
+                        try { Tags = (JSONObject) info.get("Tags"); }
+                        catch (JSONException e) { }
+                        itinAdapter = new ItinAdapter(getContext(), list);
+                        homeItins.setAdapter(itinAdapter);
+                    }
+                    },new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Context context = getContext();
+        MySingleton mySingleton = new MySingleton(context);
+        mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+
     }
 
     public void queryCallback(String query) {
