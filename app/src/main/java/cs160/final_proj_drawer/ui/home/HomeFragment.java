@@ -41,9 +41,12 @@ import cs160.final_proj_drawer.MySingleton;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.Stop;
 
+/* this fragment holds the HOME page and the SEARCH function.
+*  it's the first page displayed to the user
+*  top is search bar, bottom is splash page.
+*  */
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
 //    private Button searchButton;
     private ImageButton searchButton;
     private NavController navController;
@@ -72,9 +75,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        final View root = inflater.inflate(R.layout.fragment_home, container, false);
+         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         //find stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
