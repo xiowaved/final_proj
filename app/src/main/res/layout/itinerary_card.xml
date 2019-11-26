@@ -84,7 +84,6 @@
             android:layout_alignEnd="@+id/cover_img"
             android:layout_marginRight="7dp"
             android:layout_marginBottom="15dp"
-
             android:src="@drawable/like" />
 
 
@@ -95,7 +94,6 @@
             android:layout_alignRight="@+id/like"
             android:layout_marginTop="10dp"
             android:layout_marginRight="7dp"
-
             android:src="@drawable/figmabkmkwhite" />
 
 
