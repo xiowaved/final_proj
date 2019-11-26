@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject itin = (JSONObject) info.get(name);
                                     String creator = (String) itin.get("creatorName");
                                     String itinName = (String) itin.get("itineraryName");
-//                                    String coverPhoto = (String) itin.get("coverPhoto");
+                                    String coverPhoto = (String) itin.get("coverPhoto");
                                     int numLikes = (int) itin.get("numLikes");
                                     int numStops = (int) itin.get("numStops");
                                     JSONArray tagsJSON = itin.getJSONArray("tags");
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                                         access.add((String)accessJSON.get(i));
                                     }
                                     ItineraryObject itinerary = new ItineraryObject(creator,itinName, numLikes,
-                                            "nothing", numStops, stops, tags, access);
+                                            coverPhoto, numStops, stops, tags, access);
                                     list.add(itinerary);
 
                                 } catch (JSONException e) {
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject itin = (JSONObject) info.get(name);
                                 String creator = (String) itin.get("creatorName");
                                 String itinName = (String) itin.get("itineraryName");
-//                                String coverPhoto = (String) itin.get("coverPhoto");
+                                String coverPhoto = (String) itin.get("coverPhoto");
                                 int numLikes = (int) itin.get("numLikes");
                                 int numStops = (int) itin.get("numStops");
                                 JSONArray tagsJSON = itin.getJSONArray("tags");
