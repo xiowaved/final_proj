@@ -73,7 +73,14 @@ public class SearchFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_search_to_itin);
+                Bundle arguments = new Bundle();
+                arguments.putString("tags",tagQuery);
+                if (locationQuery == null) {
+                    locationQuery = locationSearchBar.getText().toString();
+                }
+                arguments.putString("location",locationQuery);
+                navController.navigate(R.id.action_search_to_itin,arguments);
+//                navController.navigate(R.id.action_search_to_itin);
                 //Toast.makeText(root.getContext(),"show that itin",Toast.LENGTH_SHORT).show();
 
             }

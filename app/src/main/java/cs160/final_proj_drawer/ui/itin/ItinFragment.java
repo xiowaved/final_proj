@@ -1,10 +1,13 @@
 package cs160.final_proj_drawer.ui.itin;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -38,6 +41,11 @@ public class ItinFragment extends Fragment {
     private RecyclerView searchItins;
     private ItinAdapter itinAdapter;
 
+    private String tagQuery;
+    private String locationQuery;
+
+
+    private EditText tagSearchBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -53,7 +61,17 @@ public class ItinFragment extends Fragment {
                 navController.navigate(R.id.action_itin_to_filter);
                 //Toast.makeText(root.getContext(),"show that itin",Toast.LENGTH_SHORT).show();
             }
+
         });
+        Bundle args = getArguments();
+        tagQuery = getArguments().getString("tags");
+        locationQuery = getArguments().getString("location");
+
+        Log.i("ITINFRAGMENTtag", tagQuery);
+        Log.i("ITINFRAGMENTloc", locationQuery);
+
+        tagSearchBar = (EditText) root.findViewById(R.id.tagSearchBar);
+        tagSearchBar.setText(tagQuery);
 
         //recycler views setup
         searchItins = (RecyclerView) root.findViewById(R.id.search_itins);
