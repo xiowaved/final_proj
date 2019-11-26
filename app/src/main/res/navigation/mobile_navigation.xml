@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_nav_home_to_itin"
             app:destination="@id/fragment_itin" />
+        <action
+            android:id="@+id/action_itin_to_single_itin"
+            app:destination="@+id/fragment_single_itin"/>
     </fragment>
 
     <fragment

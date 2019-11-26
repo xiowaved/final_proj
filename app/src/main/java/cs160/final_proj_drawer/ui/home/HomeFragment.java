@@ -143,6 +143,7 @@ public class HomeFragment extends Fragment {
 
                 //why does clicking into this make everything else invisible?
                 if (hasFocus) {
+                    Log.i("TAG", "tagSearchBar inside on focus change listener");
                     navController.navigate(R.id.action_nav_home_to_search);
                     Toast.makeText(root.getContext(),"in the search",Toast.LENGTH_SHORT).show();
                 }
