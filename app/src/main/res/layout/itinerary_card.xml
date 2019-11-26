@@ -94,7 +94,7 @@
             android:layout_alignRight="@+id/like"
             android:layout_marginTop="10dp"
             android:layout_marginRight="7dp"
-            android:src="@drawable/figmabkmkwhite_fill" />
+            android:src="@drawable/figmabkmkwhite" />
 
 
 
