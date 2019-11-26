@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/fragment_search"
         android:name="cs160.final_proj_drawer.ui.home.SearchFragment"
-        android:label="fragment_search"
+        android:label=" "
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_search_to_itin"
@@ -66,13 +66,13 @@
     <fragment
         android:id="@+id/reviewItineraryFragment"
         android:name="cs160.final_proj_drawer.ui.create.ReviewItineraryFragment"
-        android:label="fragment_review_itinerary"
+        android:label=""
         tools:layout="@layout/fragment_review_itinerary" />
 
     <fragment
         android:id="@+id/fragment_itin"
         android:name="cs160.final_proj_drawer.ui.itin.ItinFragment"
-        android:label="fragment_itin"
+        android:label=" "
         tools:layout="@layout/fragment_itin" >
         <action
             android:id="@+id/action_itin_to_filter"
@@ -90,7 +90,7 @@
     <fragment
         android:id="@+id/fragment_filter"
         android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
-        android:label="fragment_filter"
+        android:label=" "
         tools:layout="@layout/fragment_filter" />
 
 </navigation>
