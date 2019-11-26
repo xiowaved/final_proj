@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.MainActivity;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.CatAdapter;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
@@ -63,17 +64,18 @@ public class ItinFragment extends Fragment {
         //eventually wanna modularize this out of this func. just wanna call this
             ArrayList itineraries = new ArrayList<ItineraryObject>();
 
-            for (int i = 0; i < 4; i++)
-            {
-                    ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
-                            "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
-    //
-                    itineraries.add(itinerary);
-    //
-            }
+//            for (int i = 0; i < 4; i++)
+//            {
+//                    ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
+//                            "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
+//    //
+//                    itineraries.add(itinerary);
+//    //
+//            }
         // put them in
-        itinAdapter = new ItinAdapter(getContext(), itineraries);
-        searchItins.setAdapter(itinAdapter);
+        String url = urlRoot + "/" + currentLocation + "/Tags/" + "food" + ".json";
+
+        MainActivity.makeItinerariesArray(itineraries,url,getContext(),searchItins);
 
         return root;
     }
