@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/colorGreen</color>
+
+    <color name="colorPrimary">@color/colorBlueDark</color>
     <color name="colorPrimaryDark">@color/colorGreenDark</color>
     <color name="colorAccent">@color/colorTealLight</color>
     <color name="colorAccentDark">@color/colorTeal</color>
@@ -21,7 +22,5 @@
     <color name="centerColor">@color/colorPrimary</color>
     <color name="endColor">@color/colorPrimaryDark</color>
     <color name="startColor">@color/colorPrimary</color>
-
-
 
 </resources>
