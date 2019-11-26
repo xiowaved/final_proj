@@ -71,9 +71,9 @@
 
     <fragment
         android:id="@+id/fragment_itin"
-        android:name="cs160.final_proj_drawer.ui.itin.ItinFragment"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
         android:label="fragment_itin"
-        tools:layout="@layout/fragment_itin" >
+        tools:layout="@layout/fragment_display_itins" >
         <action
             android:id="@+id/action_itin_to_filter"
             app:destination="@+id/fragment_filter"/>

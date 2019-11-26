@@ -37,12 +37,6 @@ import java.util.Iterator;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
-    public String currentLocation = "Berkeley";
-    public ArrayList<JSONObject> listOfItineraries = new ArrayList<>();
-//    public JSONArray Tags;
-    public JSONObject Tags;
-    public JSONObject itineraries;
 
 
     @Override
@@ -72,22 +66,5 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    public void ClickItinerary (View view){
-//        ItineraryCard = findViewById(R.id.ItineraryCard);
-//        String itinname = ItineraryCard.getText()
-//        JSONObject itinerary = itineraries.get(itinname);
-        /***
-         * I'm not sure if we are using intents to start the view activity fragment
-         *
-         * but here is how you would get all the information you need.
-         */
-//        String creatorName = itinerary.getString("creatorName")
-        /**
-         * Again, because I am not sure how viewItinerary works
-         * I have to do some more code to get all the stops, but it should be ok
-         */
-//        JSONArray stops = itinerary.get("stops");
     }
 }

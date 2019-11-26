@@ -22,7 +22,7 @@ import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 
 
-public class ItinFragment extends Fragment {
+public class DisplayMultItinsFragment extends Fragment {
 
     private Button filterButton;
     private NavController navController;
@@ -38,7 +38,7 @@ public class ItinFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_itin, container, false);
+        View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
 
         //find stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);

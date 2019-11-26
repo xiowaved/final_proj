@@ -9,6 +9,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+//todo Colby what is this
+//i believe this is firebase related
 public class MySingleton {
 
         private static MySingleton instance;
