@@ -29,6 +29,7 @@
         android:layout_marginStart="10dp"
         android:text="Filter"
         android:textColor="@color/colorOffWhite"
+        android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@id/tagSearchBar"
         app:layout_constraintHorizontal_bias="0.733"
         app:layout_constraintTop_toTopOf="parent"
