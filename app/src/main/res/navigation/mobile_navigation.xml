@@ -62,14 +62,27 @@
             android:id="@+id/action_search_to_itin"
             app:destination="@id/fragment_itin" />
     </fragment>
+
     <fragment
         android:id="@+id/reviewItineraryFragment"
         android:name="cs160.final_proj_drawer.ui.create.ReviewItineraryFragment"
         android:label="fragment_review_itinerary"
         tools:layout="@layout/fragment_review_itinerary" />
+
     <fragment
         android:id="@+id/fragment_itin"
         android:name="cs160.final_proj_drawer.ui.itin.ItinFragment"
         android:label="fragment_itin"
-        tools:layout="@layout/fragment_itin" />
+        tools:layout="@layout/fragment_itin" >
+        <action
+            android:id="@+id/action_itin_to_filter"
+            app:destination="@+id/fragment_filter"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_filter"
+        android:name="cs160.final_proj_drawer.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" />
+
 </navigation>
