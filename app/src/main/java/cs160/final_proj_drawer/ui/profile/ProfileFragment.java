@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import cs160.final_proj_drawer.ItinAdapter;
+import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
 

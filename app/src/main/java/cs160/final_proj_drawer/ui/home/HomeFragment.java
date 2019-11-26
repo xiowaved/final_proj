@@ -7,19 +7,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,8 +31,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cs160.final_proj_drawer.CatAdapter;
-import cs160.final_proj_drawer.ItinAdapter;
+import cs160.final_proj_drawer.adapters.CatAdapter;
+import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.MySingleton;
 import cs160.final_proj_drawer.R;

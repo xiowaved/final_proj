@@ -1,4 +1,4 @@
-package cs160.final_proj_drawer;
+package cs160.final_proj_drawer.ui.home;
 
 import android.os.Bundle;
 
@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import cs160.final_proj_drawer.R;
 
 import android.view.LayoutInflater;
 import android.view.View;
