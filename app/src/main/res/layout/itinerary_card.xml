@@ -7,6 +7,7 @@
     android:layout_marginRight="5dip"
     android:foreground="?attr/selectableItemBackground"
     app:cardElevation="0dp"
+    android:layout_marginBottom="10dp"
     app:cardPreventCornerOverlap="false"
     app:cardBackgroundColor="@color/colorOffWhite"
     app:cardCornerRadius="@dimen/roundCorners">
