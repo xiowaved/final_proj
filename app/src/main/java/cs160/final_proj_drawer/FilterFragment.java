@@ -17,11 +17,16 @@ import android.widget.ImageButton;
 
 import cs160.final_proj_drawer.ui.home.HomeViewModel;
 
-
+/**
+ * Page showing the filter options for a search query.
+ *
+ */
 public class FilterFragment extends Fragment {
     private HomeViewModel homeViewModel;
 
     private NavController navController;
+
+    // Declare any UI elements that need to be interactive here, as private variables, like ImageButtons, TextViews, etc.
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
