@@ -2,12 +2,13 @@ package cs160.final_proj_drawer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.logic.Stop;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.Response;

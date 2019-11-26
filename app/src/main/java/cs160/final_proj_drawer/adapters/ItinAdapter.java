@@ -11,7 +11,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
-import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>

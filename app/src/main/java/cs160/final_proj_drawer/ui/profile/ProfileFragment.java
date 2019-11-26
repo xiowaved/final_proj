@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import cs160.final_proj_drawer.adapters.ItinAdapter;
-import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
 public class ProfileFragment extends Fragment {

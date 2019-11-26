@@ -17,11 +17,9 @@ import androidx.navigation.Navigation;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.adapters.CatAdapter;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
-import cs160.final_proj_drawer.ui.home.HomeFragment;
 
 
 public class ItinFragment extends Fragment {

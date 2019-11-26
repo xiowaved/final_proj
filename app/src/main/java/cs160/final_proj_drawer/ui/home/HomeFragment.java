@@ -33,10 +33,10 @@ import org.json.JSONObject;
 
 import cs160.final_proj_drawer.adapters.CatAdapter;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
-import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.MySingleton;
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.Stop;
+import cs160.final_proj_drawer.logic.Stop;
 
 /* this fragment holds the home page and the search function.
 *  it's the first page displayed to the user

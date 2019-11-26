@@ -7,24 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.Stop;
+import cs160.final_proj_drawer.logic.Stop;
 
 public class CreateFragment extends Fragment {
 

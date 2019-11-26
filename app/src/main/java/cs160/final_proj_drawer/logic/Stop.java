@@ -1,4 +1,4 @@
-package cs160.final_proj_drawer;
+package cs160.final_proj_drawer.logic;
 
 import java.util.List;
 
