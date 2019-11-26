@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.adapters;
 
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -19,8 +21,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     //        private ArrayList<DataNote> dataList;
     private ArrayList<ItineraryObject> dataList;
     Context context;
-
-
 
 //        public Adapter(ArrayList<DataNote> data)
 //        {

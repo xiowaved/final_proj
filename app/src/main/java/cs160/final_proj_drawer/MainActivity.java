@@ -131,9 +131,6 @@ public class MainActivity extends AppCompatActivity {
                                         String stopname = (String) stopJSON.get("name");
                                         Stop newstop = new Stop(new ArrayList<String>(), stopname, location, desc,index);
                                         stops.add(newstop);
-
-
-
                                     }
                                     JSONArray accessJSON = itin.getJSONArray("access");
                                     ArrayList<String> access = new ArrayList<>();
