@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment {
 //
             }
 //        makeItineraries(itineraries,url,);
-        MainActivity.makeItineraries(itineraries,url,getContext(),homeItins);
+        MainActivity.makeItineraries(itineraries,url,getContext(),homeItins, navController);
 
 
 

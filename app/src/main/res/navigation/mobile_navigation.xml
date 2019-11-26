@@ -85,6 +85,9 @@
             android:name="tagQuery"
             app:argType="string"
             android:defaultValue="Current Location" />
+        <action
+            android:id="@+id/action_itin_to_single_itin"
+            app:destination="@+id/fragment_single_itin"/>
     </fragment>
 
     <fragment
@@ -92,5 +95,13 @@
         android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
+
+    <fragment
+        android:id="@+id/fragment_single_itin"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplaySingleItinFragment"
+        android:label="fragment_single_itin"
+        tools:layout="@layout/fragment_single_itin">
+    </fragment>
+
 
 </navigation>

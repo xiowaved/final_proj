@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,10 +22,14 @@ public class ProfileFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private ItinAdapter mItinAdapter;
+    private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 //        mTextViewEmpty = (TextView)view.findViewById(R.id.textViewEmpty);
@@ -58,7 +64,7 @@ public class ProfileFragment extends Fragment {
             itineraries.add(itinerary);
         }
 
-        mItinAdapter = new ItinAdapter(getContext(), itineraries);
+        mItinAdapter = new ItinAdapter(getContext(), itineraries, navController);
         mRecyclerView.setAdapter(mItinAdapter);
 
         return view;

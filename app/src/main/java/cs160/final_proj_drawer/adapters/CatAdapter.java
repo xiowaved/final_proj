@@ -73,7 +73,7 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Item " + position + " is clicked. (cat)", Toast.LENGTH_SHORT).show();
                 }
             });
         }

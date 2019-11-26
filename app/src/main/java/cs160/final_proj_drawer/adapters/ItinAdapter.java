@@ -10,6 +10,8 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -19,7 +21,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     //        private ArrayList<DataNote> dataList;
     private ArrayList<ItineraryObject> dataList;
     Context context;
-
+    private NavController navController;
 
 
 //        public Adapter(ArrayList<DataNote> data)
@@ -27,10 +29,12 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 //            this.dataList = data;
 //        }
 
-    public ItinAdapter(Context context, ArrayList<ItineraryObject> data)
+    public ItinAdapter(Context context, ArrayList<ItineraryObject> data, NavController navController)
     {
         this.dataList = data;
         this.context = context;
+        this.navController = navController;
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
@@ -78,6 +82,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             public void onClick(View v)
             {
                 Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.action_itin_to_single_itin);
             }
         });
     }

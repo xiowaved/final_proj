@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 //        JSONArray stops = itinerary.get("stops");
     }
 
-    public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins){
+    public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
                         try { Tags = (JSONObject) info.get("Tags"); }
                         catch (JSONException e) { }
-                        ItinAdapter itinAdapter = new ItinAdapter(context, list);
+                        ItinAdapter itinAdapter = new ItinAdapter(context, list, navController);
                         homeItins.setAdapter(itinAdapter);
                     }
                 },new Response.ErrorListener() {
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
         mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
     }
-    public static void makeItinerariesArray(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins){
+    public static void makeItinerariesArray(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
 
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,url,null,
@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
 
-                        ItinAdapter itinAdapter = new ItinAdapter(context, list);
+                        ItinAdapter itinAdapter = new ItinAdapter(context, list, navController);
                         homeItins.setAdapter(itinAdapter);
                     }
                 },new Response.ErrorListener() {
