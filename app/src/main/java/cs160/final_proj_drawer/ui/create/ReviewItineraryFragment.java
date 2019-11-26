@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import cs160.final_proj_drawer.R;
 
 /**
-
+ *  this is the UI page to review
+ *  an itinerary user created in CreateFragment
  */
 public class ReviewItineraryFragment extends Fragment {
 

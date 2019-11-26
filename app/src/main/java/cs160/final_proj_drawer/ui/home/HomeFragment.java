@@ -41,9 +41,15 @@ import cs160.final_proj_drawer.MySingleton;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.Stop;
 
-/* this fragment holds the HOME page and the SEARCH function.
+/* this fragment holds the home page and the search function.
 *  it's the first page displayed to the user
 *  top is search bar, bottom is splash page.
+*
+*   FOR FINAL PROJ: make a navhostfragment in the
+*   bottom of this page. it will navigate between
+*   - splash page
+*   - display itins
+*   - filters
 *  */
 public class HomeFragment extends Fragment {
 
