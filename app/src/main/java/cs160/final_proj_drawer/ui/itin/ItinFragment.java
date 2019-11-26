@@ -8,17 +8,12 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.ui.saved.SavedViewModel;
 
 public class ItinFragment extends Fragment {
-
-    private ViewModel itinViewModel;
 
     private Button filterButton;
     private NavController navController;
@@ -26,8 +21,6 @@ public class ItinFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        itinViewModel =
-                ViewModelProviders.of(this).get(SavedViewModel.class);
         View root = inflater.inflate(R.layout.fragment_itin, container, false);
 
 

@@ -15,20 +15,11 @@ import cs160.final_proj_drawer.R;
 
 public class SavedFragment extends Fragment {
 
-    private SavedViewModel savedViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        savedViewModel =
-                ViewModelProviders.of(this).get(SavedViewModel.class);
         View root = inflater.inflate(R.layout.fragment_saved, container, false);
         final TextView textView = root.findViewById(R.id.text_saved);
-        savedViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }
