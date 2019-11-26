@@ -43,7 +43,7 @@ public class ItinFragment extends Fragment {
 
     private String tagQuery;
     private String locationQuery;
-
+    private TextView header;
 
     private EditText tagSearchBar;
 
@@ -72,6 +72,9 @@ public class ItinFragment extends Fragment {
 
         tagSearchBar = (EditText) root.findViewById(R.id.tagSearchBar);
         tagSearchBar.setText(tagQuery);
+
+        header = (TextView) root.findViewById(R.id.search_intro);
+        header.setText("Exploring " + locationQuery);
 
         //recycler views setup
         searchItins = (RecyclerView) root.findViewById(R.id.search_itins);
