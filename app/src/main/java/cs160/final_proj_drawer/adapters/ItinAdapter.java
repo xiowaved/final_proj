@@ -1,17 +1,20 @@
 package cs160.final_proj_drawer.adapters;
 
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
+import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -22,7 +25,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     private ArrayList<ItineraryObject> dataList;
     Context context;
     private NavController navController;
-
 
 //        public Adapter(ArrayList<DataNote> data)
 //        {
@@ -47,6 +49,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         int numLikes;
         String coverPhoto;
         TextView numLikesText;
+        ImageView photo;
 
         public ViewHolder(View itemView)
         {
@@ -56,6 +59,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 //                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
             this.itineraryName = (TextView) itemView.findViewById(R.id.text);
             this.numLikesText = (TextView) itemView.findViewById(R.id.numLikes);
+            this.photo = (ImageView) itemView.findViewById(R.id.cover_img);
         }
     }
 
@@ -76,6 +80,8 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
         holder.itineraryName.setText(dataList.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
+        String image = dataList.get(position).getCoverPhoto();
+        Picasso.get().load(image).into(holder.photo);
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override

@@ -94,7 +94,7 @@ public class ItinFragment extends Fragment {
 //    //
 //            }
         // put them in
-        String url = urlRoot + "/" + currentLocation + "/Tags/" + "food" + ".json";
+        String url = urlRoot + "/" + locationQuery + "/Tags/" + tagQuery + ".json";
 
         MainActivity.makeItinerariesArray(itineraries,url,getContext(),searchItins, navController);
 

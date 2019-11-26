@@ -36,6 +36,10 @@ public class ItineraryObject {
         return this.itineraryName;
     }
 
+    public String getCoverPhoto() {
+        return this.coverPhoto;
+    }
+
     public int getNumLikes() {
         return this.numLikes;
     }
