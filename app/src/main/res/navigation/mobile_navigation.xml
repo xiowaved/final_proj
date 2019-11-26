@@ -77,6 +77,14 @@
         <action
             android:id="@+id/action_itin_to_filter"
             app:destination="@+id/fragment_filter"/>
+        <argument
+            android:name="locationQuery"
+            app:argType="string"
+            android:defaultValue=" " />
+        <argument
+            android:name="tagQuery"
+            app:argType="string"
+            android:defaultValue="Current Location" />
     </fragment>
 
     <fragment
