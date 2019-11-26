@@ -7,19 +7,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,16 +31,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cs160.final_proj_drawer.CatAdapter;
-import cs160.final_proj_drawer.ItinAdapter;
+import cs160.final_proj_drawer.adapters.CatAdapter;
+import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.MySingleton;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.Stop;
 
+/* this fragment holds the home page and the search function.
+*  it's the first page displayed to the user
+*  top is search bar, bottom is splash page.
+*
+*   FOR FINAL PROJ: make a navhostfragment in the
+*   bottom of this page. it will navigate between
+*   - splash page
+*   - display itins
+*   - filters
+*  */
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
 //    private Button searchButton;
     private ImageButton searchButton;
     private NavController navController;
@@ -72,9 +78,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        final View root = inflater.inflate(R.layout.fragment_home, container, false);
+         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         //find stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);

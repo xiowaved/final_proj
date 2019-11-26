@@ -55,7 +55,7 @@
         tools:layout="@layout/fragment_posted" />
     <fragment
         android:id="@+id/fragment_search"
-        android:name="cs160.final_proj_drawer.SearchFragment"
+        android:name="cs160.final_proj_drawer.ui.home.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -81,7 +81,7 @@
 
     <fragment
         android:id="@+id/fragment_filter"
-        android:name="cs160.final_proj_drawer.FilterFragment"
+        android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
 

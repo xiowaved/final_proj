@@ -1,10 +1,9 @@
-package cs160.final_proj_drawer;
+package cs160.final_proj_drawer.adapters;
 
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
@@ -12,6 +11,8 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
+import cs160.final_proj_drawer.ItineraryObject;
+import cs160.final_proj_drawer.R;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {

@@ -28,7 +28,6 @@ import cs160.final_proj_drawer.Stop;
 
 public class CreateFragment extends Fragment {
 
-    private CreateViewModel createViewModel;
     private NavController navController;
 
     EditText name;
@@ -44,8 +43,7 @@ public class CreateFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        createViewModel =
-//                ViewModelProviders.of(this).get(CreateViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_create, container, false);
 //        final TextView textView = root.findViewById(R.id.text_create);
 //        createViewModel.getText().observe(this, new Observer<String>() {

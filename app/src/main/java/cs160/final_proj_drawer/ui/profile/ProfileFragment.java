@@ -4,32 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import cs160.final_proj_drawer.ItinAdapter;
+import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
 public class ProfileFragment extends Fragment {
 
-    //private ProfileViewModel profileViewModel;
-//    private TextView mTextViewEmpty;
-//    private ProgressBar mProgressBarLoading;
-//    private ImageView mImageViewEmpty;
     private RecyclerView mRecyclerView;
     private ItinAdapter mItinAdapter;
 
@@ -74,16 +62,5 @@ public class ProfileFragment extends Fragment {
         mRecyclerView.setAdapter(mItinAdapter);
 
         return view;
-//        profileViewModel =
-//                ViewModelProviders.of(this).get(ProfileViewModel.class);
-//        View root = inflater.inflate(R.layout.fragment_profile, container, false);
-//        final TextView textView = root.findViewById(R.id.text_profile);
-//        profileViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-//        return root;
     }
 }
