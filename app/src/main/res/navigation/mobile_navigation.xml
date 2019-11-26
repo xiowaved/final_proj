@@ -102,7 +102,7 @@
     <fragment
         android:id="@+id/fragment_single_itin"
         android:name="cs160.final_proj_drawer.ui.itin.DisplaySingleItinFragment"
-        android:label="fragment_single_itin"
+        android:label=""
         tools:layout="@layout/fragment_single_itin">
     </fragment>
 
