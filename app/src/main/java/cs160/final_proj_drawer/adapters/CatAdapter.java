@@ -68,14 +68,14 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
             holder.catName.setText(categories[position]);
             // set image resource to drawable id for the picture
             holder.coverPhoto.setImageResource(drawableIds[position]);
-//            holder.itemView.setOnClickListener(new View.OnClickListener()
-//            {
-//                @Override
-//                public void onClick(View v)
-//                {
-//                    Toast.makeText(context, "Item " + position + " is clicked. (cat)", Toast.LENGTH_SHORT).show();
-//                }
-//            });
+            holder.itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    //Toast.makeText(context, "Item " + position + " is clicked. (cat)", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override
