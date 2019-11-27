@@ -23,6 +23,4 @@
     <color name="endColor">@color/colorPrimaryDark</color>
     <color name="startColor">@color/colorPrimary</color>
 
-
-
 </resources>
