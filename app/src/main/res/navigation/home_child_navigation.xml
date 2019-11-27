@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_child_navigation"
+    app:startDestination="@+id/displayMultItinsFragment">
+
+    <fragment
+        android:id="@+id/displayMultItinsFragment"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
+        android:label="fragment_display_itins"
+        tools:layout="@layout/fragment_display_itins" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" />
+</navigation>

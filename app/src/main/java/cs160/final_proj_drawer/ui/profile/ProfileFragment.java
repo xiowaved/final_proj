@@ -16,6 +16,7 @@ import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
+//this is the user's profile
 public class ProfileFragment extends Fragment {
 
     private RecyclerView mRecyclerView;

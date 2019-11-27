@@ -1,5 +1,6 @@
 package cs160.final_proj_drawer.ui.profile;
 
+//todo please let me know what this is in the group chat
 public class DataNote
 {
     String text;

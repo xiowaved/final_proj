@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -140,11 +142,11 @@ public class HomeFragment extends Fragment {
         });
 
         //make the nav fragment
-        /*
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+    /*
+        NavigationView navigationView = root.findViewById(R.id.home_child_nav_view);
+        NavController navController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
         NavigationUI.setupWithNavController(navigationView, navController);
-         */
-
+        */
         return root;
     }
 
