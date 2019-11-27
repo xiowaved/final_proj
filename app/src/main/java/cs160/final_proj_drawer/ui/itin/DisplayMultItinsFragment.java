@@ -21,7 +21,11 @@ import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 
-
+/*
+**  Displays a recyclerView with multiple Itineraries
+**  this uses the parent navcontroller to navigate,
+**  because if clicked, it pulls open the itinerary that was clicked.
+ */
 public class DisplayMultItinsFragment extends Fragment {
 
     private Button filterButton;

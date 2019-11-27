@@ -44,7 +44,7 @@ import cs160.final_proj_drawer.logic.Stop;
 *  it's the first page displayed to the user
 *  top is search bar, bottom is splash page.
 *
-*   FOR FINAL PROJ: make a navhostfragment in the
+*   FOR FINAL PROJ: make a home_child_nav_host_fragment in the
 *   bottom of this page. it will navigate between
 *   - splash page
 *   - display itins
@@ -141,12 +141,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //make the nav fragment
-    /*
-        NavigationView navigationView = root.findViewById(R.id.home_child_nav_view);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
-        NavigationUI.setupWithNavController(navigationView, navController);
-        */
         return root;
     }
 
