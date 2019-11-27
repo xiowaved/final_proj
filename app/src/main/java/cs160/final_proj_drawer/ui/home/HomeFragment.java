@@ -116,11 +116,12 @@ public class HomeFragment extends Fragment {
 //
             }
         //makeItineraries(itineraries,url);
-
-
-
+        
             catAdapter = new CatAdapter(getContext(), cats);
             catItins.setAdapter(catAdapter);
+
+            itinAdapter = new ItinAdapter(getContext(), itineraries);
+            homeItins.setAdapter(itinAdapter);
 
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
