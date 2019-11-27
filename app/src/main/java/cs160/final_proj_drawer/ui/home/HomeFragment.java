@@ -41,14 +41,14 @@ import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.Stop;
 
 /* this fragment holds the home page and the search function.
-*  it's the first page displayed to the user
-*  top is search bar, bottom is splash page.
-*
-*   FOR FINAL PROJ: make a home_child_nav_host_fragment in the
-*   bottom of this page. it will navigate between
-*   - splash page
-*   - display itins
-*   - filters
+*  it's the first page displayed to the user.
+*  top is search bar.
+*  bottom is home_child_nav_host_fragment.
+*  it will navigate between
+*  - splash page
+*  - display itins
+*  - filters
+*  based on different actions taken involving search bar above.
 *  */
 public class HomeFragment extends Fragment {
 
@@ -58,12 +58,6 @@ public class HomeFragment extends Fragment {
     public String currentLocation = "Berkeley";
     public JSONObject Tags;
 
-
-    private RecyclerView homeItins;
-    private RecyclerView catItins;
-    private ItinAdapter itinAdapter;
-    private CatAdapter catAdapter;
-    private TypedArray categoryPics;
 
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
