@@ -85,6 +85,8 @@ public class HomeFragment extends Fragment {
         searchButton = root.findViewById(R.id.searchButton);
 
 
+
+        /*
         //recycler views setup
         homeItins = (RecyclerView) root.findViewById(R.id.home_itins);
         final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
@@ -113,15 +115,17 @@ public class HomeFragment extends Fragment {
                 itineraries.add(itinerary);
                 int drawableID = categoryPics.getResourceId(i,0);
                 cats.add("cat "+drawableID);
-//
+
             }
         //makeItineraries(itineraries,url);
-        
+
             catAdapter = new CatAdapter(getContext(), cats);
             catItins.setAdapter(catAdapter);
 
             itinAdapter = new ItinAdapter(getContext(), itineraries);
             homeItins.setAdapter(itinAdapter);
+            */
+
 
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -134,6 +138,12 @@ public class HomeFragment extends Fragment {
                 //locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
+
+        //make the nav fragment
+        /*
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(navigationView, navController);
+         */
 
         return root;
     }
