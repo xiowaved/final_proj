@@ -82,15 +82,15 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
         String image = dataList.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.photo);
-        holder.itemView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                navController.navigate(R.id.action_itin_to_single_itin);
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+//                navController.navigate(R.id.action_itin_to_single_itin);
+//            }
+//        });
     }
 
     @Override
