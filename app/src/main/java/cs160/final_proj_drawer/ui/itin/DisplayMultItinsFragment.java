@@ -45,19 +45,7 @@ public class DisplayMultItinsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
 
-        //find stuff
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        filterButton = root.findViewById(R.id.filter);
-        filterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                navController.navigate(R.id.action_itin_to_filter);
-                //Toast.makeText(root.getContext(),"show that itin",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //recycler views setup
+        //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.search_itins);
         final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -77,7 +65,6 @@ public class DisplayMultItinsFragment extends Fragment {
         // put them in
         itinAdapter = new ItinAdapter(getContext(), itineraries);
         searchItins.setAdapter(itinAdapter);
-
         return root;
     }
 }

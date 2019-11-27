@@ -59,16 +59,27 @@ public class HomeFragment extends Fragment {
     private EditText tagSearchBar;
     // lower search bar, appears after clicking inside top one (see Yelp as example);
     private EditText locationSearchBar;
+    private NavController childNavController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
          final View root = inflater.inflate(R.layout.fragment_home, container, false);
+        //childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
 
         //find stuff
         tagSearchBar = root.findViewById(R.id.tagSearchBar);
         locationSearchBar = root.findViewById(R.id.locationSearchBar);
         searchButton = root.findViewById(R.id.searchButton);
         filterButton = root.findViewById(R.id.filterButton);
+
+        filterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //childNavController.navigate(R.id.fragment_display_itins);
+                Toast.makeText(root.getContext(),"show that itin",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
