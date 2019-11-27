@@ -63,8 +63,12 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-         final View root = inflater.inflate(R.layout.fragment_home, container, false);
-        //childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
+        final View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //this doesn't work yet. need to find out how to get the childNavController
+        //childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_view);
+        View viewNav = root.findViewById(R.id.home_child_nav_host_fragment);
+        //childNavController = Navigation.findNavController(viewNav);
 
         //find stuff
         tagSearchBar = root.findViewById(R.id.tagSearchBar);
@@ -77,7 +81,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
 
                 //childNavController.navigate(R.id.fragment_display_itins);
-                Toast.makeText(root.getContext(),"show that itin",Toast.LENGTH_SHORT).show();
+                Toast.makeText(root.getContext(),"show that filter",Toast.LENGTH_SHORT).show();
             }
         });
 
