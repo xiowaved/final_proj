@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -53,74 +54,22 @@ import cs160.final_proj_drawer.logic.Stop;
 public class HomeFragment extends Fragment {
 
     private ImageButton searchButton;
-    private NavController navController;
-    public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
-    public String currentLocation = "Berkeley";
-    public JSONObject Tags;
-
-
+    private Button filterButton;
     // top search bar -- query itinerary tags
     private EditText tagSearchBar;
     // lower search bar, appears after clicking inside top one (see Yelp as example);
-    // enter location
     private EditText locationSearchBar;
-
-    @Nullable
-    @Override
-    public Context getContext() {
-        return super.getContext();
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
          final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         //find stuff
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         tagSearchBar = root.findViewById(R.id.tagSearchBar);
+        locationSearchBar = root.findViewById(R.id.locationSearchBar);
         searchButton = root.findViewById(R.id.searchButton);
+        filterButton = root.findViewById(R.id.filterButton);
 
-
-
-        /*
-        //recycler views setup
-        homeItins = (RecyclerView) root.findViewById(R.id.home_itins);
-        final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
-        itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        homeItins.setLayoutManager(itinLayoutManager);
-
-        catItins = (RecyclerView) root.findViewById(R.id.home_cats);
-        final LinearLayoutManager catLayoutManager = new LinearLayoutManager(getActivity());
-        catLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        catItins.setLayoutManager(catLayoutManager);
-
-        // get info for category data
-        categoryPics = getResources().obtainTypedArray(R.array.category_pics);
-
-        //eventually wanna modularize this out of this func. just wanna call this
-            ArrayList itineraries = new ArrayList<ItineraryObject>();
-            ArrayList cats = new ArrayList<String>();
-            //make json call, find the length and that is your for loop upper bound
-            String url = urlRoot + "/" + currentLocation + ".json";
-
-        for (int i = 0; i < 4; i++)
-            {
-                ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
-                        "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
-
-                itineraries.add(itinerary);
-                int drawableID = categoryPics.getResourceId(i,0);
-                cats.add("cat "+drawableID);
-
-            }
-        //makeItineraries(itineraries,url);
-
-            catAdapter = new CatAdapter(getContext(), cats);
-            catItins.setAdapter(catAdapter);
-
-            itinAdapter = new ItinAdapter(getContext(), itineraries);
-            homeItins.setAdapter(itinAdapter);
-            */
 
 
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -129,9 +78,7 @@ public class HomeFragment extends Fragment {
                 if (hasFocus) {
                     Toast.makeText(root.getContext(),"in the search",Toast.LENGTH_SHORT).show();
                 }
-
-                //locationSearchBar = root.findViewById(R.id.locationSearchBar);
-                //locationSearchBar.setVisibility(View.VISIBLE);
+                locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
 
