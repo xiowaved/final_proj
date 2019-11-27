@@ -123,45 +123,17 @@ public class HomeFragment extends Fragment {
             catAdapter = new CatAdapter(getContext(), cats);
             catItins.setAdapter(catAdapter);
 
-//        tagSearchBar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //Log.i("user searched", "TESTING BUTTON");
-//                navController.navigate(R.id.action_nav_home_to_search);
-//
-//
-//                //the line under this kills the app
-//                //queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
-//            }
-//        });
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
-                ///Log.i("user clicked", "TESTING CLICK");
-
-                //why does clicking into this make everything else invisible?
                 if (hasFocus) {
-                    navController.navigate(R.id.action_nav_home_to_search);
                     Toast.makeText(root.getContext(),"in the search",Toast.LENGTH_SHORT).show();
                 }
-
 
                 //locationSearchBar = root.findViewById(R.id.locationSearchBar);
                 //locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
-
-//        searchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //Log.i("user searched", "TESTING BUTTON");
-//                navController.navigate(R.id.action_nav_home_to_search);
-//
-//
-//                //the line under this kills the app
-//                //queryCallback(locationSearchBar.getText().toString() + " " + tagSearchBar.getText().toString());
-//            }
-//        });
 
         return root;
     }
@@ -272,11 +244,6 @@ public class HomeFragment extends Fragment {
         Context context = getContext();
         MySingleton mySingleton = new MySingleton(context);
         mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
-
-    }
-
-    public void goToSearch() {
-        navController.navigate(R.id.action_nav_home_to_search);
 
     }
 

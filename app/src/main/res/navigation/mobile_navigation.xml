@@ -12,12 +12,8 @@
         tools:layout="@layout/fragment_home" >
 
         <action
-            android:id="@+id/action_nav_home_to_search"
-            app:destination="@id/fragment_search"
-            app:launchSingleTop="false" />
-        <action
             android:id="@+id/action_nav_home_to_itin"
-            app:destination="@id/fragment_itin" />
+            app:destination="@id/fragment_display_itins" />
     </fragment>
 
     <fragment
@@ -53,15 +49,6 @@
         android:name="cs160.final_proj_drawer.ui.posted.PostedFragment"
         android:label="@string/menu_posted"
         tools:layout="@layout/fragment_posted" />
-    <fragment
-        android:id="@+id/fragment_search"
-        android:name="cs160.final_proj_drawer.ui.home.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_search_to_itin"
-            app:destination="@id/fragment_itin" />
-    </fragment>
 
     <fragment
         android:id="@+id/reviewItineraryFragment"
@@ -70,13 +57,13 @@
         tools:layout="@layout/fragment_review_itinerary" />
 
     <fragment
-        android:id="@+id/fragment_itin"
+        android:id="@+id/fragment_display_itins"
         android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
-        android:label="fragment_itin"
-        tools:layout="@layout/fragment_display_itins" >
+        android:label="fragment_display_itins"
+        tools:layout="@layout/fragment_display_itins">
         <action
             android:id="@+id/action_itin_to_filter"
-            app:destination="@+id/fragment_filter"/>
+            app:destination="@+id/fragment_filter" />
     </fragment>
 
     <fragment

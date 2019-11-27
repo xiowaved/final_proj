@@ -57,7 +57,7 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
         @Override
         public CatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cat_card, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_cat, parent, false);
             CatAdapter.ViewHolder viewHolder = new CatAdapter.ViewHolder(view);
             return viewHolder;
         }
