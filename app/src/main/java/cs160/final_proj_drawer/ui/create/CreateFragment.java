@@ -118,7 +118,7 @@ public class CreateFragment extends Fragment {
         //delete later -V
 //        Toast toast = Toast.makeText(this.getContext(), "The Review Frag should pop up",
 //                Toast.LENGTH_SHORT); toast.show();
-//                navController.navigate(R.id.action_nav_create_to_review);
+        navController.navigate(R.id.action_nav_create_to_review);
 
 
         ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
