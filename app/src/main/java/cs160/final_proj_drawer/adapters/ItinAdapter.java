@@ -10,6 +10,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -60,8 +61,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             public void onClick(View v)
             {
                 Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                //toDo hand itinerary object to view_single_itin
-                //navigate (check for bugs)
+                //toDo hand itinerary object
             }
         });
     }

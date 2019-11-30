@@ -73,15 +73,11 @@ public class SplashFragment extends Fragment {
 
             }
         //makeItineraries(itineraries,url);
-
             catAdapter = new HorizAdapter(getContext(), cats);
             homeCats.setAdapter(catAdapter);
 
             itinAdapter = new ItinAdapter(getContext(), itineraries);
             homeItins.setAdapter(itinAdapter);
-
-
-
 
         return root;
     }

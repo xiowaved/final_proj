@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_child_navigation"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/fragment_splash">
 
     <fragment
-        android:id="@+id/displayMultItinsFragment"
+        android:id="@+id/fragment_display_itins"
         android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
         android:label="fragment_display_itins"
         tools:layout="@layout/fragment_display_itins" />
     <fragment
-        android:id="@+id/filterFragment"
+        android:id="@+id/fragment_filter"
         android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
     <fragment
-        android:id="@+id/splashFragment"
+        android:id="@+id/fragment_splash"
         android:name="cs160.final_proj_drawer.ui.home.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" />

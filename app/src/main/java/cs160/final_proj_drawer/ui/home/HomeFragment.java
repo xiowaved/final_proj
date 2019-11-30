@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         //this doesn't work yet. need to find out how to get the childNavController
-        //childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_view);
+        childNavController = Navigation.findNavController(root.findViewById(R.id.home_child_nav_host_fragment));
         //View viewNav = root.findViewById(R.id.home_child_nav_host_fragment);
         //childNavController = Navigation.findNavController(viewNav);
 
@@ -52,12 +52,13 @@ public class HomeFragment extends Fragment {
         searchButton = root.findViewById(R.id.searchButton);
         filterButton = root.findViewById(R.id.filterButton);
 
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        //navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {
                 Log.i("NOTE", "clicked search");
+                childNavController.navigate(R.id.fragment_display_itins);
             }
         });
 
@@ -69,7 +70,7 @@ public class HomeFragment extends Fragment {
 
                 //delete later
                 //this is here for testing
-                navController.navigate(R.id.displaySingleItinFragment);
+                childNavController.navigate(R.id.fragment_filter);
             }
 
 
