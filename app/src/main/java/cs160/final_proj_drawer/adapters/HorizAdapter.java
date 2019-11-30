@@ -16,16 +16,11 @@ import cs160.final_proj_drawer.R;
 public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
 {
 
-        //        private ArrayList<DataNote> dataList;
         private ArrayList<Object> dataList;
         Context context;
         String[] categories = {"food", "music", "hike", "art"};
         int[] drawableIds;
 
-//        public Adapter(ArrayList<DataNote> data)
-//        {
-//            this.dataList = data;
-//        }
 
     public HorizAdapter(Context context, ArrayList<Object> data)
         {

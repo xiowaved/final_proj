@@ -35,20 +35,6 @@ public class ProfileFragment extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        //go to json and pull whatever we get from firebase (basically the itineraries)
-        //arraylist of itinerary objects
-//        ArrayList data = new ArrayList<DataNote>();
-//        for (int i = 0; i < DataNoteInformation.id.length; i++)
-//        {
-//            data.add(
-//                    new DataNote
-//                            (
-//                                    DataNoteInformation.id[i],
-//                                    DataNoteInformation.textArray[i],
-//                                    DataNoteInformation.dateArray[i]
-//                            ));
-//        }
-
         ArrayList itineraries = new ArrayList<ItineraryObject>();
         //make json call, find the length and that is your for loop upper bound
         for (int i = 0; i < 4; i++)

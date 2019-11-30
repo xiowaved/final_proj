@@ -16,16 +16,9 @@ import cs160.final_proj_drawer.R;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
-    //        private ArrayList<DataNote> dataList;
     private ArrayList<ItineraryObject> dataList;
     Context context;
 
-
-
-//        public Adapter(ArrayList<DataNote> data)
-//        {
-//            this.dataList = data;
-//        }
 
     public ItinAdapter(Context context, ArrayList<ItineraryObject> data)
     {
