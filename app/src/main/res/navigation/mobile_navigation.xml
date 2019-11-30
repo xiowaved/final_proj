@@ -8,64 +8,54 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="cs160.final_proj_drawer.ui.home.HomeFragment"
-        android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_profile"
         android:name="cs160.final_proj_drawer.ui.profile.ProfileFragment"
-        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_create"
         android:name="cs160.final_proj_drawer.ui.create.CreateFragment"
-        android:label="@string/menu_create"
-        tools:layout="@layout/fragment_create" >
+        tools:layout="@layout/fragment_create">
         <action
             android:id="@+id/action_nav_create_to_review"
-            app:destination="@id/reviewItineraryFragment" />
+            app:destination="@id/fragment_review" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="cs160.final_proj_drawer.ui.settings.SettingsFragment"
-        android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_saved"
         android:name="cs160.final_proj_drawer.ui.saved.SavedFragment"
-        android:label="@string/menu_saved"
         tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/nav_posted"
         android:name="cs160.final_proj_drawer.ui.posted.PostedFragment"
-        android:label="@string/menu_posted"
         tools:layout="@layout/fragment_posted" />
 
     <fragment
-        android:id="@+id/reviewItineraryFragment"
+        android:id="@+id/fragment_review"
         android:name="cs160.final_proj_drawer.ui.create.ReviewItineraryFragment"
-        android:label="fragment_review_itinerary"
         tools:layout="@layout/fragment_review_itinerary" />
 
     <fragment
         android:id="@+id/fragment_display_itins"
         android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
-        android:label="fragment_display_itins"
-        tools:layout="@layout/fragment_display_itins"/>
+        tools:layout="@layout/fragment_display_itins" />
 
     <fragment
         android:id="@+id/fragment_filter"
         android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
-        android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
     <fragment
-        android:id="@+id/displaySingleItinFragment"
+        android:id="@+id/fragment_display_single_itin"
         android:name="cs160.final_proj_drawer.ui.itin.DisplaySingleItinFragment"
-        android:label="fragment_display_itin"
         tools:layout="@layout/fragment_display_itin" />
 
 </navigation>
