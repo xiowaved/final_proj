@@ -30,7 +30,7 @@
         app:layout_constraintStart_toEndOf="@id/tagSearchBar"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <SearchView
         android:id="@+id/tagSearchBar"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -52,7 +52,8 @@
         app:layout_constraintEnd_toStartOf="@+id/filterButton"
         app:layout_constraintTop_toBottomOf="@+id/tagSearchBar" />
     <!--
-    this is the fun text :) for after you do a search
+    this is the fun text :) for after you do a search.
+    maybe this will appear after hitting enter?
     <TextView
         android:id="@+id/search_intro"
         android:layout_width="wrap_content"

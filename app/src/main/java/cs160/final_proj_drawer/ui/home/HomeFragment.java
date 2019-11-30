@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -56,10 +57,11 @@ public class HomeFragment extends Fragment {
     private ImageButton searchButton;
     private Button filterButton;
     // top search bar -- query itinerary tags
-    private EditText tagSearchBar;
+    private SearchView tagSearchBar;
     // lower search bar, appears after clicking inside top one (see Yelp as example);
     private EditText locationSearchBar;
     private NavController childNavController;
+    private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -67,7 +69,7 @@ public class HomeFragment extends Fragment {
 
         //this doesn't work yet. need to find out how to get the childNavController
         //childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_view);
-        View viewNav = root.findViewById(R.id.home_child_nav_host_fragment);
+        //View viewNav = root.findViewById(R.id.home_child_nav_host_fragment);
         //childNavController = Navigation.findNavController(viewNav);
 
         //find stuff
@@ -76,17 +78,34 @@ public class HomeFragment extends Fragment {
         searchButton = root.findViewById(R.id.searchButton);
         filterButton = root.findViewById(R.id.filterButton);
 
-        filterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-                //childNavController.navigate(R.id.fragment_display_itins);
-                Toast.makeText(root.getContext(),"show that filter",Toast.LENGTH_SHORT).show();
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View root) {
+                Log.i("NOTE", "clicked search");
             }
         });
 
 
+        filterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View root) {
+                Log.i("NOTE", "clicked filter");
+            }
+        });
 
+        tagSearchBar.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View root, boolean hasFocus) {
+                if (hasFocus) {
+                    //delete later
+                    Log.i("NOTE", "in the searchbar");
+                    locationSearchBar.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+/*
         tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -96,7 +115,7 @@ public class HomeFragment extends Fragment {
                 locationSearchBar.setVisibility(View.VISIBLE);
             }
         });
-
+*/
         return root;
     }
 
