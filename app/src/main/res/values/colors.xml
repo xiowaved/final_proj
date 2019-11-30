@@ -8,7 +8,7 @@
 
     <color name="colorBg">@color/colorOffWhite</color>
 
-    <color name="colorTitle">@color/colorBlueBrightDark</color>
+    <color name="colorTitle">@color/colorBlue</color>
     <color name="colorFunText">@color/colorGreenLight</color>
     <color name="colorButton">@color/colorBlueBright</color>
 
@@ -39,7 +39,6 @@
     <color name="colorBlueDark">#1C2974</color>
 
     <color name="colorBlueBright">#3B88CC</color>
-    <color name="colorBlueBrightDark">#194FA2</color>
 
     <color name="colorPurple">#BA91DC</color>
 

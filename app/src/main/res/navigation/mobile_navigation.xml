@@ -62,5 +62,10 @@
         android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
+    <fragment
+        android:id="@+id/displaySingleItinFragment"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplaySingleItinFragment"
+        android:label="fragment_display_itin"
+        tools:layout="@layout/fragment_display_itin" />
 
 </navigation>

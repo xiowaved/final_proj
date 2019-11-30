@@ -66,7 +66,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View root) {
                 Log.i("NOTE", "clicked filter");
+
+                //delete later
+                //this is here for testing
+                navController.navigate(R.id.displaySingleItinFragment);
             }
+
+
         });
 
         tagSearchBar.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
