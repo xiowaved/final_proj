@@ -80,10 +80,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFocusChange(View root, boolean hasFocus) {
                 if (hasFocus) {
-                    //delete later
-                    Log.i("NOTE", "in the searchbar");
+                    //entering search stuff
                     locationSearchBar.setVisibility(View.VISIBLE);
                     filterButton.setVisibility(View.VISIBLE);
+                } else {
+                    //exiting search stuff
+                    childNavController.navigate(R.id.fragment_splash);
+                    locationSearchBar.setVisibility(View.INVISIBLE);
+                    filterButton.setVisibility(View.INVISIBLE);
                 }
             }
         });
