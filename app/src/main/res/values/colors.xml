@@ -6,6 +6,7 @@
     <color name="colorAccent">@color/colorTealLight</color>
     <color name="colorAccentDark">@color/colorTeal</color>
 
+    <color name="colorBg">@color/colorOffWhite</color>
 
     <color name="colorFunText">@color/colorGreenLight</color>
     <color name="colorButton">@color/colorBlueBright</color>

@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="100dp"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dip"
-    android:layout_marginRight="5dip"
+    android:layout_marginRight="@dimen/cardHorizPadding"
     app:cardElevation="0dp"
-    app:cardBackgroundColor="@color/colorOffWhite"
+    app:cardBackgroundColor="@color/colorBg"
     app:cardCornerRadius="@dimen/roundCorners"
     android:foreground="?attr/selectableItemBackground">
 
@@ -19,7 +18,7 @@
         <!-- pics are dynamically set in HorizAdapter.java -->
         <ImageView
             android:id="@+id/bg_img"
-            android:layout_width="20dp"
+            android:layout_width="@dimen/cardHorizSize"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -41,9 +40,9 @@
             android:layout_alignParentRight="true"
             android:layout_alignBottom="@+id/bg_img"
             android:text="text"
-            android:paddingRight="@dimen/cardHorizPaddingRight"
-            android:textColor="@color/colorOffWhite"
-            android:fontFamily="@font/manjaribold"
+            android:paddingRight="@dimen/cardTextPadding"
+            android:textColor="@color/colorBg"
+            android:fontFamily="@font/primary"
             android:textSize="@dimen/card_text"/>
 
     </RelativeLayout>

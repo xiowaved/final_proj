@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5dip"
-    android:layout_marginRight="5dip"
-    android:layout_marginBottom="5dip"
+    android:layout_marginBottom="@dimen/cardItinPadding"
     android:foreground="?attr/selectableItemBackground"
     app:cardElevation="0dp"
     app:cardPreventCornerOverlap="false"
-    app:cardBackgroundColor="@color/colorOffWhite"
+    app:cardBackgroundColor="@color/colorBg"
     app:cardCornerRadius="@dimen/roundCorners">
 
     <RelativeLayout
@@ -19,8 +17,8 @@
 
         <ImageView
             android:id="@+id/cover_img"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cardItinSize"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -35,10 +33,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/cardTextPadding"
             android:text="text"
-            android:fontFamily="@font/manjaribold"
-            android:textColor="@color/colorOffWhite"
+            android:fontFamily="@font/primary"
+            android:textColor="@color/colorBg"
             android:textSize="@dimen/card_text"/>
 
         <ImageView
@@ -47,8 +45,8 @@
             android:layout_height="@dimen/card_icons"
             android:layout_alignBottom="@+id/cover_img"
             android:layout_alignEnd="@+id/cover_img"
-            android:layout_marginRight="7dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginRight="@dimen/card_icon_margin_right"
+            android:layout_marginBottom="@dimen/card_thumb_margin_bottom"
             android:src="@drawable/like" />
 
 
@@ -57,8 +55,8 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignRight="@+id/like"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="7dp"
+            android:layout_marginRight="@dimen/card_icon_margin_right"
+            android:layout_marginTop="@dimen/card_bkmk_margin_top"
             android:src="@drawable/figmabkmkwhite" />
 
 
@@ -71,11 +69,11 @@
             android:layout_alignLeft="@+id/like"
             android:layout_alignBottom="@+id/cover_img"
             android:gravity="center"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/card_numLikes_margin_right"
             android:text="100"
-            android:fontFamily="@font/manjaribold"
-            android:textColor="@color/colorOffWhite"
-            android:textSize="14sp"/>
+            android:fontFamily="@font/primary"
+            android:textColor="@color/colorBg"
+            android:textSize="@dimen/card_numLikes_textSize"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

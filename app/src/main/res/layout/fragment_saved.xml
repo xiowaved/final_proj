@@ -3,19 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/saved_intro"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/fun_text_box_height"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
         android:fontFamily="@font/primary"
         android:text="@string/saved_intro"
+        android:textAlignment="center"
         android:textColor="@color/colorFunText"
-        android:textSize="@dimen/fun_text"/>
+        android:textSize="@dimen/fun_text" />
 
     <SearchView
         android:layout_width="match_parent"
