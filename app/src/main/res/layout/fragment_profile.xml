@@ -58,13 +58,15 @@
         android:text="@string/saved_intro"
         android:textSize="@dimen/fun_text"
         android:textColor="@color/colorFunText"
-        android:fontFamily="@font/primary" />
+        android:fontFamily="@font/primary"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/profile_posted"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/recyclerHorizHeight"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
     <TextView
         android:id="@+id/profile_posted_intro"
@@ -73,13 +75,14 @@
         android:text="@string/posted_intro"
         android:textSize="@dimen/fun_text"
         android:textColor="@color/colorFunText"
-        android:fontFamily="@font/primary"/>
+        android:fontFamily="@font/primary"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/profile_saved"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/recyclerHorizHeight"
-        android:orientation="horizontal"/>
-
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
 </LinearLayout>
