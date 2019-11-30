@@ -18,6 +18,10 @@
     <color name="endColor">@color/colorPrimaryDark</color>
     <color name="startColor">@color/colorPrimary</color>
 
+    <!-- background of textEdits or other user input sections -->
+
+    <color name="colorInputBG">@color/colorGrey</color>
+
     <!-- these are the hex codes from specific colors. use to populate sections above this line -->
     <!-- NOTE:
         please do not directly use these colors! please only use colors in the
@@ -44,6 +48,8 @@
 
     <color name="colorGrey">#E2E3E3</color>
     <color name="colorOffWhite">#F6F6F6</color>
+
+
 
 
 </resources>
