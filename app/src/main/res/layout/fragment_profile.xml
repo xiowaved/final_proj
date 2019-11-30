@@ -6,38 +6,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/recyclerView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_height="150dp"
+        android:padding="@dimen/activity_horizontal_margin">
 
-    <ProgressBar
-        android:id="@+id/progressBarLoading"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/profile_img_size"
+            android:layout_height="@dimen/profile_img_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@mipmap/ic_launcher" />
 
-    <ImageView
-        android:id="@+id/imageViewEmpty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/fun_text_box_height"
+            android:layout_marginStart="16dp"
+            android:text="@string/profile_name"
+            android:textSize="@dimen/fun_text"
+            android:textColor="@color/colorFunText"
+            android:fontFamily="@font/primary"
+            app:layout_constraintBottom_toTopOf="@+id/profile_location"
+            app:layout_constraintStart_toEndOf="@+id/profile_image" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textViewEmpty"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/imageViewEmpty"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:text="NO_INFORMATION"-->
-<!--        android:visibility="gone" />-->
+        <TextView
+            android:id="@+id/profile_location"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/fun_text_box_height"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_location"
+            android:fontFamily="@font/primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_image"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

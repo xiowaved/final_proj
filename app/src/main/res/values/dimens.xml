@@ -20,4 +20,7 @@
 
     <dimen name="marginSettingsColorSwatches">10dp</dimen>
 
+    <!-- profile page -->
+    <dimen name="profile_img_size">100dp</dimen>
+
 </resources>
