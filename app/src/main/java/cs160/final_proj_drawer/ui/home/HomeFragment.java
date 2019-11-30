@@ -102,20 +102,11 @@ public class HomeFragment extends Fragment {
                     //delete later
                     Log.i("NOTE", "in the searchbar");
                     locationSearchBar.setVisibility(View.VISIBLE);
+                    filterButton.setVisibility(View.VISIBLE);
                 }
             }
         });
-/*
-        tagSearchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (hasFocus) {
-                    Toast.makeText(root.getContext(),"in the search",Toast.LENGTH_SHORT).show();
-                }
-                locationSearchBar.setVisibility(View.VISIBLE);
-            }
-        });
-*/
+
         return root;
     }
 

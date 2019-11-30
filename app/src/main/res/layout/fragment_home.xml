@@ -27,6 +27,7 @@
         android:background="@drawable/search_button"
         android:text="Filter"
         android:textColor="@color/colorOffWhite"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@id/tagSearchBar"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +49,7 @@
         android:layout_marginEnd="24dp"
         android:hint="Current Location"
         android:queryHint="Current Location"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/filterButton"
         app:layout_constraintTop_toBottomOf="@+id/tagSearchBar" />
     <!--
