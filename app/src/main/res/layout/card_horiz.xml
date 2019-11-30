@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <!-- hard-coded category images in horizontal scroll -->
-        <!-- pics are dynamically set in CatAdapter.java -->
+        <!-- pics are dynamically set in HorizAdapter.java -->
         <ImageView
             android:id="@+id/bg_img"
             android:layout_width="20dp"
@@ -32,7 +32,7 @@
             android:scaleX="1"
             android:scaleY="1" />
 
-        <!-- text is dynamically set in CatAdapter.java -->
+        <!-- text is dynamically set in HorizAdapter.java -->
 
         <TextView
             android:id="@+id/text"

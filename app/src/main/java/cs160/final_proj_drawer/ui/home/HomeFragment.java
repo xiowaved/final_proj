@@ -1,46 +1,20 @@
 package cs160.final_proj_drawer.ui.home;
 
-import android.content.Context;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.SearchView;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.material.navigation.NavigationView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import cs160.final_proj_drawer.adapters.CatAdapter;
-import cs160.final_proj_drawer.adapters.ItinAdapter;
-import cs160.final_proj_drawer.logic.ItineraryObject;
-import cs160.final_proj_drawer.MySingleton;
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.logic.Stop;
 
 /* this fragment holds the home page and the search function.
 *  it's the first page displayed to the user.

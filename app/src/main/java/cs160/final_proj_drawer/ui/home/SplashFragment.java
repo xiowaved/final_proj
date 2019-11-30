@@ -17,7 +17,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.adapters.CatAdapter;
+import cs160.final_proj_drawer.adapters.HorizAdapter;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 
@@ -32,7 +32,7 @@ public class SplashFragment extends Fragment {
     private RecyclerView homeItins;
     private RecyclerView catItins;
     private ItinAdapter itinAdapter;
-    private CatAdapter catAdapter;
+    private HorizAdapter catAdapter;
     private TypedArray categoryPics;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -76,7 +76,7 @@ public class SplashFragment extends Fragment {
             }
         //makeItineraries(itineraries,url);
 
-            catAdapter = new CatAdapter(getContext(), cats);
+            catAdapter = new HorizAdapter(getContext(), cats);
             catItins.setAdapter(catAdapter);
 
             itinAdapter = new ItinAdapter(getContext(), itineraries);

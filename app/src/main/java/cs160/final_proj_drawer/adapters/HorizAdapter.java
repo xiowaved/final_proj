@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
 
-public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
+public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
 {
 
         //        private ArrayList<DataNote> dataList;
@@ -27,7 +27,7 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
 //            this.dataList = data;
 //        }
 
-    public CatAdapter(Context context, ArrayList<Object> data)
+    public HorizAdapter(Context context, ArrayList<Object> data)
         {
 
             this.dataList = data;
@@ -55,15 +55,15 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>
         }
 
         @Override
-        public CatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+        public HorizAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_cat, parent, false);
-            CatAdapter.ViewHolder viewHolder = new CatAdapter.ViewHolder(view);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_horiz, parent, false);
+            HorizAdapter.ViewHolder viewHolder = new HorizAdapter.ViewHolder(view);
             return viewHolder;
         }
 
         @Override
-        public void onBindViewHolder(CatAdapter.ViewHolder holder, final int position)
+        public void onBindViewHolder(HorizAdapter.ViewHolder holder, final int position)
         {
             holder.catName.setText(categories[position]);
             // set image resource to drawable id for the picture
