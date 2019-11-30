@@ -20,4 +20,10 @@
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <fragment
+        android:id="@+id/display_saved_itins"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
