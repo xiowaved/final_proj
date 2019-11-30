@@ -16,7 +16,10 @@
 
     <!--padding, margins and formatting-->
     <dimen name="roundCorners">9dp</dimen>
-    <dimen name="catPaddingRight">9dp</dimen>
+
+    <dimen name="cardHorizPaddingRight">9dp</dimen>
+    <dimen name="recyclerHorizHeight">100dp</dimen>
+
 
     <dimen name="marginSettingsColorSwatches">10dp</dimen>
 

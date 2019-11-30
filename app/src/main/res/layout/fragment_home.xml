@@ -71,21 +71,22 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/home_child_nav_view"
-        android:layout_width="418dp"
-        android:layout_height="598dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="match_parent"
+        android:layout_height="542dp"
+        android:fitsSystemWindows="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tagSearchBar"
-        android:fitsSystemWindows="true">
+        app:layout_constraintTop_toBottomOf="@+id/locationSearchBar"
+        app:elevation="0dp">
 
         <fragment
             android:id="@+id/home_child_nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:navGraph="@navigation/home_child_navigation"
-            />
+            android:layout_height="579dp"
+            app:navGraph="@navigation/home_child_navigation" />
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

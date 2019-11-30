@@ -41,7 +41,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignBottom="@+id/bg_img"
             android:text="text"
-            android:paddingRight="@dimen/catPaddingRight"
+            android:paddingRight="@dimen/cardHorizPaddingRight"
             android:textColor="@color/colorOffWhite"
             android:fontFamily="@font/manjaribold"
             android:textSize="@dimen/card_text"/>
