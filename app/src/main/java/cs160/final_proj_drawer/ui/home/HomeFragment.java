@@ -80,14 +80,21 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFocusChange(View root, boolean hasFocus) {
                 if (hasFocus) {
-                    //entering search stuff
                     locationSearchBar.setVisibility(View.VISIBLE);
-                    filterButton.setVisibility(View.VISIBLE);
-                } else {
+                } //else {
                     //exiting search stuff
-                    childNavController.navigate(R.id.fragment_splash);
-                    locationSearchBar.setVisibility(View.INVISIBLE);
-                    filterButton.setVisibility(View.INVISIBLE);
+                    //childNavController.navigate(R.id.fragment_splash);
+                    //locationSearchBar.setVisibility(View.INVISIBLE);
+                    //filterButton.setVisibility(View.INVISIBLE);
+                //}
+            }
+        });
+
+        locationSearchBar.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View root, boolean hasFocus) {
+                if (hasFocus) {
+                    filterButton.setVisibility(View.VISIBLE);
                 }
             }
         });
