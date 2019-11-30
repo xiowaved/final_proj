@@ -28,10 +28,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        //this is all the stuff contained within your cardview, however you define it
-//            TextView textViewText;
-//            TextView textViewComment;
-//            TextView textViewDate;
         TextView itineraryName;
         int numLikes;
         String coverPhoto;
@@ -40,9 +36,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         public ViewHolder(View itemView)
         {
             super(itemView);
-//                this.textViewText = (TextView) itemView.findViewById(R.id.text);
-//                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
-//                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
             this.itineraryName = (TextView) itemView.findViewById(R.id.text);
             this.numLikesText = (TextView) itemView.findViewById(R.id.numLikes);
         }
@@ -59,10 +52,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ItinAdapter.ViewHolder holder, final int position)
     {
-//            holder.textViewText.setText(dataList.get(position).getText());
-//            holder.textViewComment.setText(dataList.get(position).getComment());
-//            holder.textViewDate.setText(dataList.get(position).getDate());
-
         holder.itineraryName.setText(dataList.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
         holder.itemView.setOnClickListener(new View.OnClickListener()
@@ -71,6 +60,8 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             public void onClick(View v)
             {
                 Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                //toDo hand itinerary object to view_single_itin
+                //navigate (check for bugs)
             }
         });
     }
