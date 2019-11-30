@@ -12,6 +12,16 @@
     <string name="menu_saved">Saved</string>
     <string name="menu_posted">Posted</string>
 
+    <!-- strings for login page -->
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+
+    <string name="login_button_text">Login</string>
+    <string name="login_fb_button_text">fb</string>
+    <string name="login_google_button_text">goog</string>
+    <string name="login_guest_button_text">guest</string>
+
+
     <!-- strings for home page -->
     <string name="search_hint_home">Search</string>
     <string name="home_intro">Explore Itineraries in Berkeley!</string>
