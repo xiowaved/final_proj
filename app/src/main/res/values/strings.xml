@@ -34,6 +34,10 @@
     <!-- strings for profile page. -->
     <string name="profile_name">Jordan Doe</string>
     <string name="profile_location">Berkeley, CA</string>
+    <string name="profile_bio">Here is a bio. It was written by Jordan, about Jordan.
+                                There are words here, describing the things Jordan wants
+                                to share about themselves on this app. Words words words.
+                                </string>
 
     <string name="hello_blank_fragment">Hi Im blank</string>
 
