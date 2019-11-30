@@ -1,5 +1,6 @@
 package cs160.final_proj_drawer.ui.profile;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import cs160.final_proj_drawer.adapters.HorizAdapter;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -19,32 +21,40 @@ import cs160.final_proj_drawer.R;
 //this is the user's profile
 public class ProfileFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private ItinAdapter mItinAdapter;
+    private RecyclerView savedItins;
+    private RecyclerView postedItins;
+    private HorizAdapter savedAdapter;
+    private HorizAdapter postedAdapter;
+    private TypedArray defaultPics;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-/*
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(layoutManager);
+        savedItins = (RecyclerView) root.findViewById(R.id.profile_saved);
+        final LinearLayoutManager savedLayoutManager = new LinearLayoutManager(getActivity());
+        savedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        savedItins.setLayoutManager(savedLayoutManager);
 
-        ArrayList itineraries = new ArrayList<ItineraryObject>();
-        //make json call, find the length and that is your for loop upper bound
+        postedItins = (RecyclerView) root.findViewById(R.id.profile_posted);
+        final LinearLayoutManager postedLayoutManager = new LinearLayoutManager(getActivity());
+        postedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        postedItins.setLayoutManager(postedLayoutManager);
+
+        //this stuff is all placeholder, needs to be replaced by firebase stuff
+        defaultPics = getResources().obtainTypedArray(R.array.category_pics);
+        ArrayList defaultItins = new ArrayList<String>();
         for (int i = 0; i < 4; i++)
         {
-            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
-                    "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
-
-            itineraries.add(itinerary);
+            int drawableID = defaultPics.getResourceId(i,0);
+            defaultItins.add("default "+drawableID);
         }
 
-        mItinAdapter = new ItinAdapter(getContext(), itineraries);
-        mRecyclerView.setAdapter(mItinAdapter);
-*/
-        return view;
+        //attach stuff to the recyclerView
+        savedAdapter = new HorizAdapter(getContext(), defaultItins);
+        savedItins.setAdapter(savedAdapter);
+        postedAdapter = new HorizAdapter(getContext(), defaultItins);
+        postedItins.setAdapter(postedAdapter);
+        return root;
     }
 }

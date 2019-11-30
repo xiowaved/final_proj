@@ -30,7 +30,7 @@ public class SplashFragment extends Fragment {
 
     //recyclerView stuffs
     private RecyclerView homeItins;
-    private RecyclerView catItins;
+    private RecyclerView homeCats;
     private ItinAdapter itinAdapter;
     private HorizAdapter catAdapter;
     private TypedArray categoryPics;
@@ -42,18 +42,16 @@ public class SplashFragment extends Fragment {
         //find stuff
         navController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
 
-
-
         //recycler views setup
         homeItins = (RecyclerView) root.findViewById(R.id.home_itins);
         final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         homeItins.setLayoutManager(itinLayoutManager);
 
-        catItins = (RecyclerView) root.findViewById(R.id.home_cats);
+        homeCats = (RecyclerView) root.findViewById(R.id.home_cats);
         final LinearLayoutManager catLayoutManager = new LinearLayoutManager(getActivity());
         catLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        catItins.setLayoutManager(catLayoutManager);
+        homeCats.setLayoutManager(catLayoutManager);
 
         // get info for category data
         categoryPics = getResources().obtainTypedArray(R.array.category_pics);
@@ -77,7 +75,7 @@ public class SplashFragment extends Fragment {
         //makeItineraries(itineraries,url);
 
             catAdapter = new HorizAdapter(getContext(), cats);
-            catItins.setAdapter(catAdapter);
+            homeCats.setAdapter(catAdapter);
 
             itinAdapter = new ItinAdapter(getContext(), itineraries);
             homeItins.setAdapter(itinAdapter);
