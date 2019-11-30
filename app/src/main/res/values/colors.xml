@@ -8,17 +8,24 @@
 
 
     <color name="colorFunText">@color/colorGreenLight</color>
+    <color name="colorButton">@color/colorBlueBright</color>
 
     <!-- these are the hex codes from the color pallets on figma -->
-    <color name="colorGreenLight">#007973</color>
+    <color name= "colorGreenLight">#007973</color>
     <color name= "colorGreen">#004E53</color>
     <color name= "colorGreenDark">#093E42</color>
-    <color name="colorGrey">#E2E3E3</color>
+
     <color name="colorTealLight">#00B8C4</color>
     <color name="colorTeal">#018C9B</color>
+
     <color name="colorBlueLight">#D3E3F1</color>
     <color name="colorBlue">#184FA2</color>
+    <color name="colorBlueBright">#3B88CC</color>
     <color name="colorBlueDark">#1C2974</color>
+
+    <color name="colorPurple">#BA91DC</color>
+
+    <color name="colorGrey">#E2E3E3</color>
     <color name="colorOffWhite">#F6F6F6</color>
 
     <!-- these colors are for the nav drawer -->

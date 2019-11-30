@@ -1,26 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_tools"
+        android:id="@+id/settings_intro"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="@dimen/fun_text_box_height"
+        android:textSize="@dimen/fun_text"
+        android:fontFamily="@font/primary"
+        android:textColor="@color/colorFunText"
+        android:text="@string/settings_intro" />
 
     <Switch
         android:id="@+id/contrast_switch"
         android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layoutDirection="rtl"
+        android:fontFamily="@font/primary"
+        android:text="@string/contrast_text" />
+
+    <Switch
+        android:id="@+id/font_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layoutDirection="rtl"
+        android:fontFamily="@font/primary"
+        android:text="@string/font_text" />
+
+    <TextView
+        android:id="@+id/color_pallets"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Switch" />
+        android:fontFamily="@font/primary"
+        android:text="@string/color_text" />
+
+    <Button
+        android:id="@+id/green_colors"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTealLight"
+        android:layout_marginBottom="@dimen/marginSettingsColorSwatches"/>
+
+    <Button
+        android:id="@+id/blue_colors"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlueBright"
+        android:layout_marginBottom="@dimen/marginSettingsColorSwatches"/>
+
+    <Button
+        android:id="@+id/purple_colors"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPurple"/>
 </LinearLayout>
