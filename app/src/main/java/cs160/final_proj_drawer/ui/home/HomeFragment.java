@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
     // top search bar -- query itinerary tags
     private SearchView tagSearchBar;
     // lower search bar, appears after clicking inside top one (see Yelp as example);
-    private EditText locationSearchBar;
+    private SearchView locationSearchBar;
     private NavController childNavController;
     private NavController navController;
 
