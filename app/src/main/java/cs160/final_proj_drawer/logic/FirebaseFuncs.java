@@ -67,7 +67,7 @@ public class FirebaseFuncs {
 
     }
 
-//return type should be ArrayList<ItineraryObject>
+    //todo vaguely understand what is happening here
     public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
@@ -157,7 +157,7 @@ public class FirebaseFuncs {
                             }
                         } else {}
 
-//this is where you should return the fully finished product
+//this is where it's done. we want a way for it to convey it is done. maybe loop / wait until this mutates a bool val?
 //                    return list;
 
                     }
@@ -168,13 +168,16 @@ public class FirebaseFuncs {
 
             }
         });
+
+        //todo is it possible to replace this with out of the box
+        // Volley.newRequestQueue ?
         MySingleton mySingleton = new MySingleton(context);
         mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
     }
 
 
-    public void createTestItinerary(View view){
+    public static void createTestItinerary(View view){
 //        create a test itinerary with my information
         List<String> photolist = new ArrayList<>();
         List<Stop> stoplist = new ArrayList<>();
