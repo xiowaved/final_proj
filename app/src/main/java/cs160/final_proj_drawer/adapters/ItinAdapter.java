@@ -19,10 +19,10 @@ import cs160.final_proj_drawer.R;
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
     private ArrayList<ItineraryObject> dataList;
-    private OnItinListener onItinListener;
+    private OnRecyclerCardListener onItinListener;
 
 
-    public ItinAdapter( ArrayList<ItineraryObject> data)
+    public ItinAdapter( ArrayList<ItineraryObject> data, OnRecyclerCardListener onItinListener)
     {
         this.dataList = data;
         this.onItinListener = onItinListener;
@@ -32,9 +32,9 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     {
         TextView itineraryName;
         TextView numLikesText;
-        OnItinListener onItinListener;
+        OnRecyclerCardListener onItinListener;
 
-        public ViewHolder(View itemView, OnItinListener onItinListener)
+        public ViewHolder(View itemView, OnRecyclerCardListener onItinListener)
         {
             super(itemView);
             this.itineraryName = (TextView) itemView.findViewById(R.id.text);
@@ -46,7 +46,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
         @Override
         public void onClick(View view) {
-            //onItinListener.onItinClick(getAdapterPosition());
+            onItinListener.onCardClick(getAdapterPosition());
             Log.i("NOTE", "was a click");
         }
     }
@@ -73,7 +73,4 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         return dataList.size();
     }
 
-    public interface OnItinListener{
-        void onItinClick(int position);
-    }
 }

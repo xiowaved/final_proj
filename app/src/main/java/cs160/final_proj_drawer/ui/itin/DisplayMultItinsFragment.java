@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
@@ -27,8 +27,7 @@ import cs160.final_proj_drawer.adapters.ItinAdapter;
 **  because no matter from where it was clicked, it pulls
 **  open the full page itinerary that was clicked.
  */
-public class DisplayMultItinsFragment extends Fragment //implements ItinAdapter.OnItinListener {
-{
+public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCardListener{
 
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
     public JSONObject Tags;
@@ -62,22 +61,14 @@ public class DisplayMultItinsFragment extends Fragment //implements ItinAdapter.
     //
             }
         // put them in
-        itinAdapter = new ItinAdapter(itineraries);
+        itinAdapter = new ItinAdapter(itineraries, this);
         searchItins.setAdapter(itinAdapter);
         return root;
     }
 
-    public class etc extends DisplayMultItinsFragment implements ItinAdapter.OnItinListener{
-        @Override
-        public void onItinClick(int position) {
-            //    itineraries.get(position);
-            Log.i("Note", " was clicked! " + position);
-        }
-    }
-
-    //@Override
-    public void onItinClick(int position) {
-    //    itineraries.get(position);
+    @Override
+    public void onCardClick(int position) {
         Log.i("Note", " was clicked! " + position);
     }
+
 }
