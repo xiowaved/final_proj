@@ -44,6 +44,7 @@
     <color name="colorBlue">#184FA2</color>
     <color name="colorBlueDark">#1C2974</color>
 
+    <color name="colorBlueHeader">#194FA2</color>
     <color name="colorBlueBright">#3B88CC</color>
 
     <color name="colorPurple">#BA91DC</color>
@@ -52,6 +53,8 @@
     <color name="colorDarkGrey">#828181</color>
 
     <color name="colorOffWhite">#F6F6F6</color>
+
+    <color name="colorRedError">#BD0F03</color>
 
 
 

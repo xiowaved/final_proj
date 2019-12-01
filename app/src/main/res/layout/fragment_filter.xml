@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:text="Filters"
                 android:textAlignment="center"
-                android:textColor="#194FA2"
+                android:textColor="@color/colorBlueHeader"
                 android:textSize="19sp" />
 
             <Button
@@ -47,7 +47,7 @@
                 android:background="@drawable/rounded_corner_button"
                 android:text="Cancel"
                 android:textAllCaps="false"
-                android:textColor="#F6F6F6"
+                android:textColor="@color/colorOffWhite"
                 app:layout_constraintEnd_toStartOf="@+id/filter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +63,7 @@
                 android:background="@drawable/rounded_corner_button"
                 android:text="Reset"
                 android:textAllCaps="false"
-                android:textColor="#F6F6F6"
+                android:textColor="@color/colorOffWhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/filter"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -77,7 +77,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
             android:text="Price"
-            android:textColor="#194FA2"
+            android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cancel" />
@@ -96,7 +96,7 @@
                 android:fontFamily="@font/manjaribold"
                 android:text="Free"
                 android:textAlignment="center"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="15sp" />
 
             <TextView
@@ -109,7 +109,7 @@
                 android:fontFamily="@font/manjaribold"
                 android:text="$"
                 android:textAlignment="center"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="15sp" />
 
             <TextView
@@ -122,7 +122,7 @@
                 android:fontFamily="@font/manjaribold"
                 android:text="$$"
                 android:textAlignment="center"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="15sp" />
 
             <TextView
@@ -135,7 +135,7 @@
                 android:fontFamily="@font/manjaribold"
                 android:text="$$$"
                 android:textAlignment="center"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="15sp" />
         </RelativeLayout>
 
@@ -147,7 +147,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
             android:text="Distance"
-            android:textColor="#194FA2"
+            android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/price1" />
@@ -165,7 +165,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/manjaribold"
                 android:text="Any distance"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/distance" />
@@ -179,7 +179,7 @@
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/manjaribold"
                 android:text="4 blocks"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/distance1" />
@@ -193,7 +193,7 @@
                 android:layout_marginTop="7dp"
                 android:fontFamily="@font/manjaribold"
                 android:text="1 mile"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/distance2" />
@@ -207,7 +207,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/manjaribold"
                 android:text="5 miles"
-                android:textColor="#828181"
+                android:textColor="@color/colorDarkGrey"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/distance3" />
@@ -226,28 +226,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:buttonTint="#3B88CC" />
+                    android:buttonTint="@color/colorBlueBright" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:buttonTint="#3B88CC" />
+                    android:buttonTint="@color/colorBlueBright" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:buttonTint="#3B88CC" />
+                    android:buttonTint="@color/colorBlueBright" />
 
                 <RadioButton
                     android:id="@+id/radioButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:buttonTint="#3B88CC" />
+                    android:buttonTint="@color/colorBlueBright" />
             </RadioGroup>
         </RelativeLayout>
 
@@ -259,7 +259,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
             android:text="Preferences"
-            android:textColor="#194FA2"
+            android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/distance4" />
@@ -282,7 +282,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
             android:text="Needs"
-            android:textColor="#194FA2"
+            android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -307,7 +307,7 @@
             android:background="@drawable/rounded_corner_button"
             android:text="Apply"
             android:textAllCaps="false"
-            android:textColor="#F6F6F6"
+            android:textColor="@color/colorOffWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

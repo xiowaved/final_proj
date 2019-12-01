@@ -80,7 +80,7 @@
         android:fontFamily="@font/manjaribold"
         android:text=""
         android:textAlignment="center"
-        android:textColor="#BD0F03"
+        android:textColor="@color/colorRedError"
         android:textSize="20sp" />
 
 </LinearLayout>
