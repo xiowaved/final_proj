@@ -18,6 +18,12 @@ import java.util.List;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.Stop;
@@ -38,6 +44,9 @@ public class CreateFragment extends Fragment {
     int currentStopIndex; // the itinerary index of what is displayed on the screen
 
     List<Stop> stops;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Locations");
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -122,7 +131,7 @@ public class CreateFragment extends Fragment {
 
 
         createdItin = new ItineraryObject("creatorName", name.getText().toString(), 0,
-                "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
+                "coverPhoto",location.getText().toString(), stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
         Log.i("TAG", "load review fragment");
         //load review fragment
@@ -132,7 +141,22 @@ public class CreateFragment extends Fragment {
 
         navController.navigate(R.id.action_nav_create_to_review, bundle);
 
-        //TODO commit to firebase
+
+        myRef.child(location.getText().toString()).child(name.getText().toString()).setValue(createdItin)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Write was successful!
+                        myRef.push();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                    }
+                });
+
     }
 
     public void onAddNewStop(View view) {

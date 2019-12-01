@@ -64,10 +64,10 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
                 //todo need some placeholder stops in these fragments
                 // so we can practice displaying single itins from here.
 
-                    ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
-                            "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
-    //
-                    itineraries.add(itinerary);
+//                    ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
+//                            "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
+//    //
+//                    itineraries.add(itinerary);
     //
             }
         // put them in

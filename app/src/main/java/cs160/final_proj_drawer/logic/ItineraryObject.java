@@ -5,11 +5,11 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ItineraryObject implements Serializable {
-    //add itinerary location
      private String creatorName;
      private String itineraryName;
      private int numLikes;
      private String coverPhoto;
+     private String location;
      private int numStops;
      private List<Stop> stops;
      private List<String> tags;
@@ -17,13 +17,14 @@ public class ItineraryObject implements Serializable {
 
 
     public ItineraryObject(String creatorName, String itineraryName, int numLikes,
-                                String coverPhoto, int numStops, List<Stop> stops, List<String> tags,
+                                String coverPhoto, String location, int numStops, List<Stop> stops, List<String> tags,
                                 List<String>access) {
         // Create an itinerary object
         this.creatorName = creatorName;
         this.itineraryName = itineraryName;
         this.numLikes = numLikes;
         this.coverPhoto = coverPhoto;
+        this.location = location;
         this.numStops = numStops;
         this.stops = stops;
         this.tags = tags;
@@ -57,6 +58,8 @@ public class ItineraryObject implements Serializable {
     public List<String> getAccess() {
         return this.access;
     }
+
+    public String getLocation() {return this.location;}
 
 }
 

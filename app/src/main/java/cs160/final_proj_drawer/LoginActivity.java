@@ -64,9 +64,9 @@ public class LoginActivity extends AppCompatActivity {
         taglist.add("grocery");
         taglist.add("food");
         acclist.add("elevator");
-        ItineraryObject itin1 = new ItineraryObject("Colby", "Grocery Shopping", 15,
-                "blackness", 3, stoplist,taglist ,
-                acclist);
+//        ItineraryObject itin1 = new ItineraryObject("Colby", "Grocery Shopping", 15,
+//                "blackness", 3, stoplist,taglist ,
+//                acclist);
         photolist = new ArrayList<>();
         stoplist = new ArrayList<>();
         taglist = new ArrayList<>();
@@ -86,9 +86,9 @@ public class LoginActivity extends AppCompatActivity {
         taglist.add("mexican");
         taglist.add("family friendly");
         acclist.add("ADA");
-        ItineraryObject itin2 = new ItineraryObject("Colby", "A day off in West Berkeley", 167,
-                "blackness", 3, stoplist,taglist ,
-                acclist);
+//        ItineraryObject itin2 = new ItineraryObject("Colby", "A day off in West Berkeley", 167,
+//                "blackness", 3, stoplist,taglist ,
+//                acclist);
         photolist = new ArrayList<>();
         stoplist = new ArrayList<>();
         taglist = new ArrayList<>();
@@ -103,9 +103,9 @@ public class LoginActivity extends AppCompatActivity {
         taglist.add("running");
         taglist.add("views");
         taglist.add("scenic");
-        ItineraryObject itin3 = new ItineraryObject("Colby", "Places with a view", 15,
-                "blackness", 2, stoplist,taglist ,
-                acclist);
+//        ItineraryObject itin3 = new ItineraryObject("Colby", "Places with a view", 15,
+//                "blackness", 2, stoplist,taglist ,
+//                acclist);
         ArrayList<ItineraryObject> groceryTag = new ArrayList<>();
         ArrayList<ItineraryObject> shoppingTag = new ArrayList<>();
         ArrayList<ItineraryObject> hikingTag = new ArrayList<>();
@@ -117,18 +117,18 @@ public class LoginActivity extends AppCompatActivity {
         ArrayList<ItineraryObject> mexicanTag = new ArrayList<>();
         ArrayList<ItineraryObject> coffeeTag = new ArrayList<>();
         HashMap<String,ArrayList<ItineraryObject>> LocationTags = new HashMap<>();
-        groceryTag.add(itin1);
-        shoppingTag.add(itin1);
-        shoppingTag.add(itin2);
-        hikingTag.add(itin3);
-        foodTag.add(itin1);
-        foodTag.add(itin2);
-        viewsTag.add(itin3);
-        scenicTag.add(itin3);
-        familyfriendlyTag.add(itin2);
-        runningTag.add(itin3);
-        mexicanTag.add(itin2);
-        coffeeTag.add(itin2);
+//        groceryTag.add(itin1);
+//        shoppingTag.add(itin1);
+//        shoppingTag.add(itin2);
+//        hikingTag.add(itin3);
+//        foodTag.add(itin1);
+//        foodTag.add(itin2);
+//        viewsTag.add(itin3);
+//        scenicTag.add(itin3);
+//        familyfriendlyTag.add(itin2);
+//        runningTag.add(itin3);
+//        mexicanTag.add(itin2);
+//        coffeeTag.add(itin2);
         LocationTags.put("grocery",groceryTag);
         LocationTags.put("shopping",shoppingTag);
         LocationTags.put("hiking",hikingTag);
@@ -139,48 +139,48 @@ public class LoginActivity extends AppCompatActivity {
         LocationTags.put("running",runningTag);
         LocationTags.put("mexican",mexicanTag);
         LocationTags.put("coffee",coffeeTag);
-        myRef.child("Berkeley").child("Grocery Shopping").setValue(itin1)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Write was successful!
-                        myRef.push();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Write failed
-                    }
-                });
-        myRef.child("Berkeley").child("A day off in West Berkeley").setValue(itin2)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Write was successful!
-                        myRef.push();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Write failed
-                    }
-                });
-        myRef.child("Berkeley").child("Places with a View").setValue(itin3)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Write was successful!
-                        myRef.push();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Write failed
-                    }
-                });
+//        myRef.child("Berkeley").child("Grocery Shopping").setValue(itin1)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        // Write was successful!
+//                        myRef.push();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        // Write failed
+//                    }
+//                });
+//        myRef.child("Berkeley").child("A day off in West Berkeley").setValue(itin2)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        // Write was successful!
+//                        myRef.push();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        // Write failed
+//                    }
+//                });
+//        myRef.child("Berkeley").child("Places with a View").setValue(itin3)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        // Write was successful!
+//                        myRef.push();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        // Write failed
+//                    }
+//                });
         myRef.child("Berkeley").child("Tags").setValue(LocationTags)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
