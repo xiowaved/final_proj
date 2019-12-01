@@ -158,9 +158,7 @@ public class CreateStopsFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", createdItin);
 
-        navController.navigate(R.id.action_addStop_to_review, bundle);
-
-
+        navController.navigate(R.id.fragment_review, bundle);
 
     }
 

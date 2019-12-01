@@ -61,7 +61,7 @@ public class CreateOverviewFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     bundle.putString("name", itineraryName);
                     bundle.putString("location", itineraryLocation);
-                    navController.navigate(R.id.action_nav_create_to_addStop,bundle);
+                    navController.navigate(R.id.fragment_create_stops,bundle);
                     Toast toast = Toast.makeText(getContext(), "clicked on add new stops",
                             Toast.LENGTH_SHORT);
                     toast.show();
