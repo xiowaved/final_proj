@@ -68,7 +68,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         return dataList.size();
     }
 
-    public interface onItinListener{
+    public interface OnItinListener{
         void onItinClick(int position);
     }
 }

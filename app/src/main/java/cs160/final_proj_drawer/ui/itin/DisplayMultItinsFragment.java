@@ -27,7 +27,8 @@ import cs160.final_proj_drawer.adapters.ItinAdapter;
 **  because no matter from where it was clicked, it pulls
 **  open the full page itinerary that was clicked.
  */
-public class DisplayMultItinsFragment extends Fragment {
+public class DisplayMultItinsFragment extends Fragment //implements ItinAdapter.OnItinListener {
+{
 
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
     public JSONObject Tags;
