@@ -26,6 +26,7 @@ public class CreateFragment extends Fragment {
 
     private NavController navController;
 
+    ItineraryObject createdItin;
     EditText name;
     EditText location;
     EditText description;
@@ -119,17 +120,14 @@ public class CreateFragment extends Fragment {
         location.getText().clear();
         description.getText().clear();
 
+
+        createdItin = new ItineraryObject("creatorName", "itineraryName", 0,
+                "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
+
         Log.i("TAG", "load review fragment");
         //load review fragment
 
-        //delete later -V
-        Toast toast = Toast.makeText(this.getContext(), "The Review Frag should pop up",
-                Toast.LENGTH_SHORT); toast.show();
-                navController.navigate(R.id.action_nav_create_to_review);
-
-
-        ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
-                "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
+        navController.navigate(R.id.action_nav_create_to_review);
 
         //TODO commit to firebase
     }
