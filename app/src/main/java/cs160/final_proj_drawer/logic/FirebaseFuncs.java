@@ -76,6 +76,7 @@ public class FirebaseFuncs {
                                     }
                                     ItineraryObject itinerary = new ItineraryObject(creator,itinName, numLikes,
                                             coverPhoto,location, numStops, stops, tags, access);
+//                                   HERE is where the itinerary is added once its fully been constructed
                                     list.add(itinerary);
 
                                 } catch (JSONException e) {
@@ -115,6 +116,7 @@ public class FirebaseFuncs {
                                 }
                                 ItineraryObject itinerary = new ItineraryObject(creator,itinName, numLikes,
                                         coverPhoto,location, numStops, stops, tags, access);
+//                                HERE is where the itinerary is added once its fully been constructed
                                 list.add(itinerary);
 
                             } catch (JSONException e) {
@@ -122,7 +124,7 @@ public class FirebaseFuncs {
                             }
                         } else {}
 
-
+//this is where you should return the fully finished product
                     return list;
 
                     }
