@@ -37,7 +37,7 @@ public class FirebaseFuncs {
      */
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static DatabaseReference myRef = database.getReference("Locations");
-    private static String url = "https://travelr-7feac.firebaseio.com/Locations/Berkeley/Chemistry.json";
+    private static String url = "https://travelr-7feac.firebaseio.com/Locations/";
 
     /*
         this should write a single finalized itin to our database.
@@ -47,8 +47,8 @@ public class FirebaseFuncs {
                 // i lifted this code out of create Itin
                 // i do not know how this works, isn't working here
                 //todo make this work
-                /*
-                        myRef.child(location.getText().toString()).child(name.getText().toString()).setValue(createdItin)
+                String location = itin.getLocation();
+        myRef.child(location).setValue(itin)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -63,7 +63,7 @@ public class FirebaseFuncs {
                     }
                 });
 
-                 */
+
 
     }
 
@@ -85,36 +85,8 @@ public class FirebaseFuncs {
                             name = keys.next();
                             if (name != "Tags") {
                                 try {
-                                    JSONObject itin = (JSONObject) info.get(name);
-                                    String creator = (String) itin.get("creatorName");
-                                    String itinName = (String) itin.get("itineraryName");
-                                    String coverPhoto = (String) itin.get("coverPhoto");
-                                    String location = (String) itin.get("location");
-                                    int numLikes = (int) itin.get("numLikes");
-                                    int numStops = (int) itin.get("numStops");
-                                    JSONArray tagsJSON = itin.getJSONArray("tags");
-                                    ArrayList<String> tags = new ArrayList<>();
-                                    for (int i = 0; i < tagsJSON.length(); i++) {
-                                        tags.add((String)tagsJSON.get(i));
-                                    }
-                                    JSONArray stopsJSON = itin.getJSONArray("stops");
-                                    ArrayList<Stop> stops = new ArrayList<>();
-                                    for (int i = 0; i < stopsJSON.length(); i++) {
-                                        JSONObject stopJSON = stopsJSON.getJSONObject(i);
-                                        String desc = (String) stopJSON.get("description");
-                                        int index = (int) stopJSON.get("index");
-                                        String stopLocation = (String) stopJSON.get("location");
-                                        String stopname = (String) stopJSON.get("name");
-                                        Stop newstop = new Stop(new ArrayList<String>(), stopname, stopLocation, desc,index);
-                                        stops.add(newstop);
-                                    }
-                                    JSONArray accessJSON = itin.getJSONArray("access");
-                                    ArrayList<String> access = new ArrayList<>();
-                                    for (int i = 0; i < accessJSON.length(); i++) {
-                                        access.add((String)accessJSON.get(i));
-                                    }
-                                    ItineraryObject itinerary = new ItineraryObject(creator,itinName, numLikes,
-                                            coverPhoto,location, numStops, stops, tags, access);
+
+                                    ItineraryObject itinerary = new ItineraryObject(info.getJSONObject("name"));
 //                                   HERE is where the itinerary is added once its fully been constructed
                                     list.add(itinerary);
 
@@ -125,36 +97,8 @@ public class FirebaseFuncs {
                         }
                         if (name != "Tags") {
                             try {
-                                JSONObject itin = (JSONObject) info.get(name);
-                                String creator = (String) itin.get("creatorName");
-                                String itinName = (String) itin.get("itineraryName");
-                                String coverPhoto = (String) itin.get("coverPhoto");
-                                String location = (String) itin.get("location");
-                                int numLikes = (int) itin.get("numLikes");
-                                int numStops = (int) itin.get("numStops");
-                                JSONArray tagsJSON = itin.getJSONArray("tags");
-                                ArrayList<String> tags = new ArrayList<>();
-                                for (int i = 0; i < tagsJSON.length(); i++) {
-                                    tags.add((String)tagsJSON.get(i));
-                                }
-                                JSONArray stopsJSON = itin.getJSONArray("stops");
-                                ArrayList<Stop> stops = new ArrayList<>();
-                                for (int i = 0; i < stopsJSON.length(); i++) {
-                                    JSONObject stopJSON = stopsJSON.getJSONObject(i);
-                                    String desc = (String) stopJSON.get("description");
-                                    int index = (int) stopJSON.get("index");
-                                    String stopLocation = (String) stopJSON.get("location");
-                                    String stopname = (String) stopJSON.get("name");
-                                    Stop newstop = new Stop(new ArrayList<String>(), stopname, stopLocation, desc,index);
-                                    stops.add(newstop);
-                                }
-                                JSONArray accessJSON = itin.getJSONArray("access");
-                                ArrayList<String> access = new ArrayList<>();
-                                for (int i = 0; i < accessJSON.length(); i++) {
-                                    access.add((String)accessJSON.get(i));
-                                }
-                                ItineraryObject itinerary = new ItineraryObject(creator,itinName, numLikes,
-                                        coverPhoto,location, numStops, stops, tags, access);
+
+                                ItineraryObject itinerary = new ItineraryObject(info.getJSONObject("name"));
 //                                HERE is where the itinerary is added once its fully been constructed
                                 list.add(itinerary);
 
