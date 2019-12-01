@@ -25,7 +25,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="@dimen/cardTextPadding"
-            android:text="Itin Title"
+            android:text="This Should Be Overwritten"
             android:fontFamily="@font/primary"
             android:textColor="@color/colorBg"
             android:textSize="@dimen/card_text"/>

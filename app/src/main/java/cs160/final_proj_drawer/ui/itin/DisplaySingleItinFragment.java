@@ -24,6 +24,7 @@ public class DisplaySingleItinFragment extends Fragment {
     //dont let the app crash if this is handed garbage
 
     //ui elements
+    private TextView title;
     private TextView body;
     private Boolean bookmarked;
     private TextView numLikes;
@@ -40,6 +41,7 @@ public class DisplaySingleItinFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_display_itin, container, false);
 
         //find stuff
+        title = root.findViewById(R.id.Title);
         body = root.findViewById(R.id.body);
         numLikes = root.findViewById(R.id.numLikes);
 
@@ -47,28 +49,27 @@ public class DisplaySingleItinFragment extends Fragment {
         Bundle bundle=getArguments();
         Object input = bundle.getSerializable("itinerary");
         if (input == null) {
-            body.setText("NO ITIN");
+            title.setText("No Itinerary Found");
             return root;
         }
 
         //get overarching itin stuff set up
         itin = (ItineraryObject) input;
         stops = itin.getStops();
-        numLikes.setText(Integer.toString(itin.getNumLikes()));//itin.getNumLikes());
+        title.setText(itin.getItineraryName());
+        numLikes.setText(Integer.toString(itin.getNumLikes()));
 
         //check if the itin object has stops, exit if it doesn't
         if (stops == null || stops.size() == 0) {
-            body.setText(itin.getItineraryName() + " has no stops");
+            title.setText(itin.getItineraryName() + " has no stops");
             return root;
         }
 
-        String testInfo  = itin.getItineraryName();
+        //delete later
+        String testInfo  = "";
         for (Stop stop:stops) {
             testInfo+= "\n" + stop.getName();
         }
-
-
-
         body.setText(testInfo);
 
 
