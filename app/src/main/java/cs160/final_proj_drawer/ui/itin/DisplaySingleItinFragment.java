@@ -76,8 +76,8 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
             return root;
         }
 
-        //stopAdapter = new VertStopAdapter(stops, this);
-        //itinStops.setAdapter(stopAdapter);
+        stopAdapter = new VertStopAdapter(stops, this);
+        itinStops.setAdapter(stopAdapter);
 
         //delete later
         /*
