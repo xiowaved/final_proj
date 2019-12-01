@@ -51,9 +51,9 @@ public class ProfileFragment extends Fragment {
         }
 
         //attach stuff to the recyclerView
-        savedAdapter = new HorizAdapter(getContext(), defaultItins);
+        savedAdapter = new HorizAdapter(defaultItins);
         savedItins.setAdapter(savedAdapter);
-        postedAdapter = new HorizAdapter(getContext(), defaultItins);
+        postedAdapter = new HorizAdapter(defaultItins);
         postedItins.setAdapter(postedAdapter);
         return root;
     }

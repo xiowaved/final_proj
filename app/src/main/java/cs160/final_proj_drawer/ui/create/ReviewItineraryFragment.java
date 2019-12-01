@@ -50,7 +50,7 @@ public class ReviewItineraryFragment extends Fragment {
             //
         }
         // put them in
-        stopAdapter = new StopAdapter(getContext(), stopsList);
+        stopAdapter = new StopAdapter(stopsList);
         stops.setAdapter(stopAdapter);
 
 

@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,9 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
     Context context;
 
 
-    public StopAdapter(Context context, ArrayList<Stop> data)
+    public StopAdapter(ArrayList<Stop> data)
     {
         this.dataList = data;
-        this.context = context;
     }
 
 
@@ -62,7 +62,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(context, "Stop " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                Log.i("NOTE", "user clicked stop "+position);
             }
         });
     }

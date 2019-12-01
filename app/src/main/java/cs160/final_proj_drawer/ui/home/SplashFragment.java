@@ -45,7 +45,7 @@ public class SplashFragment extends Fragment {
             int drawableID = categoryPics.getResourceId(i,0);
             cats.add("cat "+drawableID);
         }
-        catAdapter = new HorizAdapter(getContext(), cats);
+        catAdapter = new HorizAdapter(cats);
         homeCats.setAdapter(catAdapter);
 
         return root;

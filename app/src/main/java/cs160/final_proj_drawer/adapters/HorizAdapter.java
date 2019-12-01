@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,11 @@ public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
 {
 
         private ArrayList<Object> dataList;
-        Context context;
         String[] categories = {"food", "music", "hike", "art"};
         int[] drawableIds;
 
 
-    public HorizAdapter(Context context, ArrayList<Object> data)
+    public HorizAdapter(ArrayList<Object> data)
         {
 
             this.dataList = data;
@@ -32,7 +32,6 @@ public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
                 int id = Integer.valueOf(d.substring(d.indexOf(" ") + 1));
                 drawableIds[i] = id;
             }
-            this.context = context;
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder
@@ -68,7 +67,7 @@ public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                    Log.i("NOTE", "user clicked horizAdapter " + position );
                 }
             });
         }
