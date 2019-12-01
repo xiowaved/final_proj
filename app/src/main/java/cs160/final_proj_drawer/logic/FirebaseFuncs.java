@@ -34,8 +34,8 @@ public class FirebaseFuncs {
     String url = "https://travelr-7feac.firebaseio.com/Locations/Berkeley/Chemistry.json";
 
 
-
-    public static ArrayList<ItineraryObject> makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
+//return type should be ArrayList<ItineraryObject>
+    public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
@@ -125,7 +125,7 @@ public class FirebaseFuncs {
                         } else {}
 
 //this is where you should return the fully finished product
-                    return list;
+//                    return list;
 
                     }
                 },new Response.ErrorListener() {
