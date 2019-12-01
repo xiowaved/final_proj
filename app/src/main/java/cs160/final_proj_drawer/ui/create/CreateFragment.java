@@ -29,6 +29,7 @@ public class CreateFragment extends Fragment {
     EditText name;
     EditText location;
     EditText description;
+    Button addNewPhoto;
     Button viewPreviousStop;
     Button addNewStop;
     Button reviewItinerary;
@@ -61,11 +62,19 @@ public class CreateFragment extends Fragment {
         location = (EditText) getView().findViewById(R.id.location);
         description = (EditText) getView().findViewById(R.id.description);
 
+        addNewPhoto = (Button) getView().findViewById(R.id.photos);
         viewPreviousStop = (Button) getView().findViewById(R.id.viewPreviousStop);
         addNewStop = (Button) getView().findViewById(R.id.addNewStop);
         reviewItinerary = (Button) getView().findViewById(R.id.reviewItinerary);
 
         stops = new ArrayList<Stop>();
+
+        addNewPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add new photo logic here!
+            }
+        });
 
         viewPreviousStop.setOnClickListener(new View.OnClickListener() {
             @Override
