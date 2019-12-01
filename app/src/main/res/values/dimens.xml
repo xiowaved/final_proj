@@ -52,4 +52,7 @@
     <!--settings page -->
     <dimen name="marginSettingsColorSwatches">10dp</dimen>
 
+
+    <!-- centering text inside submit button -->
+    <dimen name="textPadding"> 16dp </dimen>
 </resources>

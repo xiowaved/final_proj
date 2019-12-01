@@ -106,6 +106,19 @@
                 android:text="">
             </TextView>
 
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/rounded_corner_button"
+            android:fontFamily="@font/primary"
+            android:paddingTop="@dimen/textPadding"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/colorButtonText" />
+
         <!--    <ImageView-->
         <!--        android:id="@+id/imageView2"-->
         <!--        android:layout_width="207dp"-->

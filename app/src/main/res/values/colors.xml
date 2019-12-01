@@ -23,6 +23,10 @@
     <color name="colorInputBG">@color/colorGrey</color>
     <color name="colorGreyStroke">@color/colorDarkGrey</color>
 
+    <!-- text color on buttons -->
+    <color name="colorButtonText">@color/colorOffWhite</color>
+
+
     <!-- these are the hex codes from specific colors. use to populate sections above this line -->
     <!-- NOTE:
         please do not directly use these colors! please only use colors in the
