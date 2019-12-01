@@ -23,11 +23,13 @@
 
 
     <!-- strings for home page -->
-    <string name="search_hint_home">Search</string>
-    <string name="home_intro">Explore Itineraries in Berkeley!</string>
-    <string name="filter"></string>
+    <string name="home_search_hint_tag">Ex. family-friendly</string>
+    <string name="home_search_hint_loc">Current Location</string>
+
+    <string name="filter_button">Filter</string>
 
     <!-- strings for splash page -->
+    <string name="home_intro">Explore Itineraries in Berkeley!</string>
     <array name="categories">
         <item>food</item>
         <item>hike</item>

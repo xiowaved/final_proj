@@ -1,91 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/layout"
-    android:layout_height="match_parent">
-
-
-    <ImageButton
-        android:id="@+id/searchButton"
-        android:layout_width="70dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/search_button"
-        android:src="@drawable/ic_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/filterButton"
-        android:layout_width="70dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
-        android:background="@drawable/search_button"
-        android:text="Filter"
-        android:textColor="@color/colorOffWhite"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@id/tagSearchBar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <SearchView
-        android:id="@+id/tagSearchBar"
-        android:layout_width="250dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="24dp"
-        android:hint="@string/search_hint_home"
-        android:queryHint="Ex. family-friendly"
-        app:layout_constraintRight_toLeftOf="@id/searchButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        >
 
-    <SearchView
-        android:id="@+id/locationSearchBar"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:hint="Current Location"
-        android:queryHint="Current Location"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/filterButton"
-        app:layout_constraintTop_toBottomOf="@+id/tagSearchBar" />
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="@dimen/search_button_width"
+            android:layout_height="@dimen/search_button_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/search_button"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/on_search_location"
-        android:layout_width="250dp"
-        android:layout_height="@dimen/fun_text_box_height"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/primary"
-        android:text="Exploring Bangkok"
-        android:textColor="@color/colorFunText"
-        android:textSize="@dimen/fun_text"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/filterButton"
-        app:layout_constraintTop_toBottomOf="@+id/tagSearchBar"
-        />
+        <Button
+            android:id="@+id/filterButton"
+            android:layout_width="@dimen/search_button_width"
+            android:layout_height="@dimen/search_button_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/search_button"
+            android:text="@string/filter_button"
+            android:textColor="@color/colorOffWhite"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchButton" />
+
+        <SearchView
+            android:id="@+id/tagSearchBar"
+            android:layout_width="@dimen/search_bar_width"
+            android:layout_height="wrap_content"
+            android:queryHint="@string/home_search_hint_tag"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SearchView
+            android:id="@+id/locationSearchBar"
+            android:layout_width="@dimen/search_bar_width"
+            android:layout_height="wrap_content"
+            android:hint="@string/home_search_hint_loc"
+            android:queryHint="Current Location"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tagSearchBar" />
+
+        <TextView
+            android:id="@+id/on_search_location"
+            android:layout_width="@dimen/search_bar_width"
+            android:layout_height="@dimen/fun_text_box_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:fontFamily="@font/primary"
+            android:text="Exploring Location"
+            android:textColor="@color/colorFunText"
+            android:textSize="@dimen/fun_text"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tagSearchBar"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/home_child_nav_view"
         android:layout_width="match_parent"
-        android:layout_height="542dp"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationSearchBar"
         app:elevation="0dp">
 
         <fragment
             android:id="@+id/home_child_nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="579dp"
+            android:layout_height="match_parent"
             app:navGraph="@navigation/home_child_navigation" />
     </com.google.android.material.navigation.NavigationView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
