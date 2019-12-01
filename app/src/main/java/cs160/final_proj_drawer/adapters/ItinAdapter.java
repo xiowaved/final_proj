@@ -43,7 +43,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     }
 
     @Override
-    public ItinAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_itinerary, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -70,5 +70,9 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     public int getItemCount()
     {
         return dataList.size();
+    }
+
+    public interface onItinListener{
+        void onItinClick(int position);
     }
 }

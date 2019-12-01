@@ -68,6 +68,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //if the user clicks the location, they can change it again
         onSearchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {

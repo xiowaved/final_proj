@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.ui.itin;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,18 +28,16 @@ import cs160.final_proj_drawer.adapters.ItinAdapter;
 **  because no matter from where it was clicked, it pulls
 **  open the full page itinerary that was clicked.
  */
-public class DisplayMultItinsFragment extends Fragment {
+public class DisplayMultItinsFragment extends Fragment implements ItinAdapter.onItinListener {
 
-    private Button filterButton;
-    private NavController navController;
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
-    public String currentLocation = "Berkeley";
     public JSONObject Tags;
 
 
     //stuff for the recycler
     private RecyclerView searchItins;
     private ItinAdapter itinAdapter;
+    private ArrayList itineraries;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,7 +51,7 @@ public class DisplayMultItinsFragment extends Fragment {
         searchItins.setLayoutManager(itinLayoutManager);
 
         //eventually wanna modularize this out of this func. just wanna call this
-            ArrayList itineraries = new ArrayList<ItineraryObject>();
+            itineraries = new ArrayList<ItineraryObject>();
 
             for (int i = 0; i < 4; i++)
             {
@@ -66,5 +65,11 @@ public class DisplayMultItinsFragment extends Fragment {
         itinAdapter = new ItinAdapter(getContext(), itineraries);
         searchItins.setAdapter(itinAdapter);
         return root;
+    }
+
+    @Override
+    public void onItinClick(int position) {
+        itineraries.get(position);
+        Log.i("Note", " was clicked! " + position);
     }
 }
