@@ -73,6 +73,8 @@ public class CreateFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //add new photo logic here!
+                Toast toast = Toast.makeText(getContext(), "clicked on add new photo",
+                        Toast.LENGTH_SHORT); toast.show();
             }
         });
 
