@@ -56,6 +56,12 @@
     <fragment
         android:id="@+id/fragment_display_single_itin"
         android:name="cs160.final_proj_drawer.ui.itin.DisplaySingleItinFragment"
-        tools:layout="@layout/fragment_display_itin" />
+        tools:layout="@layout/fragment_display_itin" >
+        <argument
+            android:name="itinerary"
+            app:argType="cs160.final_proj_drawer.logic.ItineraryObject"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
 </navigation>

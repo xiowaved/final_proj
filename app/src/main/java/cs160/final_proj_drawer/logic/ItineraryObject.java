@@ -1,9 +1,10 @@
 package cs160.final_proj_drawer.logic;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ItineraryObject {
+public class ItineraryObject implements Serializable {
     //add itinerary location
      private String creatorName;
      private String itineraryName;
