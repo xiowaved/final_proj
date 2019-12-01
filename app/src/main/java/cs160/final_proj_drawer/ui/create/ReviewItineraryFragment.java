@@ -74,6 +74,9 @@ public class ReviewItineraryFragment extends Fragment {
             stopAdapter = new StopAdapter(itinStops);
             stops.setAdapter(stopAdapter);
 
+            // set the name and location
+            EditText itinName = (EditText) root.findViewById(R.id.name);
+            itinName.setText(itin.getItineraryName());
             return root;
         }
     }
