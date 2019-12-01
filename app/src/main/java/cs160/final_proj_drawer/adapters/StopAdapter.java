@@ -37,6 +37,8 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
         {
             super(itemView);
             this.stopName = (TextView) itemView.findViewById(R.id.stopName);
+            this.address = (TextView) itemView.findViewById(R.id.address);
+            this.description = (TextView) itemView.findViewById(R.id.description);
         }
     }
 
@@ -52,6 +54,9 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
     public void onBindViewHolder(StopAdapter.ViewHolder holder, final int position)
     {
         holder.stopName.setText(dataList.get(position).getName());
+        holder.address.setText(dataList.get(position).getLocation());
+        holder.description.setText(dataList.get(position).getDescription());
+
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override
