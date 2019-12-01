@@ -20,14 +20,8 @@ import java.util.List;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-
-import cs160.final_proj_drawer.adapters.StopAdapter;
 
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -51,7 +45,7 @@ public class CreateStopsFragment extends Fragment {
     //list of itineraries
     int currentStopIndex; // the itinerary index of what is displayed on the screen
 
-    List<Stop> stops;
+    ArrayList<Stop> stops;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Locations");
 

@@ -6,10 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.logic.Stop;
 
 /*  This UI element displays a single itinerary
  */
@@ -18,6 +23,9 @@ public class DisplaySingleItinFragment extends Fragment {
     //is null, or is missing stops, or other issues.
     //dont let the app crash if this is handed garbage
     private TextView body;
+    //stuff for the recycler
+    private RecyclerView itinStops;
+    private ItinAdapter stopAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -27,11 +35,15 @@ public class DisplaySingleItinFragment extends Fragment {
         Bundle bundle=getArguments();
         Object input = bundle.getSerializable("itinerary");
         if (input == null) {
-            body.setText("its empty");
-        } else {
-            ItineraryObject itin = (ItineraryObject) input;
-            body.setText(itin.getItineraryName());
+            body.setText("NO ITIN");
+            return root;
         }
+
+        ItineraryObject itin = (ItineraryObject) input;
+        body.setText(itin.getItineraryName());
+
+        ArrayList<Stop> stops = itin.getStops();
+
 
         return root;
     }
