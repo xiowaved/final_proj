@@ -56,21 +56,23 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         searchItins.setLayoutManager(itinLayoutManager);
 
-        //eventually wanna modularize this out of this func. just wanna call this
-            itineraries = new ArrayList<ItineraryObject>();
+        //this array list is where the itins are put after firebase call
+        itineraries = new ArrayList<>();
 
-            for (int i = 0; i < 1; i++)
-            {
-                //todo need some placeholder stops in these fragments
-                // so we can practice displaying single itins from here.
+        for (int i = 0; i < 2; i++)
+        {
+            //todo need some placeholder stops in these fragments
+            // so we can practice displaying single itins from here.
+            // i believe there is a func in firebase funcs we can
+            // use that made fully populated itins
+            
+                ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
+                        "coverPhoto", "berk", 1, null, new ArrayList<String>(), new ArrayList<String>());
+                itineraries.add(itinerary);
 
-                    //ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
-                    //        "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
-//    //
-//                    itineraries.add(itinerary);
-    //
-            }
-        // put them in
+        }
+
+        // todo put more itins in here form firebase
         itinAdapter = new ItinAdapter(itineraries, this);
         searchItins.setAdapter(itinAdapter);
         return root;
