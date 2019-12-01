@@ -24,14 +24,14 @@ public class DisplaySingleItinFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_display_itin, container, false);
         body = root.findViewById(R.id.body);
 
-        //Bundle bundle=getArguments();
-        //Object input = bundle.getSerializable("itinerary");
-        //if (input == null) {
+        Bundle bundle=getArguments();
+        Object input = bundle.getSerializable("itinerary");
+        if (input == null) {
             body.setText("its empty");
-        //} else {
-            //ItineraryObject itin = (ItineraryObject) input;
-            //body.setText(itin.getItineraryName());
-       // }
+        } else {
+            ItineraryObject itin = (ItineraryObject) input;
+            body.setText(itin.getItineraryName());
+        }
 
 
         return root;

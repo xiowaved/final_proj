@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/cardItinSize"
         android:orientation="horizontal">
 
         <ImageView
@@ -69,12 +69,12 @@
             android:textColor="@color/colorBg"
             android:textSize="@dimen/card_numLikes_textSize"/>
 
-    </RelativeLayout>
 
+    </RelativeLayout>
     <TextView
         android:id="@+id/body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/primary"
-        />
+        android:fontFamily="@font/primary" />
+
 </LinearLayout>
