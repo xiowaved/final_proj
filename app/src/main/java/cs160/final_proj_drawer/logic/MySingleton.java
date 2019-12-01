@@ -1,4 +1,4 @@
-package cs160.final_proj_drawer;
+package cs160.final_proj_drawer.logic;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -27,8 +27,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.logic.MySingleton;
 import cs160.final_proj_drawer.logic.Stop;
 
 public class MainActivity extends AppCompatActivity {

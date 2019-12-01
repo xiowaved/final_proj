@@ -3,6 +3,7 @@ package cs160.final_proj_drawer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.logic.MySingleton;
 import cs160.final_proj_drawer.logic.Stop;
 
 import android.content.Context;
