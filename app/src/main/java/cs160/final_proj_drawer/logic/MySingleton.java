@@ -9,8 +9,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-//todo Colby what is this
-//i believe this is firebase related
+// this was copy and pasted from android studio's example on singletons
+// ideally, we want to use volley out of the box, or actually
+// understand what we are doing if we extend it
 public class MySingleton {
 
         private static MySingleton instance;

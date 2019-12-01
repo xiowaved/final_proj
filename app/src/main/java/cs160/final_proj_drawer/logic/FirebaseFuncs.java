@@ -16,7 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,16 +24,25 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
-import cs160.final_proj_drawer.logic.MySingleton;
 
+/* This is all of our functions that interact with firebase.
+   They are created here, as seperate from UI as possible, so we can
+   Call them freely from any other part of our app
+ */
 public class FirebaseFuncs {
+
+    /*  stuff to access our project's firebase database.
+        if we change stuff on our firebase, we have to
+        change these
+     */
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static DatabaseReference myRef = database.getReference("Locations");
-    //    note this is hardcoded for now, but since the URL is a string its easily modifiable
-    String url = "https://travelr-7feac.firebaseio.com/Locations/Berkeley/Chemistry.json";
+    private static String url = "https://travelr-7feac.firebaseio.com/Locations/Berkeley/Chemistry.json";
 
-    //this should write a single finalized itin to our database.
-    //use when the user submits thei created itin
+    /*
+        this should write a single finalized itin to our database.
+        use when the user submits thei created itin
+     */
     public static void writeSingleItin(ItineraryObject itin) {
                 // i lifted this code out of create Itin
                 // i do not know how this works, isn't working here
