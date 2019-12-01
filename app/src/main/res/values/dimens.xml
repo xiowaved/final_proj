@@ -32,6 +32,9 @@
     <dimen name="cardItinSize">150dp</dimen>
     <dimen name="cardItinPadding">5dp</dimen>
 
+    <!-- stop cards -->
+    <dimen name="vert_stop_height">190dp</dimen>
+
     <!-- login page -->
     <dimen name="login_boxes_width">250dp</dimen>
     <dimen name="login_buttons_width">75dp</dimen>
