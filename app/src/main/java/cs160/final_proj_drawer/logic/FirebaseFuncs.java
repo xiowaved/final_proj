@@ -78,7 +78,7 @@ public class FirebaseFuncs {
     //todo vaguely understand what is happening here
     //this needs application context, not activity context
     // (otherwise itll die every time activity is redrawn, like rotation)
-    public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
+    public static void getItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
 
         // I did it this way b/c there might be itineraries with names that come after tags.
 //        that's why its this two-tier search.
