@@ -120,12 +120,12 @@ public class CreateFragment extends Fragment {
         location.getText().clear();
         description.getText().clear();
 
-        // SELMA passing fake stops to reviewFragment until we finish actual functionality of this page
-        stops = new ArrayList<Stop>();
-        stops.add(new Stop(new ArrayList<String>(), "Oakland Zoo", "1234 tst st. oakland,CA", "so fun so cool lots of" +
-                "words awesome palce 10/10 i love it here", 0));
-        stops.add(new Stop(new ArrayList<String>(), "Little Farm", "2395 Durant Ave. Berkeley,CA", "lots of animals" +
-                "you can feed the cows come on a sunny day because lots of grass and muddy in rain", 1));
+//        // SELMA passing fake stops to reviewFragment until we finish actual functionality of this page
+//        stops = new ArrayList<Stop>();
+//        stops.add(new Stop(new ArrayList<String>(), "Oakland Zoo", "1234 tst st. oakland,CA", "so fun so cool lots of" +
+//                "words awesome palce 10/10 i love it here", 0));
+//        stops.add(new Stop(new ArrayList<String>(), "Little Farm", "2395 Durant Ave. Berkeley,CA", "lots of animals" +
+//                "you can feed the cows come on a sunny day because lots of grass and muddy in rain", 1));
         createdItin = new ItineraryObject("creatorName", name.getText().toString(), 0,
                 "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
