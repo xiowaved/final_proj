@@ -47,6 +47,7 @@ public class ReviewItineraryFragment extends Fragment {
 
         Bundle bundle=getArguments();
         Object input = bundle.getSerializable("itinerary");
+
         if (input == null) {
             // something to catch potential null exceptions later
             errorMsg.setText("No stops found.");
@@ -55,18 +56,11 @@ public class ReviewItineraryFragment extends Fragment {
             return root;
         } else {
             itin = (ItineraryObject) input;
-            ArrayList<Stop> stopsList = (ArrayList<Stop>) itin.getStops();
+            ArrayList<Stop> itinStops = (ArrayList<Stop>) itin.getStops();
 
-            for (int i = 0; i < stopsList.size(); i++) {
-//                Stop stop = new Stop(new ArrayList<String>(), "Oakland Zoo", "9777 Golf Links Rd. Oakland, CA",
-//                        "Lots of fields for outdoor picnics with the kids. Food...", i);
-                Stop stop = stopsList.get(i);
-                stopsList.add(stop);
-            }
-            // put them in
-            stopAdapter = new StopAdapter(stopsList);
+            // populate cardviews with itinerary's stops from createFragment
+            stopAdapter = new StopAdapter(itinStops);
             stops.setAdapter(stopAdapter);
-
 
             return root;
         }
