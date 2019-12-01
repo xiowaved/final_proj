@@ -25,7 +25,7 @@
 
     <!-- text color on buttons -->
     <color name="colorButtonText">@color/colorOffWhite</color>
-
+    <color name="colorErrorMessage"> @color/colorRedError</color>
 
     <!-- these are the hex codes from specific colors. use to populate sections above this line -->
     <!-- NOTE:
