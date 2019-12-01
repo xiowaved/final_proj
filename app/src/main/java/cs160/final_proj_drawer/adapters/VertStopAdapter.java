@@ -14,15 +14,15 @@ stops in an itinerary vertically. used when viewing a
 full itinerary
  */
 public class VertStopAdapter extends StopAdapter {
-    public VertStopAdapter(ArrayList<Stop> data) {
-        super(data);
+    public VertStopAdapter(ArrayList<Stop> data, OnRecyclerCardListener onStopListener) {
+        super(data, onStopListener);
     }
 
     @Override
     public VertStopAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_vert_stop, parent, false);
-        StopAdapter.ViewHolder viewHolder = new StopAdapter.ViewHolder(view);
+        StopAdapter.ViewHolder viewHolder = new StopAdapter.ViewHolder(view, onStopListener);
         return viewHolder;
     }
 }

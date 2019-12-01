@@ -1,5 +1,6 @@
 package cs160.final_proj_drawer.ui.create;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
 import cs160.final_proj_drawer.adapters.StopAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.Stop;
@@ -28,13 +31,14 @@ import cs160.final_proj_drawer.logic.Stop;
  *  this is the UI page to review
  *  an itinerary user created in CreateStopsFragment
  */
-public class ReviewItineraryFragment extends Fragment {
+public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardListener {
 
     private RecyclerView stops;
     private StopAdapter stopAdapter;
     private TextView errorMsg;
     private ItineraryObject itin;
     private Button submit;
+    private ArrayList<Stop> itinStops;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,16 +59,15 @@ public class ReviewItineraryFragment extends Fragment {
         if (itin.getStops().isEmpty()) {
             // something to catch potential null exceptions later
             errorMsg.setText("No stops found.");
-            stopAdapter = new StopAdapter(new ArrayList<Stop>());
+            itinStops = new  ArrayList<Stop>();
+            stopAdapter = new StopAdapter(itinStops, this);
             stops.setAdapter(stopAdapter);
             return root;
         } else {
-            ArrayList<Stop> itinStops = (ArrayList<Stop>) itin.getStops();
-
+            itinStops = (ArrayList<Stop>) itin.getStops();
             // populate cardviews with itinerary's stops from createFragment
-            stopAdapter = new StopAdapter(itinStops);
+            stopAdapter = new StopAdapter(itinStops, this);
             stops.setAdapter(stopAdapter);
-
             // set the name and location
             EditText itinName = (EditText) root.findViewById(R.id.name);
             itinName.setText(itin.getItineraryName());
@@ -94,6 +97,29 @@ public class ReviewItineraryFragment extends Fragment {
                 }
             }
         });
+
+
+
+    }
+
+
+
+    @Override
+    public void onCardClick(int position) {
+        Stop selectedStop = itinStops.get(position);
+        Toast toast = Toast.makeText(getContext(), "clicked on stop #" + String.valueOf(position),
+                Toast.LENGTH_SHORT);
+        toast.show();
+        // TODO
+        /** if click on edit button
+         *      pass itinStops, position to navController.navigate(R.id.fragment_create_stops)
+         *
+         *  if click on delete button
+         *      remove this stop from private itin's stops
+         *      remove this card from recycler view
+         *      (might need to shift other cards to fill gap? unless it does it automatically)
+        */
+
     }
 }
 

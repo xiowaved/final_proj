@@ -74,8 +74,8 @@ public class DisplaySingleItinFragment extends Fragment {
             return root;
         }
 
-        stopAdapter = new VertStopAdapter(stops);
-        itinStops.setAdapter(stopAdapter);
+//        stopAdapter = new VertStopAdapter(stops, );
+//        itinStops.setAdapter(stopAdapter);
 
         //delete later
         /*

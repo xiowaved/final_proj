@@ -16,16 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/deleteIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            android:layout_weight="1"
+            android:background="@null"
             app:srcCompat="@drawable/ic_delete" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/editIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,6 +34,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:background="@null"
             app:srcCompat="@drawable/ic_pencil" />
 
     </RelativeLayout>
