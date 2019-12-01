@@ -69,6 +69,8 @@ public class FirebaseFuncs {
 
     //todo vaguely understand what is happening here
     public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
+        
+        // this is the request
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
