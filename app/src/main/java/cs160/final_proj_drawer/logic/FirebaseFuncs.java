@@ -11,12 +11,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
-import cs160.final_proj_drawer.MySingleton;
+import cs160.final_proj_drawer.logic.MySingleton;
 
 public class FirebaseFuncs {
 
@@ -111,9 +112,8 @@ public class FirebaseFuncs {
                         } else {}
 
 
+                    return list;
 
-//                        ItinAdapter itinAdapter = new ItinAdapter(context, list, navController);
-//                        homeItins.setAdapter(itinAdapter);
                     }
                 },new Response.ErrorListener() {
 
