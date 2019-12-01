@@ -67,9 +67,17 @@ public class DisplayMultItinsFragment extends Fragment //implements ItinAdapter.
         return root;
     }
 
+    public class etc extends DisplayMultItinsFragment implements ItinAdapter.OnItinListener{
+        @Override
+        public void onItinClick(int position) {
+            //    itineraries.get(position);
+            Log.i("Note", " was clicked! " + position);
+        }
+    }
+
     //@Override
-    //public void onItinClick(int position) {
+    public void onItinClick(int position) {
     //    itineraries.get(position);
-    //    Log.i("Note", " was clicked! " + position);
-    //}
+        Log.i("Note", " was clicked! " + position);
+    }
 }

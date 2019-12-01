@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.adapters;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,24 +19,35 @@ import cs160.final_proj_drawer.R;
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
     private ArrayList<ItineraryObject> dataList;
-    Context context;
+    private OnItinListener onItinListener;
 
 
     public ItinAdapter( ArrayList<ItineraryObject> data)
     {
         this.dataList = data;
+        this.onItinListener = onItinListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         TextView itineraryName;
         TextView numLikesText;
+        OnItinListener onItinListener;
 
-        public ViewHolder(View itemView)
+        public ViewHolder(View itemView, OnItinListener onItinListener)
         {
             super(itemView);
             this.itineraryName = (TextView) itemView.findViewById(R.id.text);
             this.numLikesText = (TextView) itemView.findViewById(R.id.numLikes);
+            this.onItinListener = onItinListener;
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            //onItinListener.onItinClick(getAdapterPosition());
+            Log.i("NOTE", "was a click");
         }
     }
 
@@ -43,7 +55,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_itinerary, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view, onItinListener);
         return viewHolder;
     }
 
@@ -52,14 +64,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     {
         holder.itineraryName.setText(dataList.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
-        holder.itemView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-            }
-        });
+        //holder.itemView.setOnClickListener(holder);
     }
 
     @Override
