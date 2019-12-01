@@ -52,22 +52,21 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/filterButton"
         app:layout_constraintTop_toBottomOf="@+id/tagSearchBar" />
-    <!--
-    this is the fun text :) for after you do a search.
-    maybe this will appear after hitting enter?
+
     <TextView
-        android:id="@+id/search_intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:fontFamily="@font/manjaribold"
-        android:text="Exploring Bangkok, Thailand"
-        android:textColor="@color/colorGreenDark"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/on_search_location"
+        android:layout_width="250dp"
+        android:layout_height="@dimen/fun_text_box_height"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/primary"
+        android:text="Exploring Bangkok"
+        android:textColor="@color/colorFunText"
+        android:textSize="@dimen/fun_text"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/filterButton"
+        app:layout_constraintTop_toBottomOf="@+id/tagSearchBar"
         />
--->
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/home_child_nav_view"

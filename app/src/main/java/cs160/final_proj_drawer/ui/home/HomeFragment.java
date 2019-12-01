@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -34,8 +35,8 @@ public class HomeFragment extends Fragment {
     private SearchView tagSearchBar;
     // lower search bar, appears after clicking inside top one (see Yelp as example);
     private SearchView locationSearchBar;
+    private TextView onSearchLocation;
     private NavController childNavController;
-    private NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
         locationSearchBar = root.findViewById(R.id.locationSearchBar);
         searchButton = root.findViewById(R.id.searchButton);
         filterButton = root.findViewById(R.id.filterButton);
+        onSearchLocation = root.findViewById(R.id.on_search_location);
 
         //navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
@@ -59,6 +61,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View root) {
                 Log.i("NOTE", "clicked search");
                 childNavController.navigate(R.id.fragment_display_itins);
+
+                locationSearchBar.setVisibility(View.INVISIBLE);
+                onSearchLocation.setVisibility(View.VISIBLE);
+                filterButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -81,6 +87,7 @@ public class HomeFragment extends Fragment {
             public void onFocusChange(View root, boolean hasFocus) {
                 if (hasFocus) {
                     locationSearchBar.setVisibility(View.VISIBLE);
+                    onSearchLocation.setVisibility(View.INVISIBLE);
                 } //else {
                     //exiting search stuff
                     //childNavController.navigate(R.id.fragment_splash);
@@ -94,7 +101,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFocusChange(View root, boolean hasFocus) {
                 if (hasFocus) {
-                    filterButton.setVisibility(View.VISIBLE);
+                    //shrug. this is when u tap into the location search bar
                 }
             }
         });
