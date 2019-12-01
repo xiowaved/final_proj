@@ -36,7 +36,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     //stuff for the recycler
     private RecyclerView searchItins;
     private ItinAdapter itinAdapter;
-    private ArrayList itineraries;
+    private ArrayList<ItineraryObject> itineraries;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -68,6 +68,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
     @Override
     public void onCardClick(int position) {
+        ItineraryObject selectedItin = itineraries.get(position);
         Log.i("Note", " was clicked! " + position);
     }
 
