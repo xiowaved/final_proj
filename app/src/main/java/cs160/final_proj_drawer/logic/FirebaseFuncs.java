@@ -69,8 +69,8 @@ public class FirebaseFuncs {
 
     //toDo make a function in itinObject that converts it to a json object, and vice versa
 
-    //todo vaguely understand what is happening here
-    //this needs application context, not activity context
+    // todo vaguely understand what is happening here
+    // this needs application context, not activity context
     // (otherwise itll die every time activity is redrawn, like rotation)
     public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
 
@@ -119,8 +119,6 @@ public class FirebaseFuncs {
             }
         });
 
-        //todo is it possible to replace this with out of the box
-        // Volley.newRequestQueue ?
         MySingleton mySingleton = new MySingleton(context);
         mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
