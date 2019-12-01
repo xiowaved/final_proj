@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,6 +19,8 @@ import java.util.List;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import cs160.final_proj_drawer.adapters.StopAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.Stop;
@@ -27,6 +30,8 @@ public class CreateFragment extends Fragment {
     private NavController navController;
 
     ItineraryObject createdItin;
+    String itinName;
+    String itinLocation;
     EditText name;
     EditText location;
     EditText description;
@@ -34,6 +39,7 @@ public class CreateFragment extends Fragment {
     Button viewPreviousStop;
     Button addNewStop;
     Button reviewItinerary;
+    TextView itineraryName;
     //list of itineraries
     int currentStopIndex; // the itinerary index of what is displayed on the screen
 
@@ -44,19 +50,29 @@ public class CreateFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_create, container, false);
 //        final TextView textView = root.findViewById(R.id.text_create);
-//        createViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
+////        createViewModel.getText().observe(this, new Observer<String>() {
+////            @Override
+////            public void onChanged(@Nullable String s) {
+////                textView.setText(s);
+////            }
+////        });
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
+        // Get itinerary name and location provided by user on initial creation page
+        Bundle bundle=getArguments();
+        // these are checked for validity before they're passed to the bundle into this fragment
+        itinName = bundle.getString("name");
+        itinLocation = bundle.getString("location");
 
         return root;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        itineraryName = (TextView) getView().findViewById(R.id.itineraryName);
+        itineraryName.setText(itinName);
+
         currentStopIndex = 0;
 
         name = (EditText) getView().findViewById(R.id.name);
@@ -120,13 +136,7 @@ public class CreateFragment extends Fragment {
         location.getText().clear();
         description.getText().clear();
 
-//        // SELMA passing fake stops to reviewFragment until we finish actual functionality of this page
-//        stops = new ArrayList<Stop>();
-//        stops.add(new Stop(new ArrayList<String>(), "Oakland Zoo", "1234 tst st. oakland,CA", "so fun so cool lots of" +
-//                "words awesome palce 10/10 i love it here", 0));
-//        stops.add(new Stop(new ArrayList<String>(), "Little Farm", "2395 Durant Ave. Berkeley,CA", "lots of animals" +
-//                "you can feed the cows come on a sunny day because lots of grass and muddy in rain", 1));
-        createdItin = new ItineraryObject("creatorName", name.getText().toString(), 0,
+        createdItin = new ItineraryObject("creatorName", itinName, 0,
                 "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
         Log.i("TAG", "load review fragment");
@@ -135,7 +145,7 @@ public class CreateFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", createdItin);
 
-        navController.navigate(R.id.action_nav_create_to_review, bundle);
+        navController.navigate(R.id.action_addStop_to_review, bundle);
 
         //TODO commit to firebase
     }

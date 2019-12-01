@@ -3,6 +3,7 @@ package cs160.final_proj_drawer.ui.create;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -65,4 +67,14 @@ public class ReviewItineraryFragment extends Fragment {
             return root;
         }
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        final EditText itinName = (EditText) getView().findViewById(R.id.name);
+        final EditText itinLocation = (EditText) getView().findViewById(R.id.location);
+        itinName.setText(itin.getItineraryName());
+//        itinLocation.setText(itin.get);
+    }
 }
+
+
