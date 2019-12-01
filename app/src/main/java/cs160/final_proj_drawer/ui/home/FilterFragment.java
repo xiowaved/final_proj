@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,11 @@ public class FilterFragment extends Fragment {
 
     private NavController navController;
 
+    private Button resetButton;
+    private Button cancelButton;
+
     private TextView priceLastClicked = null;
+    private RadioButton distanceLastClicked = null;
 
     private TextView freePrice;
     private TextView onePrice;
@@ -42,6 +47,7 @@ public class FilterFragment extends Fragment {
     private boolean twoPriceBool;
     private boolean threePriceBool;
 
+    private RadioGroup distanceGroup;
 
     private RadioButton anyDistance;
     private RadioButton blocksDistance;
@@ -147,6 +153,7 @@ public class FilterFragment extends Fragment {
             }
         });
 
+        distanceGroup = (RadioGroup) getView().findViewById(R.id.RGroup);
         anyDistance = (RadioButton) getView().findViewById(R.id.radioButton1);
         blocksDistance = (RadioButton) getView().findViewById(R.id.radioButton2);
         mileDistance = (RadioButton) getView().findViewById(R.id.radioButton3);
@@ -200,6 +207,43 @@ public class FilterFragment extends Fragment {
             }
         });
 
+        resetButton = (Button) getView().findViewById(R.id.reset);
+        cancelButton = (Button) getView().findViewById(R.id.cancel);
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //reset price UI
+                if (priceLastClicked != null) {
+                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
+                }
+                //reset distance UI
+                distanceGroup.clearCheck();
+                //reset price value
+                freePriceBool = false;
+                onePriceBool = false;
+                twoPriceBool = false;
+                threePriceBool = false;
+                //reset distance value
+                anyDistanceBool = false;
+                blocksDistanceBool = false;
+                mileDistanceBool = false;
+                milesDistanceBool = false;
+                Toast toast = Toast.makeText(getContext(), "clicked on reset",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //clear all values
+                //clear fragment
+                Toast toast = Toast.makeText(getContext(), "clicked on cancel",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
     }
 
 
