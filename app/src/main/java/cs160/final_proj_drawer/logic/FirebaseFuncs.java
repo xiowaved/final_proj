@@ -24,7 +24,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
-import cs160.final_proj_drawer.MySingleton;
+import cs160.final_proj_drawer.logic.MySingleton;
 
 public class FirebaseFuncs {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
