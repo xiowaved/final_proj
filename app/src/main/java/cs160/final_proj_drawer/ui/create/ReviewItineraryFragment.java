@@ -14,9 +14,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import cs160.final_proj_drawer.R;
@@ -29,7 +26,6 @@ import cs160.final_proj_drawer.logic.Stop;
  *  an itinerary user created in CreateFragment
  */
 public class ReviewItineraryFragment extends Fragment {
-
 
     private RecyclerView stops;
     private StopAdapter stopAdapter;

@@ -59,13 +59,13 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         //eventually wanna modularize this out of this func. just wanna call this
             itineraries = new ArrayList<ItineraryObject>();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 1; i++)
             {
                 //todo need some placeholder stops in these fragments
                 // so we can practice displaying single itins from here.
 
-//                    ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
-//                            "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
+                    //ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
+                    //        "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
 //    //
 //                    itineraries.add(itinerary);
     //

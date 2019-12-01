@@ -161,20 +161,6 @@ public class CreateFragment extends Fragment {
         navController.navigate(R.id.action_addStop_to_review, bundle);
 
 
-        myRef.child(location.getText().toString()).child(name.getText().toString()).setValue(createdItin)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Write was successful!
-                        myRef.push();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Write failed
-                    }
-                });
 
     }
 

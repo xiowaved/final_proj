@@ -28,11 +28,36 @@ import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.logic.MySingleton;
 
 public class FirebaseFuncs {
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Locations");
+    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static DatabaseReference myRef = database.getReference("Locations");
     //    note this is hardcoded for now, but since the URL is a string its easily modifiable
     String url = "https://travelr-7feac.firebaseio.com/Locations/Berkeley/Chemistry.json";
 
+    //this should write a single finalized itin to our database.
+    //use when the user submits thei created itin
+    public static void writeSingleItin(ItineraryObject itin) {
+                // i lifted this code out of create Itin
+                // i do not know how this works, isn't working here
+                //todo make this work
+                /*
+                        myRef.child(location.getText().toString()).child(name.getText().toString()).setValue(createdItin)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Write was successful!
+                        myRef.push();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                    }
+                });
+
+                 */
+
+    }
 
 //return type should be ArrayList<ItineraryObject>
     public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
