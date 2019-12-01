@@ -10,9 +10,11 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
+import cs160.final_proj_drawer.adapters.VertStopAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.Stop;
 
@@ -30,7 +32,7 @@ public class DisplaySingleItinFragment extends Fragment {
     private TextView numLikes;
     //stuff for the recycler
     private RecyclerView itinStops;
-    private ItinAdapter stopAdapter;
+    private VertStopAdapter stopAdapter;
 
     //logic data
     private ItineraryObject itin;
@@ -44,6 +46,13 @@ public class DisplaySingleItinFragment extends Fragment {
         title = root.findViewById(R.id.Title);
         body = root.findViewById(R.id.body);
         numLikes = root.findViewById(R.id.numLikes);
+
+        //recycler view setup
+        itinStops = (RecyclerView) root.findViewById(R.id.stops);
+        final LinearLayoutManager stopLayoutManager = new LinearLayoutManager(getActivity());
+        stopLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        itinStops.setLayoutManager(stopLayoutManager);
+
 
         //get args, exit if there wasn't an itin object handed to it
         Bundle bundle=getArguments();
@@ -65,12 +74,16 @@ public class DisplaySingleItinFragment extends Fragment {
             return root;
         }
 
+        stopAdapter = new VertStopAdapter(stops);
+        itinStops.setAdapter(stopAdapter);
+
         //delete later
+        /*
         String testInfo  = "";
         for (Stop stop:stops) {
             testInfo+= "\n" + stop.getName();
         }
-        body.setText(testInfo);
+        body.setText(testInfo);*/
 
 
         return root;
