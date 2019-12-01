@@ -41,16 +41,7 @@ public class ReviewItineraryFragment extends Fragment {
 
         // get UI stuff
         errorMsg = (TextView) root.findViewById(R.id.errorMsg);
-        submit = (Button) root.findViewById(R.id.submit);
-        // set listener for button when user submits itin
-        submit.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Toast toast = Toast.makeText(getContext(), "clicked on submit itin",
-                          Toast.LENGTH_SHORT);
-                  toast.show();
-              }
-          });
+
         //recycler view setup
         stops = (RecyclerView) root.findViewById(R.id.stops);
         final LinearLayoutManager stopsLayoutManager = new LinearLayoutManager(getActivity());
@@ -58,16 +49,15 @@ public class ReviewItineraryFragment extends Fragment {
         stops.setLayoutManager(stopsLayoutManager);
 
         Bundle bundle=getArguments();
-        Object input = bundle.getSerializable("itinerary");
+        itin = (ItineraryObject) bundle.getSerializable("itinerary");
 
-        if (input == null) {
+        if (itin.getStops().isEmpty()) {
             // something to catch potential null exceptions later
             errorMsg.setText("No stops found.");
             stopAdapter = new StopAdapter(new ArrayList<Stop>());
             stops.setAdapter(stopAdapter);
             return root;
         } else {
-            itin = (ItineraryObject) input;
             ArrayList<Stop> itinStops = (ArrayList<Stop>) itin.getStops();
 
             // populate cardviews with itinerary's stops from createFragment
@@ -83,10 +73,26 @@ public class ReviewItineraryFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        // set itinerary info in UI
         final EditText itinName = (EditText) getView().findViewById(R.id.name);
         final EditText itinLocation = (EditText) getView().findViewById(R.id.location);
         itinName.setText(itin.getItineraryName());
-//        itinLocation.setText(itin.get);
+
+        // set listener for button when user submits itin
+        submit = (Button) getView().findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!errorMsg.getText().toString().equals("")) {
+                    // do NOT write to firebase if itinerary has no stops
+                    //todo do we want to give some personalized error message? or just do nothing
+                } else {
+                    // write itinerary to firebase
+
+                    // navigate back to home splash screen
+                }
+            }
+        });
     }
 }
 

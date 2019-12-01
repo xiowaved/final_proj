@@ -44,7 +44,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="110dp"
             android:fontFamily="@font/manjariregular"
-            android:text="Location"
             android:textSize="20sp" />
 
         <EditText

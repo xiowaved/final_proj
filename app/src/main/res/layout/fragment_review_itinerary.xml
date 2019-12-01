@@ -99,12 +99,15 @@
         </androidx.recyclerview.widget.RecyclerView>
 
 
-            <TextView
-                android:id="@+id/errorMsg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="">
-            </TextView>
+        <TextView
+            android:id="@+id/errorMsg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/manjaribold"
+            android:text="No stops found"
+            android:textAlignment="center"
+            android:textSize="@dimen/card_text"
+            android:textColor="@color/colorErrorMessage"></TextView>
 
         <Button
             android:id="@+id/submit"

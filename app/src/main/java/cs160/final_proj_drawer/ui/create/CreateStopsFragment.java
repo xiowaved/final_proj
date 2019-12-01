@@ -148,16 +148,14 @@ public class CreateStopsFragment extends Fragment {
         description.getText().clear();
 
 
-        createdItin = new ItineraryObject("creatorName", itineraryName.getText().toString(), 0,
+        createdItin = new ItineraryObject("creatorName", itinName, 0,
                 "coverPhoto",itinLocation, stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
 
         Log.i("TAG", "load review fragment");
         //load review fragment
-
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", createdItin);
-
         navController.navigate(R.id.action_addStop_to_review, bundle);
 
 
