@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
 
+/*  this recyclerview adapter holds our small
+    horizontal recyclerviews
+    it just has a DRAWABLE and NAME for each item
+ */
 public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
 {
 

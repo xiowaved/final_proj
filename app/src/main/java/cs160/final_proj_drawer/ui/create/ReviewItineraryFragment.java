@@ -14,9 +14,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.adapters.StopAdapter;
-import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.Stop;
 
 /**
@@ -39,7 +37,7 @@ public class ReviewItineraryFragment extends Fragment {
         stopsLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         stops.setLayoutManager(stopsLayoutManager);
 
-        //eventually wanna modularize this out of this func. just wanna call this
+        //default values for the stops
         ArrayList stopsList = new ArrayList<Stop>();
 
         for (int i = 0; i < 4; i++)
@@ -47,7 +45,6 @@ public class ReviewItineraryFragment extends Fragment {
             Stop stop = new Stop(new ArrayList<String>(), "Oakland Zoo", "9777 Golf Links Rd. Oakland, CA",
                     "Lots of fields for outdoor picnics with the kids. Food...", i);
             stopsList.add(stop);
-            //
         }
         // put them in
         stopAdapter = new StopAdapter(stopsList);

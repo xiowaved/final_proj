@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import cs160.final_proj_drawer.adapters.HorizAdapter;
-import cs160.final_proj_drawer.adapters.ItinAdapter;
-import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
-//this is the user's profile
+//this is the UI for the user's profile
 public class ProfileFragment extends Fragment {
 
     private RecyclerView savedItins;

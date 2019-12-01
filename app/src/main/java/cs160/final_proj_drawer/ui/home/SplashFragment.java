@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.HorizAdapter;
 
-/* this displays categories, holds some
+/* this UI element displays categories, holds some
  cool text about the location, and has a displayMultItinsFragment
  at the bottom with most popular stuff for that location
  */
