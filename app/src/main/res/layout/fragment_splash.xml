@@ -24,11 +24,10 @@
         android:layout_margin="@dimen/activity_horizontal_margin"
        />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_itins"
-        android:layout_width="wrap_content"
-        android:layout_height="350dp"
-        android:orientation="vertical"
-        />
+    <fragment
+        android:id="@+id/display_home_itins"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     </LinearLayout>

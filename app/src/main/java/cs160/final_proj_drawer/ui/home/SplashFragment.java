@@ -29,9 +29,7 @@ public class SplashFragment extends Fragment {
     public JSONObject Tags;
 
     //recyclerView stuffs
-    private RecyclerView homeItins;
     private RecyclerView homeCats;
-    private ItinAdapter itinAdapter;
     private HorizAdapter catAdapter;
     private TypedArray categoryPics;
 
@@ -43,10 +41,6 @@ public class SplashFragment extends Fragment {
         navController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
 
         //recycler views setup
-        homeItins = (RecyclerView) root.findViewById(R.id.home_itins);
-        final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
-        itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        homeItins.setLayoutManager(itinLayoutManager);
 
         homeCats = (RecyclerView) root.findViewById(R.id.home_cats);
         final LinearLayoutManager catLayoutManager = new LinearLayoutManager(getActivity());
@@ -57,27 +51,19 @@ public class SplashFragment extends Fragment {
         categoryPics = getResources().obtainTypedArray(R.array.category_pics);
 
         //eventually wanna modularize this out of this func. just wanna call this
-            ArrayList itineraries = new ArrayList<ItineraryObject>();
             ArrayList cats = new ArrayList<String>();
             //make json call, find the length and that is your for loop upper bound
             String url = urlRoot + "/" + currentLocation + ".json";
 
         for (int i = 0; i < 4; i++)
             {
-                ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName", 0,
-                        "coverPhoto", 1, null, new ArrayList<String>(), new ArrayList<String>());
-
-                itineraries.add(itinerary);
                 int drawableID = categoryPics.getResourceId(i,0);
                 cats.add("cat "+drawableID);
 
             }
-        //makeItineraries(itineraries,url);
+
             catAdapter = new HorizAdapter(getContext(), cats);
             homeCats.setAdapter(catAdapter);
-
-            itinAdapter = new ItinAdapter(getContext(), itineraries);
-            homeItins.setAdapter(itinAdapter);
 
         return root;
     }

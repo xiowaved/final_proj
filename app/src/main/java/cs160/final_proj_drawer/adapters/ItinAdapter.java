@@ -21,17 +21,14 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     Context context;
 
 
-    public ItinAdapter(Context context, ArrayList<ItineraryObject> data)
+    public ItinAdapter( ArrayList<ItineraryObject> data)
     {
         this.dataList = data;
-        this.context = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView itineraryName;
-        int numLikes;
-        String coverPhoto;
         TextView numLikesText;
 
         public ViewHolder(View itemView)
@@ -60,8 +57,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                //toDo hand itinerary object
+
             }
         });
     }

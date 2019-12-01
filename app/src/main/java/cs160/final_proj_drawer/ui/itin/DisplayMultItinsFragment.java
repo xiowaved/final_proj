@@ -27,7 +27,7 @@ import cs160.final_proj_drawer.adapters.ItinAdapter;
 **  because no matter from where it was clicked, it pulls
 **  open the full page itinerary that was clicked.
  */
-public class DisplayMultItinsFragment extends Fragment implements ItinAdapter.onItinListener {
+public class DisplayMultItinsFragment extends Fragment {
 
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
     public JSONObject Tags;
@@ -61,14 +61,14 @@ public class DisplayMultItinsFragment extends Fragment implements ItinAdapter.on
     //
             }
         // put them in
-        itinAdapter = new ItinAdapter(getContext(), itineraries);
+        itinAdapter = new ItinAdapter(itineraries);
         searchItins.setAdapter(itinAdapter);
         return root;
     }
 
-    @Override
-    public void onItinClick(int position) {
-        itineraries.get(position);
-        Log.i("Note", " was clicked! " + position);
-    }
+    //@Override
+    //public void onItinClick(int position) {
+    //    itineraries.get(position);
+    //    Log.i("Note", " was clicked! " + position);
+    //}
 }
