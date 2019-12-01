@@ -7,239 +7,262 @@
     android:layout_height="fill_parent">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="36dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="Filters"
-            android:textAlignment="center"
-            android:textSize="19sp"
-            android:textColor="#194FA2"
-            app:layout_constraintEnd_toStartOf="@+id/reset"
-            app:layout_constraintStart_toEndOf="@+id/cancel"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/cancel"
+                android:layout_toEndOf="@+id/reset"
+                android:fontFamily="@font/manjaribold"
+                android:gravity="center"
+                android:text="Filters"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlueHeader"
+                android:textSize="19sp" />
 
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_corner_button"
-            android:text="Cancel"
-            android:textAllCaps="false"
-            android:textColor="#F6F6F6"
-            app:layout_constraintEnd_toStartOf="@+id/filter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/rounded_corner_button"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/colorOffWhite"
+                app:layout_constraintEnd_toStartOf="@+id/filter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_corner_button"
-            android:text="Reset"
-            android:textAllCaps="false"
-            android:textColor="#F6F6F6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/filter"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/rounded_corner_button"
+                android:text="Reset"
+                android:textAllCaps="false"
+                android:textColor="@color/colorOffWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/filter"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
             android:text="Price"
+            android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
-            android:textColor="#194FA2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cancel" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/price1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/rounded_corner_price"
+                android:fontFamily="@font/manjaribold"
+                android:text="Free"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/price2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/price1"
+                android:background="@drawable/rounded_corner_price"
+                android:fontFamily="@font/manjaribold"
+                android:text="$"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/price3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/price2"
+                android:background="@drawable/rounded_corner_price"
+                android:fontFamily="@font/manjaribold"
+                android:text="$$"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/price4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/price3"
+                android:background="@drawable/rounded_corner_price"
+                android:fontFamily="@font/manjaribold"
+                android:text="$$$"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
             android:text="Distance"
+            android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
-            android:textColor="#194FA2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/price1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/distance1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Any distance"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/distance" />
+
+            <TextView
+                android:id="@+id/distance2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/distance1"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="4 blocks"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/distance1" />
+
+            <TextView
+                android:id="@+id/distance3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/distance2"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="1 mile"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/distance2" />
+
+            <TextView
+                android:id="@+id/distance4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/distance3"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="5 miles"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/distance3" />
+
+            <RadioGroup
+                android:id="@+id/RGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="5dp">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+            </RadioGroup>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/preferences"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
             android:text="Preferences"
+            android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
-            android:textColor="#194FA2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/distance4" />
-
-        <TextView
-            android:id="@+id/Needs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="Needs"
-            android:textSize="24sp"
-            android:textColor="#194FA2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-        <Button
-            android:id="@+id/apply"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/rounded_corner_button"
-            android:text="Apply"
-            android:textAllCaps="false"
-            android:textColor="#F6F6F6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/price1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="25dp"
-            android:background="@drawable/rounded_corner_price"
-            android:fontFamily="@font/manjaribold"
-            android:text="Free"
-            android:textAlignment="center"
-            android:textSize="15sp"
-            android:textColor="#828181"
-            app:layout_constraintEnd_toStartOf="@+id/price2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
-
-        <TextView
-            android:id="@+id/price2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@drawable/rounded_corner_price"
-            android:fontFamily="@font/manjaribold"
-            android:text="$"
-            android:textAlignment="center"
-            android:textSize="15sp"
-            android:textColor="#828181"
-            app:layout_constraintEnd_toStartOf="@+id/price3"
-            app:layout_constraintStart_toEndOf="@+id/price1"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
-
-        <TextView
-            android:id="@+id/price3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@drawable/rounded_corner_price"
-            android:fontFamily="@font/manjaribold"
-            android:text="$$"
-            android:textAlignment="center"
-            android:textSize="15sp"
-            android:textColor="#828181"
-            app:layout_constraintEnd_toStartOf="@+id/price4"
-            app:layout_constraintStart_toEndOf="@+id/price2"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
-
-        <TextView
-            android:id="@+id/price4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="52dp"
-            android:background="@drawable/rounded_corner_price"
-            android:fontFamily="@font/manjaribold"
-            android:text="$$$"
-            android:textAlignment="center"
-            android:textSize="15sp"
-            android:textColor="#828181"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/price3"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
-
-        <TextView
-            android:id="@+id/distance1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="6dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="Any distance"
-            android:textColor="#828181"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/distance" />
-
-        <TextView
-            android:id="@+id/distance2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="4 blocks"
-            android:textColor="#828181"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/distance1" />
-
-        <TextView
-            android:id="@+id/distance3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="1 mile"
-            android:textColor="#828181"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/distance2" />
-
-        <TextView
-            android:id="@+id/distance4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="5 miles"
-            android:textColor="#828181"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/distance3" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -251,6 +274,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/preferences" />
 
+        <TextView
+            android:id="@+id/Needs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/manjaribold"
+            android:text="Needs"
+            android:textColor="@color/colorBlueHeader"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="325dp"
@@ -261,59 +297,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Needs" />
 
-        <RadioGroup
-            android:id="@+id/RGroup"
+        <Button
+            android:id="@+id/apply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="350dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/rounded_corner_button"
+            android:text="Apply"
+            android:textAllCaps="false"
+            android:textColor="@color/colorOffWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/distance">
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintVertical_bias="1.0" />
 
-            <RadioButton
-                android:id="@+id/radioButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:buttonTint="#3B88CC"
-                app:layout_constraintBottom_toTopOf="@+id/radioButton2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/distance1" />
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:buttonTint="#3B88CC"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.995"
-                app:layout_constraintStart_toEndOf="@+id/distance2"
-                app:layout_constraintTop_toBottomOf="@+id/radioButton1" />
-
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:buttonTint="#3B88CC"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.996"
-                app:layout_constraintStart_toEndOf="@+id/distance3"
-                app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
-
-            <RadioButton
-                android:id="@+id/radioButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:buttonTint="#3B88CC"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.996"
-                app:layout_constraintStart_toEndOf="@+id/distance4"
-                app:layout_constraintTop_toBottomOf="@+id/radioButton3" />
-        </RadioGroup>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
