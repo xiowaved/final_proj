@@ -1,11 +1,14 @@
 package cs160.final_proj_drawer.adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,6 +48,21 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
             this.address = (TextView) itemView.findViewById(R.id.address);
             this.description = (TextView) itemView.findViewById(R.id.description);
 
+            // set on click listeners for buttons in cardviews
+            ImageButton deleteButton = (ImageButton) itemView.findViewById(R.id.deleteIcon);
+            deleteButton.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("StopAdapter", "clicked delete");
+                }
+            }));
+            ImageButton editButton = (ImageButton) itemView.findViewById(R.id.editIcon);
+            editButton.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("StopAdapter", "clicked edit");
+                }
+            }));
             this.onStopListener = onStopListener;
             itemView.setOnClickListener(this);
 
