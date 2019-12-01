@@ -33,7 +33,6 @@ public class DisplaySingleItinFragment extends Fragment {
             body.setText(itin.getItineraryName());
         }
 
-
         return root;
     }
 }

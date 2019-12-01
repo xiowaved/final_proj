@@ -42,7 +42,13 @@
     <fragment
         android:id="@+id/fragment_review"
         android:name="cs160.final_proj_drawer.ui.create.ReviewItineraryFragment"
-        tools:layout="@layout/fragment_review_itinerary" />
+        tools:layout="@layout/fragment_review_itinerary" >
+        <argument
+            android:name="itinerary"
+            app:argType="cs160.final_proj_drawer.logic.ItineraryObject"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_display_itins"

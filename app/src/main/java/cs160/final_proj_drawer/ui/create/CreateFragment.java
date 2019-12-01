@@ -121,13 +121,16 @@ public class CreateFragment extends Fragment {
         description.getText().clear();
 
 
-        createdItin = new ItineraryObject("creatorName", "itineraryName", 0,
+        createdItin = new ItineraryObject("creatorName", name.getText().toString(), 0,
                 "coverPhoto", stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
         Log.i("TAG", "load review fragment");
         //load review fragment
 
-        navController.navigate(R.id.action_nav_create_to_review);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("itinerary", createdItin);
+
+        navController.navigate(R.id.action_nav_create_to_review, bundle);
 
         //TODO commit to firebase
     }
