@@ -43,6 +43,9 @@
 
     <dimen name="search_bar_width">250dp</dimen>
 
+    <!-- display single itin -->
+    <dimen name="single_itin_title_img_height">150dp</dimen>
+
     <!-- profile page -->
     <dimen name="profile_img_size">100dp</dimen>
 
