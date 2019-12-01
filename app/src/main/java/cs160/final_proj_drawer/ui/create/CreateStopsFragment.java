@@ -80,7 +80,7 @@ public class CreateStopsFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
+        // set itin name and location that was passed from createOverviewFragment
         itineraryName = (TextView) getView().findViewById(R.id.itineraryName);
         itineraryName.setText(itinName);
 
@@ -148,8 +148,8 @@ public class CreateStopsFragment extends Fragment {
         description.getText().clear();
 
 
-        createdItin = new ItineraryObject("creatorName", name.getText().toString(), 0,
-                "coverPhoto",location.getText().toString(), stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
+        createdItin = new ItineraryObject("creatorName", itineraryName.getText().toString(), 0,
+                "coverPhoto",itinLocation, stops.size(), stops, new ArrayList<String>(), new ArrayList<String>());
 
 
         Log.i("TAG", "load review fragment");
