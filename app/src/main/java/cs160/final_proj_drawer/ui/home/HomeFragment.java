@@ -68,6 +68,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        onSearchLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View root) {
+                Log.i("NOTE", "clicked search");
+                onSearchLocation.setVisibility(View.INVISIBLE);
+                locationSearchBar.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
