@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
@@ -32,6 +34,8 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
     public JSONObject Tags;
 
+    //stuff for nav
+    private NavController navController;
 
     //stuff for the recycler
     private RecyclerView searchItins;
@@ -42,6 +46,9 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
+
+        //find navController
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
@@ -72,7 +79,12 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     @Override
     public void onCardClick(int position) {
         ItineraryObject selectedItin = itineraries.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("itinerary", selectedItin);
+
         Log.i("Note", " was clicked! " + position);
+
+        //navController.navigate(R.id.fragment_display_single_itin, bundle);
     }
 
 }

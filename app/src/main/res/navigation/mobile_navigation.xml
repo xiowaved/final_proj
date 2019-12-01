@@ -50,10 +50,6 @@
         tools:layout="@layout/fragment_display_itins" />
 
     <fragment
-        android:id="@+id/fragment_filter"
-        android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
-        tools:layout="@layout/fragment_filter" />
-    <fragment
         android:id="@+id/fragment_display_single_itin"
         android:name="cs160.final_proj_drawer.ui.itin.DisplaySingleItinFragment"
         tools:layout="@layout/fragment_display_itin" >
