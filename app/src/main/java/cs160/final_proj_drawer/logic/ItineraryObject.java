@@ -17,14 +17,14 @@ public class ItineraryObject implements Serializable {
      private String coverPhoto;
      private String location;
      private int numStops;
-     private List<Stop> stops;
-     private List<String> tags;
-     private List<String> access;
+     private ArrayList<Stop> stops;
+     private ArrayList<String> tags;
+     private ArrayList<String> access;
 
 
     public ItineraryObject(String creatorName, String itineraryName, int numLikes,
-                                String coverPhoto, String location, int numStops, List<Stop> stops, List<String> tags,
-                                List<String>access) {
+                                String coverPhoto, String location, int numStops, ArrayList<Stop> stops, ArrayList<String> tags,
+                                ArrayList<String>access) {
         // Create an itinerary object
         this.creatorName = creatorName;
         this.itineraryName = itineraryName;
@@ -106,15 +106,15 @@ public class ItineraryObject implements Serializable {
         return this.numStops;
     }
 
-    public List<Stop> getStops() {
+    public ArrayList<Stop> getStops() {
         return this.stops;
     }
 
-    public List<String> getTags() {
+    public ArrayList<String> getTags() {
         return this.tags;
     }
 
-    public List<String> getAccess() {
+    public ArrayList<String> getAccess() {
         return this.access;
     }
 

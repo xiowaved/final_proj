@@ -16,12 +16,9 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/fragment_addStop"
+        android:id="@+id/fragment_create_stops"
         android:name="cs160.final_proj_drawer.ui.create.CreateStopsFragment"
         tools:layout="@layout/fragment_create">
-        <action
-            android:id="@+id/action_addStop_to_review"
-            app:destination="@id/fragment_review" />
         <argument
             android:name="itineraryName"
             app:argType="string" />
@@ -31,13 +28,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_create"
+        android:id="@+id/nav_create_overview"
         android:name="cs160.final_proj_drawer.ui.create.CreateOverviewFragment"
-        tools:layout="@layout/fragment_create_overview" >
-        <action
-            android:id="@+id/action_nav_create_to_addStop"
-            app:destination="@id/fragment_addStop" />
-    </fragment>
+        tools:layout="@layout/fragment_create_overview" />
 
     <fragment
         android:id="@+id/nav_settings"
