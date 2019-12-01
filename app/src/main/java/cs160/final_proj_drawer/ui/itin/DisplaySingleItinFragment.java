@@ -40,9 +40,21 @@ public class DisplaySingleItinFragment extends Fragment {
         }
 
         ItineraryObject itin = (ItineraryObject) input;
-        body.setText(itin.getItineraryName());
 
         ArrayList<Stop> stops = itin.getStops();
+        String testInfo  = itin.getItineraryName();
+        if (stops == null || stops.size() == 0) {
+            body.setText(itin.getItineraryName() + " has no stops");
+            return root;
+        }
+
+        for (Stop stop:stops) {
+            testInfo+= "\n" + stop.getName();
+        }
+
+
+
+        body.setText(testInfo);
 
 
         return root;
