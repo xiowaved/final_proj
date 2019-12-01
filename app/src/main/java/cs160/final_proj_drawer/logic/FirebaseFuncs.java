@@ -67,9 +67,13 @@ public class FirebaseFuncs {
 
     }
 
+    //toDo make a function in itinObject that converts it to a json object, and vice versa
+
     //todo vaguely understand what is happening here
+    //this needs application context, not activity context
+    // (otherwise itll die every time activity is redrawn, like rotation)
     public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
-        
+
         // this is the request
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
