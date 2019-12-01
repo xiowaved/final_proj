@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/fragment_addStop"
-        android:name="cs160.final_proj_drawer.ui.create.CreateFragment"
+        android:name="cs160.final_proj_drawer.ui.create.CreateStopsFragment"
         tools:layout="@layout/fragment_create">
         <action
             android:id="@+id/action_addStop_to_review"

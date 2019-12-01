@@ -25,7 +25,7 @@ import cs160.final_proj_drawer.logic.Stop;
 
 /**
  *  this is the UI page to review
- *  an itinerary user created in CreateFragment
+ *  an itinerary user created in CreateStopsFragment
  */
 public class ReviewItineraryFragment extends Fragment {
 

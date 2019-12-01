@@ -33,7 +33,7 @@ import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.Stop;
 
-public class CreateFragment extends Fragment {
+public class CreateStopsFragment extends Fragment {
 
     private NavController navController;
 
