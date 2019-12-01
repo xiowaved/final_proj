@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/fragment_create_stops"
         android:name="cs160.final_proj_drawer.ui.create.CreateStopsFragment"
-        tools:layout="@layout/fragment_create">
+        tools:layout="@layout/fragment_create_stops">
         <argument
             android:name="itineraryName"
             app:argType="string" />

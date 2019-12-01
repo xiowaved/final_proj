@@ -93,7 +93,6 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
 
     @Override
     public void onCardClick(int position) {
-        return;
-        //Log.i("NOTE", "stop clicked in displaySingleItin "+position);
+        Log.i("NOTE", "stop clicked in displaySingleItin "+position);
     }
 }

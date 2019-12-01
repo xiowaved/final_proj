@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -53,7 +52,7 @@ public class CreateStopsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_create, container, false);
+        View root = inflater.inflate(R.layout.fragment_create_stops, container, false);
 //        final TextView textView = root.findViewById(R.id.text_create);
 ////        createViewModel.getText().observe(this, new Observer<String>() {
 ////            @Override
