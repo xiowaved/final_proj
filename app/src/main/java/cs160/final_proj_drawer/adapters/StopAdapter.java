@@ -19,8 +19,7 @@ import cs160.final_proj_drawer.logic.Stop;
 
 public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
     private ArrayList<Stop> dataList;
-    Context context;
-    protected OnRecyclerCardListener onStopListener;
+    OnRecyclerCardListener onStopListener;
 
 
 

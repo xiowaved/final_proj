@@ -27,7 +27,6 @@ public class CreateOverviewFragment extends Fragment {
     private String itineraryName;
     private String itineraryLocation;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
