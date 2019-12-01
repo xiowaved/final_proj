@@ -10,6 +10,7 @@ import android.widget.Button;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
+import cs160.final_proj_drawer.logic.Stop;
 
 /*
 **  Displays a recyclerView with multiple Itineraries
@@ -61,13 +63,30 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
         for (int i = 0; i < 2; i++)
         {
-            //todo need some placeholder stops in these fragments
+            //placeholder stops and itins
             // so we can practice displaying single itins from here.
-            // i believe there is a func in firebase funcs we can
-            // use that made fully populated itins
 
-                ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
-                        "coverPhoto", "berk", 1, null, new ArrayList<String>(), new ArrayList<String>());
+            ArrayList<String> photolist = new ArrayList<>();
+            ArrayList<Stop> stoplist = new ArrayList<>();
+            ArrayList<String> taglist = new ArrayList<>();
+            ArrayList<String> acclist = new ArrayList<>();
+            Stop Safeway = new Stop(photolist, "Safeway", "6310 College Ave, Oakland, CA 94618", "I stopped here to pickup some meat. " +
+                    "They have pretty good deals here and I walked away with some pork loin that was on sale. They're also open 24 hours!", 0);
+            Stop BerkeleyBowl = new Stop(photolist, "Berkeley Bowl", "2020 Oregon St, Berkeley, CA 94703", "Very diverse set of produce. " +
+                    "Large selection and good prices on fruits/veggies not so great prices on everything else.", 1);
+            Stop WholeFoods = new Stop(photolist, "Whole Foods", "3000 Telegraph Ave, Berkeley, CA 94705", "Wide selection of organic food" +
+                    "a little pricey, but they have a good selection of exotic food/drinks, such as kombucha", 2);
+            stoplist.add(Safeway);
+            stoplist.add(BerkeleyBowl);
+            stoplist.add(WholeFoods);
+            taglist.add("shopping");
+            taglist.add("grocery");
+            taglist.add("food");
+            acclist.add("elevator");
+
+
+            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
+                    "coverPhoto", "berk", 1, stoplist, taglist, acclist);
                 itineraries.add(itinerary);
 
         }
