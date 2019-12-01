@@ -48,7 +48,7 @@ public class FirebaseFuncs {
                 // i do not know how this works, isn't working here
                 //todo make this work
                 String location = itin.getLocation();
-        myRef.child(location).setValue(itin)
+        myRef.child(location).child(itin.getItineraryName()).setValue(itin)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -63,6 +63,12 @@ public class FirebaseFuncs {
                     }
                 });
 
+        List<String> tags = itin.getTags();
+        for (int i = 0; i < tags.size(); i++) {
+            myRef.child(location).child(tags.get(i)).child(itin.getItineraryName()).setValue(itin);
+        }
+
+
 
 
     }
@@ -74,7 +80,9 @@ public class FirebaseFuncs {
     // (otherwise itll die every time activity is redrawn, like rotation)
     public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
 
-        // this is the request
+        // I did it this way b/c there might be itineraries with names that come after tags.
+//        that's why its this two-tier search.
+//        First it goes through all the itineraries, ignoring the tags folder, and gets to the last one and adds it
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
