@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,7 +44,7 @@ public class DisplayMultItinsFragment extends Fragment implements ItinAdapter.on
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
 
         //recycler view setup
-        searchItins = (RecyclerView) root.findViewById(R.id.search_itins);
+        searchItins = (RecyclerView) root.findViewById(R.id.stops);
         final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         searchItins.setLayoutManager(itinLayoutManager);

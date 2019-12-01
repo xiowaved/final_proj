@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="190dp"
+    android:layout_height="220dp"
+    android:layout_marginRight="10dp"
     android:layout_marginBottom="@dimen/cardItinPadding"
     android:foreground="?attr/selectableItemBackground"
-    app:cardElevation="0dp"
-    app:cardPreventCornerOverlap="false"
     app:cardBackgroundColor="@color/colorBg"
-    app:cardCornerRadius="@dimen/roundCorners">
+    app:cardCornerRadius="@dimen/roundCorners"
+    app:cardElevation="6dp"
+    app:cardPreventCornerOverlap="false">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,20 +23,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/cardTextPadding"
+            android:fontFamily="@font/manjaribold"
             android:text="Stop Name"
-            android:fontFamily="@font/primary"
-            android:textColor="@color/colorBg"
-            android:textSize="@dimen/card_text"/>
+            android:textColor="@color/colorGreyStroke"
+            android:textSize="@dimen/card_text" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/address"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="@dimen/cardTextPadding"-->
-<!--            android:text="9777 Golf Links Rd. Oakland, CA"-->
-<!--            android:fontFamily="@font/primary"-->
-<!--            android:textColor="@color/colorBg"-->
-<!--            android:textSize="@dimen/card_text"/>-->
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/stopName"
+            android:layout_marginLeft="@dimen/cardTextPadding"
+            android:fontFamily="@font/manjariregular"
+            android:text="Address"
+            android:textColor="@color/colorGreyStroke"
+            android:textSize="@dimen/card_text" />
+
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/address"
+            android:layout_marginLeft="@dimen/cardTextPadding"
+            android:fontFamily="@font/manjariregular"
+            android:text="Description"
+            android:textColor="@color/colorGreyStroke"
+            android:textSize="@dimen/card_text" />
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
