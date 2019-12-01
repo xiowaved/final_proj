@@ -35,7 +35,7 @@ public class FirebaseFuncs {
 
 
 
-    public static void makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
+    public static ArrayList<ItineraryObject> makeItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
@@ -107,9 +107,6 @@ public class FirebaseFuncs {
                                     String stopname = (String) stopJSON.get("name");
                                     Stop newstop = new Stop(new ArrayList<String>(), stopname, stopLocation, desc,index);
                                     stops.add(newstop);
-
-
-
                                 }
                                 JSONArray accessJSON = itin.getJSONArray("access");
                                 ArrayList<String> access = new ArrayList<>();
