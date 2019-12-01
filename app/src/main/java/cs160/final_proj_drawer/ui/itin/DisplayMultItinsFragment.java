@@ -48,7 +48,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
 
         //find navController
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
@@ -84,7 +84,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
         Log.i("Note", " was clicked! " + position);
 
-        //navController.navigate(R.id.fragment_display_single_itin, bundle);
+        navController.navigate(R.id.fragment_display_single_itin, bundle);
     }
 
 }
