@@ -85,7 +85,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
             acclist.add("elevator");
 
 
-            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, i*100,
+            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
                     "coverPhoto", "berk", 1, stoplist, taglist, acclist);
                 itineraries.add(itinerary);
 

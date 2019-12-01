@@ -22,16 +22,28 @@ public class DisplaySingleItinFragment extends Fragment {
     //IMPORTANT do some quality control. make sure you can handle if the itinerary handed to it
     //is null, or is missing stops, or other issues.
     //dont let the app crash if this is handed garbage
+
+    //ui elements
     private TextView body;
+    private Boolean bookmarked;
+    private TextView numLikes;
     //stuff for the recycler
     private RecyclerView itinStops;
     private ItinAdapter stopAdapter;
 
+    //logic data
+    private ItineraryObject itin;
+    private ArrayList<Stop> stops;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_display_itin, container, false);
-        body = root.findViewById(R.id.body);
 
+        //find stuff
+        body = root.findViewById(R.id.body);
+        numLikes = root.findViewById(R.id.numLikes);
+
+        //get args, exit if there wasn't an itin object handed to it
         Bundle bundle=getArguments();
         Object input = bundle.getSerializable("itinerary");
         if (input == null) {
@@ -39,15 +51,18 @@ public class DisplaySingleItinFragment extends Fragment {
             return root;
         }
 
-        ItineraryObject itin = (ItineraryObject) input;
+        //get overarching itin stuff set up
+        itin = (ItineraryObject) input;
+        stops = itin.getStops();
+        numLikes.setText(Integer.toString(itin.getNumLikes()));//itin.getNumLikes());
 
-        ArrayList<Stop> stops = itin.getStops();
-        String testInfo  = itin.getItineraryName();
+        //check if the itin object has stops, exit if it doesn't
         if (stops == null || stops.size() == 0) {
             body.setText(itin.getItineraryName() + " has no stops");
             return root;
         }
 
+        String testInfo  = itin.getItineraryName();
         for (Stop stop:stops) {
             testInfo+= "\n" + stop.getName();
         }
