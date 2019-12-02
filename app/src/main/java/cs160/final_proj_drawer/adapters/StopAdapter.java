@@ -40,18 +40,21 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
         OnRecyclerCardListener onStopListener;
 
 
-        public ViewHolder(View itemView, OnRecyclerCardListener onStopListener)
+        public ViewHolder(final View itemView, final OnRecyclerCardListener onStopListener)
         {
             super(itemView);
             this.stopName = (TextView) itemView.findViewById(R.id.stopName);
             this.address = (TextView) itemView.findViewById(R.id.address);
             this.description = (TextView) itemView.findViewById(R.id.description);
 
+            itemView.setOnClickListener(this);
+
             // set on click listeners for buttons in cardviews
             ImageButton deleteButton = (ImageButton) itemView.findViewById(R.id.deleteIcon);
             deleteButton.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    onStopListener.onCardClick(getAdapterPosition(), false);
                     Log.i("StopAdapter", "clicked delete");
                 }
             }));
@@ -59,19 +62,17 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
             editButton.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int stopIndex = getAdapterPosition();
-
+                    onStopListener.onCardClick(getAdapterPosition(), true);
                     Log.i("StopAdapter", "clicked edit" + ""+ getAdapterPosition());
                 }
             }));
             this.onStopListener = onStopListener;
-            itemView.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View view) {
-            onStopListener.onCardClick(getAdapterPosition());
+//            onStopListener.onCardClick(getAdapterPosition());
             Log.i("Stop Adapter", "stop clicked");
         }
     }

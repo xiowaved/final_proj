@@ -98,7 +98,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     }
 
     @Override
-    public void onCardClick(int position) {
+    public void onCardClick(int position, boolean editMode) {
         ItineraryObject selectedItin = itineraries.get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);

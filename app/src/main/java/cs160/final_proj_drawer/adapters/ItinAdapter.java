@@ -46,7 +46,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
         @Override
         public void onClick(View view) {
-            onItinListener.onCardClick(getAdapterPosition());
+            onItinListener.onCardClick(getAdapterPosition(), false);
             Log.i("NOTE", "was a click");
         }
     }

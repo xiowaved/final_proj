@@ -106,16 +106,15 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
 
 
     @Override
-    public void onCardClick(int position) {
+    public void onCardClick(int position, boolean editMode) {
         Stop selectedStop = itinStops.get(position);
         Toast toast = Toast.makeText(getContext(), "clicked on stop #" + String.valueOf(position),
                 Toast.LENGTH_SHORT);
         toast.show();
-        // TODO
-        /** if click on edit button
+        /** if editMode
          *      pass itinStops, position to navController.navigate(R.id.fragment_create_stops)
          *
-         *  if click on delete button
+         *  else
          *      remove this stop from private itin's stops
          *      remove this card from recycler view
          *      (might need to shift other cards to fill gap? unless it does it automatically)

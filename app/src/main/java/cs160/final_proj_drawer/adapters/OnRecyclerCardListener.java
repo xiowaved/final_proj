@@ -7,5 +7,5 @@ package cs160.final_proj_drawer.adapters;
    can receive and take action based off of clicks.
  */
 public interface OnRecyclerCardListener {
-    void onCardClick(int position);
+    void onCardClick(int position, boolean editMode);
 }
