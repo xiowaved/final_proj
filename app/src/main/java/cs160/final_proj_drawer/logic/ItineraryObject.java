@@ -130,6 +130,10 @@ public class ItineraryObject implements Serializable {
         return this.itineraryName;
     }
 
+    public void setItineraryName(String name) {
+        this.itineraryName = name;
+    }
+
     public int getNumLikes() {
         return this.numLikes;
     }
@@ -152,6 +156,10 @@ public class ItineraryObject implements Serializable {
 
     public String getLocation() {return this.location;}
 
+    public void setItineraryLocation(String location) {
+        this.location = location;
+    }
+
     public void addStop(Stop s) {
         this.stops.add(s);
     }
@@ -164,6 +172,10 @@ public class ItineraryObject implements Serializable {
 
     public void setStops(ArrayList<Stop> stops) {
         this.stops = stops;
+    }
+
+    public void setNumStops(int num) {
+        this.numStops = num;
     }
 }
 

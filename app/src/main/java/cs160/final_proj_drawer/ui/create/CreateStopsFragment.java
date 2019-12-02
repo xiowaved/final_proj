@@ -184,6 +184,7 @@ public class CreateStopsFragment extends Fragment {
         stopDescriptionTextView.getText().clear();
 
         itineraryObject.setStops(stops);
+        itineraryObject.setNumStops(stops.size());
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", itineraryObject);
         navController.navigate(R.id.fragment_review, bundle);
