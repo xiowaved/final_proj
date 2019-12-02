@@ -141,6 +141,95 @@ public class FirebaseFuncs {
         mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
     }
+    public static void getNestedItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final ArrayList<String> neededTags){
+
+        Log.i("getItin", "called getItin");
+        // I did it this way b/c there might be itineraries with names that come after tags.
+//        that's why its this two-tier search.
+//        First it goes through all the itineraries, ignoring the tags folder, and gets to the last one and adds it
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
+                new Response.Listener<JSONObject>() {
+                    public void onResponse(JSONObject response) {
+                        JSONObject info = response;
+                        Iterator<String> keys = info.keys();
+                        String name = "";
+                        //Log.i("getItin", "inside the listener onresponse "+ keys.hasNext());
+                        while (keys.hasNext()) {
+                            name = keys.next();
+                            //Log.i("getItin", "inside the loop "+ name);
+                            if (name != "Tags") {
+                                //Log.i("getItin", "inside if "+ name);
+                                try {
+                                    boolean hasAll = true;
+
+
+                                    JSONObject itin = info.getJSONObject(name);
+                                    Log.i("getItin", "before filling itin "+ name);
+                                    ItineraryObject itinerary = new ItineraryObject(itin);
+                                    for (int i = 0; i < neededTags.size(); i++) {
+                                        ArrayList<String> tags = itinerary.getTags();
+                                        if (tags.contains(neededTags.get(i))) {
+
+                                        } else {
+                                            hasAll = false;
+                                        }
+                                    }
+                                    if (hasAll = true) {
+                                        list.add(itinerary);
+                                    } else {};
+
+//                                   HERE is where the itinerary is added once its fully been constructed
+                                    //Log.i("getItin", "should have added (first if)");
+
+                                    //Log.i("getItin", "should have added (first if)");
+
+                                } catch (JSONException e) {
+//                                    this is required for code to work, ignore it
+                                }
+                            } else {}
+                        }
+                        if (name != "Tags") {
+                            try {
+
+                                boolean hasAll = true;
+
+
+                                JSONObject itin = info.getJSONObject(name);
+                                Log.i("getItin", "before filling itin "+ name);
+                                ItineraryObject itinerary = new ItineraryObject(itin);
+                                for (int i = 0; i < neededTags.size(); i++) {
+                                    ArrayList<String> tags = itinerary.getTags();
+                                    if (tags.contains(neededTags.get(i))) {
+
+                                    } else {
+                                        hasAll = false;
+                                    }
+                                }
+                                if (hasAll = true) {
+                                    list.add(itinerary);
+                                } else {};
+
+                            } catch (JSONException e) {
+//                                    this is required for code to work, ignore it
+                            }
+                        } else {}
+
+//this is where it's done. we want a way for it to convey it is done. maybe loop / wait until this mutates a bool val?
+//                    return list;
+
+                    }
+                },new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        MySingleton mySingleton = new MySingleton(context);
+        mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+
+    }
 
 
     public static void createTestItinerary(View view){
