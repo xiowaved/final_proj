@@ -43,7 +43,11 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
     private TextView errorMsg;
     private ItineraryObject itineraryObject;
     private Button submit;
+    private EditText itinName;
+    private EditText itinLoc;
+
     private ArrayList<Stop> itinStops;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -69,9 +73,10 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             itinStops = new ArrayList<Stop>();
             stopAdapter = new StopAdapter(itinStops, this);
             stops.setAdapter(stopAdapter);
-            EditText itinName = (EditText) root.findViewById(R.id.name);
+            // set the itinerary name and location editText's entries in UI
+            itinName = (EditText) root.findViewById(R.id.name);
             itinName.setText(itineraryObject.getItineraryName());
-            EditText itinLoc = (EditText) root.findViewById(R.id.location);
+            itinLoc = (EditText) root.findViewById(R.id.location);
             itinLoc.setText(itineraryObject.getLocation());
             return root;
         } else {
@@ -80,9 +85,9 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             stopAdapter = new StopAdapter(itinStops, this);
             stops.setAdapter(stopAdapter);
             // set the itinerary name and location editText's entries in UI
-            EditText itinName = (EditText) root.findViewById(R.id.name);
+            itinName = (EditText) root.findViewById(R.id.name);
             itinName.setText(itineraryObject.getItineraryName());
-            EditText itinLoc = (EditText) root.findViewById(R.id.location);
+            itinLoc = (EditText) root.findViewById(R.id.location);
             itinLoc.setText(itineraryObject.getLocation());
             return root;
         }
@@ -105,6 +110,11 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     //todo do we want to give some personalized error message? or just do nothing
                 } else {
                     // write itinerary to firebase
+                    itineraryObject.setItineraryName(itinName.getText().toString());
+                    itineraryObject.setItineraryLocation(itinLocation.getText().toString());
+                    Log.i("itin name", itineraryObject.getItineraryName());
+                    Log.i("itin loc", itineraryObject.getLocation());
+
                     writeSingleItin(itineraryObject);
 
 
