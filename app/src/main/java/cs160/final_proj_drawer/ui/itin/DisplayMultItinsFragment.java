@@ -96,20 +96,24 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         }
         // todo put more itins in here form firebase
 
-        CountDownLatch done = new CountDownLatch(5);
+        //CountDownLatch done = new CountDownLatch(5);
         String url = FirebaseFuncs.url+"Berkeley.json";
         String urlSearch = "https://travelr-7feac.firebaseio.com/Locations/Berkeley.json";
-        FirebaseFuncs.getItineraries(viewModel.itins, urlSearch, getContext());
+        FirebaseFuncs.getItineraries(viewModel.itins, url, getContext());
 
 /*
-//this just ended up pausing everything :'(
+        //this just ended up pausing everything :'(
         try {
             done.await(500, TimeUnit.MILLISECONDS); // wait half a second
         } catch(InterruptedException e) {
             Log.i("ERROR", "got interuptedException");
         }
 */
+        //this is where we put an observer to watch the live data and update
+        //either update when all the data is ready, or put a loop over the adapter creation / binding
+        //and update with each new itin
 
+        //make sure this log happens after after all the stuff finishes
         Log.i("IN FRAG","before attaching adapter");
         itinAdapter = new ItinAdapter(viewModel.itins, this);
         searchItins.setAdapter(itinAdapter);
