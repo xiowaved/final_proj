@@ -65,7 +65,7 @@ public class CreateStopsFragment extends Fragment {
         // Get itinerary object passed into this fragment
         Bundle bundle=getArguments();
         itineraryObject = (ItineraryObject) bundle.getSerializable("itinerary");
-
+        currentStopIndex = bundle.getInt("stopIndex");
         return root;
     }
 
@@ -95,7 +95,7 @@ public class CreateStopsFragment extends Fragment {
             // if fragment received an itinerary with NO stops, then navigated here from CREATEOVERVIEW
             Log.i("Create Stops", "navigated from CreateOverview");
             editing = false;
-            currentStopIndex = 0;
+//            currentStopIndex = 0;
         } else {
             // if fragment received an itinerary WITH stops, then navigated here from REVIEWITINERARY
             Log.i("Create Stops", "navigated from ReviewItin");
@@ -105,7 +105,7 @@ public class CreateStopsFragment extends Fragment {
             // populate the editTexts
         }
 
-
+        Log.i("create stops", "" + currentStopIndex);
         // add onClick listeners for the buttons in the UI
         addNewPhoto.setOnClickListener(new View.OnClickListener() {
             @Override

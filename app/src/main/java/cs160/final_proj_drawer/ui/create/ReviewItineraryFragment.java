@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +34,7 @@ import cs160.final_proj_drawer.logic.Stop;
  *  an itinerary user created in CreateStopsFragment
  */
 public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardListener {
+    private NavController navController;
 
     private RecyclerView stops;
     private StopAdapter stopAdapter;
@@ -43,6 +46,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_review_itinerary, container, false);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         // get UI stuff
         errorMsg = (TextView) root.findViewById(R.id.errorMsg);
@@ -54,13 +58,13 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
         stops.setLayoutManager(stopsLayoutManager);
 
         // get itinerary object from previous fragment
-        Bundle bundle=getArguments();
+        Bundle bundle = getArguments();
         itineraryObject = (ItineraryObject) bundle.getSerializable("itinerary");
 
         if (itineraryObject.getStops().isEmpty()) {
             // something to catch potential null exceptions later
             errorMsg.setText("No stops found.");
-            itinStops = new  ArrayList<Stop>();
+            itinStops = new ArrayList<Stop>();
             stopAdapter = new StopAdapter(itinStops, this);
             stops.setAdapter(stopAdapter);
             return root;
@@ -99,18 +103,21 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             }
         });
 
-
-
     }
-
 
 
     @Override
     public void onCardClick(int position, boolean editMode) {
         Stop selectedStop = itinStops.get(position);
-        Toast toast = Toast.makeText(getContext(), "clicked on stop #" + String.valueOf(position),
+        Toast toast = Toast.makeText(getContext(), "clicked on stop #" + "" + (position),
                 Toast.LENGTH_SHORT);
         toast.show();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("itinerary", itineraryObject);
+        bundle.putInt("stopIndex", position);
+        if (editMode) {
+            navController.navigate(R.id.fragment_create_stops,bundle);
+        }
         /** if editMode
          *      pass itinStops, position to navController.navigate(R.id.fragment_create_stops)
          *
@@ -118,7 +125,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
          *      remove this stop from private itin's stops
          *      remove this card from recycler view
          *      (might need to shift other cards to fill gap? unless it does it automatically)
-        */
+         */
 
     }
 }
