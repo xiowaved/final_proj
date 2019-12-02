@@ -101,7 +101,7 @@ public class CreateStopsFragment extends Fragment {
             Log.i("Create Stops", "navigated from ReviewItin");
             editing = true;
             // get current stop index from fragment bundle
-            currentStopIndex = ;
+//            currentStopIndex = ;
             // populate the editTexts
         }
 
@@ -168,7 +168,7 @@ public class CreateStopsFragment extends Fragment {
             Stop oldStop = stops.get(currentStopIndex);
             Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
             stops.set(currentStopIndex, revisedStop);
-            
+
             // clear the UI textviews
             stopNameTextView.getText().clear();
             stopLocationTextView.getText().clear();
@@ -194,12 +194,27 @@ public class CreateStopsFragment extends Fragment {
 
     public void onAddNewStop(View view) {
         if (currentStopIndex < stops.size() - 1) { // if before add is not the last added stop
+            String savedName = stopNameTextView.getText().toString();
+            String savedLocation = stopLocationTextView.getText().toString();
+            String savedDescription = stopDescriptionTextView.getText().toString();
+            Stop oldStop = stops.get(currentStopIndex);
+            Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+            stops.set(currentStopIndex, revisedStop);
+
             currentStopIndex++;
             Stop existingStop = stops.get(currentStopIndex);
             stopNameTextView.setText(existingStop.getName());
             stopLocationTextView.setText(existingStop.getLocation());
             stopDescriptionTextView.setText(existingStop.getDescription());
         } else if (currentStopIndex == stops.size() - 1) { // if before add is the last stop
+
+            String savedName = stopNameTextView.getText().toString();
+            String savedLocation = stopLocationTextView.getText().toString();
+            String savedDescription = stopDescriptionTextView.getText().toString();
+            Stop oldStop = stops.get(currentStopIndex);
+            Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+            stops.set(currentStopIndex, revisedStop);
+
             currentStopIndex++;
             stopNameTextView.getText().clear();
             stopLocationTextView.getText().clear();
