@@ -103,6 +103,10 @@ public class CreateStopsFragment extends Fragment {
             // get current stop index from fragment bundle
 //            currentStopIndex = ;
             // populate the editTexts
+            Stop currStop = stops.get(currentStopIndex);
+            stopNameTextView.setText(currStop.getName());
+            stopLocationTextView.setText(currStop.getLocation());
+            stopDescriptionTextView.setText(currStop.getDescription());
         }
 
         Log.i("create stops", "" + currentStopIndex);
@@ -162,6 +166,7 @@ public class CreateStopsFragment extends Fragment {
                 }
             }
             // replace currentStopIndex'th entry in stops to reflect user's updates in textviews
+            //todo breaking @ oldStop w index out of bounds error
             String savedName = stopNameTextView.getText().toString();
             String savedLocation = stopLocationTextView.getText().toString();
             String savedDescription = stopDescriptionTextView.getText().toString();
