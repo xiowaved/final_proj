@@ -99,10 +99,7 @@ public class FirebaseFuncs {
                                 //Log.i("getItin", "inside if "+ name);
                                 try {
 
-
-                                    Log.i("getItin", "getting the key "+ name);
-                                    //THIS IS IT this is the line where it kaputs
-                                    JSONObject itin = info.getJSONObject("name");
+                                    JSONObject itin = info.getJSONObject(name);
                                     Log.i("getItin", "before filling itin "+ name);
                                     ItineraryObject itinerary = new ItineraryObject(itin);
 //                                   HERE is where the itinerary is added once its fully been constructed

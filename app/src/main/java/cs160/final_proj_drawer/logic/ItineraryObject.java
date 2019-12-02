@@ -50,16 +50,31 @@ public class ItineraryObject implements Serializable {
         ArrayList<String> access = new ArrayList<>();
         try {
             creator = (String) itin.get("creatorName");
+        }catch (JSONException e){
+            creator = "Anonymous";
+        }
+        try{
             itinName = (String) itin.get("itineraryName");
+        } catch(JSONException e) {
+            itinName = "Untitled";
+        }
+        try{
             coverPhoto = (String) itin.get("coverPhoto");
+        } catch(JSONException e) {
+            coverPhoto = null;
+        }
+        try{
             location = (String) itin.get("location");
+        } catch(JSONException e) {
+            location = "Unknown Location";
+        }
+        try{
             numLikes = (int) itin.get("numLikes");
+        } catch(JSONException e) {
+            numLikes = 0;
+        }
+        try{
             numStops = (int) itin.get("numStops");
-            JSONArray tagsJSON = itin.getJSONArray("tags");
-
-            for (int i = 0; i < tagsJSON.length(); i++) {
-                tags.add((String)tagsJSON.get(i));
-            }
             JSONArray stopsJSON = itin.getJSONArray("stops");
 
             for (int i = 0; i < stopsJSON.length(); i++) {
@@ -71,14 +86,30 @@ public class ItineraryObject implements Serializable {
                 Stop newstop = new Stop(new ArrayList<String>(), stopname, stopLocation, desc,index);
                 stops.add(newstop);
             }
+        } catch(JSONException e) {
+            numStops = 0;
+            stops = null;
+        }
+        try{
+            JSONArray tagsJSON = itin.getJSONArray("tags");
+
+            for (int i = 0; i < tagsJSON.length(); i++) {
+                tags.add((String)tagsJSON.get(i));
+            }
+
+        } catch(JSONException e) {
+            tags = null;
+        }
+        try{
             JSONArray accessJSON = itin.getJSONArray("access");
 
             for (int i = 0; i < accessJSON.length(); i++) {
                 access.add((String)accessJSON.get(i));
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch(JSONException e) {
+            access = null;
         }
+
         this.creatorName = creator;
         this.location = location;
         this.access = access;
