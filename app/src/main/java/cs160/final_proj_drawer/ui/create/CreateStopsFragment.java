@@ -76,7 +76,7 @@ public class CreateStopsFragment extends Fragment {
         itineraryNameTextView.setText(itineraryObject.getItineraryName());
 
         // index to keep track of which stop we're on; used to populate/clear text in UI
-        currentStopIndex = 0;
+//        currentStopIndex = 0;
 
         // get UI elements
         stopNameTextView = (EditText) getView().findViewById(R.id.name);
@@ -95,10 +95,14 @@ public class CreateStopsFragment extends Fragment {
             // if fragment received an itinerary with NO stops, then navigated here from CREATEOVERVIEW
             Log.i("Create Stops", "navigated from CreateOverview");
             editing = false;
+            currentStopIndex = 0;
         } else {
             // if fragment received an itinerary WITH stops, then navigated here from REVIEWITINERARY
             Log.i("Create Stops", "navigated from ReviewItin");
             editing = true;
+            // get current stop index from fragment bundle
+            currentStopIndex = ;
+            // populate the editTexts
         }
 
 
@@ -157,6 +161,14 @@ public class CreateStopsFragment extends Fragment {
                     // some fields left blank in UI by user
                 }
             }
+            // replace currentStopIndex'th entry in stops to reflect user's updates in textviews
+            String savedName = stopNameTextView.getText().toString();
+            String savedLocation = stopLocationTextView.getText().toString();
+            String savedDescription = stopDescriptionTextView.getText().toString();
+            Stop oldStop = stops.get(currentStopIndex);
+            Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+            stops.set(currentStopIndex, revisedStop);
+            
             // clear the UI textviews
             stopNameTextView.getText().clear();
             stopLocationTextView.getText().clear();
