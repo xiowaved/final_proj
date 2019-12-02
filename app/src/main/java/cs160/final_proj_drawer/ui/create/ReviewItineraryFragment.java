@@ -29,6 +29,8 @@ import cs160.final_proj_drawer.adapters.StopAdapter;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.Stop;
 
+import static cs160.final_proj_drawer.logic.FirebaseFuncs.writeSingleItin;
+
 /**
  *  this is the UI page to review
  *  an itinerary user created in CreateStopsFragment
@@ -103,6 +105,8 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     //todo do we want to give some personalized error message? or just do nothing
                 } else {
                     // write itinerary to firebase
+                    writeSingleItin(itineraryObject);
+
 
                     // navigate back to home splash screen
                 }
