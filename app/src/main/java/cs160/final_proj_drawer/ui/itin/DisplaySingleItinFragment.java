@@ -29,7 +29,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
 
     //ui elements
     private TextView title;
-    private TextView body;
+    private TextView location;
     private Boolean bookmarked;
     private TextView numLikes;
     //stuff for the recycler
@@ -46,7 +46,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
 
         //find stuff
         title = root.findViewById(R.id.Title);
-        body = root.findViewById(R.id.body);
+        location = root.findViewById(R.id.location);
         numLikes = root.findViewById(R.id.numLikes);
 
         //recycler view setup
@@ -69,6 +69,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         stops = itin.getStops();
         title.setText(itin.getItineraryName());
         numLikes.setText(Integer.toString(itin.getNumLikes()));
+        location.setText(itin.getLocation());
 
         //check if the itin object has stops, exit if it doesn't
         if (stops == null || stops.size() == 0) {

@@ -42,10 +42,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //this doesn't work yet. need to find out how to get the childNavController
         childNavController = Navigation.findNavController(root.findViewById(R.id.home_child_nav_host_fragment));
-        //View viewNav = root.findViewById(R.id.home_child_nav_host_fragment);
-        //childNavController = Navigation.findNavController(viewNav);
 
         //find stuff
         tagSearchBar = root.findViewById(R.id.tagSearchBar);

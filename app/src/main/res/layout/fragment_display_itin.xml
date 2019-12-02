@@ -28,7 +28,7 @@
             android:text="This Should Be Overwritten"
             android:fontFamily="@font/primary"
             android:textColor="@color/colorBg"
-            android:textSize="@dimen/card_text"/>
+            android:textSize="@dimen/fun_text"/>
 
         <ImageView
             android:id="@+id/like"
@@ -68,22 +68,32 @@
 
 
     </RelativeLayout>
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingVertical="@dimen/activity_vertical_margin"
         android:paddingHorizontal="@dimen/activity_horizontal_margin">
+
         <TextView
-            android:id="@+id/body"
+            android:id="@+id/location"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/primary" />
+            android:layout_height="@dimen/fun_text_box_height"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:fontFamily="@font/primary"
+            android:textColor="@color/colorFunText"
+            android:textSize="@dimen/fun_text"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stops"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
+</ScrollView>
+
 
 </LinearLayout>

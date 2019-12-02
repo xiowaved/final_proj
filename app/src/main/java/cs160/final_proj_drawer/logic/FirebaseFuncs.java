@@ -35,9 +35,9 @@ public class FirebaseFuncs {
         if we change stuff on our firebase, we have to
         change these
      */
-    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private static DatabaseReference myRef = database.getReference("Locations");
-    private static String url = "https://travelr-7feac.firebaseio.com/Locations/";
+    static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    static DatabaseReference myRef = database.getReference("Locations");
+    public static String url = "https://travelr-7feac.firebaseio.com/Locations/";
 
     /*
         this should write a single finalized itin to our database.
@@ -78,7 +78,7 @@ public class FirebaseFuncs {
     // todo vaguely understand what is happening here
     // this needs application context, not activity context
     // (otherwise itll die every time activity is redrawn, like rotation)
-    public static void getItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final RecyclerView homeItins, final NavController navController){
+    public static void getItineraries(final ArrayList<ItineraryObject> list, String url, final Context context){
 
         // I did it this way b/c there might be itineraries with names that come after tags.
 //        that's why its this two-tier search.
