@@ -249,7 +249,7 @@ public class CreateStopsFragment extends Fragment {
             Stop oldStop = stops.get(currentStopIndex);
             Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
             stops.set(currentStopIndex, revisedStop);
-            
+
 
             currentStopIndex--;
             Stop previousStop = stops.get(currentStopIndex);
