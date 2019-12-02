@@ -5,7 +5,7 @@
     android:layout_height="@dimen/vert_stop_height"
     android:layout_marginBottom="@dimen/cardItinPadding"
     android:foreground="?attr/selectableItemBackground"
-    app:cardElevation="6dp"
+    app:cardElevation="@dimen/dropShadowElevation"
     app:cardCornerRadius="@dimen/roundCorners"
     app:cardPreventCornerOverlap="false">
 

@@ -10,8 +10,9 @@
     <dimen name="fun_text">24sp</dimen>
     <dimen name="fun_text_box_height">30sp</dimen>
 
-    <!--general shapes-->
+    <!--general shapes and dimens-->
     <dimen name="roundCorners">9dp</dimen>
+    <dimen name="defaultPadding">10dp</dimen>
 
 
     <!-- cards -->
@@ -39,6 +40,7 @@
     <dimen name="login_boxes_width">250dp</dimen>
     <dimen name="login_buttons_width">75dp</dimen>
     <dimen name="login_big_button_margin">25dp</dimen>
+    <dimen name="largePadding">65dp</dimen>
 
     <!-- home page -->
     <dimen name="search_button_width">70dp</dimen>
@@ -55,7 +57,14 @@
     <!--settings page -->
     <dimen name="marginSettingsColorSwatches">10dp</dimen>
 
-
     <!-- centering text inside submit button -->
     <dimen name="textPadding"> 16dp </dimen>
+
+    <!-- stop cards -->
+    <dimen name="iconPadding"> 4dp </dimen>
+    <dimen name="layoutPadding"> 20dp </dimen>
+    <dimen name="stopHeight"> 220dp </dimen>
+    <dimen name="stopWidth"> 190dp </dimen>
+    <dimen name="dropShadowElevation"> 6dp </dimen>
+
 </resources>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="190dp"
-    android:layout_height="220dp"
+    android:layout_width="@dimen/stopWidth"
+    android:layout_height="@dimen/stopHeight"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="@dimen/cardItinPadding"
     android:foreground="?attr/selectableItemBackground"
     app:cardBackgroundColor="@color/colorBg"
     app:cardCornerRadius="@dimen/roundCorners"
-    app:cardElevation="6dp"
+    app:cardElevation="@dimen/dropShadowElevation"
     app:cardPreventCornerOverlap="false">
 
 
@@ -20,8 +20,8 @@
             android:id="@+id/deleteIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="@dimen/iconPadding"
+            android:layout_marginTop="@dimen/iconPadding"
             android:background="@null"
             app:srcCompat="@drawable/ic_delete" />
 
@@ -31,9 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/deleteIcon"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1"
+            android:layout_marginTop="@dimen/iconPadding"
+            android:layout_marginEnd="@dimen/iconPadding"
             android:background="@null"
             app:srcCompat="@drawable/ic_pencil" />
 
@@ -42,7 +41,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/layoutPadding"
         android:orientation="horizontal">
 
 

@@ -17,8 +17,12 @@
         android:textSize="@dimen/fun_text"/>
 
     <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="@dimen/search_bar_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/defaultPadding"
+        android:layout_marginBottom="@dimen/defaultPadding"
+        android:background="@drawable/searchview_rounded" />
 
     <fragment
         android:id="@+id/display_posted_itins"
