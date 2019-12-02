@@ -17,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,30 +41,29 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
     public JSONObject Tags;
 
-    //stuff for nav
+    //stuff for architecture
     private NavController navController;
+    private DisplayMultItinsViewModel viewModel;
 
     //stuff for the recycler
     private RecyclerView searchItins;
     private ItinAdapter itinAdapter;
-    private ArrayList<ItineraryObject> itineraries;
+    //private ArrayList<ItineraryObject> itineraries; //i'm trying to move this to the viewModel
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
 
-        //find navController
+        //find architecture stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        viewModel = ViewModelProviders.of(this).get(DisplayMultItinsViewModel.class);
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
         final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         searchItins.setLayoutManager(itinLayoutManager);
-
-        //this array list is where the itins are put after firebase call
-        itineraries = new ArrayList<>();
 
         for (int i = 0; i < 2; i++)
         {
@@ -90,34 +91,34 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
             ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
                     "coverPhoto", "berk", 1, stoplist, taglist, acclist);
-                itineraries.add(itinerary);
+            viewModel.itins.add(itinerary);
 
         }
-
         // todo put more itins in here form firebase
 
-        //CountDownLatch done = new CountDownLatch(5);
-        //String url = FirebaseFuncs.url+"Berkeley.json";
+        CountDownLatch done = new CountDownLatch(5);
+        String url = FirebaseFuncs.url+"Berkeley.json";
         String urlSearch = "https://travelr-7feac.firebaseio.com/Locations/Berkeley.json";
-        FirebaseFuncs.getItineraries(itineraries, urlSearch, getContext());
+        FirebaseFuncs.getItineraries(viewModel.itins, urlSearch, getContext());
 
-        /*
+/*
+//this just ended up pausing everything :'(
         try {
             done.await(500, TimeUnit.MILLISECONDS); // wait half a second
         } catch(InterruptedException e) {
             Log.i("ERROR", "got interuptedException");
-        }*/
+        }
+*/
 
-
-
-        itinAdapter = new ItinAdapter(itineraries, this);
+        Log.i("IN FRAG","before attaching adapter");
+        itinAdapter = new ItinAdapter(viewModel.itins, this);
         searchItins.setAdapter(itinAdapter);
         return root;
     }
 
     @Override
     public void onCardClick(int position, boolean editMode) {
-        ItineraryObject selectedItin = itineraries.get(position);
+        ItineraryObject selectedItin = viewModel.itins.get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);
 
