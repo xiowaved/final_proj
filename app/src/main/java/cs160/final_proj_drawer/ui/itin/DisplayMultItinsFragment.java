@@ -84,7 +84,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         });
 //===========end of boilerplate
 
-        
+
         //this is where we put an observer to watch the live data and update
         //either update when all the data is ready, or put a loop over the adapter creation / binding
         //and update with each new itin
