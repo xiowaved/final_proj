@@ -67,6 +67,10 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             itinStops = new ArrayList<Stop>();
             stopAdapter = new StopAdapter(itinStops, this);
             stops.setAdapter(stopAdapter);
+            EditText itinName = (EditText) root.findViewById(R.id.name);
+            itinName.setText(itineraryObject.getItineraryName());
+            EditText itinLoc = (EditText) root.findViewById(R.id.location);
+            itinName.setText(itineraryObject.getLocation());
             return root;
         } else {
             // get user's stops and populate cardviews in UI
@@ -76,6 +80,8 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             // set the itinerary name and location editText's entries in UI
             EditText itinName = (EditText) root.findViewById(R.id.name);
             itinName.setText(itineraryObject.getItineraryName());
+            EditText itinLoc = (EditText) root.findViewById(R.id.location);
+            itinName.setText(itineraryObject.getLocation());
             return root;
         }
     }
@@ -117,15 +123,12 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
         bundle.putInt("stopIndex", position);
         if (editMode) {
             navController.navigate(R.id.fragment_create_stops,bundle);
+        } else {
+            // remove this stop from the itinerary object itself
+            itineraryObject.removeStop(position);
+            // remove this card from recycler view
+            stops.removeViewAt(position);
         }
-        /** if editMode
-         *      pass itinStops, position to navController.navigate(R.id.fragment_create_stops)
-         *
-         *  else
-         *      remove this stop from private itin's stops
-         *      remove this card from recycler view
-         *      (might need to shift other cards to fill gap? unless it does it automatically)
-         */
 
     }
 }

@@ -143,57 +143,50 @@ public class CreateStopsFragment extends Fragment {
     }
 
     public void onReviewItinerary(View view) {
-        // USER CREATING NEW STOPS
-//        if (!editing) {
+        String savedName = stopNameTextView.getText().toString();
+        String savedLocation = stopLocationTextView.getText().toString();
+        String savedDescription = stopDescriptionTextView.getText().toString();
             // before navigating to reviewItin page, save the current stop entry in the UI
-            if (currentStopIndex > stops.size() - 1) { // if you are adding a new stop
-                String savedName = stopNameTextView.getText().toString();
-                String savedLocation = stopLocationTextView.getText().toString();
-                String savedDescription = stopDescriptionTextView.getText().toString();
-                // if no fields left blank, add this stop to the global list of stops
-                if (!(savedName.equals("")) && !(savedLocation.equals("")) && !(savedDescription.equals(""))) {
-                    Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
-                    stops.add(stop);
+        if (currentStopIndex > stops.size() - 1) { // if you are adding a new stop
+//            String savedName = stopNameTextView.getText().toString();
+//            String savedLocation = stopLocationTextView.getText().toString();
+//            String savedDescription = stopDescriptionTextView.getText().toString();
+        // if no fields left blank, add this stop to the global list of stops
+            if (!(savedName.equals("")) && !(savedLocation.equals("")) && !(savedDescription.equals(""))) {
+                Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+                stops.add(stop);
 
-//                    if (creating) {
-//                        itineraryObject.addStop(stop);
-//                    } else {
-//                        // replace stop at position you are editing
-//                        itineraryObject.replaceStop(currentStopIndex,stop);
-//                    }
-                } else {
-                    // some fields left blank in UI by user
-                }
+    //                    if (creating) {
+    //                        itineraryObject.addStop(stop);
+    //                    } else {
+    //                        // replace stop at position you are editing
+    //                        itineraryObject.replaceStop(currentStopIndex,stop);
+    //                    }
+            } else {
+                // some fields left blank in UI by user
             }
+        }
             // replace currentStopIndex'th entry in stops to reflect user's updates in textviews
             //todo breaking @ oldStop w index out of bounds error
-            String savedName = stopNameTextView.getText().toString();
-            String savedLocation = stopLocationTextView.getText().toString();
-            String savedDescription = stopDescriptionTextView.getText().toString();
+//            String savedName = stopNameTextView.getText().toString();
+//            String savedLocation = stopLocationTextView.getText().toString();
+//            String savedDescription = stopDescriptionTextView.getText().toString();
+        if (!(savedName.equals("")) && !(savedLocation.equals("")) && !(savedDescription.equals(""))) {
             Stop oldStop = stops.get(currentStopIndex);
             Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
             stops.set(currentStopIndex, revisedStop);
-
-            // clear the UI textviews
-            stopNameTextView.getText().clear();
-            stopLocationTextView.getText().clear();
-            stopDescriptionTextView.getText().clear();
-
-            itineraryObject.setStops(stops);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("itinerary", itineraryObject);
-            navController.navigate(R.id.fragment_review, bundle);
-//        }
-        // USER EDITING
-//        else {
-            // overwrite the stop in the stops list with the current info
-            // rather than just adding a new stop?
+        }
 
 
+        // clear the UI textviews
+        stopNameTextView.getText().clear();
+        stopLocationTextView.getText().clear();
+        stopDescriptionTextView.getText().clear();
 
-//        }
-
-
+        itineraryObject.setStops(stops);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("itinerary", itineraryObject);
+        navController.navigate(R.id.fragment_review, bundle);
 
     }
 
@@ -246,6 +239,7 @@ public class CreateStopsFragment extends Fragment {
     }
 
     public void onViewPreviousStop(View view) {
+        // todo this func always errors out with outofbounds exception with oldStop=...
         //hide and unhide previous stop button
         if (currentStopIndex > 0) {
             String savedName = stopNameTextView.getText().toString();

@@ -155,6 +155,9 @@ public class ItineraryObject implements Serializable {
     public void addStop(Stop s) {
         this.stops.add(s);
     }
+    public void removeStop(int position) {
+        this.stops.remove(position);
+    }
     public void replaceStop(int position, Stop s) {
         this.stops.set(position, s);
     }

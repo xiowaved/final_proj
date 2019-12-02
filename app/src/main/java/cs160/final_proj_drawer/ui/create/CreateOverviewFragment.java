@@ -67,8 +67,9 @@ public class CreateOverviewFragment extends Fragment {
                 } else {
                     Bundle bundle = new Bundle();
                     // pass a partially filled-out itinerary object to the createStops fragment
-                    ItineraryObject itinerary = new ItineraryObject("creatorName", itineraryName, 0, "", itineraryLocation,
-                            0, new ArrayList<Stop>(), new ArrayList<String>(), new ArrayList<String>());
+                    ItineraryObject itinerary = new ItineraryObject("creatorName", itineraryName,
+                            0, "", itineraryLocation, 0, new ArrayList<Stop>(),
+                            new ArrayList<String>(), new ArrayList<String>());
                     bundle.putSerializable("itinerary", itinerary);
 
 //                    bundle.putString("name", itineraryName);
