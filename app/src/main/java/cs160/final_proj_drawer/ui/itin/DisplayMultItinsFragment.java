@@ -15,8 +15,10 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
@@ -55,15 +57,6 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
 
-        /*
-        savedViewModel.getText().observe(this, new Observer<String>() {
-    @Override
-    public void onChanged(@Nullable String s) {
-        textView.setText(s);
-    }
-});
-         */
-
         //find architecture stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         viewModel = ViewModelProviders.of(this).get(DisplayMultItinsViewModel.class);
@@ -77,18 +70,21 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         fillPlaceHolderItins();
         // todo put more itins in here form firebase
 
-        //CountDownLatch done = new CountDownLatch(5);
         String url = FirebaseFuncs.url+"Berkeley.json";
         FirebaseFuncs.getItineraries(viewModel.itins, url, getContext());
 
-/*
-        //this just ended up pausing everything :'(
-        try {
-            done.await(500, TimeUnit.MILLISECONDS); // wait half a second
-        } catch(InterruptedException e) {
-            Log.i("ERROR", "got interuptedException");
-        }
-*/
+
+//=========this is boilerplate viewModel interaction code I pulled
+//         from the default of this project
+        viewModel.getText().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                //textView.setText(s);
+            }
+        });
+//===========end of boilerplate
+
+        
         //this is where we put an observer to watch the live data and update
         //either update when all the data is ready, or put a loop over the adapter creation / binding
         //and update with each new itin
