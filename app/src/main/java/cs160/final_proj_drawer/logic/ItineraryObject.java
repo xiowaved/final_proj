@@ -1,6 +1,8 @@
 package cs160.final_proj_drawer.logic;
 
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +38,7 @@ public class ItineraryObject implements Serializable {
     }
 
     public ItineraryObject(JSONObject itin) {
-
+        Log.i("ItinJsonConst", "inside");
         String creator = "";
         String itinName = "";
         String coverPhoto = "";
@@ -47,33 +49,34 @@ public class ItineraryObject implements Serializable {
         ArrayList<String> tags = new ArrayList<>();
         ArrayList<String> access = new ArrayList<>();
         try {
-        creator = (String) itin.get("creatorName");
-        itinName = (String) itin.get("itineraryName");
-        coverPhoto = (String) itin.get("coverPhoto");
-        location = (String) itin.get("location");
-        numLikes = (int) itin.get("numLikes");
-        numStops = (int) itin.get("numStops");
-        JSONArray tagsJSON = itin.getJSONArray("tags");
+            creator = (String) itin.get("creatorName");
+            itinName = (String) itin.get("itineraryName");
+            coverPhoto = (String) itin.get("coverPhoto");
+            location = (String) itin.get("location");
+            numLikes = (int) itin.get("numLikes");
+            numStops = (int) itin.get("numStops");
+            JSONArray tagsJSON = itin.getJSONArray("tags");
 
-        for (int i = 0; i < tagsJSON.length(); i++) {
-            tags.add((String)tagsJSON.get(i));
-        }
-        JSONArray stopsJSON = itin.getJSONArray("stops");
+            for (int i = 0; i < tagsJSON.length(); i++) {
+                tags.add((String)tagsJSON.get(i));
+            }
+            JSONArray stopsJSON = itin.getJSONArray("stops");
 
-        for (int i = 0; i < stopsJSON.length(); i++) {
-            JSONObject stopJSON = stopsJSON.getJSONObject(i);
-            String desc = (String) stopJSON.get("description");
-            int index = (int) stopJSON.get("index");
-            String stopLocation = (String) stopJSON.get("location");
-            String stopname = (String) stopJSON.get("name");
-            Stop newstop = new Stop(new ArrayList<String>(), stopname, stopLocation, desc,index);
-            stops.add(newstop);
-        }
-        JSONArray accessJSON = itin.getJSONArray("access");
+            for (int i = 0; i < stopsJSON.length(); i++) {
+                JSONObject stopJSON = stopsJSON.getJSONObject(i);
+                String desc = (String) stopJSON.get("description");
+                int index = (int) stopJSON.get("index");
+                String stopLocation = (String) stopJSON.get("location");
+                String stopname = (String) stopJSON.get("name");
+                Stop newstop = new Stop(new ArrayList<String>(), stopname, stopLocation, desc,index);
+                stops.add(newstop);
+            }
+            JSONArray accessJSON = itin.getJSONArray("access");
 
-        for (int i = 0; i < accessJSON.length(); i++) {
-            access.add((String)accessJSON.get(i));
-        }} catch (JSONException e) {
+            for (int i = 0; i < accessJSON.length(); i++) {
+                access.add((String)accessJSON.get(i));
+            }
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         this.creatorName = creator;
