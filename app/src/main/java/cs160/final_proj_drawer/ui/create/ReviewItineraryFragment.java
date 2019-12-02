@@ -72,7 +72,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             EditText itinName = (EditText) root.findViewById(R.id.name);
             itinName.setText(itineraryObject.getItineraryName());
             EditText itinLoc = (EditText) root.findViewById(R.id.location);
-            itinName.setText(itineraryObject.getLocation());
+            itinLoc.setText(itineraryObject.getLocation());
             return root;
         } else {
             // get user's stops and populate cardviews in UI
@@ -83,7 +83,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             EditText itinName = (EditText) root.findViewById(R.id.name);
             itinName.setText(itineraryObject.getItineraryName());
             EditText itinLoc = (EditText) root.findViewById(R.id.location);
-            itinName.setText(itineraryObject.getLocation());
+            itinLoc.setText(itineraryObject.getLocation());
             return root;
         }
     }

@@ -242,12 +242,20 @@ public class CreateStopsFragment extends Fragment {
         // todo this func always errors out with outofbounds exception with oldStop=...
         //hide and unhide previous stop button
         if (currentStopIndex > 0) {
-            String savedName = stopNameTextView.getText().toString();
-            String savedLocation = stopLocationTextView.getText().toString();
-            String savedDescription = stopDescriptionTextView.getText().toString();
-            Stop oldStop = stops.get(currentStopIndex);
-            Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
-            stops.set(currentStopIndex, revisedStop);
+            if (editing) {
+                String savedName = stopNameTextView.getText().toString();
+                String savedLocation = stopLocationTextView.getText().toString();
+                String savedDescription = stopDescriptionTextView.getText().toString();
+                Stop oldStop = stops.get(currentStopIndex);
+                Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+                stops.set(currentStopIndex, revisedStop);
+            }
+//            String savedName = stopNameTextView.getText().toString();
+//            String savedLocation = stopLocationTextView.getText().toString();
+//            String savedDescription = stopDescriptionTextView.getText().toString();
+//            Stop oldStop = stops.get(currentStopIndex);
+//            Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+//            stops.set(currentStopIndex, revisedStop);
 
 
             currentStopIndex--;
