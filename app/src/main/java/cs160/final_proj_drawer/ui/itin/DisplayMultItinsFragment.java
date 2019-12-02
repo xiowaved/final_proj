@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -94,15 +95,21 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         }
 
         // todo put more itins in here form firebase
+
+        //CountDownLatch done = new CountDownLatch(5);
+        //String url = FirebaseFuncs.url+"Berkeley.json";
+        String urlSearch = "https://travelr-7feac.firebaseio.com/Locations/Berkeley.json";
+        FirebaseFuncs.getItineraries(itineraries, urlSearch, getContext());
+
         /*
-        CountDownLatch done = new CountDownLatch(5);
-        FirebaseFuncs.getItineraries(itineraries, FirebaseFuncs.url, getContext());
         try {
-            done.await(); //it will wait till the response is received from firebase.
+            done.await(500, TimeUnit.MILLISECONDS); // wait half a second
         } catch(InterruptedException e) {
             Log.i("ERROR", "got interuptedException");
-        }
-*/
+        }*/
+
+
+
         itinAdapter = new ItinAdapter(itineraries, this);
         searchItins.setAdapter(itinAdapter);
         return root;

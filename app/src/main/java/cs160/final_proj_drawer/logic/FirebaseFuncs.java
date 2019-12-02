@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.logic;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 import com.android.volley.Request;
@@ -80,6 +81,7 @@ public class FirebaseFuncs {
     // (otherwise itll die every time activity is redrawn, like rotation)
     public static void getItineraries(final ArrayList<ItineraryObject> list, String url, final Context context){
 
+        Log.i("getItin", "called getItin");
         // I did it this way b/c there might be itineraries with names that come after tags.
 //        that's why its this two-tier search.
 //        First it goes through all the itineraries, ignoring the tags folder, and gets to the last one and adds it
@@ -97,6 +99,7 @@ public class FirebaseFuncs {
                                     ItineraryObject itinerary = new ItineraryObject(info.getJSONObject("name"));
 //                                   HERE is where the itinerary is added once its fully been constructed
                                     list.add(itinerary);
+                                    Log.i("getItin", "should have added (first if)");
 
                                 } catch (JSONException e) {
 //                                    this is required for code to work, ignore it
@@ -109,6 +112,7 @@ public class FirebaseFuncs {
                                 ItineraryObject itinerary = new ItineraryObject(info.getJSONObject("name"));
 //                                HERE is where the itinerary is added once its fully been constructed
                                 list.add(itinerary);
+                                Log.i("getItin", "should have added (second if)");
 
                             } catch (JSONException e) {
 //                                    this is required for code to work, ignore it
