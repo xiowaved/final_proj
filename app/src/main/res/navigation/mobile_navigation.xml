@@ -20,11 +20,10 @@
         android:name="cs160.final_proj_drawer.ui.create.CreateStopsFragment"
         tools:layout="@layout/fragment_create">
         <argument
-            android:name="itineraryName"
-            app:argType="string" />
-        <argument
-            android:name="itineraryLocation"
-            app:argType="string" />
+            android:name="itinerary"
+            app:argType="cs160.final_proj_drawer.logic.ItineraryObject"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <fragment

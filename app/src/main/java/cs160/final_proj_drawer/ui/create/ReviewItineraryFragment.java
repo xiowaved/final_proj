@@ -36,7 +36,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
     private RecyclerView stops;
     private StopAdapter stopAdapter;
     private TextView errorMsg;
-    private ItineraryObject itin;
+    private ItineraryObject itineraryObject;
     private Button submit;
     private ArrayList<Stop> itinStops;
 
@@ -53,10 +53,11 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
         stopsLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         stops.setLayoutManager(stopsLayoutManager);
 
+        // get itinerary object from previous fragment
         Bundle bundle=getArguments();
-        itin = (ItineraryObject) bundle.getSerializable("itinerary");
+        itineraryObject = (ItineraryObject) bundle.getSerializable("itinerary");
 
-        if (itin.getStops().isEmpty()) {
+        if (itineraryObject.getStops().isEmpty()) {
             // something to catch potential null exceptions later
             errorMsg.setText("No stops found.");
             itinStops = new  ArrayList<Stop>();
@@ -64,13 +65,13 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             stops.setAdapter(stopAdapter);
             return root;
         } else {
-            itinStops = (ArrayList<Stop>) itin.getStops();
-            // populate cardviews with itinerary's stops from createFragment
+            // get user's stops and populate cardviews in UI
+            itinStops = (ArrayList<Stop>) itineraryObject.getStops();
             stopAdapter = new StopAdapter(itinStops, this);
             stops.setAdapter(stopAdapter);
-            // set the name and location
+            // set the itinerary name and location editText's entries in UI
             EditText itinName = (EditText) root.findViewById(R.id.name);
-            itinName.setText(itin.getItineraryName());
+            itinName.setText(itineraryObject.getItineraryName());
             return root;
         }
     }
@@ -80,7 +81,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
         // set itinerary info in UI
         final EditText itinName = (EditText) getView().findViewById(R.id.name);
         final EditText itinLocation = (EditText) getView().findViewById(R.id.location);
-        itinName.setText(itin.getItineraryName());
+        itinName.setText(itineraryObject.getItineraryName());
 
         // set listener for button when user submits itin
         submit = (Button) getView().findViewById(R.id.submit);

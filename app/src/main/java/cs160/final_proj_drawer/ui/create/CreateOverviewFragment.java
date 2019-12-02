@@ -17,7 +17,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.logic.Stop;
 
 
 public class CreateOverviewFragment extends Fragment {
@@ -44,27 +49,32 @@ public class CreateOverviewFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        // get the EditTexts so you can query user's itinerary info inputs
         final EditText itinName = (EditText) getView().findViewById(R.id.name);
         final EditText itinLocation = (EditText) getView().findViewById(R.id.location);
         final TextView errorMsg = (TextView) getView().findViewById(R.id.errorMsg);
+        // set onClick listener for the add stops button
         addStopsButton = (Button) getView().findViewById(R.id.button);
         addStopsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 itineraryName = itinName.getText().toString();
                 itineraryLocation = itinLocation.getText().toString();
+                // if user left name or location fields blank, do not let them navigate to next page yet
                 if (itineraryName.isEmpty() || itineraryLocation.isEmpty()) {
                     // user did not fill in required fields
                     errorMsg.setText("Fill in all fields to continue.");
                     return;
                 } else {
                     Bundle bundle = new Bundle();
-                    bundle.putString("name", itineraryName);
-                    bundle.putString("location", itineraryLocation);
+                    // pass a partially filled-out itinerary object to the createStops fragment
+                    ItineraryObject itinerary = new ItineraryObject("creatorName", itineraryName, 0, "", itineraryLocation,
+                            0, new ArrayList<Stop>(), new ArrayList<String>(), new ArrayList<String>());
+                    bundle.putSerializable("itinerary", itinerary);
+
+//                    bundle.putString("name", itineraryName);
+//                    bundle.putString("location", itineraryLocation);
                     navController.navigate(R.id.fragment_create_stops,bundle);
-                    Toast toast = Toast.makeText(getContext(), "clicked on add new stops",
-                            Toast.LENGTH_SHORT);
-                    toast.show();
                 }
             }
         });

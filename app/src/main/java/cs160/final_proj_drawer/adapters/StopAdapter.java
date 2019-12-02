@@ -60,6 +60,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
             editButton.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Log.i("StopAdapter", "clicked edit");
                 }
             }));

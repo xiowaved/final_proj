@@ -118,6 +118,16 @@ public class ItineraryObject implements Serializable {
 
     public String getLocation() {return this.location;}
 
+    public void addStop(Stop s) {
+        this.stops.add(s);
+    }
+    public void replaceStop(int position, Stop s) {
+        this.stops.set(position, s);
+    }
+
+    public void setStops(ArrayList<Stop> stops) {
+        this.stops = stops;
+    }
 }
 
 
