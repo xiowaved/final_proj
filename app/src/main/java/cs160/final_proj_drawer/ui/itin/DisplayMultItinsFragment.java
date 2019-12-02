@@ -55,6 +55,15 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
 
+        /*
+        savedViewModel.getText().observe(this, new Observer<String>() {
+    @Override
+    public void onChanged(@Nullable String s) {
+        textView.setText(s);
+    }
+});
+         */
+
         //find architecture stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         viewModel = ViewModelProviders.of(this).get(DisplayMultItinsViewModel.class);
@@ -65,40 +74,11 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         searchItins.setLayoutManager(itinLayoutManager);
 
-        for (int i = 0; i < 2; i++)
-        {
-            //placeholder stops and itins
-            // so we can practice displaying single itins from here.
-
-            ArrayList<String> photolist = new ArrayList<>();
-            ArrayList<Stop> stoplist = new ArrayList<>();
-            ArrayList<String> taglist = new ArrayList<>();
-            ArrayList<String> acclist = new ArrayList<>();
-            Stop Safeway = new Stop(photolist, "Safeway", "6310 College Ave, Oakland, CA 94618", "I stopped here to pickup some meat. " +
-                    "They have pretty good deals here and I walked away with some pork loin that was on sale. They're also open 24 hours!", 0);
-            Stop BerkeleyBowl = new Stop(photolist, "Berkeley Bowl", "2020 Oregon St, Berkeley, CA 94703", "Very diverse set of produce. " +
-                    "Large selection and good prices on fruits/veggies not so great prices on everything else.", 1);
-            Stop WholeFoods = new Stop(photolist, "Whole Foods", "3000 Telegraph Ave, Berkeley, CA 94705", "Wide selection of organic food" +
-                    "a little pricey, but they have a good selection of exotic food/drinks, such as kombucha", 2);
-            stoplist.add(Safeway);
-            stoplist.add(BerkeleyBowl);
-            stoplist.add(WholeFoods);
-            taglist.add("shopping");
-            taglist.add("grocery");
-            taglist.add("food");
-            acclist.add("elevator");
-
-
-            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
-                    "coverPhoto", "berk", 1, stoplist, taglist, acclist);
-            viewModel.itins.add(itinerary);
-
-        }
+        fillPlaceHolderItins();
         // todo put more itins in here form firebase
 
         //CountDownLatch done = new CountDownLatch(5);
         String url = FirebaseFuncs.url+"Berkeley.json";
-        String urlSearch = "https://travelr-7feac.firebaseio.com/Locations/Berkeley.json";
         FirebaseFuncs.getItineraries(viewModel.itins, url, getContext());
 
 /*
@@ -131,4 +111,37 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         navController.navigate(R.id.fragment_display_single_itin, bundle);
     }
 
+    public void fillPlaceHolderItins() {
+        for (int i = 0; i < 2; i++)
+        {
+            //placeholder stops and itins
+            // so we can practice displaying single itins from here.
+
+            ArrayList<String> photolist = new ArrayList<>();
+            ArrayList<Stop> stoplist = new ArrayList<>();
+            ArrayList<String> taglist = new ArrayList<>();
+            ArrayList<String> acclist = new ArrayList<>();
+            Stop Safeway = new Stop(photolist, "Safeway", "6310 College Ave, Oakland, CA 94618", "I stopped here to pickup some meat. " +
+                    "They have pretty good deals here and I walked away with some pork loin that was on sale. They're also open 24 hours!", 0);
+            Stop BerkeleyBowl = new Stop(photolist, "Berkeley Bowl", "2020 Oregon St, Berkeley, CA 94703", "Very diverse set of produce. " +
+                    "Large selection and good prices on fruits/veggies not so great prices on everything else.", 1);
+            Stop WholeFoods = new Stop(photolist, "Whole Foods", "3000 Telegraph Ave, Berkeley, CA 94705", "Wide selection of organic food" +
+                    "a little pricey, but they have a good selection of exotic food/drinks, such as kombucha", 2);
+            stoplist.add(Safeway);
+            stoplist.add(BerkeleyBowl);
+            stoplist.add(WholeFoods);
+            taglist.add("shopping");
+            taglist.add("grocery");
+            taglist.add("food");
+            acclist.add("elevator");
+
+
+            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
+                    "coverPhoto", "berk", 1, stoplist, taglist, acclist);
+            viewModel.itins.add(itinerary);
+
+        }
+    }
+
 }
+
