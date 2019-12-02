@@ -243,6 +243,14 @@ public class CreateStopsFragment extends Fragment {
     public void onViewPreviousStop(View view) {
         //hide and unhide previous stop button
         if (currentStopIndex > 0) {
+            String savedName = stopNameTextView.getText().toString();
+            String savedLocation = stopLocationTextView.getText().toString();
+            String savedDescription = stopDescriptionTextView.getText().toString();
+            Stop oldStop = stops.get(currentStopIndex);
+            Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
+            stops.set(currentStopIndex, revisedStop);
+            
+
             currentStopIndex--;
             Stop previousStop = stops.get(currentStopIndex);
             stopNameTextView.setText(previousStop.getName());
