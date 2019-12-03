@@ -1,11 +1,14 @@
 package cs160.final_proj_drawer.ui.itin;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import org.json.JSONObject;
 
@@ -51,7 +54,8 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     private RecyclerView searchItins;
     private ItinAdapter itinAdapter;
     //private ArrayList<ItineraryObject> itineraries; //i'm trying to move this to the viewModel
-
+    Drawable emptyBkmk;
+    Drawable filledBkmk;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +71,11 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         final LinearLayoutManager itinLayoutManager = new LinearLayoutManager(getActivity());
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         searchItins.setLayoutManager(itinLayoutManager);
+
+        // set the bookmark drawables so that you can switch between them when user clicks on one
+        emptyBkmk = getResources().getDrawable(R.drawable.ic_bkmark);
+        filledBkmk =  getResources().getDrawable(R.drawable.ic_bookmark_filled);
+
 
         fillPlaceHolderItins();
         // todo put more itins in here form firebase
@@ -104,6 +113,17 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
         Log.i("Note", " was clicked! " + position);
 
+        ImageView bookmark = (ImageView) getView().findViewById(R.id.bkmark);
+        if (bookmark.getDrawable().getConstantState() == emptyBkmk.getConstantState()) {
+            Log.i("empty", "here");
+            bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+            // todo selectedItin should now be saved to the user's profile
+        } else {
+            Log.i("filled", "here");
+            bookmark.setImageResource(R.drawable.ic_bkmark);
+            // todo selectedItin should now be removed from the user's profile
+
+        }
         navController.navigate(R.id.fragment_display_single_itin, bundle);
     }
 
