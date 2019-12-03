@@ -118,7 +118,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
             Log.i("empty", "here");
             bookmark.setImageResource(R.drawable.ic_bookmark_filled);
             // todo selectedItin should now be saved to the user's profile
-        } else {
+        } else if (bookmark.getDrawable().getConstantState() == filledBkmk.getConstantState()){
             Log.i("filled", "here");
             bookmark.setImageResource(R.drawable.ic_bkmark);
             // todo selectedItin should now be removed from the user's profile
