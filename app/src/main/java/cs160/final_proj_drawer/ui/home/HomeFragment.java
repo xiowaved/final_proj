@@ -57,6 +57,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View root) {
                 Log.i("NOTE", "clicked search");
+                if (tagSearchBar.getQuery().toString().isEmpty()) {
+                    return;
+                }
                 childNavController.navigate(R.id.fragment_display_itins);
 
                 locationSearchBar.setVisibility(View.INVISIBLE);
