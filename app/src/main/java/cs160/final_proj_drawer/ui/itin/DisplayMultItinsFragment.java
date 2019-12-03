@@ -112,17 +112,20 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         Log.i("Note", " was clicked! " + position);
 
         ImageView bookmark = getView().findViewById(R.id.bkmark);
-        if (bookmark.getDrawable().getConstantState() == emptyBkmk.getConstantState()) {
-            Log.i("empty", "here");
-            bookmark.setImageResource(R.drawable.ic_bookmark_filled);
-            // todo selectedItin should now be saved to the user's profile
-        } else if (bookmark.getDrawable().getConstantState() == filledBkmk.getConstantState()){
-            Log.i("filled", "here");
-            bookmark.setImageResource(R.drawable.ic_bkmark);
-            // todo selectedItin should now be removed from the user's profile
+        if (action == cardAction.BOOKMARK) {
+            if (bookmark.getDrawable().getConstantState() == emptyBkmk.getConstantState()) {
+                Log.i("empty", "here");
+                bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+                // todo selectedItin should now be saved to the user's profile
+            } else if (bookmark.getDrawable().getConstantState() == filledBkmk.getConstantState()){
+                Log.i("filled", "here");
+                bookmark.setImageResource(R.drawable.ic_bkmark);
+                // todo selectedItin should now be removed from the user's profile
 
+            }
+        } else {
+            navController.navigate(R.id.fragment_display_single_itin, bundle);
         }
-        navController.navigate(R.id.fragment_display_single_itin, bundle);
     }
 
     public void fillPlaceHolderItins() {
@@ -135,6 +138,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
             ArrayList<Stop> stoplist = new ArrayList<>();
             ArrayList<String> taglist = new ArrayList<>();
             ArrayList<String> acclist = new ArrayList<>();
+            boolean isBookmarked = false;
             Stop Safeway = new Stop(photolist, "Safeway", "6310 College Ave, Oakland, CA 94618", "I stopped here to pickup some meat. " +
                     "They have pretty good deals here and I walked away with some pork loin that was on sale. They're also open 24 hours!", 0);
             Stop BerkeleyBowl = new Stop(photolist, "Berkeley Bowl", "2020 Oregon St, Berkeley, CA 94703", "Very diverse set of produce. " +
@@ -151,7 +155,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
 
             ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
-                    "coverPhoto", "berk", 1, stoplist, taglist, acclist);
+                    "coverPhoto", "berk", 1, stoplist, taglist, acclist, isBookmarked);
             viewModel.itins.add(itinerary);
 
         }

@@ -18,4 +18,5 @@ public interface OnRecyclerCardListener {
 
     //if null is given, that means no action was taken
     void onCardClick(int position,@Nullable cardAction action);
+
 }

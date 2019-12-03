@@ -35,7 +35,6 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
     //stuff for the recycler
     private RecyclerView itinStops;
     private VertStopAdapter stopAdapter;
-
     //logic data
     private ItineraryObject itin;
     private ArrayList<Stop> stops;
@@ -70,6 +69,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         title.setText(itin.getItineraryName());
         numLikes.setText(Integer.toString(itin.getNumLikes()));
         location.setText(itin.getLocation());
+        bookmarked = itin.getBookmarked();
 
         //check if the itin object has stops, exit if it doesn't
         if (stops == null || stops.size() == 0) {
