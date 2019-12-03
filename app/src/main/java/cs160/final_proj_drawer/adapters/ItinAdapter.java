@@ -50,7 +50,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             bookmark.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItinListener.onCardClick(getAdapterPosition(), false);
+                    onItinListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.BOOKMARK);
                     Log.i("ItinAdapter", "clicked bookmark");
                 }
             }));
@@ -58,7 +58,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
         @Override
         public void onClick(View view) {
-            onItinListener.onCardClick(getAdapterPosition(), false);
+            onItinListener.onCardClick(getAdapterPosition(), null);
             Log.i("NOTE", "was a click");
         }
     }

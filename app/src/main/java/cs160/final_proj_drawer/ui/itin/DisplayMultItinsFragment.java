@@ -28,6 +28,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
+import cs160.final_proj_drawer.adapters.OnRecyclerCardListener.cardAction;
 import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -119,7 +120,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 //    }
 
     @Override
-    public void onCardClick(int position, boolean editMode) {
+    public void onCardClick(int position, cardAction action) {
         ItineraryObject selectedItin = viewModel.itins.get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);

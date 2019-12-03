@@ -7,11 +7,15 @@ package cs160.final_proj_drawer.adapters;
    can receive and take action based off of clicks.
  */
 
-enum cardAction
-{
-    EDIT, DELETE, BOOKMARK;
-}
+
+import androidx.annotation.Nullable;
 
 public interface OnRecyclerCardListener {
-    void onCardClick(int position, boolean editMode);
+    enum cardAction
+    {
+        EDIT, DELETE, BOOKMARK;
+    }
+
+    //if null is given, that means no action was taken
+    void onCardClick(int position,@Nullable cardAction action);
 }

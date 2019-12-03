@@ -54,7 +54,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
             deleteButton.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onStopListener.onCardClick(getAdapterPosition(), false);
+                    onStopListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.DELETE);
                     Log.i("StopAdapter", "clicked delete");
                 }
             }));
@@ -62,7 +62,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
             editButton.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onStopListener.onCardClick(getAdapterPosition(), true);
+                    onStopListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.EDIT);
                     Log.i("StopAdapter", "clicked edit" + ""+ getAdapterPosition());
                 }
             }));
