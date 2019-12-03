@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +30,10 @@ public class CreateOverviewFragment extends Fragment {
 
     private NavController navController;
     private Button addStopsButton;
+    private ImageButton coverPhotoButton;
     private String itineraryName;
     private String itineraryLocation;
+    private String coverPhoto;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,15 +55,32 @@ public class CreateOverviewFragment extends Fragment {
         final EditText itinName = (EditText) getView().findViewById(R.id.name);
         final EditText itinLocation = (EditText) getView().findViewById(R.id.location);
         final TextView errorMsg = (TextView) getView().findViewById(R.id.errorMsg);
-        // set onClick listener for the add stops button
+        coverPhoto = "";
+        // set onClick listener for the buttons
+        coverPhotoButton = (ImageButton) getView().findViewById(R.id.coverPhoto);
+        coverPhotoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(getContext(), "clicked on plus button",
+                        Toast.LENGTH_LONG); toast.show();
+                //todo -- Chaitanya this is where you add the code that you want to execute when user
+                // clicks on the button to add a cover photo
+
+
+
+
+            }
+        });
+
         addStopsButton = (Button) getView().findViewById(R.id.button);
         addStopsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 itineraryName = itinName.getText().toString();
                 itineraryLocation = itinLocation.getText().toString();
-                // if user left name or location fields blank, do not let them navigate to next page yet
-                if (itineraryName.isEmpty() || itineraryLocation.isEmpty()) {
+
+                // if user left name, location field, or cover photo blank, do not let them navigate to next page yet
+                if (itineraryName.isEmpty() || itineraryLocation.isEmpty() || coverPhoto.isEmpty()) {
                     // user did not fill in required fields
                     errorMsg.setText("Fill in all fields to continue.");
                     return;
@@ -68,7 +88,7 @@ public class CreateOverviewFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     // pass a partially filled-out itinerary object to the createStops fragment
                     ItineraryObject itinerary = new ItineraryObject("creatorName", itineraryName,
-                            0, "", itineraryLocation, 0, new ArrayList<Stop>(),
+                            0, coverPhoto, itineraryLocation, 0, new ArrayList<Stop>(),
                             new ArrayList<String>(), new ArrayList<String>());
                     bundle.putSerializable("itinerary", itinerary);
 
@@ -78,6 +98,7 @@ public class CreateOverviewFragment extends Fragment {
                 }
             }
         });
+
     }
 
 }

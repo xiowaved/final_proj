@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -16,12 +16,12 @@
             android:id="@+id/textName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="45dp"
             android:fontFamily="@font/manjariregular"
             android:text="Name"
-            android:textSize="20sp"
-            android:textColor="@color/colorGreyStroke"/>
+            android:textColor="@color/colorGreyStroke"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/name"
@@ -41,12 +41,14 @@
             android:id="@+id/textLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/textName"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="110dp"
             android:fontFamily="@font/manjariregular"
             android:text="Location"
-            android:textSize="20sp"
-            android:textColor="@color/colorGreyStroke"/>
+            android:textColor="@color/colorGreyStroke"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/location"
@@ -61,6 +63,34 @@
             android:inputType="textPersonName"
             android:textAlignment="center" />
 
+        <TextView
+            android:id="@+id/textCoverPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textLocation"
+            android:layout_alignStart="@+id/textLocation"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/manjariregular"
+            android:text="Cover Photo"
+            android:textColor="@color/colorGreyStroke"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/coverPhoto"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@id/textCoverPhoto"
+            android:layout_alignBottom="@id/textCoverPhoto"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="false"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="140dp"
+            android:layout_toRightOf="@id/textCoverPhoto"
+            android:background="@drawable/rounded_corner_add_photo"
+            android:src="@drawable/ic_add"
+            android:text="+" />
 
     </RelativeLayout>
 
