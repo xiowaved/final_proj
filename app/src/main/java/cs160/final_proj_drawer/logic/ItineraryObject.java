@@ -21,6 +21,7 @@ public class ItineraryObject implements Serializable {
      private ArrayList<String> tags;
      private ArrayList<String> access;
 
+     public ItineraryObject() {}
 
     public ItineraryObject(String creatorName, String itineraryName, int numLikes,
                                 String coverPhoto, String location, int numStops, ArrayList<Stop> stops, ArrayList<String> tags,

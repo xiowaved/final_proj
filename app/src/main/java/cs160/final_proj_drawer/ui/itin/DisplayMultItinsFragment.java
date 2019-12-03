@@ -84,7 +84,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
 //=========this is boilerplate viewModel interaction code I pulled
 //         from the default of this project
-        viewModel.getFirebaseData().observe(this, new Observer<ArrayList<ItineraryObject>>() {
+        viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
                 itinAdapter = new ItinAdapter(viewModel.itins, listener);
@@ -104,6 +104,19 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
         return root;
     }
+
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//
+//        ArticleViewModel viewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
+//        viewModel.getArticles().observe(this, new Observer<List<Article>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Article> articles) {
+//                recyclerView.setAdapter(new ArticleAdapter(articles));
+//            }
+//        });
+//    }
 
     @Override
     public void onCardClick(int position, boolean editMode) {
