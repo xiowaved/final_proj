@@ -45,6 +45,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     //stuff for architecture
     private NavController navController;
     private DisplayMultItinsViewModel viewModel;
+    private OnRecyclerCardListener listener;
 
     //stuff for the recycler
     private RecyclerView searchItins;
@@ -59,6 +60,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         //find architecture stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         viewModel = ViewModelProviders.of(this).get(DisplayMultItinsViewModel.class);
+        listener = this;
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
@@ -73,9 +75,11 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
 //=========this is boilerplate viewModel interaction code I pulled
 //         from the default of this project
-        viewModel.getText().observe(this, new Observer<String>() {
+        viewModel.getFirebaseData().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
-            public void onChanged(@Nullable String s) {
+            public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
+                itinAdapter = new ItinAdapter(viewModel.itins, listener);
+                searchItins.setAdapter(itinAdapter);
                 //textView.setText(s);
             }
         });
@@ -88,8 +92,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
         //make sure this log happens after after all the stuff finishes
         Log.i("IN FRAG","before attaching adapter");
-        itinAdapter = new ItinAdapter(viewModel.itins, this);
-        searchItins.setAdapter(itinAdapter);
+
         return root;
     }
 
