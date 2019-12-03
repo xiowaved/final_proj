@@ -10,13 +10,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,7 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
    They are created here, as seperate from UI as possible, so we can
    Call them freely from any other part of our app
  */
-public class FirebaseFuncs {
+public class FirebaseFuncs<Model> {
 
     /*  stuff to access our project's firebase database.
         if we change stuff on our firebase, we have to
@@ -39,6 +43,40 @@ public class FirebaseFuncs {
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference("Locations");
     public static String url = "https://travelr-7feac.firebaseio.com/Locations/";
+    public FirebaseFuncsCallback<ItineraryObject> firebaseCallback;
+    private ValueEventListener listener;
+
+    public interface FirebaseFuncsCallback<ItineraryObject> {
+        void onSuccess(ArrayList<ItineraryObject> result);
+
+        void onError(Exception e);
+    }
+
+    public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback) {
+        this.firebaseCallback = firebaseCallback;
+        this.listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<ItineraryObject> itins = new ArrayList<>();
+                for (DataSnapshot item : dataSnapshot.getChildren()) {
+                    itins.add(item.getValue(ItineraryObject.class));
+                }
+                firebaseCallback.onSuccess(itins);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                firebaseCallback.onError(databaseError.toException());
+            }
+        };
+        myRef.addValueEventListener(listener);
+//        listener = new BaseValueEventListener(mapper, firebaseCallback);
+//        databaseReference.addValueEventListener(listener);
+    }
+
+    public void removeListener() {
+        myRef.removeEventListener(listener);
+    }
 
     /*
         this should write a single finalized itin to our database.

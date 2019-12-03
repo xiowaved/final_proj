@@ -127,7 +127,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
 
 
     @Override
-    public void onCardClick(int position, boolean editMode) {
+    public void onCardClick(int position, cardAction action) {
         Stop selectedStop = itinStops.get(position);
         Toast toast = Toast.makeText(getContext(), "clicked on stop #" + "" + (position),
                 Toast.LENGTH_SHORT);
@@ -135,9 +135,9 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", itineraryObject);
         bundle.putInt("stopIndex", position);
-        if (editMode) {
+        if (action == cardAction.EDIT) {
             navController.navigate(R.id.fragment_create_stops,bundle);
-        } else {
+        } else if (action == cardAction.DELETE) {
             // remove this stop from the itinerary object itself
             itineraryObject.removeStop(position);
             // remove this card from recycler view

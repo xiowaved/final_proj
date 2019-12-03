@@ -28,6 +28,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
+import cs160.final_proj_drawer.adapters.OnRecyclerCardListener.cardAction;
 import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -75,45 +76,42 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         // set the bookmark drawables so that you can switch between them when user clicks on one
         emptyBkmk = getResources().getDrawable(R.drawable.ic_bkmark);
         filledBkmk =  getResources().getDrawable(R.drawable.ic_bookmark_filled);
-
-
-        fillPlaceHolderItins();
-        // todo put more itins in here form firebase
-
-
-
-//=========this is boilerplate viewModel interaction code I pulled
-//         from the default of this project
-        viewModel.getFirebaseData().observe(this, new Observer<ArrayList<ItineraryObject>>() {
+        
+        //puttin more itins in here from firebase
+        viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
                 itinAdapter = new ItinAdapter(viewModel.itins, listener);
                 searchItins.setAdapter(itinAdapter);
-                //textView.setText(s);
             }
         });
-//===========end of boilerplate
 
-
-        //this is where we put an observer to watch the live data and update
-        //either update when all the data is ready, or put a loop over the adapter creation / binding
-        //and update with each new itin
-
-        //make sure this log happens after after all the stuff finishes
-        Log.i("IN FRAG","before attaching adapter");
 
         return root;
     }
 
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//
+//        ArticleViewModel viewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
+//        viewModel.getArticles().observe(this, new Observer<List<Article>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Article> articles) {
+//                recyclerView.setAdapter(new ArticleAdapter(articles));
+//            }
+//        });
+//    }
+
     @Override
-    public void onCardClick(int position, boolean editMode) {
+    public void onCardClick(int position, cardAction action) {
         ItineraryObject selectedItin = viewModel.itins.get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);
 
         Log.i("Note", " was clicked! " + position);
 
-        ImageView bookmark = (ImageView) getView().findViewById(R.id.bkmark);
+        ImageView bookmark = getView().findViewById(R.id.bkmark);
         if (bookmark.getDrawable().getConstantState() == emptyBkmk.getConstantState()) {
             Log.i("empty", "here");
             bookmark.setImageResource(R.drawable.ic_bookmark_filled);
