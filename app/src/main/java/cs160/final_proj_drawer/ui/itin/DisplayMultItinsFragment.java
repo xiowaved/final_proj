@@ -19,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -70,8 +69,6 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         fillPlaceHolderItins();
         // todo put more itins in here form firebase
 
-        String url = FirebaseFuncs.url+"Berkeley.json";
-        FirebaseFuncs.getItineraries(viewModel.itins, url, getContext());
 
 
 //=========this is boilerplate viewModel interaction code I pulled
