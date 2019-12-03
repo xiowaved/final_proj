@@ -8,44 +8,50 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin"
     >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        >
+        android:paddingBottom="@dimen/activity_horizontal_margin">
 
         <ImageButton
             android:id="@+id/searchButton"
             android:layout_width="@dimen/search_button_width"
             android:layout_height="@dimen/search_button_height"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@drawable/search_button"
             android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@+id/tagSearchBar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toEndOf="@+id/tagSearchBar"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/tagSearchBar" />
 
         <Button
             android:id="@+id/filterButton"
             android:layout_width="@dimen/search_button_width"
             android:layout_height="@dimen/search_button_height"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/defaultPadding"
             android:background="@drawable/search_button"
             android:text="@string/filter_button"
+            android:textAllCaps="false"
             android:textColor="@color/colorOffWhite"
             android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/locationSearchBar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchButton" />
+            app:layout_constraintStart_toEndOf="@+id/locationSearchBar"
+            app:layout_constraintTop_toTopOf="@+id/locationSearchBar" />
 
         <SearchView
             android:id="@+id/tagSearchBar"
             android:layout_width="@dimen/search_bar_width"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="5dp"
             android:background="@drawable/searchview_rounded"
+            android:iconifiedByDefault="false"
             android:queryHint="@string/home_search_hint_tag"
             android:searchIcon="@null"
-            android:iconifiedByDefault="false"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,30 +59,30 @@
             android:id="@+id/locationSearchBar"
             android:layout_width="@dimen/search_bar_width"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="10dp"
             android:background="@drawable/searchview_rounded"
             android:hint="@string/home_search_hint_loc"
-            android:queryHint="Current Location"
-            android:visibility="invisible"
-            android:searchIcon="@null"
             android:iconifiedByDefault="false"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:queryHint="Current Location"
+            android:searchIcon="@null"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tagSearchBar" />
 
         <TextView
             android:id="@+id/on_search_location"
             android:layout_width="@dimen/search_bar_width"
             android:layout_height="@dimen/fun_text_box_height"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:fontFamily="@font/primary"
             android:text="Exploring Location"
             android:textColor="@color/colorFunText"
             android:textSize="@dimen/fun_text"
             android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tagSearchBar"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tagSearchBar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

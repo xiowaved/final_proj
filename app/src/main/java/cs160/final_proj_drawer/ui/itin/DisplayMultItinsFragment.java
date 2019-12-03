@@ -1,11 +1,14 @@
 package cs160.final_proj_drawer.ui.itin;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import org.json.JSONObject;
 
@@ -19,13 +22,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
+import cs160.final_proj_drawer.adapters.OnRecyclerCardListener.cardAction;
 import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
@@ -46,12 +49,14 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     //stuff for architecture
     private NavController navController;
     private DisplayMultItinsViewModel viewModel;
+    private OnRecyclerCardListener listener;
 
     //stuff for the recycler
     private RecyclerView searchItins;
     private ItinAdapter itinAdapter;
     //private ArrayList<ItineraryObject> itineraries; //i'm trying to move this to the viewModel
-
+    Drawable emptyBkmk;
+    Drawable filledBkmk;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +65,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         //find architecture stuff
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         viewModel = ViewModelProviders.of(this).get(DisplayMultItinsViewModel.class);
+        listener = this;
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
@@ -67,44 +73,59 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         itinLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         searchItins.setLayoutManager(itinLayoutManager);
 
-        fillPlaceHolderItins();
-        // todo put more itins in here form firebase
-
-        String url = FirebaseFuncs.url+"Berkeley.json";
-        FirebaseFuncs.getItineraries(viewModel.itins, url, getContext());
-
-
-//=========this is boilerplate viewModel interaction code I pulled
-//         from the default of this project
-        viewModel.getText().observe(this, new Observer<String>() {
+        // set the bookmark drawables so that you can switch between them when user clicks on one
+        emptyBkmk = getResources().getDrawable(R.drawable.ic_bkmark);
+        filledBkmk =  getResources().getDrawable(R.drawable.ic_bookmark_filled);
+        
+        //puttin more itins in here from firebase
+        viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                //textView.setText(s);
+            public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
+                itinAdapter = new ItinAdapter(viewModel.itins, listener);
+                searchItins.setAdapter(itinAdapter);
             }
         });
-//===========end of boilerplate
 
 
-        //this is where we put an observer to watch the live data and update
-        //either update when all the data is ready, or put a loop over the adapter creation / binding
-        //and update with each new itin
-
-        //make sure this log happens after after all the stuff finishes
-        Log.i("IN FRAG","before attaching adapter");
-        itinAdapter = new ItinAdapter(viewModel.itins, this);
-        searchItins.setAdapter(itinAdapter);
         return root;
     }
 
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//
+//        ArticleViewModel viewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
+//        viewModel.getArticles().observe(this, new Observer<List<Article>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Article> articles) {
+//                recyclerView.setAdapter(new ArticleAdapter(articles));
+//            }
+//        });
+//    }
+
     @Override
-    public void onCardClick(int position, boolean editMode) {
+    public void onCardClick(int position, cardAction action) {
         ItineraryObject selectedItin = viewModel.itins.get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);
 
         Log.i("Note", " was clicked! " + position);
 
-        navController.navigate(R.id.fragment_display_single_itin, bundle);
+        ImageView bookmark = getView().findViewById(R.id.bkmark);
+        if (action == cardAction.BOOKMARK) {
+            if (bookmark.getDrawable().getConstantState() == emptyBkmk.getConstantState()) {
+                Log.i("empty", "here");
+                bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+                // todo selectedItin should now be saved to the user's profile
+            } else if (bookmark.getDrawable().getConstantState() == filledBkmk.getConstantState()){
+                Log.i("filled", "here");
+                bookmark.setImageResource(R.drawable.ic_bkmark);
+                // todo selectedItin should now be removed from the user's profile
+
+            }
+        } else {
+            navController.navigate(R.id.fragment_display_single_itin, bundle);
+        }
     }
 
     public void fillPlaceHolderItins() {
@@ -117,6 +138,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
             ArrayList<Stop> stoplist = new ArrayList<>();
             ArrayList<String> taglist = new ArrayList<>();
             ArrayList<String> acclist = new ArrayList<>();
+            boolean isBookmarked = false;
             Stop Safeway = new Stop(photolist, "Safeway", "6310 College Ave, Oakland, CA 94618", "I stopped here to pickup some meat. " +
                     "They have pretty good deals here and I walked away with some pork loin that was on sale. They're also open 24 hours!", 0);
             Stop BerkeleyBowl = new Stop(photolist, "Berkeley Bowl", "2020 Oregon St, Berkeley, CA 94703", "Very diverse set of produce. " +
@@ -133,7 +155,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
 
             ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
-                    "coverPhoto", "berk", 1, stoplist, taglist, acclist);
+                    "coverPhoto", "berk", 1, stoplist, taglist, acclist, isBookmarked);
             viewModel.itins.add(itinerary);
 
         }

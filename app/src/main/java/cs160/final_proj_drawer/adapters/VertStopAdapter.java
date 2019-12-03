@@ -54,7 +54,7 @@ public class VertStopAdapter extends RecyclerView.Adapter<VertStopAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            onStopListener.onCardClick(getAdapterPosition(), false);
+            onStopListener.onCardClick(getAdapterPosition(), null);
             Log.i("Stop Adapter", "stop clicked");
         }
     }

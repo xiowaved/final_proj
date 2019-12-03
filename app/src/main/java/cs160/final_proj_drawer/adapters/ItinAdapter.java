@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
@@ -34,7 +36,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         TextView numLikesText;
         OnRecyclerCardListener onItinListener;
 
-        public ViewHolder(View itemView, OnRecyclerCardListener onItinListener)
+        public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
         {
             super(itemView);
             this.itineraryName = (TextView) itemView.findViewById(R.id.text);
@@ -42,11 +44,21 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             this.onItinListener = onItinListener;
 
             itemView.setOnClickListener(this);
+
+
+            ImageView bookmark = (ImageView) itemView.findViewById(R.id.bkmark);
+            bookmark.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItinListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.BOOKMARK);
+                    Log.i("ItinAdapter", "clicked bookmark");
+                }
+            }));
         }
 
         @Override
         public void onClick(View view) {
-            onItinListener.onCardClick(getAdapterPosition(), false);
+            onItinListener.onCardClick(getAdapterPosition(), null);
             Log.i("NOTE", "was a click");
         }
     }
