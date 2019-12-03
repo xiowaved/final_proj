@@ -6,6 +6,12 @@ package cs160.final_proj_drawer.adapters;
    Recyclerview Adapter. This way, our fragments
    can receive and take action based off of clicks.
  */
+
+enum cardAction
+{
+    EDIT, DELETE, BOOKMARK;
+}
+
 public interface OnRecyclerCardListener {
     void onCardClick(int position, boolean editMode);
 }
