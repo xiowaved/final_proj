@@ -38,7 +38,7 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     public LiveData<ArrayList<ItineraryObject>> getItineraries() {
         if (loadedItins == null) {
-            loadedItins = new MutableLiveData<ArrayList<ItineraryObject>>();
+            loadedItins = new MutableLiveData<>();
             getFirebaseData();
         }
         return loadedItins;
