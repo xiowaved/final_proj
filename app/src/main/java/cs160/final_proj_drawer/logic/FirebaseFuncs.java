@@ -91,21 +91,16 @@ public class FirebaseFuncs {
                         JSONObject info = response;
                         Iterator<String> keys = info.keys();
                         String name = "";
-                        //Log.i("getItin", "inside the listener onresponse "+ keys.hasNext());
                         while (keys.hasNext()) {
                             name = keys.next();
-                            //Log.i("getItin", "inside the loop "+ name);
                             if (name != "Tags") {
-                                //Log.i("getItin", "inside if "+ name);
                                 try {
 
                                     JSONObject itin = info.getJSONObject(name);
                                     Log.i("getItin", "before filling itin "+ name);
                                     ItineraryObject itinerary = new ItineraryObject(itin);
 //                                   HERE is where the itinerary is added once its fully been constructed
-                                    //Log.i("getItin", "should have added (first if)");
                                     list.add(itinerary);
-                                    //Log.i("getItin", "should have added (first if)");
 
                                 } catch (JSONException e) {
 //                                    this is required for code to work, ignore it
@@ -153,12 +148,9 @@ public class FirebaseFuncs {
                         JSONObject info = response;
                         Iterator<String> keys = info.keys();
                         String name = "";
-                        //Log.i("getItin", "inside the listener onresponse "+ keys.hasNext());
                         while (keys.hasNext()) {
                             name = keys.next();
-                            //Log.i("getItin", "inside the loop "+ name);
-                            if (name != "Tags") {
-                                //Log.i("getItin", "inside if "+ name);
+                            if (!name.equals("Tags")) {
                                 try {
                                     boolean hasAll = true;
 
@@ -172,9 +164,10 @@ public class FirebaseFuncs {
 
                                         } else {
                                             hasAll = false;
+
                                         }
                                     }
-                                    if (hasAll = true) {
+                                    if (hasAll == true) {
                                         list.add(itinerary);
                                     } else {};
 
@@ -188,7 +181,7 @@ public class FirebaseFuncs {
                                 }
                             } else {}
                         }
-                        if (name != "Tags") {
+                        if (!name.equals("Tags")) {
                             try {
 
                                 boolean hasAll = true;
@@ -205,7 +198,7 @@ public class FirebaseFuncs {
                                         hasAll = false;
                                     }
                                 }
-                                if (hasAll = true) {
+                                if (hasAll == true) {
                                     list.add(itinerary);
                                 } else {};
 
