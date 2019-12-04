@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
@@ -32,6 +36,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
     private TextView location;
     private Boolean bookmarked;
     private TextView numLikes;
+    private ImageView cover;
     //stuff for the recycler
     private RecyclerView itinStops;
     private VertStopAdapter stopAdapter;
@@ -47,6 +52,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         title = root.findViewById(R.id.Title);
         location = root.findViewById(R.id.location);
         numLikes = root.findViewById(R.id.numLikes);
+        cover = root.findViewById(R.id.cover_img);
 
         //recycler view setup
         itinStops = (RecyclerView) root.findViewById(R.id.stops);
@@ -70,6 +76,8 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         numLikes.setText(Integer.toString(itin.getNumLikes()));
         location.setText(itin.getLocation());
         bookmarked = itin.getBookmarked();
+        String image = itin.getCoverPhoto();
+        Picasso.get().load(image).into(cover);
 
         //check if the itin object has stops, exit if it doesn't
         if (stops == null || stops.size() == 0) {
