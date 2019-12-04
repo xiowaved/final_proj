@@ -276,9 +276,9 @@ public class FilterFragment extends Fragment {
                 milesDistanceBool = false;
                 //go back to search results
 
-                //todo pass the updated bundle here
+                //todo pass the initially received search args here
                 childNavController.navigate(R.id.fragment_display_itins);
-                
+
             }
         });
 
