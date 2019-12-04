@@ -160,7 +160,8 @@ public class FirebaseFuncs<Model> {
                 String creatorName = (String) results.get("creatorName");
                 int numStops = Math.toIntExact((Long) results.get("numStops"));
                 String location = (String) results.get("location");
-                ArrayList<Stop> stops = (ArrayList<Stop>) results.get("stops");
+                ArrayList<Stop> badStops = (ArrayList<Stop>) results.get("stops");
+                ArrayList<Stop> stops = fixStop(badStops);
                 int numLikes = Math.toIntExact((Long) results.get("numLikes"));
                 ArrayList<String> tags = (ArrayList<String>) results.get("tags");
 //            ArrayList<String> access = (ArrayList<String>) results.get("access");
@@ -177,10 +178,22 @@ public class FirebaseFuncs<Model> {
          return returned;
     }
 
-//    public ArrayList<Stop> fixStop (ArrayList badStopList) {
-//        ArrayList<Stop> returned = new ArrayList<>();
-//        for
-//    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public ArrayList<Stop> fixStop (ArrayList badStopList) {
+        ArrayList<Stop> returned = new ArrayList<>();
+        for (int i = 0; i < badStopList.size(); i++) {
+            HashMap map = (HashMap) badStopList.get(i);
+            String name = (String) map.get("name");
+            String description = (String) map.get("description");
+            int index = Math.toIntExact((Long) map.get("index"));
+            String location = (String) map.get("location");
+            List<String> empty = new ArrayList<>();
+            Stop newStop = new Stop(empty,name,location,description,index);
+            returned.add(newStop);
+
+    }
+        return returned;
+    }
 
     public void removeListener() {
         myRef.removeEventListener(listener);
