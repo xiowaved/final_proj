@@ -69,6 +69,16 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
                     DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bookmark);
                 }
             }));
+            this.like.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    liked = !liked;
+                    //todo make the like come from in the itin
+                    //todo put to firebase appropaitely
+                    //todo also changenumLikes in the itin and in firebase
+                    DisplayItinHelperFuncs.updateLikeView(liked, like);
+                }
+            }));
         }
 
         @Override
