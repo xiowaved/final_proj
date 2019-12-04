@@ -14,6 +14,7 @@
     <color name="colorFunText">@color/colorBlue</color>
     <color name="colorButton">@color/colorBlueBright</color>
     <color name="colorBlueMedium">#3B88CC</color>
+    <color name="colorSeekBar">#ababab</color>
 
 
     <!-- these colors are for the gradient in the nav drawer -->
