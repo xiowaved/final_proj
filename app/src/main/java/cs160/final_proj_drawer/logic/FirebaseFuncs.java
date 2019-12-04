@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
 
@@ -43,6 +44,7 @@ import java.util.List;
 import java.util.UUID;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -121,12 +123,15 @@ public class FirebaseFuncs<Model> {
     public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback) {
         this.firebaseCallback = firebaseCallback;
         this.listener = new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<ItineraryObject> itins = new ArrayList<>();
-                for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    itins.add(item.getValue(ItineraryObject.class));
-                }
+                DataSnapshot item = dataSnapshot.child("Berkeley");
+
+                    HashMap hash = (HashMap) item.getValue();
+                    itins = handleHash(hash);
+
                 firebaseCallback.onSuccess(itins);
             }
 
@@ -139,6 +144,43 @@ public class FirebaseFuncs<Model> {
 //        listener = new BaseValueEventListener(mapper, firebaseCallback);
 //        databaseReference.addValueEventListener(listener);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public ArrayList<ItineraryObject> handleHash(HashMap<String,HashMap> map) {
+        Iterator<String> keys = map.keySet().iterator();
+        ArrayList<ItineraryObject> returned = new ArrayList<>();
+        String key = "";
+        while (keys.hasNext()) {
+            key = keys.next();
+            if (!key.equals("Tags")) {
+
+                HashMap<String, Object> results = map.get(key);
+                boolean isBookmarked = (boolean) results.get("isBookmarked");
+                String itineraryName = (String) results.get("itineraryName");
+                String creatorName = (String) results.get("creatorName");
+                int numStops = Math.toIntExact((Long) results.get("numStops"));
+                String location = (String) results.get("location");
+                ArrayList<Stop> stops = (ArrayList<Stop>) results.get("stops");
+                int numLikes = Math.toIntExact((Long) results.get("numLikes"));
+                ArrayList<String> tags = (ArrayList<String>) results.get("tags");
+//            ArrayList<String> access = (ArrayList<String>) results.get("access");
+            String coverPhoto = (String) results.get("coverPhoto");
+//                String coverPhoto = "none";
+                ArrayList<String> access = new ArrayList<>();
+                ItineraryObject itinerary = new ItineraryObject(creatorName, itineraryName, numLikes,
+                        coverPhoto, location, numStops, stops, tags,
+                        access, isBookmarked);
+                returned.add(itinerary);
+            } else { }
+        }
+
+         return returned;
+    }
+
+//    public ArrayList<Stop> fixStop (ArrayList badStopList) {
+//        ArrayList<Stop> returned = new ArrayList<>();
+//        for
+//    }
 
     public void removeListener() {
         myRef.removeEventListener(listener);
@@ -197,7 +239,7 @@ public class FirebaseFuncs<Model> {
                         String name = "";
                         while (keys.hasNext()) {
                             name = keys.next();
-                            if (name != "Tags") {
+                            if (!name.equals("Tags")) {
                                 try {
 
                                     JSONObject itin = info.getJSONObject(name);
@@ -211,7 +253,7 @@ public class FirebaseFuncs<Model> {
                                 }
                             } else {}
                         }
-                        if (name != "Tags") {
+                        if (!name.equals("Tags")) {
                             try {
 
                                 ItineraryObject itinerary = new ItineraryObject(info.getJSONObject("name"));

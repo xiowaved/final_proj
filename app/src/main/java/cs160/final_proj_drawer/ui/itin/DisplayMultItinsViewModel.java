@@ -53,6 +53,7 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
         firebaseFuncs.addListener(new FirebaseFuncs.FirebaseFuncsCallback<ItineraryObject>() {
             @Override
             public void onSuccess(ArrayList<ItineraryObject> result) {
+
                 loadedItins.setValue(result);
             }
 
