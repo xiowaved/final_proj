@@ -232,6 +232,12 @@ public class FirebaseFuncs<Model> {
     // todo vaguely understand what is happening here
     // this needs application context, not activity context
     // (otherwise itll die every time activity is redrawn, like rotation)
+
+
+//    getItineraries should only be used for the homefragment, or for when the location changes.
+//    Any additional filtering needs to use getNestedItineraries
+//    I think this will also need to be used for bookmarked itineraries, just given correct url
+
     public static void getItineraries(final ArrayList<ItineraryObject> list, String url, final Context context){
 
         Log.i("getItin", "called getItin");
@@ -289,6 +295,11 @@ public class FirebaseFuncs<Model> {
         firebaseSingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
     }
+
+
+//    getNestedItineraries should be our main itinerary getting thing, it can
+//    take anywhere from 1 to a million tags and it returns itineraries that have all of the tags.
+//
     public static void getNestedItineraries(final ArrayList<ItineraryObject> list, String givenUrl, final Context context, final ArrayList<String> neededTags){
 
 //        Log.i("getItin", "called getItin");
