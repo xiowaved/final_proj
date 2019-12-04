@@ -2,11 +2,8 @@ package cs160.final_proj_drawer.logic;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
@@ -31,22 +28,17 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.navigation.NavController;
-import androidx.recyclerview.widget.RecyclerView;
 
 import cs160.final_proj_drawer.R;
 
@@ -291,8 +283,8 @@ public class FirebaseFuncs<Model> {
             }
         });
 
-        MySingleton mySingleton = new MySingleton(context);
-        mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+        FirebaseSingleton firebaseSingleton = new FirebaseSingleton(context);
+        firebaseSingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
     }
     public static void getNestedItineraries(final ArrayList<ItineraryObject> list, String givenUrl, final Context context, final ArrayList<String> neededTags){
@@ -378,8 +370,8 @@ public class FirebaseFuncs<Model> {
             }
         });
 
-        MySingleton mySingleton = new MySingleton(context);
-        mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+        FirebaseSingleton firebaseSingleton = new FirebaseSingleton(context);
+        firebaseSingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
     }
 
