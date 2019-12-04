@@ -48,7 +48,7 @@
             android:layout_alignRight="@+id/like"
             android:layout_marginRight="@dimen/card_icon_margin_right"
             android:layout_marginTop="@dimen/card_bkmk_margin_top"
-            android:src="@drawable/figmabkmkwhite" />
+            android:src="@drawable/ic_bkmark" />
 
 
 

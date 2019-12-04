@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.ui.itin.DisplayItinHelperFuncs;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
@@ -35,11 +36,18 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
+        //UI
         TextView itineraryName;
         TextView numLikesText;
         ImageView bookmark;
+        ImageView like;
         ImageView cover;
         OnRecyclerCardListener onItinListener;
+
+        //logic
+        ItineraryObject itin;
+        //toDo delete this! the liked should be obtained from the itin object
+        Boolean liked;
 
         public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
         {
@@ -47,25 +55,28 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             this.itineraryName = itemView.findViewById(R.id.text);
             this.numLikesText = itemView.findViewById(R.id.numLikes);
             this.bookmark = itemView.findViewById(R.id.bkmark);
+            this.like = itemView.findViewById(R.id.like);
             this.cover = itemView.findViewById(R.id.cover_img);
             this.onItinListener = onItinListener;
 
             itemView.setOnClickListener(this);
 
-
-            bookmark = itemView.findViewById(R.id.bkmark);
-            bookmark.setOnClickListener((new View.OnClickListener() {
+            this.bookmark.setOnClickListener((new View.OnClickListener() {
                 @Override
-                //todo make sure the bookmmarking here writes to firebase
                 public void onClick(View v) {
-                    ItineraryObject thisItin = itins.get(getAdapterPosition());
-                    thisItin.setBookmarked(!thisItin.getBookmarked());
-                    if (thisItin.getBookmarked()) {
-                        bookmark.setImageResource(R.drawable.ic_bookmark_filled);
-                    } else {
-                        bookmark.setImageResource(R.drawable.ic_bkmark);
-                    }
-                    Log.i("ItinAdapter", "clicked bookmark");
+                    itin.clickBookmark();
+                    //todo make sure the bookmmarking here writes to firebase
+                    DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bookmark);
+                }
+            }));
+            this.like.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    liked = !liked;
+                    //todo make the like come from in the itin
+                    //todo put to firebase appropaitely
+                    //todo also changenumLikes in the itin and in firebase
+                    DisplayItinHelperFuncs.updateLikeView(liked, like);
                 }
             }));
         }
@@ -88,18 +99,17 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ItinAdapter.ViewHolder holder, final int position)
     {
-        ItineraryObject itinerary = itins.get(position);
+        holder.itin = itins.get(position);
         holder.itineraryName.setText(itins.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
-        //holder.itemView.setOnClickListener(holder);
+
+        //todo delete later
+        holder.liked = false;
+
         String image = itins.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.cover);
-        boolean isBookmarked = itinerary.getBookmarked();
-        if (isBookmarked) {
-            holder.bookmark.setImageResource(R.drawable.ic_bookmark_filled);
-        } else {
-            holder.bookmark.setImageResource(R.drawable.ic_bkmark);
-        }
+        DisplayItinHelperFuncs.updateBookmarkView(holder.itin.getBookmarked(), holder.bookmark);
+        DisplayItinHelperFuncs.updateLikeView(holder.liked, holder.like);
     }
 
     @Override
