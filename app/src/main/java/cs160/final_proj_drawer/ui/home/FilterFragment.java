@@ -19,6 +19,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Page showing the filter options for a search query.
  *
@@ -26,6 +29,7 @@ import android.widget.Toast;
 public class FilterFragment extends Fragment {
 
     private NavController navController;
+    private NavController childNavController;
 
     private Button resetButton;
     private Button cancelButton;
@@ -59,19 +63,27 @@ public class FilterFragment extends Fragment {
 
     private String initialTagQuery;
     private String locationQuery;
+    private View root;
+
+
     // Declare any UI elements that need to be interactive here, as private variables, like ImageButtons, TextViews, etc.
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        final View root = inflater.inflate(R.layout.fragment_filter, container, false);
+        root = inflater.inflate(R.layout.fragment_filter, container, false);
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
         Bundle b = getArguments();
         initialTagQuery = b.getString("initialTagQuery");
         locationQuery = b.getString("locationQuery");
         Log.i("filter frag", initialTagQuery + " " + locationQuery);
+
+
         return root;
     }
+
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -244,7 +256,21 @@ public class FilterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //clear all values
-                //clear fragment
+                //reset distance UI
+                distanceGroup.clearCheck();
+                //reset price value
+                freePriceBool = false;
+                onePriceBool = false;
+                twoPriceBool = false;
+                threePriceBool = false;
+                //reset distance value
+                anyDistanceBool = false;
+                blocksDistanceBool = false;
+                mileDistanceBool = false;
+                milesDistanceBool = false;
+                //go back to search results
+
+
                 Toast toast = Toast.makeText(getContext(), "clicked on cancel",
                         Toast.LENGTH_SHORT); toast.show();
             }

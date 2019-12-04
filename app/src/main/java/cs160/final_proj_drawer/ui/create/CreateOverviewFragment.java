@@ -80,8 +80,12 @@ public class CreateOverviewFragment extends Fragment {
                 itineraryLocation = itinLocation.getText().toString();
 
                 // if user left name, location field, or cover photo blank, do not let them navigate to next page yet
-                if (itineraryName.isEmpty() || itineraryLocation.isEmpty() || coverPhoto.isEmpty()) {
-                    // user did not fill in required fields
+//                if (itineraryName.isEmpty() || itineraryLocation.isEmpty() || coverPhoto.isEmpty()) {
+                // todo IGNORING NO COVER PHOTO SET FOR NOW TO TEST LATER PARTS OF CREATION PROCESS
+                //  use the commented out conditional that checks all 3 fields in final version of app
+                if (itineraryName.isEmpty() || itineraryLocation.isEmpty()) {
+
+                // user did not fill in required fields
                     errorMsg.setText("Fill in all fields to continue.");
                     return;
                 } else {

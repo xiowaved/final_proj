@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,8 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
     private Button submit;
     private EditText itinName;
     private EditText itinLoc;
-
+    private SeekBar priceSeekBar;
+    private int pricePosition;
     private ArrayList<Stop> itinStops;
 
 
@@ -100,6 +102,29 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
         final EditText itinLocation = (EditText) getView().findViewById(R.id.location);
         itinName.setText(itineraryObject.getItineraryName());
 
+        //get price seekbar
+        final SeekBar priceSeekBar = (SeekBar) getView().findViewById(R.id.seekBar);
+
+        priceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.i("progress change", "here");
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                Log.i("start tracking", "here");
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.i("stopped tracking", "" + seekBar.getProgress());
+                // this is where you detect where the user has left the pin on the sliding scale
+                pricePosition = seekBar.getProgress();
+
+            }
+        });
+
         // set listener for button when user submits itin
         submit = (Button) getView().findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -109,19 +134,35 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     // do NOT write to firebase if itinerary has no stops
                     //todo do we want to give some personalized error message? or just do nothing
                 } else {
+                    String price;
+                    // get price tag
+                    if (pricePosition == 0) {
+                        // user tagged 'free'
+
+                    } else if (pricePosition == 1) {
+                        // user tagged '$'
+                    } else if (pricePosition == 2) {
+                        // user tagged '$$'
+                    } else if (pricePosition == 3) {
+                        // user tagged '$$$'
+
+                    }
+
                     // write itinerary to firebase
                     itineraryObject.setItineraryName(itinName.getText().toString());
                     itineraryObject.setItineraryLocation(itinLocation.getText().toString());
                     Log.i("itin name", itineraryObject.getItineraryName());
                     Log.i("itin loc", itineraryObject.getLocation());
 
-                    writeSingleItin(itineraryObject);
+//                    writeSingleItin(itineraryObject);
 
 
                     // navigate back to home splash screen
                 }
             }
         });
+
+
 
     }
 
