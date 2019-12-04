@@ -20,13 +20,13 @@ import cs160.final_proj_drawer.R;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
-    private ArrayList<ItineraryObject> dataList;
+    private ArrayList<ItineraryObject> itins;
     private OnRecyclerCardListener onItinListener;
 
 
-    public ItinAdapter( ArrayList<ItineraryObject> data, OnRecyclerCardListener onItinListener)
+    public ItinAdapter( ArrayList<ItineraryObject> itins, OnRecyclerCardListener onItinListener)
     {
-        this.dataList = data;
+        this.itins = itins;
         this.onItinListener = onItinListener;
     }
 
@@ -50,7 +50,13 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             bookmark.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //this is the bookmark click
                     onItinListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.BOOKMARK);
+                    if (itins.get(getAdapterPosition()).getBookmarked()) {
+
+                    } else {
+
+                    }
                     Log.i("ItinAdapter", "clicked bookmark");
                 }
             }));
@@ -74,15 +80,15 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ItinAdapter.ViewHolder holder, final int position)
     {
-        holder.itineraryName.setText(dataList.get(position).getItineraryName());
-        holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
+        holder.itineraryName.setText(itins.get(position).getItineraryName());
+        holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
         //holder.itemView.setOnClickListener(holder);
     }
 
     @Override
     public int getItemCount()
     {
-        return dataList.size();
+        return itins.size();
     }
 
 }
