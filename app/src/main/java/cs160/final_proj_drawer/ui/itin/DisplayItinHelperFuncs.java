@@ -12,7 +12,7 @@ public class DisplayItinHelperFuncs {
     //todo change this to a filled like drawable
     static int filledLike = R.drawable.ic_bookmark_filled;
 
-    static void updateBookmarkView(Boolean isBookmarked, ImageView bkmkView) {
+    public static void updateBookmarkView(Boolean isBookmarked, ImageView bkmkView) {
         if (isBookmarked) {
             bkmkView.setImageResource(filledBookmark);
         } else {
@@ -20,7 +20,7 @@ public class DisplayItinHelperFuncs {
         }
     }
 
-    static void updateLikeView(Boolean isLiked, ImageView likeView) {
+    public static void updateLikeView(Boolean isLiked, ImageView likeView) {
         if (isLiked) {
             likeView.setImageResource(filledLike);
         } else {

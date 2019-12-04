@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.ui.itin.DisplayItinHelperFuncs;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
@@ -35,11 +36,15 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
+        //UI
         TextView itineraryName;
         TextView numLikesText;
         ImageView bookmark;
         ImageView cover;
         OnRecyclerCardListener onItinListener;
+
+        //logic
+        ItineraryObject itin;
 
         public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
         {
@@ -56,16 +61,10 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             bookmark = itemView.findViewById(R.id.bkmark);
             bookmark.setOnClickListener((new View.OnClickListener() {
                 @Override
-                //todo make sure the bookmmarking here writes to firebase
                 public void onClick(View v) {
-                    ItineraryObject thisItin = itins.get(getAdapterPosition());
-                    thisItin.setBookmarked(!thisItin.getBookmarked());
-                    if (thisItin.getBookmarked()) {
-                        bookmark.setImageResource(R.drawable.ic_bookmark_filled);
-                    } else {
-                        bookmark.setImageResource(R.drawable.ic_bkmark);
-                    }
-                    Log.i("ItinAdapter", "clicked bookmark");
+                    itin.clickBookmark();
+                    //todo make sure the bookmmarking here writes to firebase
+                    DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bookmark);
                 }
             }));
         }
@@ -88,13 +87,14 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ItinAdapter.ViewHolder holder, final int position)
     {
-        ItineraryObject itinerary = itins.get(position);
+        holder.itin = itins.get(position);
         holder.itineraryName.setText(itins.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
 
+
         String image = itins.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.cover);
-        boolean isBookmarked = itinerary.getBookmarked();
+        boolean isBookmarked = holder.itin.getBookmarked();
         if (isBookmarked) {
             holder.bookmark.setImageResource(R.drawable.ic_bookmark_filled);
         } else {
