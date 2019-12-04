@@ -53,13 +53,15 @@ public class FirebaseFuncs<Model> {
             if we change stuff on our firebase, we have to
             change these
          */
+
+    // Initialize Firebase Auth
+    static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference("Locations");
     public static String url = "https://travelr-7feac.firebaseio.com/Locations/";
     public FirebaseFuncsCallback<ItineraryObject> firebaseCallback;
     private ValueEventListener listener;
     static StorageReference storage = FirebaseStorage.getInstance().getReference();
-    private FirebaseAuth mAuth;
 
     public interface FirebaseFuncsCallback<ItineraryObject> {
         void onSuccess(ArrayList<ItineraryObject> result);
