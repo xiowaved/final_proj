@@ -12,14 +12,14 @@ import com.android.volley.toolbox.Volley;
 // this was copy and pasted from android studio's example on singletons
 // ideally, we want to use volley out of the box, or actually
 // understand what we are doing if we extend it
-public class MySingleton {
+public class FirebaseSingleton {
 
-        private static MySingleton instance;
+        private static FirebaseSingleton instance;
         private RequestQueue requestQueue;
         private ImageLoader imageLoader;
         private static Context ctx;
 
-        public MySingleton(Context context) {
+        public FirebaseSingleton(Context context) {
             ctx = context;
             requestQueue = getRequestQueue();
 
@@ -40,9 +40,9 @@ public class MySingleton {
                     });
         }
 
-        public static synchronized MySingleton getInstance(Context context) {
+        public static synchronized FirebaseSingleton getInstance(Context context) {
             if (instance == null) {
-                instance = new MySingleton(context);
+                instance = new FirebaseSingleton(context);
             }
             return instance;
         }

@@ -52,8 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void testImage(View view) {
-        Context context = this.getApplicationContext();
+    public void testImage(View view, Context context) {
         FirebaseFuncs.putImage(context);
         String email = "colbymccann@berkeley.edu";
         String password ="password";
@@ -96,8 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
 
                         }
 
