@@ -110,7 +110,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         bundle.putSerializable("itinerary", selectedItin);
 
         Log.i("Note", " was clicked! " + position);
-
+/*
         ImageView bookmark = getView().findViewById(R.id.bkmark);
         if (action == cardAction.BOOKMARK) {
             if (bookmark.getDrawable().getConstantState() == emptyBkmk.getConstantState()) {
@@ -123,9 +123,9 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
                 // todo selectedItin should now be removed from the user's profile
 
             }
-        } else {
+        } else {*/
             navController.navigate(R.id.fragment_display_single_itin, bundle);
-        }
+        //}
     }
 
     public void fillPlaceHolderItins() {
