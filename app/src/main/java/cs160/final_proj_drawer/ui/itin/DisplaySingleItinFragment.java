@@ -86,15 +86,16 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         numLikes.setText(Integer.toString(itin.getNumLikes()));
         location.setText(itin.getLocation());
         Picasso.get().load(coverImage).into(cover);
-        updateBookmark();
-        updateLike();
+        DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bkmk);
+        DisplayItinHelperFuncs.updateLikeView(liked, like);
 
         bkmk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 itin.clickBookmark();
                 //todo tell firebase that bookmark was clicked for this
-                updateBookmark();
+
+                DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bkmk);
             }
         });
 
@@ -105,7 +106,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
                 //todo tell firebase and the itin that like was clicked for this itin
                 //todo add or subtract a like from numLikes, depending on the action taken.
                 // communicate that to firebase, and update numLikes on the screen
-                updateLike();
+                DisplayItinHelperFuncs.updateLikeView(liked, like);
             }
         });
 
@@ -126,22 +127,4 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         Log.i("NOTE", "stop clicked in displaySingleItin "+position);
     }
 
-    public void updateBookmark() {
-        if (itin.getBookmarked()) {
-            bkmk.setImageResource(R.drawable.ic_bookmark_filled);
-        } else {
-            bkmk.setImageResource(R.drawable.ic_bkmark);
-
-        }
-    }
-
-    public void updateLike() {
-        if (liked) {
-            //todo change this to a filled like
-            like.setImageResource(R.drawable.ic_bookmark_filled);
-        } else {
-            like.setImageResource(R.drawable.like);
-
-        }
-    }
 }

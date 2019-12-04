@@ -91,7 +91,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         ItineraryObject itinerary = itins.get(position);
         holder.itineraryName.setText(itins.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
-        //holder.itemView.setOnClickListener(holder);
+
         String image = itins.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.cover);
         boolean isBookmarked = itinerary.getBookmarked();
