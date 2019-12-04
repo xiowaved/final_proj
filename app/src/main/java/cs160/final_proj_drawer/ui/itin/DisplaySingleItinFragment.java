@@ -34,7 +34,6 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
     //ui elements
     private TextView title;
     private TextView location;
-    private Boolean isBookmarked;
     private TextView numLikes;
     private ImageView cover;
     private ImageView bkmk;
@@ -77,7 +76,6 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         //find itin logic stuff
         itin = (ItineraryObject) input;
         stops = itin.getStops();
-        isBookmarked = itin.getBookmarked();
         coverImage = itin.getCoverPhoto();
 
         //set overarching itin up
@@ -89,7 +87,9 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         bkmk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                itin.clickBookmark();
+                //todo tell firebase that bookmark was clicked for this
+                updateBookmark();
             }
         });
 
@@ -111,7 +111,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
     }
 
     public void updateBookmark() {
-        if (isBookmarked) {
+        if (itin.getBookmarked()) {
             bkmk.setImageResource(R.drawable.ic_bookmark_filled);
         } else {
             bkmk.setImageResource(R.drawable.ic_bkmark);
