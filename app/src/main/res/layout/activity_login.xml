@@ -70,10 +70,10 @@
             android:id="@+id/guest"
             android:layout_width="@dimen/login_buttons_width"
             android:layout_height="wrap_content"
-            android:onClick="createTestItinerary"
+            android:onClick="testImage"
             android:text="@string/login_guest_button_text"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

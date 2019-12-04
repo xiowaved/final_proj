@@ -1,6 +1,13 @@
 package cs160.final_proj_drawer.logic;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
@@ -8,27 +15,38 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
+
+import cs160.final_proj_drawer.R;
 
 /* This is all of our functions that interact with firebase.
    They are created here, as seperate from UI as possible, so we can
@@ -36,20 +54,68 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class FirebaseFuncs<Model> {
 
+
     /*  stuff to access our project's firebase database.
-        if we change stuff on our firebase, we have to
-        change these
-     */
+            if we change stuff on our firebase, we have to
+            change these
+         */
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference("Locations");
     public static String url = "https://travelr-7feac.firebaseio.com/Locations/";
     public FirebaseFuncsCallback<ItineraryObject> firebaseCallback;
     private ValueEventListener listener;
+    static StorageReference storage = FirebaseStorage.getInstance().getReference();
+    private FirebaseAuth mAuth;
 
     public interface FirebaseFuncsCallback<ItineraryObject> {
         void onSuccess(ArrayList<ItineraryObject> result);
 
         void onError(Exception e);
+    }
+
+//    when we get this working it won't need to take in Context anymore
+    public static void putImage(Context context){
+// This is an example of using a drawable png
+        int pictureID = R.drawable.bookmark;
+          Uri filePath = getUriToDrawable(context,pictureID);
+        /**/
+
+        final StorageReference storageRef= storage.child("new folder/third_bookmark");
+//
+//
+//        convert the image to a Bitmap (easier to put in)
+        Bitmap bm = BitmapFactory.decodeResource(context.getResources(),pictureID);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        storageRef.putBytes(data).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if(task.isSuccessful()){
+                    storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String URL = uri.toString();
+                            Log.i("URL",URL);
+                        }
+                    });
+                }
+            }
+        });
+
+    }
+
+
+
+//    Code that was needed to get URI from drawable ID
+    public static final Uri getUriToDrawable(Context context,
+                                             int drawableId) {
+        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + context.getResources().getResourcePackageName(drawableId)
+                + '/' + context.getResources().getResourceTypeName(drawableId)
+                + '/' + context.getResources().getResourceEntryName(drawableId) );
+        return imageUri;
     }
 
     public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback) {
