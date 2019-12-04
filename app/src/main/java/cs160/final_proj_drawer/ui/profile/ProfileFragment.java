@@ -2,6 +2,7 @@ package cs160.final_proj_drawer.ui.profile;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +16,23 @@ import java.util.ArrayList;
 
 import cs160.final_proj_drawer.adapters.HorizAdapter;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
 
 //this is the UI for the user's profile
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements OnRecyclerCardListener {
 
     private RecyclerView savedItins;
     private RecyclerView postedItins;
     private HorizAdapter savedAdapter;
     private HorizAdapter postedAdapter;
     private TypedArray defaultPics;
+    private OnRecyclerCardListener listener;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        listener = this;
         savedItins = (RecyclerView) root.findViewById(R.id.profile_saved);
         final LinearLayoutManager savedLayoutManager = new LinearLayoutManager(getActivity());
         savedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -49,10 +53,16 @@ public class ProfileFragment extends Fragment {
         }
 
         //attach stuff to the recyclerView
-        savedAdapter = new HorizAdapter(defaultItins);
+        savedAdapter = new HorizAdapter(defaultItins, listener);
         savedItins.setAdapter(savedAdapter);
-        postedAdapter = new HorizAdapter(defaultItins);
+        postedAdapter = new HorizAdapter(defaultItins, listener);
         postedItins.setAdapter(postedAdapter);
         return root;
+    }
+
+    @Override
+    public void onCardClick(int position, cardAction action) {
+        Log.i("profile", "click");
+
     }
 }
