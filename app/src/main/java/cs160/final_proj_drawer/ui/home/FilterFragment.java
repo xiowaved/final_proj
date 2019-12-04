@@ -1,5 +1,6 @@
 package cs160.final_proj_drawer.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.logic.ItineraryObject;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import static cs160.final_proj_drawer.logic.FirebaseFuncs.getNestedItineraries;
 
 /**
  * Page showing the filter options for a search query.
@@ -260,29 +266,36 @@ public class FilterFragment extends Fragment {
                 String priceSelection = priceLastClicked.toString();
                 // todo finish this function
                 // based on user selection of price, set tag for firebase query
+                ArrayList<String> tags = new ArrayList<>();
                 if (priceSelection.equals("Free")) {
-
+                tags.add("free");
                 } else if (priceSelection.equals("$")) {
-
+                tags.add("cheap");
                 } else if (priceSelection.equals("$$")) {
-
+                tags.add("moderate");
                 } else if (priceSelection.equals("$$$")) {
-
+                tags.add("expensive");
                 } else { //user did not select a price
-
+//                    no code added as a tag
                 }
                 // based on user selection of distance, set tag for firebase query
                 int clickedButotn = distanceGroup.getCheckedRadioButtonId();
                 if (anyDistanceBool) {
+//                    nothing, we want itins of any distance
 
                 } else if (blocksDistanceBool) {
-
+                tags.add("block");
                 } else if (mileDistanceBool) {
-
+                tags.add("mile");
                 } else if (milesDistanceBool) {
-
+                tags.add("miles");
                 }
-                // conduct a new firebase search query with getnesteditineraries?
+                tags.add(initialTagQuery);
+
+//                This call does all the work,  but I don't think it's building the itinerary cards?
+                getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/" + locationQuery + ".json" , getContext(), tags);
+
+                    // conduct a new firebase search query with getnesteditineraries?
                 // initial tag searched before clicking filter button = initialTagQuery (defined in OnCreateView)
                 // initial location query = locationQuery (defined in OnCreateView)
                 // combine these two ^ with however we are going to pass the distance and price to firebase

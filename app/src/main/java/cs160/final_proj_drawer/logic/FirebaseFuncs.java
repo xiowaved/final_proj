@@ -240,13 +240,13 @@ public class FirebaseFuncs<Model> {
         mySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
     }
-    public static void getNestedItineraries(final ArrayList<ItineraryObject> list, String url, final Context context, final ArrayList<String> neededTags){
+    public static void getNestedItineraries(final ArrayList<ItineraryObject> list, String givenUrl, final Context context, final ArrayList<String> neededTags){
 
-        Log.i("getItin", "called getItin");
+//        Log.i("getItin", "called getItin");
         // I did it this way b/c there might be itineraries with names that come after tags.
 //        that's why its this two-tier search.
 //        First it goes through all the itineraries, ignoring the tags folder, and gets to the last one and adds it
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,givenUrl,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
                         JSONObject info = response;
