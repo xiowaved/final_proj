@@ -8,20 +8,16 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.logic.Stop;
 
-import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 /**
  * Page showing the filter options for a search query.
@@ -59,6 +55,10 @@ public class FilterFragment extends Fragment {
     private boolean mileDistanceBool;
     private boolean milesDistanceBool;
 
+    private Button applyButton;
+
+    private String initialTagQuery;
+    private String locationQuery;
     // Declare any UI elements that need to be interactive here, as private variables, like ImageButtons, TextViews, etc.
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -66,17 +66,20 @@ public class FilterFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_filter, container, false);
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
+        Bundle b = getArguments();
+        initialTagQuery = b.getString("initialTagQuery");
+        locationQuery = b.getString("locationQuery");
+        Log.i("filter frag", initialTagQuery + " " + locationQuery);
         return root;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        freePrice = (TextView) getView().findViewById(R.id.price1);
-        onePrice = (TextView) getView().findViewById(R.id.price2);
-        twoPrice = (TextView) getView().findViewById(R.id.price3);
-        threePrice = (TextView) getView().findViewById(R.id.price4);
-
+        freePrice = (TextView) getView().findViewById(R.id.price_free);
+        onePrice = (TextView) getView().findViewById(R.id.price_1);
+        twoPrice = (TextView) getView().findViewById(R.id.price_2);
+        threePrice = (TextView) getView().findViewById(R.id.price_3);
+        // set listeners for price options, change ui to indicate they've been clicked
         freePrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,6 +162,7 @@ public class FilterFragment extends Fragment {
         mileDistance = (RadioButton) getView().findViewById(R.id.radioButton3);
         milesDistance = (RadioButton) getView().findViewById(R.id.radioButton4);
 
+        // set listeners for distance filter radio buttons
         anyDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,6 +211,7 @@ public class FilterFragment extends Fragment {
             }
         });
 
+        // set on click listeners for reset and cancel buttons
         resetButton = (Button) getView().findViewById(R.id.reset);
         cancelButton = (Button) getView().findViewById(R.id.cancel);
 
@@ -242,6 +247,45 @@ public class FilterFragment extends Fragment {
                 //clear fragment
                 Toast toast = Toast.makeText(getContext(), "clicked on cancel",
                         Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        applyButton = (Button) getView().findViewById(R.id.apply);
+        // set listener for apply button
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(getContext(), "clicked on apply",
+                        Toast.LENGTH_SHORT); toast.show();
+                String priceSelection = priceLastClicked.toString();
+                // todo finish this function
+                // based on user selection of price, set tag for firebase query
+                if (priceSelection.equals("Free")) {
+
+                } else if (priceSelection.equals("$")) {
+
+                } else if (priceSelection.equals("$$")) {
+
+                } else if (priceSelection.equals("$$$")) {
+
+                } else { //user did not select a price
+
+                }
+                // based on user selection of distance, set tag for firebase query
+                int clickedButotn = distanceGroup.getCheckedRadioButtonId();
+                if (anyDistanceBool) {
+
+                } else if (blocksDistanceBool) {
+
+                } else if (mileDistanceBool) {
+
+                } else if (milesDistanceBool) {
+
+                }
+                // conduct a new firebase search query with getnesteditineraries?
+                // initial tag searched before clicking filter button = initialTagQuery (defined in OnCreateView)
+                // initial location query = locationQuery (defined in OnCreateView)
+                // combine these two ^ with however we are going to pass the distance and price to firebase
             }
         });
     }

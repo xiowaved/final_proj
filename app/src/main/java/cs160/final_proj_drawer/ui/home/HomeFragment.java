@@ -84,10 +84,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View root) {
                 Log.i("NOTE", "clicked filter");
-
+                Bundle bundle = new Bundle();
+                bundle.putString("initialTagQuery", tagSearchBar.getQuery().toString());
+                bundle.putString("locationQuery", locationSearchBar.getQuery().toString());
                 //delete later
                 //this is here for testing
-                childNavController.navigate(R.id.fragment_filter);
+                childNavController.navigate(R.id.fragment_filter,bundle);
             }
 
 

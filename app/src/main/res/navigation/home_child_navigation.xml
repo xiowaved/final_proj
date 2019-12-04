@@ -12,7 +12,16 @@
     <fragment
         android:id="@+id/fragment_filter"
         android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
-        tools:layout="@layout/fragment_filter" />
+        tools:layout="@layout/fragment_filter" >
+        <argument
+            android:name="location"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="initialTagQuery"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_splash"
         android:name="cs160.final_proj_drawer.ui.home.SplashFragment"
