@@ -138,19 +138,21 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     // get price tag
                     if (pricePosition == 0) {
                         // user tagged 'free'
+                         itineraryObject.addTags("free");
 
                     } else if (pricePosition == 1) {
-                        // user tagged '$'
+                        itineraryObject.addTags("cheap");
                     } else if (pricePosition == 2) {
-                        // user tagged '$$'
+                        itineraryObject.addTags("moderate");
                     } else if (pricePosition == 3) {
-                        // user tagged '$$$'
+                        itineraryObject.addTags("expensive");
 
                     }
 
                     // write itinerary to firebase
                     itineraryObject.setItineraryName(itinName.getText().toString());
                     itineraryObject.setItineraryLocation(itinLocation.getText().toString());
+
                     Log.i("itin name", itineraryObject.getItineraryName());
                     Log.i("itin loc", itineraryObject.getLocation());
 

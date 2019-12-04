@@ -177,6 +177,8 @@ public class ItineraryObject implements Serializable {
         this.location = location;
     }
 
+    public void addTags(String tag){this.tags.add(tag);}
+
     public void setBookmarked(boolean isBookmarked) {
         this.isBookmarked = isBookmarked;
     }

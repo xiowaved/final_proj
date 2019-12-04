@@ -30,7 +30,6 @@ import static cs160.final_proj_drawer.logic.FirebaseFuncs.getNestedItineraries;
  */
 public class FilterFragment extends Fragment {
 
-    private NavController navController;
     private NavController childNavController;
 
     private Button resetButton;
@@ -74,7 +73,12 @@ public class FilterFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_filter, container, false);
 
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
+        if (childNavController == null) {
+            Log.i("IN FILTER", "didnt find kiddo");
+        } else {
+            Log.i("IN FILTER", "======== FOUND KIDDO =========");
+        }
 
         Bundle b = getArguments();
         initialTagQuery = b.getString("initialTagQuery");
@@ -272,9 +276,9 @@ public class FilterFragment extends Fragment {
                 milesDistanceBool = false;
                 //go back to search results
 
+                //todo pass the initially received search args here
+                childNavController.navigate(R.id.fragment_display_itins);
 
-                Toast toast = Toast.makeText(getContext(), "clicked on cancel",
-                        Toast.LENGTH_SHORT); toast.show();
             }
         });
 
