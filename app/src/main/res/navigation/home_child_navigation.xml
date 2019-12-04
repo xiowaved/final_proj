@@ -25,5 +25,10 @@
     <fragment
         android:id="@+id/fragment_splash"
         android:name="cs160.final_proj_drawer.ui.home.SplashFragment"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <argument
+            android:name="searchQueryObject"
+            app:argType="cs160.final_proj_drawer.logic.SearchQueryObject"
+            app:nullable="true" />
+    </fragment>
 </navigation>

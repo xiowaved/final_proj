@@ -16,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.logic.SearchQueryObject;
 
 /* this fragment holds the home page and the search function.
 *  it's the first page displayed to the user.
@@ -37,6 +38,7 @@ public class HomeFragment extends Fragment {
     private SearchView locationSearchBar;
     private TextView onSearchLocation;
     private NavController childNavController;
+    private SearchQueryObject searchQueryObject;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

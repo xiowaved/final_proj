@@ -13,11 +13,14 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.HorizAdapter;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
+import cs160.final_proj_drawer.logic.SearchQueryObject;
 
 /* this UI element displays categories, holds some
  cool text about the location, and has a displayMultItinsFragment
@@ -34,9 +37,22 @@ public class SplashFragment extends Fragment implements OnRecyclerCardListener {
     ArrayList cats;
     ArrayList<String> categories;
 
+    private NavController childNavController;
+    SearchQueryObject categoryQuery;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_splash, container, false);
+
+        childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
+        if (childNavController == null) {
+            Log.i("IN FILTER", "didnt find kiddo");
+        } else {
+            Log.i("IN FILTER", "======== FOUND KIDDO =========");
+        }
+
+
         listener = this;
         //category recycler view setup
         homeCats = (RecyclerView) root.findViewById(R.id.home_cats);
@@ -70,9 +86,11 @@ public class SplashFragment extends Fragment implements OnRecyclerCardListener {
     public void onCardClick(int position, cardAction action) {
         Log.i("splash", "click");
         //todo clean - string is being saved with category drawable id so it needs to be parsed here
-        String category = ((String) categories.get(position)).split(" ")[0];
-        Log.i("card click splash", category);
-        // colby todo execute a firebase search based on the category title
+        String[] categoryTag =  {((String) categories.get(position)).split(" ")[0] };
+        Bundle bundle = new Bundle();
+        categoryQuery = new SearchQueryObject(categoryTag, currentLocation);
+        bundle.putSerializable("searchQueryObject", categoryQuery);
+        childNavController.navigate(R.id.fragment_display_itins, bundle);
 
     }
 

@@ -33,6 +33,7 @@ import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
+import cs160.final_proj_drawer.logic.SearchQueryObject;
 import cs160.final_proj_drawer.logic.Stop;
 
 /*
@@ -58,6 +59,8 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
     Drawable emptyBkmk;
     Drawable filledBkmk;
 
+    private SearchQueryObject searchQueryObject;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_display_itins, container, false);
@@ -66,6 +69,14 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         viewModel = ViewModelProviders.of(this).get(DisplayMultItinsViewModel.class);
         listener = this;
+
+        //get searchQueryObject from splashFragment
+        Bundle bundle = getArguments();
+        if (bundle == null) {
+            searchQueryObject = new SearchQueryObject();
+        } else {
+            searchQueryObject = (SearchQueryObject) bundle.get("searchQueryObject");
+        }
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
@@ -76,7 +87,17 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         // set the bookmark drawables so that you can switch between them when user clicks on one
         emptyBkmk = getResources().getDrawable(R.drawable.ic_bkmark);
         filledBkmk =  getResources().getDrawable(R.drawable.ic_bookmark_filled);
-        
+
+        //todo incorporate the searchQuery object into a firebase search
+        String location = searchQueryObject.getLocation();
+        if (searchQueryObject.getTags().length > 1) {
+            // more than one query tag to search
+
+        } else {
+            // only one query tag to search
+
+        }
+
         //puttin more itins in here from firebase
         viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
