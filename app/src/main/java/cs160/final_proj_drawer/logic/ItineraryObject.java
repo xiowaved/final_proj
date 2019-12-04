@@ -183,6 +183,10 @@ public class ItineraryObject implements Serializable {
         this.isBookmarked = isBookmarked;
     }
 
+    public void clickBookmark() {
+        setBookmarked(!getBookmarked());
+    }
+
     public void addStop(Stop s) {
         this.stops.add(s);
     }

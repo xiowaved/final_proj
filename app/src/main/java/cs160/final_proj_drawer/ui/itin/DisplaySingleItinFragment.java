@@ -34,15 +34,18 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
     //ui elements
     private TextView title;
     private TextView location;
-    private Boolean bookmarked;
+    private Boolean isBookmarked;
     private TextView numLikes;
     private ImageView cover;
+    private ImageView bkmk;
+    private ImageView like;
     //stuff for the recycler
     private RecyclerView itinStops;
     private VertStopAdapter stopAdapter;
     //logic data
     private ItineraryObject itin;
     private ArrayList<Stop> stops;
+    private String coverImage;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         location = root.findViewById(R.id.location);
         numLikes = root.findViewById(R.id.numLikes);
         cover = root.findViewById(R.id.cover_img);
+        bkmk = root.findViewById(R.id.bkmark);
+        like = root.findViewById(R.id.like);
 
         //recycler view setup
         itinStops = (RecyclerView) root.findViewById(R.id.stops);
@@ -69,15 +74,24 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
             return root;
         }
 
-        //get overarching itin stuff set up
+        //find itin logic stuff
         itin = (ItineraryObject) input;
         stops = itin.getStops();
+        isBookmarked = itin.getBookmarked();
+        coverImage = itin.getCoverPhoto();
+
+        //set overarching itin up
         title.setText(itin.getItineraryName());
         numLikes.setText(Integer.toString(itin.getNumLikes()));
         location.setText(itin.getLocation());
-        bookmarked = itin.getBookmarked();
-        String image = itin.getCoverPhoto();
-        Picasso.get().load(image).into(cover);
+        Picasso.get().load(coverImage).into(cover);
+        updateBookmark();
+        bkmk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         //check if the itin object has stops, exit if it doesn't
         if (stops == null || stops.size() == 0) {
@@ -88,20 +102,20 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         stopAdapter = new VertStopAdapter(stops, this);
         itinStops.setAdapter(stopAdapter);
 
-        //delete later
-        /*
-        String testInfo  = "";
-        for (Stop stop:stops) {
-            testInfo+= "\n" + stop.getName();
-        }
-        body.setText(testInfo);*/
-
-
         return root;
     }
 
     @Override
     public void onCardClick(int position, cardAction action) {
         Log.i("NOTE", "stop clicked in displaySingleItin "+position);
+    }
+
+    public void updateBookmark() {
+        if (isBookmarked) {
+            bkmk.setImageResource(R.drawable.ic_bookmark_filled);
+        } else {
+            bkmk.setImageResource(R.drawable.ic_bkmark);
+
+        }
     }
 }
