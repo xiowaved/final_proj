@@ -45,6 +45,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
     private ItineraryObject itin;
     private ArrayList<Stop> stops;
     private String coverImage;
+    private boolean liked;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +78,8 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         itin = (ItineraryObject) input;
         stops = itin.getStops();
         coverImage = itin.getCoverPhoto();
+        //this is placeholder until we add something to itins
+        liked = false;
 
         //set overarching itin up
         title.setText(itin.getItineraryName());
@@ -84,12 +87,25 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         location.setText(itin.getLocation());
         Picasso.get().load(coverImage).into(cover);
         updateBookmark();
+        updateLike();
+
         bkmk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 itin.clickBookmark();
                 //todo tell firebase that bookmark was clicked for this
                 updateBookmark();
+            }
+        });
+
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                liked = !liked;
+                //todo tell firebase and the itin that like was clicked for this itin
+                //todo add or subtract a like from numLikes, depending on the action taken.
+                // communicate that to firebase, and update numLikes on the screen
+                updateLike();
             }
         });
 
@@ -115,6 +131,16 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
             bkmk.setImageResource(R.drawable.ic_bookmark_filled);
         } else {
             bkmk.setImageResource(R.drawable.ic_bkmark);
+
+        }
+    }
+
+    public void updateLike() {
+        if (liked) {
+            //todo change this to a filled like
+            like.setImageResource(R.drawable.ic_bookmark_filled);
+        } else {
+            like.setImageResource(R.drawable.like);
 
         }
     }
