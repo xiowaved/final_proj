@@ -101,6 +101,10 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
         }
 
+        // todo used for testing calling getnesteditins directly in viewmodel constructor
+        viewModel.searchQueryObject = searchQueryObject;
+
+
         Log.i("displayMult location",  location);
         //puttin more itins in here from firebase
         viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
