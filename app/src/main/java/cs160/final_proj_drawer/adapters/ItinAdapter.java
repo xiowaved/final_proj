@@ -20,13 +20,13 @@ import cs160.final_proj_drawer.R;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
-    private ArrayList<ItineraryObject> dataList;
+    private ArrayList<ItineraryObject> itins;
     private OnRecyclerCardListener onItinListener;
 
 
-    public ItinAdapter( ArrayList<ItineraryObject> data, OnRecyclerCardListener onItinListener)
+    public ItinAdapter( ArrayList<ItineraryObject> itins, OnRecyclerCardListener onItinListener)
     {
-        this.dataList = data;
+        this.itins = itins;
         this.onItinListener = onItinListener;
     }
 
@@ -34,23 +34,32 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     {
         TextView itineraryName;
         TextView numLikesText;
+        ImageView bookmark;
         OnRecyclerCardListener onItinListener;
 
         public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
         {
             super(itemView);
-            this.itineraryName = (TextView) itemView.findViewById(R.id.text);
-            this.numLikesText = (TextView) itemView.findViewById(R.id.numLikes);
+            this.itineraryName = itemView.findViewById(R.id.text);
+            this.numLikesText = itemView.findViewById(R.id.numLikes);
+            this.bookmark = itemView.findViewById(R.id.bkmark);
             this.onItinListener = onItinListener;
 
             itemView.setOnClickListener(this);
 
 
-            ImageView bookmark = (ImageView) itemView.findViewById(R.id.bkmark);
+            bookmark = itemView.findViewById(R.id.bkmark);
             bookmark.setOnClickListener((new View.OnClickListener() {
                 @Override
+                //todo make sure the bookmmarking here writes to firebase
                 public void onClick(View v) {
-                    onItinListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.BOOKMARK);
+                    ItineraryObject thisItin = itins.get(getAdapterPosition());
+                    thisItin.setBookmarked(!thisItin.getBookmarked());
+                    if (thisItin.getBookmarked()) {
+                        bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+                    } else {
+                        bookmark.setImageResource(R.drawable.ic_bkmark);
+                    }
                     Log.i("ItinAdapter", "clicked bookmark");
                 }
             }));
@@ -74,15 +83,22 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ItinAdapter.ViewHolder holder, final int position)
     {
-        holder.itineraryName.setText(dataList.get(position).getItineraryName());
-        holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
+        ItineraryObject itinerary = itins.get(position);
+        holder.itineraryName.setText(itins.get(position).getItineraryName());
+        holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
         //holder.itemView.setOnClickListener(holder);
+        boolean isBookmarked = itinerary.getBookmarked();
+        if (isBookmarked) {
+            holder.bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+        } else {
+            holder.bookmark.setImageResource(R.drawable.ic_bkmark);
+        }
     }
 
     @Override
     public int getItemCount()
     {
-        return dataList.size();
+        return itins.size();
     }
 
 }
