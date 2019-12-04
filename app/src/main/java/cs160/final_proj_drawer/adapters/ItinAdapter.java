@@ -40,11 +40,14 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         TextView itineraryName;
         TextView numLikesText;
         ImageView bookmark;
+        ImageView like;
         ImageView cover;
         OnRecyclerCardListener onItinListener;
 
         //logic
         ItineraryObject itin;
+        //toDo delete this! the liked should be obtained from the itin object
+        Boolean liked;
 
         public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
         {
@@ -52,14 +55,13 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             this.itineraryName = itemView.findViewById(R.id.text);
             this.numLikesText = itemView.findViewById(R.id.numLikes);
             this.bookmark = itemView.findViewById(R.id.bkmark);
+            this.like = itemView.findViewById(R.id.like);
             this.cover = itemView.findViewById(R.id.cover_img);
             this.onItinListener = onItinListener;
 
             itemView.setOnClickListener(this);
 
-
-            bookmark = itemView.findViewById(R.id.bkmark);
-            bookmark.setOnClickListener((new View.OnClickListener() {
+            this.bookmark.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     itin.clickBookmark();
@@ -91,15 +93,13 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         holder.itineraryName.setText(itins.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
 
+        //todo delete later
+        holder.liked = false;
 
         String image = itins.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.cover);
-        boolean isBookmarked = holder.itin.getBookmarked();
-        if (isBookmarked) {
-            holder.bookmark.setImageResource(R.drawable.ic_bookmark_filled);
-        } else {
-            holder.bookmark.setImageResource(R.drawable.ic_bkmark);
-        }
+        DisplayItinHelperFuncs.updateBookmarkView(holder.itin.getBookmarked(), holder.bookmark);
+        DisplayItinHelperFuncs.updateLikeView(holder.liked, holder.like);
     }
 
     @Override
