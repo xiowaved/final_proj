@@ -90,14 +90,18 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
         //todo incorporate the searchQuery object into a firebase search
         String location = searchQueryObject.getLocation();
-        if (searchQueryObject.getTags().length > 1) {
+        if (searchQueryObject.getTags().length == 1) {
             // more than one query tag to search
+            Log.i("displayMult", "single tag " + searchQueryObject.getTags()[0]);
+            // only one query tag to search
 
         } else {
-            // only one query tag to search
+            // more than one query tag to search
+            Log.i("displayMult", "multiple tags");
 
         }
 
+        Log.i("displayMult location",  location);
         //puttin more itins in here from firebase
         viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
