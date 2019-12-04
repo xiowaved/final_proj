@@ -81,7 +81,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
-                itinAdapter = new ItinAdapter(viewModel.loadedItins.getValue(), listener);
+                itinAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
                 searchItins.setAdapter(itinAdapter);
             }
         });
@@ -105,7 +105,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
     @Override
     public void onCardClick(int position, cardAction action) {
-        ItineraryObject selectedItin = viewModel.loadedItins.getValue().get(position);
+        ItineraryObject selectedItin = viewModel.getLoadedItins().getValue().get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);
 
@@ -156,7 +156,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
             ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
                     "coverPhoto", "berk", 1, stoplist, taglist, acclist, isBookmarked);
-            viewModel.loadedItins.getValue().add(itinerary);
+            viewModel.getLoadedItins().getValue().add(itinerary);
 
         }
     }

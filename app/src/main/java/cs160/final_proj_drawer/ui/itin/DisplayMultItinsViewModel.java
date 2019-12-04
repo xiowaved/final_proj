@@ -64,6 +64,10 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
 
         return loadedItins;
     }
-/*
-*/
+
+    public MutableLiveData<ArrayList<ItineraryObject>> getLoadedItins() {
+        return this.loadedItins;
+    }
+
+
 }
