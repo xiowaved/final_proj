@@ -285,7 +285,7 @@ public class FilterFragment extends Fragment {
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getContext(), "clicked on apply",
                         Toast.LENGTH_SHORT); toast.show();
-                String priceSelection = priceLastClicked.toString();
+                String priceSelection = priceLastClicked.getText().toString();
                 // todo finish this function
                 // based on user selection of price, set tag for firebase query
                 ArrayList<String> tags = new ArrayList<>();

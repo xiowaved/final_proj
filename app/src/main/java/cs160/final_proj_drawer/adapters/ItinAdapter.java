@@ -15,6 +15,9 @@ import java.util.ArrayList;
 
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 
@@ -35,6 +38,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         TextView itineraryName;
         TextView numLikesText;
         ImageView bookmark;
+        ImageView cover;
         OnRecyclerCardListener onItinListener;
 
         public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
@@ -43,6 +47,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             this.itineraryName = itemView.findViewById(R.id.text);
             this.numLikesText = itemView.findViewById(R.id.numLikes);
             this.bookmark = itemView.findViewById(R.id.bkmark);
+            this.cover = itemView.findViewById(R.id.cover_img);
             this.onItinListener = onItinListener;
 
             itemView.setOnClickListener(this);
@@ -87,6 +92,8 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         holder.itineraryName.setText(itins.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
         //holder.itemView.setOnClickListener(holder);
+        String image = itins.get(position).getCoverPhoto();
+        Picasso.get().load(image).into(holder.cover);
         boolean isBookmarked = itinerary.getBookmarked();
         if (isBookmarked) {
             holder.bookmark.setImageResource(R.drawable.ic_bookmark_filled);

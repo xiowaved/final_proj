@@ -147,6 +147,9 @@ public class ItineraryObject implements Serializable {
     public boolean getBookmarked() {
         return this.isBookmarked;
     }
+    public String getCoverPhoto() {
+        return this.coverPhoto;
+    }
 
     public int getNumLikes() {
         return this.numLikes;
