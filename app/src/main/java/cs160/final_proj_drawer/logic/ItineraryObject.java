@@ -187,10 +187,14 @@ public class ItineraryObject implements Serializable {
     public void setBookmarked(boolean isBookmarked) {
          if (isBookmarked){
              this.tags.add("bookmarked");
+             this.isBookmarked = true;
              myRef.child(this.location).child(this.itineraryName).setValue(this);
+
          } else {
              this.tags.remove("bookmarked");
+             this.isBookmarked = false;
              myRef.child(this.location).child(this.itineraryName).setValue(this);
+
          }
     }
 
