@@ -70,17 +70,19 @@ public class FirebaseFuncs<Model> {
     }
 
 
-    public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback, SearchQueryObject searchQueryObject) {
+    public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback, final SearchQueryObject searchQueryObject) {
         this.firebaseCallback = firebaseCallback;
         this.listener = new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<ItineraryObject> itins = new ArrayList<>();
-                DataSnapshot item = dataSnapshot.child("Berkeley");
+                String currentLocation = searchQueryObject.getLocation();
+                String[] tags = searchQueryObject.getTags();
+                DataSnapshot item = dataSnapshot.child(currentLocation);
 
                 HashMap hash = (HashMap) item.getValue();
-                itins = handleHash(hash);
+                itins = handleHash(hash,tags);
 
                 firebaseCallback.onSuccess(itins);
             }
@@ -96,13 +98,14 @@ public class FirebaseFuncs<Model> {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public ArrayList<ItineraryObject> handleHash(HashMap<String, HashMap> map) {
+    public ArrayList<ItineraryObject> handleHash(HashMap<String, HashMap> map,String[] neededTags) {
         Iterator<String> keys = map.keySet().iterator();
         ArrayList<ItineraryObject> returned = new ArrayList<>();
         String key = "";
         while (keys.hasNext()) {
             key = keys.next();
             if (!key.equals("Tags")) {
+                boolean hasAll = true;
 
                 HashMap<String, Object> results = map.get(key);
                 boolean isBookmarked = (boolean) results.get("isBookmarked");
@@ -121,7 +124,21 @@ public class FirebaseFuncs<Model> {
                 ItineraryObject itinerary = new ItineraryObject(creatorName, itineraryName, numLikes,
                         coverPhoto, location, numStops, stops, tags,
                         access, isBookmarked);
-                returned.add(itinerary);
+                if (neededTags.length == 0) {
+                } else {
+                    for (int i = 0; i < neededTags.length; i++) {
+                        ArrayList<String> itinTags = itinerary.getTags();
+                        if (itinTags.contains(neededTags[i])) {
+                        } else {
+                            hasAll = false;
+                        }
+                    }
+                }
+
+                if (hasAll == true) {
+                    returned.add(itinerary);
+                } else {
+                }
             } else {
             }
         }
