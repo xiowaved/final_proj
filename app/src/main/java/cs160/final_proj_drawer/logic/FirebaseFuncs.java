@@ -108,7 +108,6 @@ public class FirebaseFuncs<Model> {
                 boolean hasAll = true;
 
                 HashMap<String, Object> results = map.get(key);
-                boolean isBookmarked = (boolean) results.get("isBookmarked");
                 String itineraryName = (String) results.get("itineraryName");
                 String creatorName = (String) results.get("creatorName");
                 int numStops = Math.toIntExact((Long) results.get("numStops"));
@@ -118,12 +117,11 @@ public class FirebaseFuncs<Model> {
                 int numLikes = Math.toIntExact((Long) results.get("numLikes"));
                 ArrayList<String> tags = (ArrayList<String>) results.get("tags");
 //            ArrayList<String> access = (ArrayList<String>) results.get("access");
-                String coverPhoto = (String) results.get("coverPhoto");
-//                String coverPhoto = "none";
+                String coverPhoto = (String) results.get("coverPhoto");;
                 ArrayList<String> access = new ArrayList<>();
                 ItineraryObject itinerary = new ItineraryObject(creatorName, itineraryName, numLikes,
                         coverPhoto, location, numStops, stops, tags,
-                        access, isBookmarked);
+                        access);
                 if (neededTags.length == 0) {
                 } else {
                     for (int i = 0; i < neededTags.length; i++) {
@@ -190,11 +188,9 @@ public class FirebaseFuncs<Model> {
                         // Write failed
                     }
                 });
-
-        List<String> tags = itin.getTags();
-        for (int i = 0; i < tags.size(); i++) {
-            myRef.child(location).child(tags.get(i)).child(itin.getItineraryName()).setValue(itin);
-        }
+        //            Below this fixes the random new fields that it added
+        myRef.child(location).child(itin.getItineraryName()).child("liked").removeValue();
+        myRef.child(location).child(itin.getItineraryName()).child("bookmarked").removeValue();
 
 
     }
@@ -205,62 +201,5 @@ public class FirebaseFuncs<Model> {
     // this needs application context, not activity context
     // (otherwise itll die every time activity is redrawn, like rotation)
 
-
-//    getItineraries should only be used for the homefragment, or for when the location changes.
-//    Any additional filtering needs to use getNestedItineraries
-//    I think this will also need to be used for bookmarked itineraries, just given correct url
-
-
-
-
-    //    getNestedItineraries should be our main itinerary getting thing, it can
-//    take anywhere from 1 to a million tags and it returns itineraries that have all of the tags.
-//
-
-
-//    This is all Image code that needs to be implemented later. It all works, though
-//    //    when we get this working it won't need to take in Context anymore
-//    public static void putImage(Context context) {
-//// This is an example of using a drawable png
-//        int pictureID = R.drawable.bookmark;
-//        Uri filePath = getUriToDrawable(context, pictureID);
-//        /**/
-//
-//        final StorageReference storageRef = storage.child("new folder/third_bookmark");
-////
-////
-////        convert the image to a Bitmap (easier to put in)
-//        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), pictureID);
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
-//        byte[] data = baos.toByteArray();
-//
-//        storageRef.putBytes(data).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            String URL = uri.toString();
-//                            Log.i("URL", URL);
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//
-//    }
-//
-//
-//    //    Code that was needed to get URI from drawable ID
-//    public static final Uri getUriToDrawable(Context context,
-//                                             int drawableId) {
-//        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-//                "://" + context.getResources().getResourcePackageName(drawableId)
-//                + '/' + context.getResources().getResourceTypeName(drawableId)
-//                + '/' + context.getResources().getResourceEntryName(drawableId));
-//        return imageUri;
-//    }
 
 }

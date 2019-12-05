@@ -149,7 +149,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
 
 
             ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
-                    "coverPhoto", "berk", 1, stoplist, taglist, acclist, isBookmarked);
+                    "coverPhoto", "berk", 1, stoplist, taglist, acclist);
             viewModel.getLoadedItins().getValue().add(itinerary);
 
         }

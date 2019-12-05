@@ -20,7 +20,6 @@ public class ItineraryObject implements Serializable {
      private String coverPhoto;
      private String location;
      private int numStops;
-     private boolean isBookmarked;
      private ArrayList<Stop> stops;
      private ArrayList<String> tags;
      private ArrayList<String> access;
@@ -31,7 +30,7 @@ public class ItineraryObject implements Serializable {
 
     public ItineraryObject(String creatorName, String itineraryName, int numLikes,
                                 String coverPhoto, String location, int numStops, ArrayList<Stop> stops, ArrayList<String> tags,
-                                ArrayList<String>access, boolean isBookmarked) {
+                                ArrayList<String>access) {
         // Create an itinerary object
         this.creatorName = creatorName;
         this.itineraryName = itineraryName;
@@ -42,7 +41,6 @@ public class ItineraryObject implements Serializable {
         this.stops = stops;
         this.tags = tags;
         this.access = access;
-        this.isBookmarked = isBookmarked;
     }
 
     public ItineraryObject(JSONObject itin) {
@@ -56,7 +54,6 @@ public class ItineraryObject implements Serializable {
         ArrayList<Stop> stops = new ArrayList<>();
         ArrayList<String> tags = new ArrayList<>();
         ArrayList<String> access = new ArrayList<>();
-        boolean isBookmarked = false;
         try {
             creator = (String) itin.get("creatorName");
         }catch (JSONException e){
@@ -81,11 +78,6 @@ public class ItineraryObject implements Serializable {
             numLikes = (int) itin.get("numLikes");
         } catch(JSONException e) {
             numLikes = 0;
-        }
-        try{
-            isBookmarked = (boolean) itin.get("isBookmarked");
-        } catch (JSONException e) {
-            isBookmarked = false;
         }
         try{
             numStops = (int) itin.get("numStops");
@@ -133,7 +125,6 @@ public class ItineraryObject implements Serializable {
         this.numStops = numStops;
         this.tags = tags;
         this.stops = stops;
-        this.isBookmarked = isBookmarked;
 
     }
 
@@ -187,13 +178,18 @@ public class ItineraryObject implements Serializable {
     public void setBookmarked(boolean isBookmarked) {
          if (isBookmarked){
              this.tags.add("bookmarked");
-             this.isBookmarked = true;
              myRef.child(this.location).child(this.itineraryName).setValue(this);
+             //            Below this fixes the random new fields that it added
+             myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+             myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
+
 
          } else {
              this.tags.remove("bookmarked");
-             this.isBookmarked = false;
              myRef.child(this.location).child(this.itineraryName).setValue(this);
+             //            Below this fixes the random new fields that it added
+             myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+             myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
 
          }
     }
@@ -225,9 +221,15 @@ public class ItineraryObject implements Serializable {
         if (isLiked){
             this.tags.add("liked");
             myRef.child(this.location).child(this.itineraryName).setValue(this);
+//            Below this fixes the random new fields that it added
+            myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+            myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
         } else {
             this.tags.remove("liked");
             myRef.child(this.location).child(this.itineraryName).setValue(this);
+            //            Below this fixes the random new fields that it added
+            myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+            myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
         }
     }
     public boolean getLiked(){
