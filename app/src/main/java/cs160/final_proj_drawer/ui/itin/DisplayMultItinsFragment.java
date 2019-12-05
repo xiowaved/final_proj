@@ -83,23 +83,6 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         emptyBkmk = getResources().getDrawable(R.drawable.ic_bkmark);
         filledBkmk =  getResources().getDrawable(R.drawable.ic_bookmark_filled);
 
-        /*
-        //todo incorporate the searchQuery object into a firebase search
-        String location = searchQueryObject.getLocation();
-        if (searchQueryObject.getTags().length == 1) {
-            // more than one query tag to search
-            Log.i("displayMult", "single tag " + searchQueryObject.getTags()[0]);
-            // only one query tag to search
-
-        } else {
-            // more than one query tag to search
-            Log.i("displayMult", "multiple tags");
-
-        }
-*/
-
-
-
         //puttin more itins in here from firebase
         viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override

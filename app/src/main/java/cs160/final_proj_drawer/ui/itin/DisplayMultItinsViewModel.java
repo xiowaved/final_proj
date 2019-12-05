@@ -29,21 +29,6 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     public DisplayMultItinsViewModel(@NonNull Application application) {
         super(application);
-        //String[] tags = searchQueryObject.getTags();
-        //String locationQuery = searchQueryObject.getLocation();
-        //ArrayList<String> tagsList = (ArrayList<String>) Arrays.asList(tags);
-        //getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/"
-         //       + locationQuery + ".json" , getApplication().getApplicationContext(), tagsList);
-/*
-        String[] defaultTags = {"Food"};
-        searchQueryObject = new SearchQueryObject();
-        searchQueryObject.setLocation("Berkeley");
-        searchQueryObject.setTags(defaultTags);
-
-        Log.i("NOTE", searchQueryObject.getLocation());
-        Log.i("NOTE", searchQueryObject.getTags()[0]);
-*/
-       // FirebaseFuncs.getNestedItineraries(itins, getApplication().getApplicationContext(),searchQueryObject);
     }
 
     public LiveData<ArrayList<ItineraryObject>> getItineraries() {
