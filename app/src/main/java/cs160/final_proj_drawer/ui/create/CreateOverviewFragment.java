@@ -1,6 +1,8 @@
 package cs160.final_proj_drawer.ui.create;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,11 +17,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.ItineraryObject;
@@ -33,13 +47,20 @@ public class CreateOverviewFragment extends Fragment {
     private ImageButton coverPhotoButton;
     private String itineraryName;
     private String itineraryLocation;
+    private final int IMG_REQUEST = 1;
+
     private String coverPhoto;
+    private Bitmap bitmapsimg;
+
+    private String apiUrl = "http://192.168.1.12/api/index.php";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,12 +86,18 @@ public class CreateOverviewFragment extends Fragment {
                         Toast.LENGTH_LONG); toast.show();
                 //todo -- Chaitanya this is where you add the code that you want to execute when user
                 // clicks on the button to add a cover photo
-
-
-
-
+                switch (v.getId()) {
+                    case R.id.coverPhoto:
+                        selectimage();
+                        uploadimage();
+                }
             }
+
+
+
         });
+
+
 
         addStopsButton = (Button) getView().findViewById(R.id.button);
         addStopsButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +129,53 @@ public class CreateOverviewFragment extends Fragment {
                 }
             }
         });
+
+    }
+
+    //helper function
+
+    private void uploadimage(){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, apiUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            JSONObject jsonObject  = new JSONObject(response);
+
+                            String Response = jsonObject.getString("response");
+                            Toast.makeText(getActivity(), Response,Toast.LENGTH_LONG).show();
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        } )
+        {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                return params;
+            }
+        };
+        PhotoHelper.getmInstance(getActivity()).addToRequestQueue(stringRequest);
+    }
+
+    public void selectimage(){
+        Intent imgintent = new Intent();
+        imgintent.setType("image/*");
+        imgintent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(imgintent,IMG_REQUEST);
 
     }
 
