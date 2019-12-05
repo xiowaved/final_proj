@@ -37,6 +37,11 @@
     <dimen name="vert_stop_height">190dp</dimen>
 
     <!-- login page -->
+    <dimen name="login_triangle_big">150dp</dimen>
+    <dimen name="login_triangle_small">100dp</dimen>
+    <dimen name="login_triangle_small_top_shift">50dp</dimen>
+    <dimen name="login_triangle_small_right_shift">155dp</dimen>
+
     <dimen name="login_boxes_width">250dp</dimen>
     <dimen name="login_buttons_width">75dp</dimen>
     <dimen name="login_big_button_margin">25dp</dimen>
