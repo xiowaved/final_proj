@@ -48,8 +48,8 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
         firebaseFuncs.addListener(new FirebaseFuncs.FirebaseFuncsCallback<ItineraryObject>() {
             @Override
             public void onSuccess(ArrayList<ItineraryObject> result) {
-
-                loadedItins.setValue(result);
+                //ArrayList<ItineraryObject> filteredResult = FirebaseFuncs.someFunc(ArrayList<ItineraryObject> result, SearchQueryObject searchQuery)
+                // loadedItins.setValue(filteredResult);
             }
 
             @Override
