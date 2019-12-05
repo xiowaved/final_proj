@@ -25,10 +25,14 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     private FirebaseFuncs firebaseFuncs = new FirebaseFuncs();
     private MutableLiveData<ArrayList<ItineraryObject>> loadedItins;
-    //SearchQueryObject searchQueryObject;
+    SearchQueryObject searchQueryObject;
 
     public DisplayMultItinsViewModel(@NonNull Application application) {
         super(application);
+        String[] defaultTags = {"food"};
+        searchQueryObject = new SearchQueryObject();
+        searchQueryObject.setLocation("Berkeley");
+        searchQueryObject.setTags(defaultTags);
     }
 
     public LiveData<ArrayList<ItineraryObject>> getItineraries() {
@@ -48,7 +52,7 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
         firebaseFuncs.addListener(new FirebaseFuncs.FirebaseFuncsCallback<ItineraryObject>() {
             @Override
             public void onSuccess(ArrayList<ItineraryObject> result) {
-                //ArrayList<ItineraryObject> filteredResult = FirebaseFuncs.someFunc(ArrayList<ItineraryObject> result, SearchQueryObject searchQuery)
+                // ArrayList<ItineraryObject> filteredResult = FirebaseFuncs.someFunc(ArrayList<ItineraryObject> result, SearchQueryObject searchQuery)
                 // loadedItins.setValue(filteredResult);
             }
 
@@ -56,7 +60,7 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
             public void onError(Exception e) {
                 loadedItins.setValue(null);
             }
-        });
+        }, searchQueryObject);
 
         return loadedItins;
     }

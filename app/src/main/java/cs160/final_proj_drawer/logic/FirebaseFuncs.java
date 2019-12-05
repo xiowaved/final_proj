@@ -70,7 +70,7 @@ public class FirebaseFuncs<Model> {
     }
 
 
-    public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback) {
+    public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback, SearchQueryObject searchQueryObject) {
         this.firebaseCallback = firebaseCallback;
         this.listener = new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)

@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void testImage(View view, Context context) {
-        FirebaseFuncs.putImage(context);
+        //FirebaseFuncs.putImage(context);
         String email = "colbymccann@berkeley.edu";
         String password ="password";
 
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                         // ...
                     }
                 });
-        FirebaseFuncs.putImage(context);
+        //FirebaseFuncs.putImage(context);
 //        if (user != null) {
 //
 //            FirebaseFuncs.putImage(context);
