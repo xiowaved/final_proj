@@ -40,13 +40,13 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     public DisplayMultItinsViewModel(@NonNull Application application) {
         super(application);
-        String[] tags = searchQueryObject.getTags();
-        String locationQuery = searchQueryObject.getLocation();
-        ArrayList<String> tagsList = (ArrayList<String>) Arrays.asList(tags);
-        getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/"
-                + locationQuery + ".json" , getApplication().getApplicationContext(), tagsList);
+        //String[] tags = searchQueryObject.getTags();
+        //String locationQuery = searchQueryObject.getLocation();
+        //ArrayList<String> tagsList = (ArrayList<String>) Arrays.asList(tags);
+        //getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/"
+         //       + locationQuery + ".json" , getApplication().getApplicationContext(), tagsList);
 
-//        FirebaseFuncs.getItineraries(itins, searchURL, getApplication().getApplicationContext());
+        FirebaseFuncs.getItineraries(itins, searchURL, getApplication().getApplicationContext());
     }
 
     public LiveData<ArrayList<ItineraryObject>> getItineraries() {
