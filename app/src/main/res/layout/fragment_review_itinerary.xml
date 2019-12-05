@@ -29,8 +29,10 @@
 
         <ImageView
             android:id="@+id/coverPhoto"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             tools:srcCompat="@drawable/sceniclookouts" />
 
         <RelativeLayout
