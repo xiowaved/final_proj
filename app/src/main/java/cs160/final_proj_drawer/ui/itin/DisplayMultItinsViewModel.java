@@ -19,8 +19,6 @@ import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.SearchQueryObject;
 import cs160.final_proj_drawer.logic.Stop;
 
-import static cs160.final_proj_drawer.logic.FirebaseFuncs.getNestedItineraries;
-
 public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     private FirebaseFuncs firebaseFuncs = new FirebaseFuncs();

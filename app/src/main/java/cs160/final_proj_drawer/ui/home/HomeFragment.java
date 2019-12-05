@@ -83,7 +83,12 @@ public class HomeFragment extends Fragment {
 
                 // pass a search query object with the query tags and location to the fragment
                 String tagsQuery = tagSearchBar.getQuery().toString();
-                childNavController.navigate(R.id.fragment_display_itins);
+                String[] tagsList = {tagsQuery};
+                String location = locationSearchBar.getQuery().toString();
+                searchQueryObject = new SearchQueryObject(tagsList, location);
+                Bundle b = new Bundle();
+                b.putSerializable("searchQueryObject", searchQueryObject);
+                childNavController.navigate(R.id.fragment_display_itins, b);
 
                 locationSearchBar.setVisibility(View.INVISIBLE);
                 onSearchLocation.setVisibility(View.VISIBLE);

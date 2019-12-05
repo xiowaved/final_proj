@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static cs160.final_proj_drawer.logic.FirebaseFuncs.getNestedItineraries;
 
 /**
  * Page showing the filter options for a search query.
