@@ -18,9 +18,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -46,6 +49,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
     private Button submit;
     private EditText itinName;
     private EditText itinLoc;
+    private ImageView coverPhoto;
     private SeekBar priceSeekBar;
     private int pricePosition;
     private ArrayList<Stop> itinStops;
@@ -80,6 +84,8 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             itinName.setText(itineraryObject.getItineraryName());
             itinLoc = (EditText) root.findViewById(R.id.location);
             itinLoc.setText(itineraryObject.getLocation());
+            String image = itineraryObject.getCoverPhoto();
+            Picasso.get().load(image).into(coverPhoto);
             return root;
         } else {
             // get user's stops and populate cardviews in UI
@@ -91,6 +97,10 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             itinName.setText(itineraryObject.getItineraryName());
             itinLoc = (EditText) root.findViewById(R.id.location);
             itinLoc.setText(itineraryObject.getLocation());
+            coverPhoto = (ImageView) root.findViewById(R.id.coverPhoto);
+            /** uncomment the two lines below once itineraryobject has the photo*/
+            String image = itineraryObject.getCoverPhoto();
+            Picasso.get().load(image).into(coverPhoto);
             return root;
         }
     }
@@ -156,7 +166,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     Log.i("itin name", itineraryObject.getItineraryName());
                     Log.i("itin loc", itineraryObject.getLocation());
 
-//                    writeSingleItin(itineraryObject);
+                    writeSingleItin(itineraryObject);
 
 
                     // navigate back to home splash screen
