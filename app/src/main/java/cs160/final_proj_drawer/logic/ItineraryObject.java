@@ -145,7 +145,7 @@ public class ItineraryObject implements Serializable {
     }
 
     public boolean getBookmarked() {
-        return this.isBookmarked;
+        return this.tags.contains("bookmarked");
     }
     public String getCoverPhoto() {
         return this.coverPhoto;
@@ -180,7 +180,11 @@ public class ItineraryObject implements Serializable {
     public void addTags(String tag){this.tags.add(tag);}
 
     public void setBookmarked(boolean isBookmarked) {
-        this.isBookmarked = isBookmarked;
+         if (isBookmarked){
+             this.tags.add("bookmarked");
+         } else {
+             this.tags.remove("bookmarked");
+         }
     }
 
     public void clickBookmark() {
