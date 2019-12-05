@@ -7,13 +7,14 @@
     <color name="colorAccentDark">@color/colorTeal</color>
 
     <color name="colorBg">@color/colorOffWhite</color>
+    <color name="colorTriangleBig">@color/colorBlueLight</color>
+    <color name="colorTriangleSmall">@color/colorTealLight</color>
 
 
     <color name="colorNormalText">@color/colorGreyStroke</color>
     <color name="colorTitle">@color/colorBlue</color>
     <color name="colorFunText">@color/colorBlue</color>
     <color name="colorButton">@color/colorBlueBright</color>
-    <color name="colorBlueMedium">#3B88CC</color>
     <color name="colorSeekBar">#ababab</color>
 
 
@@ -52,6 +53,8 @@
     <color name="colorBlue">#184FA2</color>
     <color name="colorBlueDark">#1C2974</color>
 
+
+    <color name="colorBlueMedium">#3B88CC</color>
     <color name="colorBlueHeader">#194FA2</color>
     <color name="colorBlueBright">#3B88CC</color>
 
