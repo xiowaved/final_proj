@@ -252,50 +252,96 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/preferences"
+            android:id="@+id/Tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/manjaribold"
-            android:text="Preferences"
+            android:text="Tags"
             android:textColor="@color/colorBlueHeader"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/distance4" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="325dp"
-            android:layout_height="115dp"
-            android:src="@drawable/preferences_bubbles"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.558"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/preferences" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/Needs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/manjaribold"
-            android:text="Needs"
-            android:textColor="@color/colorBlueHeader"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            <TextView
+                android:id="@+id/ADAcompliant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="ADA Compliant"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tags" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="325dp"
-            android:layout_height="115dp"
-            android:src="@drawable/needs_bubbles"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.558"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Needs" />
+            <TextView
+                android:id="@+id/quiet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ADAcompliant"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Quiet"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ADAcompliant" />
+
+            <TextView
+                android:id="@+id/lowAllergen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/quiet"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Low Allergen"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quiet" />
+
+            <LinearLayout
+                android:id="@+id/LLayoutFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBox1_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox3_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/apply"
@@ -312,7 +358,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox3_filter"
             app:layout_constraintVertical_bias="1.0" />
 
 <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->

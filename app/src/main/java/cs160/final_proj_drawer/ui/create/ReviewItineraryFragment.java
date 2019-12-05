@@ -16,8 +16,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +52,18 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
     private SeekBar priceSeekBar;
     private int pricePosition;
     private ArrayList<Stop> itinStops;
+
+    private CheckBox foodTag;
+    private CheckBox musicTag;
+    private CheckBox hikeTag;
+    private CheckBox artTag;
+    private CheckBox familyFriendlyTag;
+
+    private boolean foodTagBool = false;
+    private boolean musicTagBool = false;
+    private boolean hikeTagBool = false;
+    private boolean artTagBool = false;
+    private boolean familyFriendlyTagBool = false;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -125,6 +140,58 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             }
         });
 
+        foodTag = (CheckBox) getView().findViewById(R.id.checkBox1);
+        musicTag = (CheckBox) getView().findViewById(R.id.checkBox2);
+        hikeTag = (CheckBox) getView().findViewById(R.id.checkBox3);
+        artTag = (CheckBox) getView().findViewById(R.id.checkBox4);
+        familyFriendlyTag = (CheckBox) getView().findViewById(R.id.checkBox5);
+
+        // set listeners for tag check boxes
+        foodTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                foodTagBool = !foodTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on food tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        musicTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                musicTagBool = !musicTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on music tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        hikeTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hikeTagBool = !hikeTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on hike tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        artTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                artTagBool = !artTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on art tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        familyFriendlyTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                familyFriendlyTagBool = !familyFriendlyTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on famiy friendly tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
         // set listener for button when user submits itin
         submit = (Button) getView().findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -139,14 +206,28 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     if (pricePosition == 0) {
                         // user tagged 'free'
                          itineraryObject.addTags("free");
-
                     } else if (pricePosition == 1) {
                         itineraryObject.addTags("cheap");
                     } else if (pricePosition == 2) {
                         itineraryObject.addTags("moderate");
                     } else if (pricePosition == 3) {
                         itineraryObject.addTags("expensive");
+                    }
 
+                    if (foodTagBool) {
+                        itineraryObject.addTags("food");
+                    }
+                    if (musicTagBool) {
+                        itineraryObject.addTags("music");
+                    }
+                    if (hikeTagBool) {
+                        itineraryObject.addTags("hike");
+                    }
+                    if (artTagBool) {
+                        itineraryObject.addTags("art");
+                    }
+                    if (familyFriendlyTagBool) {
+                        itineraryObject.addTags("family friendly");
                     }
 
                     // write itinerary to firebase
@@ -155,17 +236,18 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
 
                     Log.i("itin name", itineraryObject.getItineraryName());
                     Log.i("itin loc", itineraryObject.getLocation());
+                    ArrayList<String> tags = itineraryObject.getTags();
+                    for (int i = 0; i < tags.size(); i++) {
+                        Log.i("itin tag", tags.get(i));
+                    }
 
 //                    writeSingleItin(itineraryObject);
 
-
                     // navigate back to home splash screen
+                    //navController.navigate(R.id.fragment_splash);
                 }
             }
         });
-
-
-
     }
 
 

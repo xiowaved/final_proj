@@ -52,7 +52,6 @@ public class SplashFragment extends Fragment implements OnRecyclerCardListener {
             Log.i("IN FILTER", "======== FOUND KIDDO =========");
         }
 
-
         listener = this;
         //category recycler view setup
         homeCats = (RecyclerView) root.findViewById(R.id.home_cats);
@@ -77,7 +76,6 @@ public class SplashFragment extends Fragment implements OnRecyclerCardListener {
         categories.add("music");
         categories.add("hike");
         categories.add("art");
-
 
         return root;
     }

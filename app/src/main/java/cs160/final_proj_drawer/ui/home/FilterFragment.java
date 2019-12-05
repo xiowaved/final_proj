@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -59,6 +60,14 @@ public class FilterFragment extends Fragment {
     private boolean blocksDistanceBool;
     private boolean mileDistanceBool;
     private boolean milesDistanceBool;
+
+    private CheckBox adaTag;
+    private CheckBox quietTag;
+    private CheckBox lowAllergenTag;
+
+    private boolean adaTagBool = false;
+    private boolean quietTagBool = false;
+    private boolean lowAllergenTagBool = false;
 
     private Button applyButton;
 
@@ -233,6 +242,38 @@ public class FilterFragment extends Fragment {
             }
         });
 
+        adaTag = (CheckBox) getView().findViewById(R.id.checkBox1_filter);
+        quietTag = (CheckBox) getView().findViewById(R.id.checkBox2_filter);
+        lowAllergenTag = (CheckBox) getView().findViewById(R.id.checkBox3_filter);
+
+        // set listeners for tag check boxes
+        adaTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adaTagBool = !adaTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on ADA tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        quietTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quietTagBool = !quietTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on quiet tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
+        lowAllergenTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lowAllergenTagBool = !lowAllergenTagBool;
+                Toast toast = Toast.makeText(getContext(), "clicked on low allergen tag",
+                        Toast.LENGTH_SHORT); toast.show();
+            }
+        });
+
         // set on click listeners for reset and cancel buttons
         resetButton = (Button) getView().findViewById(R.id.reset);
         cancelButton = (Button) getView().findViewById(R.id.cancel);
@@ -257,6 +298,20 @@ public class FilterFragment extends Fragment {
                 blocksDistanceBool = false;
                 mileDistanceBool = false;
                 milesDistanceBool = false;
+                //reset tags value
+                adaTagBool = false;
+                quietTagBool = false;
+                lowAllergenTagBool = false;
+                //reset tags UI
+                if (adaTag.isChecked()) {
+                    adaTag.toggle();
+                }
+                if (quietTag.isChecked()) {
+                    quietTag.toggle();
+                }
+                if (lowAllergenTag.isChecked()) {
+                    lowAllergenTag.toggle();
+                }
                 Toast toast = Toast.makeText(getContext(), "clicked on reset",
                         Toast.LENGTH_SHORT); toast.show();
             }
@@ -324,6 +379,16 @@ public class FilterFragment extends Fragment {
 //                } else if (milesDistanceBool) {
 //                    tags.add("miles");
 //                }
+
+                if (adaTagBool) {
+                    tags.add("ADA compliant");
+                }
+                if (quietTagBool) {
+                    tags.add("quiet");
+                }
+                if (lowAllergenTagBool) {
+                    tags.add("low allergen");
+                }
                 tags.add(initialTagQuery);
 
                 Bundle bundle = new Bundle();

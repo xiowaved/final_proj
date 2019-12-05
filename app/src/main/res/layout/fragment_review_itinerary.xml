@@ -274,6 +274,138 @@
 
         </TableLayout>
 
+        <TextView
+            android:id="@+id/tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/manjaribold"
+            android:text="Tags"
+            android:textColor="@color/colorBlueHeader"
+            android:textSize="24sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Food"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tags" />
+
+            <TextView
+                android:id="@+id/music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/food"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Music"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/food" />
+
+            <TextView
+                android:id="@+id/hike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/music"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Hike"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/music" />
+
+            <TextView
+                android:id="@+id/art"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hike"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Art"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hike" />
+
+            <TextView
+                android:id="@+id/family_friendly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/art"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Family Friendly"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/art" />
+
+            <LinearLayout
+                android:id="@+id/LLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+            </LinearLayout>
+        </RelativeLayout>
+
         <Button
             android:id="@+id/submit"
             android:layout_width="wrap_content"
@@ -281,6 +413,7 @@
             android:layout_gravity="right"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="50dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_corner_button"
             android:fontFamily="@font/primary"
             android:paddingTop="@dimen/textPadding"
