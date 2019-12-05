@@ -23,7 +23,7 @@
 
 
     <!-- strings for home page -->
-    <string name="home_search_hint_tag">Ex. family-friendly</string>
+    <string name="home_search_hint_tag">Ex. family friendly</string>
     <string name="home_search_hint_loc">Current Location</string>
 
     <string name="filter_button">Filter</string>

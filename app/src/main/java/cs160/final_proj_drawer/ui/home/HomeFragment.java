@@ -113,10 +113,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View root) {
                 Log.i("NOTE", "clicked filter");
                 Bundle bundle = new Bundle();
-                bundle.putString("initialTagQuery", tagSearchBar.getQuery().toString());
-                bundle.putString("locationQuery", locationSearchBar.getQuery().toString());
-                //delete later
-                //this is here for testing
+                String[] tags = searchQueryObject.getTags();
+                String location = searchQueryObject.getLocation();
+                SearchQueryObject filterQueryObject = new SearchQueryObject(tags, location);
+                bundle.putSerializable("searchQueryObject", filterQueryObject);
                 childNavController.navigate(R.id.fragment_filter,bundle);
             }
 
