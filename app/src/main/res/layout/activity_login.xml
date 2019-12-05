@@ -9,11 +9,33 @@
 
 
     <!-- put a drawable here with our icon :) -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/largePadding"
+        >
+
+        <ImageView
+            android:id="@+id/filled_triangle"
+            android:layout_width="@dimen/login_triangle_big"
+            android:layout_height="@dimen/login_triangle_big"
+            app:srcCompat="@drawable/ic_triangle_filled"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/outline_triangle"
+            android:layout_width="@dimen/login_triangle_small"
+            android:layout_height="@dimen/login_triangle_small"
+            android:layout_marginTop="@dimen/login_triangle_small_top_shift"
+            android:layout_marginStart="@dimen/login_triangle_small_right_shift"
+            app:srcCompat="@drawable/ic_triangle_outline"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="@dimen/login_boxes_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:fontFamily="@font/primary"
         android:text="Travelr"
         android:textAlignment="center"
@@ -64,7 +86,6 @@
             android:layout_width="@android:dimen/app_icon_size"
             android:layout_height="@android:dimen/app_icon_size"
             android:background="@drawable/searchview_rounded"
-            android:onClick="createTestItinerary"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
