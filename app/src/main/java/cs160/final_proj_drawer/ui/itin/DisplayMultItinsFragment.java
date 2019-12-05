@@ -70,8 +70,6 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         } else {
             searchQueryObject = (SearchQueryObject) bundle.get("searchQueryObject");
         }
-        // todo used for testing calling getnesteditins directly in viewmodel constructor
-        //viewModel.searchQueryObject = searchQueryObject;
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
@@ -84,7 +82,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         filledBkmk =  getResources().getDrawable(R.drawable.ic_bookmark_filled);
 
         //puttin more itins in here from firebase
-        viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
+        viewModel.getItineraries(searchQueryObject).observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
                 itinAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
