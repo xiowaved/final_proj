@@ -63,7 +63,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         //get searchQueryObject from splashFragment
         Bundle bundle = getArguments();
         if (bundle == null) {
-            String[] defaultTags = {"Food"};
+            String[] defaultTags = {"food"};
             searchQueryObject = new SearchQueryObject();
             searchQueryObject.setLocation("Berkeley");
             searchQueryObject.setTags(defaultTags);
