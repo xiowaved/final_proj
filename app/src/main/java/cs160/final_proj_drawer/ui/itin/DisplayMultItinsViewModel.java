@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.ui.itin;
 
 import android.app.Application;
+import android.util.Log;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -45,7 +46,16 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
         //ArrayList<String> tagsList = (ArrayList<String>) Arrays.asList(tags);
         //getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/"
          //       + locationQuery + ".json" , getApplication().getApplicationContext(), tagsList);
-        //todo Colby Call getNested here. it should use searchQueryObject 
+
+        String[] defaultTags = {"Food"};
+        searchQueryObject = new SearchQueryObject();
+        searchQueryObject.setLocation("Berkeley");
+        searchQueryObject.setTags(defaultTags);
+
+        //todo Colby Call getNested here. it should use searchQueryObject
+
+        Log.i("NOTE", searchQueryObject.getLocation());
+        Log.i("NOTE", searchQueryObject.getTags()[0]);
 
         //FirebaseFuncs.getItineraries(itins, searchURL, getApplication().getApplicationContext());
     }
