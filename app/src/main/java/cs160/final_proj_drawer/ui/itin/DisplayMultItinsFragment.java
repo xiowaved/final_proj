@@ -73,10 +73,15 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         //get searchQueryObject from splashFragment
         Bundle bundle = getArguments();
         if (bundle == null) {
+            String[] defaultTags = {"Food"};
             searchQueryObject = new SearchQueryObject();
+            searchQueryObject.setLocation("Berkeley");
+            searchQueryObject.setTags(defaultTags);
         } else {
             searchQueryObject = (SearchQueryObject) bundle.get("searchQueryObject");
         }
+        // todo used for testing calling getnesteditins directly in viewmodel constructor
+        viewModel.searchQueryObject = searchQueryObject;
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);
@@ -88,6 +93,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         emptyBkmk = getResources().getDrawable(R.drawable.ic_bkmark);
         filledBkmk =  getResources().getDrawable(R.drawable.ic_bookmark_filled);
 
+        /*
         //todo incorporate the searchQuery object into a firebase search
         String location = searchQueryObject.getLocation();
         if (searchQueryObject.getTags().length == 1) {
@@ -100,12 +106,10 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
             Log.i("displayMult", "multiple tags");
 
         }
-
-        // todo used for testing calling getnesteditins directly in viewmodel constructor
-        viewModel.searchQueryObject = searchQueryObject;
+*/
 
 
-        Log.i("displayMult location",  location);
+
         //puttin more itins in here from firebase
         viewModel.getItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
@@ -139,22 +143,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         bundle.putSerializable("itinerary", selectedItin);
 
         Log.i("Note", " was clicked! " + position);
-/*
-        ImageView bookmark = getView().findViewById(R.id.bkmark);
-        if (action == cardAction.BOOKMARK) {
-            if (bookmark.getDrawable().getConstantState() == emptyBkmk.getConstantState()) {
-                Log.i("empty", "here");
-                bookmark.setImageResource(R.drawable.ic_bookmark_filled);
-                // todo selectedItin should now be saved to the user's profile
-            } else if (bookmark.getDrawable().getConstantState() == filledBkmk.getConstantState()){
-                Log.i("filled", "here");
-                bookmark.setImageResource(R.drawable.ic_bkmark);
-                // todo selectedItin should now be removed from the user's profile
-
-            }
-        } else {*/
             navController.navigate(R.id.fragment_display_single_itin, bundle);
-        //}
     }
 
     public void fillPlaceHolderItins() {

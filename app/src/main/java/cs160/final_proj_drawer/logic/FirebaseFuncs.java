@@ -43,7 +43,7 @@ import androidx.annotation.RequiresApi;
 import cs160.final_proj_drawer.R;
 
 /* This is all of our functions that interact with firebase.
-   They are created here, as seperate from UI as possible, so we can
+   They are created here, as separate from UI, so we can
    Call them freely from any other part of our app
  */
 public class FirebaseFuncs<Model> {
