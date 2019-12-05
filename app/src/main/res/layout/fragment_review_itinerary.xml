@@ -3,13 +3,14 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorBg"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -25,6 +26,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <ImageView
+            android:id="@+id/coverPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@drawable/sceniclookouts" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -106,79 +113,79 @@
             android:fontFamily="@font/manjaribold"
             android:text=""
             android:textAlignment="center"
-            android:textSize="@dimen/card_text"
-            android:textColor="@color/colorErrorMessage"></TextView>
+            android:textColor="@color/colorErrorMessage"
+            android:textSize="@dimen/card_text"></TextView>
 
 
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/priceText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignTop="@+id/priceGroup"-->
-<!--                android:layout_alignBottom="@+id/priceGroup"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_marginStart="30dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:fontFamily="@font/primary"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:text="Price"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/colorGreyStroke"-->
-<!--                android:textSize="20sp"></TextView>-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/priceText"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_alignTop="@+id/priceGroup"-->
+        <!--                android:layout_alignBottom="@+id/priceGroup"-->
+        <!--                android:layout_alignParentStart="true"-->
+        <!--                android:layout_marginStart="30dp"-->
+        <!--                android:layout_marginTop="5dp"-->
+        <!--                android:fontFamily="@font/primary"-->
+        <!--                android:gravity="center_vertical"-->
+        <!--                android:text="Price"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:textColor="@color/colorGreyStroke"-->
+        <!--                android:textSize="20sp"></TextView>-->
 
-<!--            <RadioGroup-->
-<!--                android:id="@+id/priceGroup"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_marginEnd="20dp"-->
-<!--                android:orientation="horizontal">-->
+        <!--            <RadioGroup-->
+        <!--                android:id="@+id/priceGroup"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_alignParentEnd="true"-->
+        <!--                android:layout_marginEnd="20dp"-->
+        <!--                android:orientation="horizontal">-->
 
-<!--                <RadioButton-->
-<!--                    android:id="@+id/free"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="24dp"-->
-<!--                    android:layout_weight="1"-->
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/free"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
 
-<!--                    android:buttonTint="@color/colorBlueBright"-->
-<!--                    android:text="free" />-->
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="free" />-->
 
-<!--                <RadioButton-->
-<!--                    android:id="@+id/price_1"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="24dp"-->
-<!--                    android:layout_weight="1"-->
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/price_1"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
 
-<!--                    android:buttonTint="@color/colorBlueBright"-->
-<!--                    android:text="$" />-->
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="$" />-->
 
-<!--                <RadioButton-->
-<!--                    android:id="@+id/price_2"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="24dp"-->
-<!--                    android:layout_weight="1"-->
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/price_2"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
 
-<!--                    android:buttonTint="@color/colorBlueBright"-->
-<!--                    android:text="$$" />-->
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="$$" />-->
 
-<!--                <RadioButton-->
-<!--                    android:id="@+id/price_3"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="24dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:buttonTint="@color/colorBlueBright"-->
-<!--                    android:text="$$$" />-->
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/price_3"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="$$$" />-->
 
-<!--            </RadioGroup>-->
-<!--        </RelativeLayout>-->
+        <!--            </RadioGroup>-->
+        <!--        </RelativeLayout>-->
 
 
         <RelativeLayout
@@ -201,9 +208,9 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="*"
             android:layout_above="@+id/sb_task_detail_status"
-            android:layout_alignStart="@+id/sb_task_detail_status">
+            android:layout_alignStart="@+id/sb_task_detail_status"
+            android:stretchColumns="*">
 
             <TableRow
                 android:id="@+id/statusRow"
@@ -216,9 +223,9 @@
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
                     android:paddingStart="32dp"
                     android:text="Free"
-                    android:fontFamily="@font/primary_thin"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorGreyStroke"
                     android:textSize="14dp" />
@@ -229,9 +236,9 @@
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
                     android:paddingRight="3dp"
                     android:text="$"
-                    android:fontFamily="@font/primary_thin"
                     android:textAlignment="center"
                     android:textColor="@color/colorGreyStroke"
                     android:textSize="14dp" />
@@ -242,9 +249,9 @@
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
                     android:paddingStart="4dp"
                     android:text="$$"
-                    android:fontFamily="@font/primary_thin"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/colorGreyStroke"
@@ -256,9 +263,9 @@
                     android:layout_height="wrap_content"
                     android:layout_column="3"
                     android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
                     android:paddingEnd="35dp"
                     android:text="$$$"
-                    android:fontFamily="@font/primary_thin"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorGreyStroke"
                     android:textSize="14dp" />
@@ -266,6 +273,7 @@
             </TableRow>
 
         </TableLayout>
+
         <Button
             android:id="@+id/submit"
             android:layout_width="wrap_content"
