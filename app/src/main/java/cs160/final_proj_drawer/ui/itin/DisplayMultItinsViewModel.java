@@ -45,8 +45,9 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
         //ArrayList<String> tagsList = (ArrayList<String>) Arrays.asList(tags);
         //getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/"
          //       + locationQuery + ".json" , getApplication().getApplicationContext(), tagsList);
+        //todo Colby Call getNested here. it should use searchQueryObject 
 
-        FirebaseFuncs.getItineraries(itins, searchURL, getApplication().getApplicationContext());
+        //FirebaseFuncs.getItineraries(itins, searchURL, getApplication().getApplicationContext());
     }
 
     public LiveData<ArrayList<ItineraryObject>> getItineraries() {
