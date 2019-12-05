@@ -69,49 +69,6 @@ public class FirebaseFuncs<Model> {
         void onError(Exception e);
     }
 
-    //    when we get this working it won't need to take in Context anymore
-    public static void putImage(Context context) {
-// This is an example of using a drawable png
-        int pictureID = R.drawable.bookmark;
-        Uri filePath = getUriToDrawable(context, pictureID);
-        /**/
-
-        final StorageReference storageRef = storage.child("new folder/third_bookmark");
-//
-//
-//        convert the image to a Bitmap (easier to put in)
-        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), pictureID);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        storageRef.putBytes(data).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if (task.isSuccessful()) {
-                    storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            String URL = uri.toString();
-                            Log.i("URL", URL);
-                        }
-                    });
-                }
-            }
-        });
-
-    }
-
-
-    //    Code that was needed to get URI from drawable ID
-    public static final Uri getUriToDrawable(Context context,
-                                             int drawableId) {
-        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + context.getResources().getResourcePackageName(drawableId)
-                + '/' + context.getResources().getResourceTypeName(drawableId)
-                + '/' + context.getResources().getResourceEntryName(drawableId));
-        return imageUri;
-    }
 
     public void addListener(final FirebaseFuncsCallback<ItineraryObject> firebaseCallback) {
         this.firebaseCallback = firebaseCallback;
@@ -258,7 +215,7 @@ public class FirebaseFuncs<Model> {
                         JSONObject info = response;
                         Iterator<String> keys = info.keys();
                         String name = "";
-                        
+
                         while (keys.hasNext()) {
                             name = keys.next();
                             if (!name.equals("Tags")) {
@@ -347,5 +304,49 @@ public class FirebaseFuncs<Model> {
 
     }
 
+//    This is all Image code that needs to be implemented later. It all works, though
+//    //    when we get this working it won't need to take in Context anymore
+//    public static void putImage(Context context) {
+//// This is an example of using a drawable png
+//        int pictureID = R.drawable.bookmark;
+//        Uri filePath = getUriToDrawable(context, pictureID);
+//        /**/
+//
+//        final StorageReference storageRef = storage.child("new folder/third_bookmark");
+////
+////
+////        convert the image to a Bitmap (easier to put in)
+//        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), pictureID);
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
+//        byte[] data = baos.toByteArray();
+//
+//        storageRef.putBytes(data).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                        @Override
+//                        public void onSuccess(Uri uri) {
+//                            String URL = uri.toString();
+//                            Log.i("URL", URL);
+//                        }
+//                    });
+//                }
+//            }
+//        });
+//
+//    }
+//
+//
+//    //    Code that was needed to get URI from drawable ID
+//    public static final Uri getUriToDrawable(Context context,
+//                                             int drawableId) {
+//        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+//                "://" + context.getResources().getResourcePackageName(drawableId)
+//                + '/' + context.getResources().getResourceTypeName(drawableId)
+//                + '/' + context.getResources().getResourceEntryName(drawableId));
+//        return imageUri;
+//    }
 
 }
