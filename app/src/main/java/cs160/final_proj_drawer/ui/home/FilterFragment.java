@@ -9,6 +9,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.logic.SearchQueryObject;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,6 +64,7 @@ public class FilterFragment extends Fragment {
 
     private String initialTagQuery;
     private String locationQuery;
+    private SearchQueryObject searchQueryObject;
     private View root;
 
 
@@ -80,10 +82,13 @@ public class FilterFragment extends Fragment {
         }
 
         Bundle b = getArguments();
-        initialTagQuery = b.getString("initialTagQuery");
-        locationQuery = b.getString("locationQuery");
-        Log.i("filter frag", initialTagQuery + " " + locationQuery);
+//        initialTagQuery = b.getString("initialTagQuery");
+//        locationQuery = b.getString("locationQuery");
+        searchQueryObject = (SearchQueryObject) b.getSerializable("searchQueryObject");
+        initialTagQuery = searchQueryObject.getTags()[0];
+        locationQuery = searchQueryObject.getLocation();
 
+        Log.i("filter frag", initialTagQuery + " " + locationQuery);
 
         return root;
     }
@@ -275,10 +280,13 @@ public class FilterFragment extends Fragment {
                 milesDistanceBool = false;
                 //go back to search results
 
-
-                //todo pass the initially received search args here
-                childNavController.navigate(R.id.fragment_display_itins);
-
+                //pass the initially received search args here
+                Bundle bundle = new Bundle();
+                String[] tags = searchQueryObject.getTags();
+                String location = searchQueryObject.getLocation();
+                SearchQueryObject filterQueryObject = new SearchQueryObject(tags, location);
+                bundle.putSerializable("searchQueryObject", filterQueryObject);
+                childNavController.navigate(R.id.fragment_display_itins, bundle);
             }
         });
 
@@ -289,34 +297,42 @@ public class FilterFragment extends Fragment {
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getContext(), "clicked on apply",
                         Toast.LENGTH_SHORT); toast.show();
-                String priceSelection = priceLastClicked.getText().toString();
-                // todo finish this function
-                // based on user selection of price, set tag for firebase query
+                //String priceSelection = priceLastClicked.getText().toString();
+                //based on user selection of price, set tag for firebase query
                 ArrayList<String> tags = new ArrayList<>();
-                if (priceSelection.equals("Free")) {
-                tags.add("free");
-                } else if (priceSelection.equals("$")) {
-                tags.add("cheap");
-                } else if (priceSelection.equals("$$")) {
-                tags.add("moderate");
-                } else if (priceSelection.equals("$$$")) {
-                tags.add("expensive");
+                if (freePriceBool) {
+                    tags.add("free");
+                } else if (onePriceBool) {
+                    tags.add("cheap");
+                } else if (twoPriceBool) {
+                    tags.add("moderate");
+                } else if (threePriceBool) {
+                    tags.add("expensive");
                 } else { //user did not select a price
-//                    no code added as a tag
+                    //no code added as a tag
                 }
-                // based on user selection of distance, set tag for firebase query
-                int clickedButotn = distanceGroup.getCheckedRadioButtonId();
-                if (anyDistanceBool) {
-//                    nothing, we want itins of any distance
 
-                } else if (blocksDistanceBool) {
-                tags.add("block");
-                } else if (mileDistanceBool) {
-                tags.add("mile");
-                } else if (milesDistanceBool) {
-                tags.add("miles");
-                }
+                //todo remove distance functionality?
+                //based on user selection of distance, set tag for firebase query
+                //int clickedButton = distanceGroup.getCheckedRadioButtonId();
+//                if (anyDistanceBool) {
+//                    //nothing, we want itins of any distance
+//                } else if (blocksDistanceBool) {
+//                    tags.add("block");
+//                } else if (mileDistanceBool) {
+//                    tags.add("mile");
+//                } else if (milesDistanceBool) {
+//                    tags.add("miles");
+//                }
                 tags.add(initialTagQuery);
+
+                Bundle bundle = new Bundle();
+                String[] tagsArr = new String[tags.size()];
+                tagsArr = tags.toArray(tagsArr);
+                String location = searchQueryObject.getLocation();
+                SearchQueryObject filterQueryObject = new SearchQueryObject(tagsArr, location);
+                bundle.putSerializable("searchQueryObject", filterQueryObject);
+                childNavController.navigate(R.id.fragment_display_itins, bundle);
 
 //                This call does all the work,  but I don't think it's building the itinerary cards?
 //                getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/" + locationQuery + ".json" , getContext(), tags);
