@@ -53,7 +53,7 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
         Log.i("NOTE", searchQueryObject.getLocation());
         Log.i("NOTE", searchQueryObject.getTags()[0]);
 
-        //FirebaseFuncs.getItineraries(itins, searchURL, getApplication().getApplicationContext());
+        FirebaseFuncs.getNestedItineraries(itins, getApplication().getApplicationContext(),searchQueryObject);
     }
 
     public LiveData<ArrayList<ItineraryObject>> getItineraries() {
