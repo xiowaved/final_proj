@@ -3,6 +3,9 @@ package cs160.final_proj_drawer.logic;
 
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +24,8 @@ public class ItineraryObject implements Serializable {
      private ArrayList<Stop> stops;
      private ArrayList<String> tags;
      private ArrayList<String> access;
+    static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    static DatabaseReference myRef = database.getReference("Locations");
 
      public ItineraryObject() {}
 
@@ -182,8 +187,10 @@ public class ItineraryObject implements Serializable {
     public void setBookmarked(boolean isBookmarked) {
          if (isBookmarked){
              this.tags.add("bookmarked");
+             myRef.child(this.location).child(this.itineraryName).setValue(this);
          } else {
              this.tags.remove("bookmarked");
+             myRef.child(this.location).child(this.itineraryName).setValue(this);
          }
     }
 
@@ -207,6 +214,20 @@ public class ItineraryObject implements Serializable {
 
     public void setNumStops(int num) {
         this.numStops = num;
+    }
+
+    public void clickLiked() { setLiked(!getLiked());}
+    public void setLiked(boolean isLiked) {
+        if (isLiked){
+            this.tags.add("liked");
+            myRef.child(this.location).child(this.itineraryName).setValue(this);
+        } else {
+            this.tags.remove("liked");
+            myRef.child(this.location).child(this.itineraryName).setValue(this);
+        }
+    }
+    public boolean getLiked(){
+        return this.tags.contains("liked");
     }
 }
 
