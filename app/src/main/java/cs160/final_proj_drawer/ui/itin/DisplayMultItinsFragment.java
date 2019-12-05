@@ -1,22 +1,14 @@
 package cs160.final_proj_drawer.ui.itin;
 
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,8 +20,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
-import cs160.final_proj_drawer.adapters.OnRecyclerCardListener.cardAction;
-import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
@@ -81,7 +71,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
             searchQueryObject = (SearchQueryObject) bundle.get("searchQueryObject");
         }
         // todo used for testing calling getnesteditins directly in viewmodel constructor
-        viewModel.searchQueryObject = searchQueryObject;
+        //viewModel.searchQueryObject = searchQueryObject;
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);

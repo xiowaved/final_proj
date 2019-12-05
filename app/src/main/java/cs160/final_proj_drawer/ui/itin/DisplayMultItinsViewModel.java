@@ -24,11 +24,11 @@ import static cs160.final_proj_drawer.logic.FirebaseFuncs.getNestedItineraries;
 public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     //holds the itins that are drawn to the view
-    ArrayList<ItineraryObject> itins = new ArrayList<>();
+    //ArrayList<ItineraryObject> itins = new ArrayList<>();
 
     private FirebaseFuncs firebaseFuncs = new FirebaseFuncs();
 
-    SearchQueryObject searchQueryObject;
+    //SearchQueryObject searchQueryObject;
 
 
     //all code below this comment is some boiler plate stuff i pulled
@@ -42,18 +42,16 @@ public class DisplayMultItinsViewModel extends AndroidViewModel {
         //ArrayList<String> tagsList = (ArrayList<String>) Arrays.asList(tags);
         //getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/"
          //       + locationQuery + ".json" , getApplication().getApplicationContext(), tagsList);
-
+/*
         String[] defaultTags = {"Food"};
         searchQueryObject = new SearchQueryObject();
         searchQueryObject.setLocation("Berkeley");
         searchQueryObject.setTags(defaultTags);
 
-        //todo Colby Call getNested here. it should use searchQueryObject
-
         Log.i("NOTE", searchQueryObject.getLocation());
         Log.i("NOTE", searchQueryObject.getTags()[0]);
-
-        FirebaseFuncs.getNestedItineraries(itins, getApplication().getApplicationContext(),searchQueryObject);
+*/
+       // FirebaseFuncs.getNestedItineraries(itins, getApplication().getApplicationContext(),searchQueryObject);
     }
 
     public LiveData<ArrayList<ItineraryObject>> getItineraries() {
