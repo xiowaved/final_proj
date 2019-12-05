@@ -300,13 +300,17 @@ public class FirebaseFuncs<Model> {
 //    getNestedItineraries should be our main itinerary getting thing, it can
 //    take anywhere from 1 to a million tags and it returns itineraries that have all of the tags.
 //
-    public static void getNestedItineraries(final ArrayList<ItineraryObject> list, String givenUrl, final Context context, final ArrayList<String> neededTags){
+    public static void getNestedItineraries(final ArrayList<ItineraryObject> list, final Context context, SearchQueryObject params){
+
+        final String[] neededTags = params.getTags();
+        String location = params.getLocation();
+        String Url = url+location+"json";
 
 //        Log.i("getItin", "called getItin");
         // I did it this way b/c there might be itineraries with names that come after tags.
 //        that's why its this two-tier search.
 //        First it goes through all the itineraries, ignoring the tags folder, and gets to the last one and adds it
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,givenUrl,null,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, Url,null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
                         JSONObject info = response;
@@ -322,15 +326,15 @@ public class FirebaseFuncs<Model> {
                                     JSONObject itin = info.getJSONObject(name);
                                     Log.i("getItin", "before filling itin "+ name);
                                     ItineraryObject itinerary = new ItineraryObject(itin);
-                                    for (int i = 0; i < neededTags.size(); i++) {
-                                        ArrayList<String> tags = itinerary.getTags();
-                                        if (tags.contains(neededTags.get(i))) {
-
-                                        } else {
-                                            hasAll = false;
-
+                                    if (neededTags.length == 0){}
+                                    else {
+                                        for (int i = 0; i < neededTags.length; i++) {
+                                            ArrayList<String> tags = itinerary.getTags();
+                                            if (tags.contains(neededTags[i])) {}
+                                            else { hasAll = false; }
                                         }
                                     }
+
                                     if (hasAll == true) {
                                         list.add(itinerary);
                                     } else {};
@@ -354,14 +358,16 @@ public class FirebaseFuncs<Model> {
                                 JSONObject itin = info.getJSONObject(name);
                                 Log.i("getItin", "before filling itin "+ name);
                                 ItineraryObject itinerary = new ItineraryObject(itin);
-                                for (int i = 0; i < neededTags.size(); i++) {
-                                    ArrayList<String> tags = itinerary.getTags();
-                                    if (tags.contains(neededTags.get(i))) {
 
-                                    } else {
-                                        hasAll = false;
+                                if (neededTags.length == 0){}
+                                else {
+                                    for (int i = 0; i < neededTags.length; i++) {
+                                        ArrayList<String> tags = itinerary.getTags();
+                                        if (tags.contains(neededTags[i])) {}
+                                        else { hasAll = false; }
                                     }
                                 }
+
                                 if (hasAll == true) {
                                     list.add(itinerary);
                                 } else {};

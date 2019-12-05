@@ -319,7 +319,7 @@ public class FilterFragment extends Fragment {
                 tags.add(initialTagQuery);
 
 //                This call does all the work,  but I don't think it's building the itinerary cards?
-                getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/" + locationQuery + ".json" , getContext(), tags);
+//                getNestedItineraries(new ArrayList<ItineraryObject>(), "https://travelr-7feac.firebaseio.com/Locations/" + locationQuery + ".json" , getContext(), tags);
 
                     // conduct a new firebase search query with getnesteditineraries?
                 // initial tag searched before clicking filter button = initialTagQuery (defined in OnCreateView)
