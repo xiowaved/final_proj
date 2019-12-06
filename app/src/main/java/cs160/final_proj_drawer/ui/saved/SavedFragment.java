@@ -18,7 +18,7 @@ public class SavedFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_saved, container, false);
-
+        //give bundle to the recyclerView
         return root;
     }
 }

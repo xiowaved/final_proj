@@ -46,8 +46,6 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 
         //logic
         ItineraryObject itin;
-        //toDo delete this! the liked should be obtained from the itin object
-        Boolean liked;
 
         public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
         {
@@ -72,11 +70,9 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
             this.like.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    liked = !liked;
-                    //todo make the like come from in the itin
+                    itin.clickLiked();
                     //todo put to firebase appropaitely
-                    //todo also changenumLikes in the itin and in firebase
-                    DisplayItinHelperFuncs.updateLikeView(liked, like, numLikesText);
+                    DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikesText);
                 }
             }));
         }
@@ -103,13 +99,10 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         holder.itineraryName.setText(itins.get(position).getItineraryName());
         holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
 
-        //todo delete later
-        holder.liked = false;
-
         String image = itins.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.cover);
         DisplayItinHelperFuncs.updateBookmarkView(holder.itin.getBookmarked(), holder.bookmark);
-        DisplayItinHelperFuncs.updateLikeView(holder.liked, holder.like, holder.numLikesText);
+        DisplayItinHelperFuncs.updateLikeView(holder.itin.getLiked(), holder.like, holder.numLikesText);
     }
 
     @Override

@@ -142,6 +142,10 @@ public class ItineraryObject implements Serializable {
     public boolean getBookmarked() {
         return this.tags.contains("bookmarked");
     }
+    public boolean getLiked() {
+        return this.tags.contains("liked");
+    }
+
     public String getCoverPhoto() {
         return this.coverPhoto;
     }
@@ -232,9 +236,6 @@ public class ItineraryObject implements Serializable {
             //myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
             //myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
         }
-    }
-    public boolean getLiked(){
-        return this.tags.contains("liked");
     }
 }
 
