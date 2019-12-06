@@ -56,8 +56,8 @@
     <string name="hello_blank_fragment">Hi Im blank</string>
 
     <!-- strings for posted and saved -->
-    <string name="posted_intro">Itineraries You Have Created</string>
-    <string name="saved_intro">Itineraries You Have Bookmarked</string>
+    <string name="posted_intro">Itineraries You Have Bookmarked</string>
+    <string name="saved_intro">Itineraries You Have Created</string>
 
     <!-- strings for settings page -->
     <string name="settings_intro">This is Settings Page</string>
