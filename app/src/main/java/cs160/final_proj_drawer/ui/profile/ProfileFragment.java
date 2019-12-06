@@ -36,6 +36,7 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
     private OnRecyclerCardListener listener;
 
     private SearchQueryObject searchQueryObject;
+    private SearchQueryObject searchQueryObjectCreated;
 
     private RecyclerView savedItins;
     private RecyclerView postedItins;
@@ -59,16 +60,7 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         postedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         postedItins.setLayoutManager(postedLayoutManager);
 
-//        //this stuff is all placeholder, needs to be replaced by firebase stuff
-//        defaultPics = getResources().obtainTypedArray(R.array.category_pics);
-//        ArrayList defaultItins = new ArrayList<String>();
-//        for (int i = 0; i < 4; i++)
-//        {
-//            int drawableID = defaultPics.getResourceId(i,0);
-//            defaultItins.add("default "+drawableID);
-//        }
-
-        //puttin more itins in here from firebase
+        // populate saved itins
         searchQueryObject = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
         viewModel.getItineraries(searchQueryObject).observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
@@ -78,16 +70,11 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
                 postedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
                 postedItins.setAdapter(postedAdapter);
 
-//                itinAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
-//                searchItins.setAdapter(itinAdapter);
             }
         });
+        // populated crated itins
+        searchQueryObjectCreated = new SearchQueryObject(new String[]{"created"}, "Berkeley");
 
-        //attach stuff to the recyclerView
-//        savedAdapter = new HorizAdapter(defaultItins, listener);
-//        savedItins.setAdapter(savedAdapter);
-//        postedAdapter = new HorizAdapter(defaultItins, listener);
-//        postedItins.setAdapter(postedAdapter);
         return root;
     }
 
