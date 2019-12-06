@@ -38,7 +38,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:layout_gravity="start|right"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="50dp">
@@ -119,76 +118,6 @@
             android:textSize="@dimen/card_text"></TextView>
 
 
-        <!--        <RelativeLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content">-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/priceText"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_alignTop="@+id/priceGroup"-->
-        <!--                android:layout_alignBottom="@+id/priceGroup"-->
-        <!--                android:layout_alignParentStart="true"-->
-        <!--                android:layout_marginStart="30dp"-->
-        <!--                android:layout_marginTop="5dp"-->
-        <!--                android:fontFamily="@font/primary"-->
-        <!--                android:gravity="center_vertical"-->
-        <!--                android:text="Price"-->
-        <!--                android:textAlignment="center"-->
-        <!--                android:textColor="@color/colorGreyStroke"-->
-        <!--                android:textSize="20sp"></TextView>-->
-
-        <!--            <RadioGroup-->
-        <!--                android:id="@+id/priceGroup"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_alignParentEnd="true"-->
-        <!--                android:layout_marginEnd="20dp"-->
-        <!--                android:orientation="horizontal">-->
-
-        <!--                <RadioButton-->
-        <!--                    android:id="@+id/free"-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:layout_marginEnd="24dp"-->
-        <!--                    android:layout_weight="1"-->
-
-        <!--                    android:buttonTint="@color/colorBlueBright"-->
-        <!--                    android:text="free" />-->
-
-        <!--                <RadioButton-->
-        <!--                    android:id="@+id/price_1"-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:layout_marginEnd="24dp"-->
-        <!--                    android:layout_weight="1"-->
-
-        <!--                    android:buttonTint="@color/colorBlueBright"-->
-        <!--                    android:text="$" />-->
-
-        <!--                <RadioButton-->
-        <!--                    android:id="@+id/price_2"-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:layout_marginEnd="24dp"-->
-        <!--                    android:layout_weight="1"-->
-
-        <!--                    android:buttonTint="@color/colorBlueBright"-->
-        <!--                    android:text="$$" />-->
-
-        <!--                <RadioButton-->
-        <!--                    android:id="@+id/price_3"-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:layout_marginEnd="24dp"-->
-        <!--                    android:layout_weight="1"-->
-        <!--                    android:buttonTint="@color/colorBlueBright"-->
-        <!--                    android:text="$$$" />-->
-
-        <!--            </RadioGroup>-->
-        <!--        </RelativeLayout>-->
-
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -210,8 +139,6 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/sb_task_detail_status"
-            android:layout_alignStart="@+id/sb_task_detail_status"
             android:stretchColumns="*">
 
             <TableRow

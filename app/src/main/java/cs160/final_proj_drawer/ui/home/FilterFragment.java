@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +76,8 @@ public class FilterFragment extends Fragment {
     private SearchQueryObject searchQueryObject;
     private View root;
 
+    private SeekBar priceSeekBar;
+    private int pricePosition;
 
     // Declare any UI elements that need to be interactive here, as private variables, like ImageButtons, TextViews, etc.
 
@@ -105,84 +108,106 @@ public class FilterFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        freePrice = (TextView) getView().findViewById(R.id.price_free);
-        onePrice = (TextView) getView().findViewById(R.id.price_1);
-        twoPrice = (TextView) getView().findViewById(R.id.price_2);
-        threePrice = (TextView) getView().findViewById(R.id.price_3);
-        // set listeners for price options, change ui to indicate they've been clicked
-        freePrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceLastClicked != null) {
-                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
-                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
-                }
-                freePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
-                freePrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
-                priceLastClicked = freePrice;
-                freePriceBool = true;
-                onePriceBool = false;
-                twoPriceBool = false;
-                threePriceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on free price",
-                        Toast.LENGTH_SHORT); toast.show();
-            }
-        });
+//        freePrice = (TextView) getView().findViewById(R.id.price_free);
+//        onePrice = (TextView) getView().findViewById(R.id.price_1);
+//        twoPrice = (TextView) getView().findViewById(R.id.price_2);
+//        threePrice = (TextView) getView().findViewById(R.id.price_3);
+//        // set listeners for price options, change ui to indicate they've been clicked
+//        freePrice.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (priceLastClicked != null) {
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
+//                }
+//                freePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
+//                freePrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
+//                priceLastClicked = freePrice;
+//                freePriceBool = true;
+//                onePriceBool = false;
+//                twoPriceBool = false;
+//                threePriceBool = false;
+//                Toast toast = Toast.makeText(getContext(), "clicked on free price",
+//                        Toast.LENGTH_SHORT); toast.show();
+//            }
+//        });
+//
+//        onePrice.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (priceLastClicked != null) {
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
+//                }
+//                onePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
+//                onePrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
+//                priceLastClicked = onePrice;
+//                freePriceBool = false;
+//                onePriceBool = true;
+//                twoPriceBool = false;
+//                threePriceBool = false;
+//                Toast toast = Toast.makeText(getContext(), "clicked on one price",
+//                        Toast.LENGTH_SHORT); toast.show();
+//            }
+//        });
+//
+//        twoPrice.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (priceLastClicked != null) {
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
+//                }
+//                twoPrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
+//                twoPrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
+//                priceLastClicked = twoPrice;
+//                freePriceBool = false;
+//                onePriceBool = false;
+//                twoPriceBool = true;
+//                threePriceBool = false;
+//                Toast toast = Toast.makeText(getContext(), "clicked on two price",
+//                        Toast.LENGTH_SHORT); toast.show();
+//            }
+//        });
+//
+//        threePrice.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (priceLastClicked != null) {
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
+//                }
+//                threePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
+//                threePrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
+//                priceLastClicked = threePrice;
+//                freePriceBool = false;
+//                onePriceBool = false;
+//                twoPriceBool = false;
+//                threePriceBool = true;
+//                Toast toast = Toast.makeText(getContext(), "clicked on three price",
+//                        Toast.LENGTH_SHORT); toast.show();
+//            }
+//        });
 
-        onePrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceLastClicked != null) {
-                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
-                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
-                }
-                onePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
-                onePrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
-                priceLastClicked = onePrice;
-                freePriceBool = false;
-                onePriceBool = true;
-                twoPriceBool = false;
-                threePriceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on one price",
-                        Toast.LENGTH_SHORT); toast.show();
-            }
-        });
 
-        twoPrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceLastClicked != null) {
-                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
-                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
-                }
-                twoPrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
-                twoPrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
-                priceLastClicked = twoPrice;
-                freePriceBool = false;
-                onePriceBool = false;
-                twoPriceBool = true;
-                threePriceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on two price",
-                        Toast.LENGTH_SHORT); toast.show();
-            }
-        });
+        priceSeekBar = (SeekBar) getView().findViewById(R.id.seekBar);
+        priceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
-        threePrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceLastClicked != null) {
-                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
-                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
-                }
-                threePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
-                threePrice.setTextColor(getResources().getColorStateList(R.color.colorOffWhite));
-                priceLastClicked = threePrice;
-                freePriceBool = false;
-                onePriceBool = false;
-                twoPriceBool = false;
-                threePriceBool = true;
-                Toast toast = Toast.makeText(getContext(), "clicked on three price",
-                        Toast.LENGTH_SHORT); toast.show();
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.i("progress change", "here");
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                Log.i("start tracking", "here");
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.i("stopped tracking", "" + seekBar.getProgress());
+                // this is where you detect where the user has left the pin on the sliding scale
+                pricePosition = seekBar.getProgress();
+
             }
         });
 
@@ -281,10 +306,10 @@ public class FilterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //reset price UI
-                if (priceLastClicked != null) {
-                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
-                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
-                }
+//                if (priceLastClicked != null) {
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
+//                }
                 //reset distance UI
                 distanceGroup.clearCheck();
                 //reset price value
@@ -354,17 +379,32 @@ public class FilterFragment extends Fragment {
                 //String priceSelection = priceLastClicked.getText().toString();
                 //based on user selection of price, set tag for firebase query
                 ArrayList<String> tags = new ArrayList<>();
-                if (freePriceBool) {
+//                if (freePriceBool) {
+//                    tags.add("free");
+//                } else if (onePriceBool) {
+//                    tags.add("cheap");
+//                } else if (twoPriceBool) {
+//                    tags.add("moderate");
+//                } else if (threePriceBool) {
+//                    tags.add("expensive");
+//                } else { //user did not select a price
+//                    //no code added as a tag
+//                }
+
+
+                String price;
+                // get price tag
+                if (pricePosition == 0) {
+                    // user tagged 'free'
                     tags.add("free");
-                } else if (onePriceBool) {
+                } else if (pricePosition == 1) {
                     tags.add("cheap");
-                } else if (twoPriceBool) {
+                } else if (pricePosition == 2) {
                     tags.add("moderate");
-                } else if (threePriceBool) {
+                } else if (pricePosition == 3) {
                     tags.add("expensive");
-                } else { //user did not select a price
-                    //no code added as a tag
                 }
+
 
                 //todo remove distance functionality?
                 //based on user selection of distance, set tag for firebase query
