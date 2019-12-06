@@ -47,6 +47,8 @@ public class CreateStopsFragment extends Fragment {
     int currentStopIndex; // the itinerary index of what is displayed on the screen
 
 
+
+
     ArrayList<Stop> stops;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Locations");

@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import androidx.annotation.NonNull;
@@ -24,7 +23,6 @@ import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.logic.SearchQueryObject;
-import cs160.final_proj_drawer.logic.Stop;
 
 /*
 **  Displays a recyclerView with multiple Itineraries
@@ -33,9 +31,6 @@ import cs160.final_proj_drawer.logic.Stop;
 **  open the full page itinerary that was clicked.
  */
 public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCardListener{
-
-    public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
-    public JSONObject Tags;
 
     //stuff for architecture
     private NavController navController;
@@ -99,60 +94,14 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         return root;
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//
-//        ArticleViewModel viewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
-//        viewModel.getArticles().observe(this, new Observer<List<Article>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Article> articles) {
-//                recyclerView.setAdapter(new ArticleAdapter(articles));
-//            }
-//        });
-//    }
-
+    //this is when the image is clicked, and we navigate to a specific itinerary
     @Override
     public void onCardClick(int position, cardAction action) {
         ItineraryObject selectedItin = viewModel.getLoadedItins().getValue().get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);
 
-        Log.i("Note", " was clicked! " + position);
             navController.navigate(R.id.fragment_display_single_itin, bundle);
-    }
-
-    public void fillPlaceHolderItins() {
-        for (int i = 0; i < 2; i++)
-        {
-            //placeholder stops and itins
-            // so we can practice displaying single itins from here.
-
-            ArrayList<String> photolist = new ArrayList<>();
-            ArrayList<Stop> stoplist = new ArrayList<>();
-            ArrayList<String> taglist = new ArrayList<>();
-            ArrayList<String> acclist = new ArrayList<>();
-            boolean isBookmarked = false;
-            Stop Safeway = new Stop(photolist, "Safeway", "6310 College Ave, Oakland, CA 94618", "I stopped here to pickup some meat. " +
-                    "They have pretty good deals here and I walked away with some pork loin that was on sale. They're also open 24 hours!", 0);
-            Stop BerkeleyBowl = new Stop(photolist, "Berkeley Bowl", "2020 Oregon St, Berkeley, CA 94703", "Very diverse set of produce. " +
-                    "Large selection and good prices on fruits/veggies not so great prices on everything else.", 1);
-            Stop WholeFoods = new Stop(photolist, "Whole Foods", "3000 Telegraph Ave, Berkeley, CA 94705", "Wide selection of organic food" +
-                    "a little pricey, but they have a good selection of exotic food/drinks, such as kombucha", 2);
-            stoplist.add(Safeway);
-            stoplist.add(BerkeleyBowl);
-            stoplist.add(WholeFoods);
-            taglist.add("shopping");
-            taglist.add("grocery");
-            taglist.add("food");
-            acclist.add("elevator");
-
-
-            ItineraryObject itinerary = new ItineraryObject("creatorName", "itineraryName " +i, 11*i,
-                    "coverPhoto", "berk", 1, stoplist, taglist, acclist);
-            viewModel.getLoadedItins().getValue().add(itinerary);
-
-        }
     }
 
 }

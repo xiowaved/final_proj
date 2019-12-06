@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -53,12 +52,6 @@ public class HomeFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         childNavController = Navigation.findNavController(root.findViewById(R.id.home_child_nav_host_fragment));
-/*
-        LinearLayout layout = root.findViewById(R.id.numberPadLayout);
-// Gets the layout params that will allow you to resize the layout
-        LayoutParams params = layout.getLayoutParams();
-// Changes the height and width to the specified *pixels*
-        params.height = 100;*/
 
         //find stuff
         searchLayout = root.findViewById(R.id.searchLayout);
@@ -67,7 +60,7 @@ public class HomeFragment extends Fragment {
         searchButton = root.findViewById(R.id.searchButton);
         filterButton = root.findViewById(R.id.filterButton);
         onSearchLocation = root.findViewById(R.id.on_search_location);
-//
+
         //navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         locationSearchBar.setVisibility(View.INVISIBLE);
         final LayoutParams searchLayoutParams = searchLayout.getLayoutParams();
@@ -130,12 +123,7 @@ public class HomeFragment extends Fragment {
                     searchLayoutParams.height = searchHeightExpand;
                     locationSearchBar.setVisibility(View.VISIBLE);
                     onSearchLocation.setVisibility(View.INVISIBLE);
-                } //else {
-                    //exiting search stuff
-                    //childNavController.navigate(R.id.fragment_splash);
-                    //locationSearchBar.setVisibility(View.INVISIBLE);
-                    //filterButton.setVisibility(View.INVISIBLE);
-                //}
+                }
             }
         });
 

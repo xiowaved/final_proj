@@ -1,6 +1,5 @@
 package cs160.final_proj_drawer.ui.create;
 
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -253,7 +251,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     writeSingleItin(itineraryObject);
 
                     // navigate back to home splash screen
-                    //navController.navigate(R.id.fragment_splash);
+                    navController.navigate(R.id.nav_home);
                 }
             }
         });

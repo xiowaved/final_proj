@@ -2,6 +2,9 @@ package cs160.final_proj_drawer.logic;
 
 import java.io.Serializable;
 
+/*
+    This class holds data used to make Searches
+ */
 public class SearchQueryObject implements Serializable {
 
 

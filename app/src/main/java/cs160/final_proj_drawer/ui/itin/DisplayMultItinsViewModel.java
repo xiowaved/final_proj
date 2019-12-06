@@ -1,24 +1,20 @@
 package cs160.final_proj_drawer.ui.itin;
 
 import android.app.Application;
-import android.util.Log;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.AndroidViewModel;
 import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.SearchQueryObject;
-import cs160.final_proj_drawer.logic.Stop;
 
+/*
+    This class displays multiple itineraries
+    It takes in a SearchQuery and Executes that search in our firebase database.
+ */
 public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     private FirebaseFuncs firebaseFuncs = new FirebaseFuncs();
