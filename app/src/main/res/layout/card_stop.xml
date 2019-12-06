@@ -5,6 +5,8 @@
     android:layout_height="@dimen/stopHeight"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="@dimen/cardItinPadding"
+    android:layout_marginTop="@dimen/cardItinPadding"
+    android:layout_marginLeft="@dimen/cardItinPadding"
     android:foreground="?attr/selectableItemBackground"
     android:background="@drawable/rounded_corner_grey_outline"
     app:cardCornerRadius="@dimen/roundCorners"
