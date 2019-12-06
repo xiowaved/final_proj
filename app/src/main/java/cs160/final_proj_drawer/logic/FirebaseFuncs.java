@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -41,6 +42,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import cs160.final_proj_drawer.R;
+
+import static java.util.Objects.isNull;
 
 /* This is all of our functions that interact with firebase.
    They are created here, as separate from UI, so we can
@@ -82,7 +85,12 @@ public class FirebaseFuncs<Model> {
                 DataSnapshot item = dataSnapshot.child(currentLocation);
 
                 HashMap hash = (HashMap) item.getValue();
-                itins = handleHash(hash,tags);
+                if (isNull(hash)){
+                    itins = new ArrayList<ItineraryObject>();
+                } else {
+                    itins = handleHash(hash,tags);
+                }
+
 
                 firebaseCallback.onSuccess(itins);
             }
@@ -194,12 +202,6 @@ public class FirebaseFuncs<Model> {
 
 
     }
-
-    //toDo make a function in itinObject that converts it to a json object, and vice versa
-
-    // todo vaguely understand what is happening here
-    // this needs application context, not activity context
-    // (otherwise itll die every time activity is redrawn, like rotation)
 
 
 }

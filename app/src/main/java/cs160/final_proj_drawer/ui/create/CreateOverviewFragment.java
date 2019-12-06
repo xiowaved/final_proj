@@ -64,14 +64,11 @@ public class CreateOverviewFragment extends Fragment {
     private ImageButton coverPhotoButton;
     private String itineraryName;
     private String itineraryLocation;
-    private final int IMG_REQUEST = 1;
     private final int RESULT_LOAD_IMG = 1;
 
     private String coverPhoto = "";
-    private Bitmap bitmapsimg;
     static StorageReference storage = FirebaseStorage.getInstance().getReference();
 
-    private String apiUrl = "http://192.168.1.12/api/index.php";
 
 
     @Override
@@ -108,7 +105,6 @@ public class CreateOverviewFragment extends Fragment {
                 switch (v.getId()) {
                     case R.id.coverPhoto:
                         selectimage();
-//                        uploadimage();
                 }
             }
 
@@ -152,86 +148,8 @@ public class CreateOverviewFragment extends Fragment {
     }
 
 
-    /** Chaitanya, I bypassed this code, as its functions are fulfilled elsewhere */
-    //helper function
-
-//    private void uploadimage(){
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, apiUrl,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//
-//                            JSONObject jsonObject  = new JSONObject(response);
-//
-//                            String Response = jsonObject.getString("response");
-//                            Toast.makeText(getActivity(), Response,Toast.LENGTH_LONG).show();
-//
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {private void uploadimage(){
-////
-////        StringRequest stringRequest = new StringRequest(Request.Method.POST, apiUrl,
-////                new Response.Listener<String>() {
-////                    @Override
-////                    public void onResponse(String response) {
-////                        try {
-////
-////                            JSONObject jsonObject  = new JSONObject(response);
-////
-////                            String Response = jsonObject.getString("response");
-////                            Toast.makeText(getActivity(), Response,Toast.LENGTH_LONG).show();
-////
-////
-////                        } catch (JSONException e) {
-////                            e.printStackTrace();
-////                        }
-////
-////
-////                    }
-////                }, new Response.ErrorListener() {
-////            @Override
-////            public void onErrorResponse(VolleyError error) {
-////
-////            }
-////        } )
-////        {
-////
-////            @Override
-////            protected Map<String, String> getParams() throws AuthFailureError {
-////                Map<String,String> params = new HashMap<>();
-////                return params;
-////            }
-////        };
-////        PhotoHelper.getmInstance(getActivity()).addToRequestQueue(stringRequest);
-////    }
-//
-//            }
-//        } )
-//        {
-//
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String,String> params = new HashMap<>();
-//                return params;
-//            }
-//        };
-//        PhotoHelper.getmInstance(getActivity()).addToRequestQueue(stringRequest);
-//    }
 
     public void selectimage(){
-//        Intent imgintent = new Intent();
-//        imgintent.setType("image/*");
-//        imgintent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(imgintent,IMG_REQUEST);
         Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);

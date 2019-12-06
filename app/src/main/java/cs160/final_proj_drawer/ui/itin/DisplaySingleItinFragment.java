@@ -87,7 +87,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         location.setText(itin.getLocation());
         Picasso.get().load(coverImage).into(cover);
         DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bkmk);
-        DisplayItinHelperFuncs.updateLikeView(liked, like);
+        DisplayItinHelperFuncs.updateLikeView(liked, like, numLikes);
 
         bkmk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +106,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
                 //todo tell firebase and the itin that like was clicked for this itin
                 //todo add or subtract a like from numLikes, depending on the action taken.
                 // communicate that to firebase, and update numLikes on the screen
-                DisplayItinHelperFuncs.updateLikeView(liked, like);
+                DisplayItinHelperFuncs.updateLikeView(liked, like, numLikes);
             }
         });
 

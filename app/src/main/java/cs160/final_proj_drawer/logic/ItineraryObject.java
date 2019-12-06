@@ -220,12 +220,14 @@ public class ItineraryObject implements Serializable {
     public void setLiked(boolean isLiked) {
         if (isLiked){
             this.tags.add("liked");
+            this.numLikes +=1;
             myRef.child(this.location).child(this.itineraryName).setValue(this);
 //            Below this fixes the random new fields that it added
             myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
             myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
         } else {
             this.tags.remove("liked");
+            this.numLikes -=1;
             myRef.child(this.location).child(this.itineraryName).setValue(this);
             //            Below this fixes the random new fields that it added
             myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();

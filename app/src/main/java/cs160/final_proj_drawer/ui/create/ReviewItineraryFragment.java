@@ -237,6 +237,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     if (familyFriendlyTagBool) {
                         itineraryObject.addTags("family friendly");
                     }
+                    itineraryObject.addTags("default");
 
                     // write itinerary to firebase
                     itineraryObject.setItineraryName(itinName.getText().toString());
