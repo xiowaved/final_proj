@@ -57,7 +57,7 @@ public class HorizItinAdapter extends RecyclerView.Adapter<HorizItinAdapter.View
     @Override
     public HorizItinAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_horiz, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_horiz_itin, parent, false);
         HorizItinAdapter.ViewHolder viewHolder = new HorizItinAdapter.ViewHolder(view, onItinListener);
         return viewHolder;
     }
