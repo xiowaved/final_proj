@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,21 +20,35 @@ import java.util.ArrayList;
 
 import cs160.final_proj_drawer.adapters.HorizAdapter;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
+import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.logic.SearchQueryObject;
+import cs160.final_proj_drawer.ui.itin.DisplayMultItinsViewModel;
 
 //this is the UI for the user's profile
 public class ProfileFragment extends Fragment implements OnRecyclerCardListener {
 
-    private RecyclerView savedItins;
-    private RecyclerView postedItins;
-    private HorizAdapter savedAdapter;
-    private HorizAdapter postedAdapter;
-    private TypedArray defaultPics;
+    //stuff for architecture
+    private NavController navController;
+    private ProfileViewModel viewModel;
     private OnRecyclerCardListener listener;
 
+    private SearchQueryObject searchQueryObject;
+
+    private RecyclerView savedItins;
+    private RecyclerView postedItins;
+//    private HorizAdapter savedAdapter;
+//    private HorizAdapter postedAdapter;
+    private TypedArray defaultPics;
+
+    private ItinAdapter savedAdapter;
+    private ItinAdapter postedAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        viewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
         listener = this;
         savedItins = (RecyclerView) root.findViewById(R.id.profile_saved);
@@ -43,20 +61,35 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         postedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         postedItins.setLayoutManager(postedLayoutManager);
 
-        //this stuff is all placeholder, needs to be replaced by firebase stuff
-        defaultPics = getResources().obtainTypedArray(R.array.category_pics);
-        ArrayList defaultItins = new ArrayList<String>();
-        for (int i = 0; i < 4; i++)
-        {
-            int drawableID = defaultPics.getResourceId(i,0);
-            defaultItins.add("default "+drawableID);
-        }
+//        //this stuff is all placeholder, needs to be replaced by firebase stuff
+//        defaultPics = getResources().obtainTypedArray(R.array.category_pics);
+//        ArrayList defaultItins = new ArrayList<String>();
+//        for (int i = 0; i < 4; i++)
+//        {
+//            int drawableID = defaultPics.getResourceId(i,0);
+//            defaultItins.add("default "+drawableID);
+//        }
+
+        //puttin more itins in here from firebase
+        searchQueryObject = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
+        viewModel.getItineraries(searchQueryObject).observe(this, new Observer<ArrayList<ItineraryObject>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
+                savedAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
+                savedItins.setAdapter(savedAdapter);
+                postedAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
+                postedItins.setAdapter(postedAdapter);
+
+//                itinAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
+//                searchItins.setAdapter(itinAdapter);
+            }
+        });
 
         //attach stuff to the recyclerView
-        savedAdapter = new HorizAdapter(defaultItins, listener);
-        savedItins.setAdapter(savedAdapter);
-        postedAdapter = new HorizAdapter(defaultItins, listener);
-        postedItins.setAdapter(postedAdapter);
+//        savedAdapter = new HorizAdapter(defaultItins, listener);
+//        savedItins.setAdapter(savedAdapter);
+//        postedAdapter = new HorizAdapter(defaultItins, listener);
+//        postedItins.setAdapter(postedAdapter);
         return root;
     }
 
