@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -102,9 +101,7 @@ public class CreateStopsFragment extends Fragment {
         addNewPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo add new photo logic here!
-                Toast toast = Toast.makeText(getContext(), "clicked on add new photo",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 

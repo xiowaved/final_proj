@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.squareup.picasso.Picasso;
 
@@ -157,8 +157,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             @Override
             public void onClick(View v) {
                 foodTagBool = !foodTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on food tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -166,8 +165,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             @Override
             public void onClick(View v) {
                 musicTagBool = !musicTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on music tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -175,8 +173,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             @Override
             public void onClick(View v) {
                 hikeTagBool = !hikeTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on hike tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -184,8 +181,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             @Override
             public void onClick(View v) {
                 artTagBool = !artTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on art tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -193,8 +189,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
             @Override
             public void onClick(View v) {
                 familyFriendlyTagBool = !familyFriendlyTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on famiy friendly tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -263,9 +258,6 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
     @Override
     public void onCardClick(int position, cardAction action) {
         Stop selectedStop = itinStops.get(position);
-        Toast toast = Toast.makeText(getContext(), "clicked on stop #" + "" + (position),
-                Toast.LENGTH_SHORT);
-        toast.show();
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", itineraryObject);
         bundle.putInt("stopIndex", position);

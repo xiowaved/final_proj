@@ -20,7 +20,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -127,8 +126,7 @@ public class FilterFragment extends Fragment {
                 onePriceBool = false;
                 twoPriceBool = false;
                 threePriceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on free price",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -146,8 +144,7 @@ public class FilterFragment extends Fragment {
                 onePriceBool = true;
                 twoPriceBool = false;
                 threePriceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on one price",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -165,8 +162,7 @@ public class FilterFragment extends Fragment {
                 onePriceBool = false;
                 twoPriceBool = true;
                 threePriceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on two price",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -184,32 +180,10 @@ public class FilterFragment extends Fragment {
                 onePriceBool = false;
                 twoPriceBool = false;
                 threePriceBool = true;
-                Toast toast = Toast.makeText(getContext(), "clicked on three price",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
-
-//        priceSeekBar = (SeekBar) getView().findViewById(R.id.seekBar);
-//        priceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                Log.i("progress change", "here");
-//
-//            }
-//
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//                Log.i("start tracking", "here");
-//
-//            }
-//
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//                Log.i("stopped tracking", "" + seekBar.getProgress());
-//                // this is where you detect where the user has left the pin on the sliding scale
-//                pricePosition = seekBar.getProgress();
-//
-//            }
-//        });
 
         distanceGroup = (RadioGroup) getView().findViewById(R.id.RGroup);
         anyDistance = (RadioButton) getView().findViewById(R.id.radioButton1);
@@ -225,8 +199,7 @@ public class FilterFragment extends Fragment {
                 blocksDistanceBool = false;
                 mileDistanceBool = false;
                 milesDistanceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on any distance",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -237,8 +210,7 @@ public class FilterFragment extends Fragment {
                 blocksDistanceBool = true;
                 mileDistanceBool = false;
                 milesDistanceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on blocks distance",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -249,8 +221,7 @@ public class FilterFragment extends Fragment {
                 blocksDistanceBool = false;
                 mileDistanceBool = true;
                 milesDistanceBool = false;
-                Toast toast = Toast.makeText(getContext(), "clicked on mile distance",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -261,8 +232,6 @@ public class FilterFragment extends Fragment {
                 blocksDistanceBool = false;
                 mileDistanceBool = false;
                 milesDistanceBool = true;
-                Toast toast = Toast.makeText(getContext(), "clicked on miles distance",
-                        Toast.LENGTH_SHORT); toast.show();
             }
         });
 
@@ -275,8 +244,7 @@ public class FilterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 adaTagBool = !adaTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on ADA tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -284,8 +252,7 @@ public class FilterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 quietTagBool = !quietTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on quiet tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -293,8 +260,7 @@ public class FilterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 lowAllergenTagBool = !lowAllergenTagBool;
-                Toast toast = Toast.makeText(getContext(), "clicked on low allergen tag",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -336,8 +302,7 @@ public class FilterFragment extends Fragment {
                 if (lowAllergenTag.isChecked()) {
                     lowAllergenTag.toggle();
                 }
-                Toast toast = Toast.makeText(getContext(), "clicked on reset",
-                        Toast.LENGTH_SHORT); toast.show();
+
             }
         });
 
@@ -374,8 +339,7 @@ public class FilterFragment extends Fragment {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getContext(), "clicked on apply",
-                        Toast.LENGTH_SHORT); toast.show();
+
                 //String priceSelection = priceLastClicked.getText().toString();
                 //based on user selection of price, set tag for firebase query
                 ArrayList<String> tags = new ArrayList<>();
@@ -392,21 +356,7 @@ public class FilterFragment extends Fragment {
                 }
 
 
-//                String price;
-//                // get price tag
-//                if (pricePosition == 0) {
-//                    // user tagged 'free'
-//                    tags.add("free");
-//                } else if (pricePosition == 1) {
-//                    tags.add("cheap");
-//                } else if (pricePosition == 2) {
-//                    tags.add("moderate");
-//                } else if (pricePosition == 3) {
-//                    tags.add("expensive");
-//                }
 
-
-                //todo remove distance functionality?
                 //based on user selection of distance, set tag for firebase query
                 //int clickedButton = distanceGroup.getCheckedRadioButtonId();
 //                if (anyDistanceBool) {
