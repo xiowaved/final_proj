@@ -92,7 +92,7 @@
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_alignParentStart="true"-->
 <!--                android:layout_marginStart="30dp"-->
-<!--                android:background="@drawable/rounded_corner_price"-->
+<!--                android:background="@drawable/rounded_corner_grey_outline"-->
 <!--                android:fontFamily="@font/manjaribold"-->
 <!--                android:text="Free"-->
 <!--                android:textAlignment="center"-->
@@ -105,7 +105,7 @@
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_marginStart="15dp"-->
 <!--                android:layout_toEndOf="@+id/price_free"-->
-<!--                android:background="@drawable/rounded_corner_price"-->
+<!--                android:background="@drawable/rounded_corner_grey_outline"-->
 <!--                android:fontFamily="@font/manjaribold"-->
 <!--                android:text="$"-->
 <!--                android:textAlignment="center"-->
@@ -118,7 +118,7 @@
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_marginStart="15dp"-->
 <!--                android:layout_toEndOf="@+id/price_1"-->
-<!--                android:background="@drawable/rounded_corner_price"-->
+<!--                android:background="@drawable/rounded_corner_grey_outline"-->
 <!--                android:fontFamily="@font/manjaribold"-->
 <!--                android:text="$$"-->
 <!--                android:textAlignment="center"-->
@@ -131,7 +131,7 @@
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_marginStart="15dp"-->
 <!--                android:layout_toEndOf="@+id/price_2"-->
-<!--                android:background="@drawable/rounded_corner_price"-->
+<!--                android:background="@drawable/rounded_corner_grey_outline"-->
 <!--                android:fontFamily="@font/manjaribold"-->
 <!--                android:text="$$$"-->
 <!--                android:textAlignment="center"-->

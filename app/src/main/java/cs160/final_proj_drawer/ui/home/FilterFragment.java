@@ -117,7 +117,7 @@ public class FilterFragment extends Fragment {
 //            @Override
 //            public void onClick(View v) {
 //                if (priceLastClicked != null) {
-//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_grey_outline));
 //                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
 //                }
 //                freePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
@@ -136,7 +136,7 @@ public class FilterFragment extends Fragment {
 //            @Override
 //            public void onClick(View v) {
 //                if (priceLastClicked != null) {
-//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_grey_outline));
 //                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
 //                }
 //                onePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
@@ -155,7 +155,7 @@ public class FilterFragment extends Fragment {
 //            @Override
 //            public void onClick(View v) {
 //                if (priceLastClicked != null) {
-//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_grey_outline));
 //                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
 //                }
 //                twoPrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
@@ -174,7 +174,7 @@ public class FilterFragment extends Fragment {
 //            @Override
 //            public void onClick(View v) {
 //                if (priceLastClicked != null) {
-//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_grey_outline));
 //                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
 //                }
 //                threePrice.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price_filled));
@@ -307,7 +307,7 @@ public class FilterFragment extends Fragment {
             public void onClick(View v) {
                 //reset price UI
 //                if (priceLastClicked != null) {
-//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_price));
+//                    priceLastClicked.setBackground(getResources().getDrawable(R.drawable.rounded_corner_grey_outline));
 //                    priceLastClicked.setTextColor(getResources().getColorStateList(R.color.colorDarkGrey));
 //                }
                 //reset distance UI
