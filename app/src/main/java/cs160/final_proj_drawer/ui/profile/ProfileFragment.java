@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import cs160.final_proj_drawer.adapters.HorizAdapter;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.adapters.HorizItinAdapter;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
 import cs160.final_proj_drawer.logic.ItineraryObject;
@@ -38,12 +39,9 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
 
     private RecyclerView savedItins;
     private RecyclerView postedItins;
-//    private HorizAdapter savedAdapter;
-//    private HorizAdapter postedAdapter;
+    private HorizItinAdapter savedAdapter;
+    private HorizItinAdapter postedAdapter;
     private TypedArray defaultPics;
-
-    private ItinAdapter savedAdapter;
-    private ItinAdapter postedAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -75,9 +73,9 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         viewModel.getItineraries(searchQueryObject).observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
-                savedAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
+                savedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
                 savedItins.setAdapter(savedAdapter);
-                postedAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
+                postedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
                 postedItins.setAdapter(postedAdapter);
 
 //                itinAdapter = new ItinAdapter(viewModel.getLoadedItins().getValue(), listener);
