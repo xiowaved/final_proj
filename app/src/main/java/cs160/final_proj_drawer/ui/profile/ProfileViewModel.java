@@ -24,11 +24,22 @@ public class ProfileViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public LiveData<ArrayList<ItineraryObject>> getItineraries(SearchQueryObject searchQueryObject) {
-        if (loadedItins == null) {
+    public LiveData<ArrayList<ItineraryObject>> getSavedItineraries() {
+        SearchQueryObject searchQueryObjectBookmark = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
+        //if (loadedItins != null) {
             loadedItins = new MutableLiveData<>();
-            getFirebaseData(searchQueryObject);
-        }
+            getFirebaseData(searchQueryObjectBookmark);
+        //}
+        return loadedItins;
+    }
+
+    public LiveData<ArrayList<ItineraryObject>> getPostedItineraries() {
+
+        SearchQueryObject searchQueryObjectCreated = new SearchQueryObject(new String[]{"created"}, "Berkeley");
+        //if (loadedItins != null) {
+            loadedItins = new MutableLiveData<>();
+            getFirebaseData(searchQueryObjectCreated);
+        //}
         return loadedItins;
     }
 

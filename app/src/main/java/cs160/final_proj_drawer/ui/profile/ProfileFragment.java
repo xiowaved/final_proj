@@ -61,8 +61,7 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         postedItins.setLayoutManager(postedLayoutManager);
 
         // populate saved itins
-        searchQueryObjectBookmark = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
-        viewModel.getItineraries(searchQueryObjectBookmark).observe(this, new Observer<ArrayList<ItineraryObject>>() {
+        viewModel.getSavedItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
                 savedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
@@ -71,16 +70,14 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
             }
         });
 
-        searchQueryObjectCreated = new SearchQueryObject(new String[]{"created"}, "Berkeley");
-        viewModel.getItineraries(searchQueryObjectCreated).observe(this, new Observer<ArrayList<ItineraryObject>>() {
+        viewModel.getPostedItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
-                postedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
-                postedItins.setAdapter(postedAdapter);
+                savedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
+                savedItins.setAdapter(savedAdapter);
 
             }
         });
-
         return root;
     }
 
