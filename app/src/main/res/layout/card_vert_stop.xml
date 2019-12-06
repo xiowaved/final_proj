@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/vert_stop_height"
-    android:layout_marginBottom="@dimen/cardItinPadding"
+    android:layout_margin="@dimen/cardItinPadding"
     android:foreground="?attr/selectableItemBackground"
-    app:cardElevation="@dimen/dropShadowElevation"
+    android:background="@drawable/rounded_corner_grey_outline"
     app:cardCornerRadius="@dimen/roundCorners"
     app:cardPreventCornerOverlap="false">
 
