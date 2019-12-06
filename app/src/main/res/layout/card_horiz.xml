@@ -42,7 +42,7 @@
             android:text="text"
             android:paddingRight="@dimen/cardTextPadding"
             android:textColor="@color/colorBg"
-            android:fontFamily="@font/primary"
+            android:fontFamily="@font/primary_thin"
             android:textSize="@dimen/card_text"/>
 
     </RelativeLayout>

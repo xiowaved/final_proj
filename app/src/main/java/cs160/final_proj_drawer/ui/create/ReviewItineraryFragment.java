@@ -252,7 +252,7 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     writeSingleItin(itineraryObject);
 
                     // navigate back to home splash screen
-                    //navController.navigate(R.id.fragment_splash);
+                    navController.navigate(R.id.nav_home);
                 }
             }
         });
