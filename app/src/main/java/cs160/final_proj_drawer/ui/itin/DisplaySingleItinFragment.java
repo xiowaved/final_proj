@@ -21,6 +21,7 @@ import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
 import cs160.final_proj_drawer.adapters.VertStopAdapter;
+import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.Stop;
 
@@ -45,7 +46,6 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
     private ItineraryObject itin;
     private ArrayList<Stop> stops;
     private String coverImage;
-    private boolean liked;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -78,8 +78,6 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         itin = (ItineraryObject) input;
         stops = itin.getStops();
         coverImage = itin.getCoverPhoto();
-        //this is placeholder until we add something to itins
-        liked = false;
 
         //set overarching itin up
         title.setText(itin.getItineraryName());
@@ -87,14 +85,13 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         location.setText(itin.getLocation());
         Picasso.get().load(coverImage).into(cover);
         DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bkmk);
-        DisplayItinHelperFuncs.updateLikeView(liked, like, numLikes);
+        DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikes);
 
         bkmk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 itin.clickBookmark();
-                //todo tell firebase that bookmark was clicked for this
-
+                FirebaseFuncs.writeSingleItin(itin);
                 DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bkmk);
             }
         });
@@ -103,10 +100,8 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
             @Override
             public void onClick(View view) {
                 itin.clickLiked();
-                //todo tell firebase and the itin that like was clicked for this itin
-                //todo add or subtract a like from numLikes, depending on the action taken.
-                // communicate that to firebase, and update numLikes on the screen
-                DisplayItinHelperFuncs.updateLikeView(liked, like, numLikes);
+                FirebaseFuncs.writeSingleItin(itin);
+                DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikes);
             }
         });
 

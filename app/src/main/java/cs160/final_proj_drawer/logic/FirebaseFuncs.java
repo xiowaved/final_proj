@@ -154,9 +154,6 @@ public class FirebaseFuncs<Model> {
         use when the user submits thei created itin
      */
     public static void writeSingleItin(ItineraryObject itin) {
-        // i lifted this code out of create Itin
-        // i do not know how this works, isn't working here
-        //todo make this work
         String location = itin.getLocation();
         myRef.child(location).child(itin.getItineraryName()).setValue(itin)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -175,8 +172,6 @@ public class FirebaseFuncs<Model> {
         //            Below this fixes the random new fields that it added
         myRef.child(location).child(itin.getItineraryName()).child("liked").removeValue();
         myRef.child(location).child(itin.getItineraryName()).child("bookmarked").removeValue();
-
-
     }
 
 
