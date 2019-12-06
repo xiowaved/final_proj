@@ -84,7 +84,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         location.setText(itin.getLocation());
         Picasso.get().load(coverImage).into(cover);
         DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bkmk);
-        DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikes);
+        DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), itin.getNumLikes(), like, numLikes);
 
         bkmk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +100,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
             public void onClick(View view) {
                 itin.clickLiked();
                 FirebaseFuncs.writeSingleItin(itin);
-                DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikes);
+                DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), itin.getNumLikes(), like, numLikes);
             }
         });
 

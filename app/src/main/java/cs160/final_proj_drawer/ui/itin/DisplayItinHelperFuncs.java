@@ -20,14 +20,12 @@ public class DisplayItinHelperFuncs {
         }
     }
 
-    public static void updateLikeView(Boolean isLiked, ImageView likeView, TextView numLikesView) {
-        int numLikes = Integer.valueOf(numLikesView.getText().toString());
+    public static void updateLikeView(Boolean isLiked, int numLikes, ImageView likeView, TextView numLikesView) {
+        numLikes = Integer.valueOf(numLikesView.getText().toString());
         if (isLiked) {
             likeView.setImageResource(filledLike);
-            numLikes++;
         } else {
             likeView.setImageResource(emptyLike);
-            numLikes--;
         }
         numLikesView.setText("" + numLikes);
 

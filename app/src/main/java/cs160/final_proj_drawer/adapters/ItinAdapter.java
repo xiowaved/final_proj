@@ -69,7 +69,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
                 public void onClick(View v) {
                     itin.clickLiked();
                     FirebaseFuncs.writeSingleItin(itin);
-                    DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikesText);
+                    DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), itin.getNumLikes(), like, numLikesText);
                 }
             }));
         }
@@ -99,7 +99,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         String image = itins.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.cover);
         DisplayItinHelperFuncs.updateBookmarkView(holder.itin.getBookmarked(), holder.bookmark);
-        DisplayItinHelperFuncs.updateLikeView(holder.itin.getLiked(), holder.like, holder.numLikesText);
+        DisplayItinHelperFuncs.updateLikeView(holder.itin.getLiked(), holder.itin.getNumLikes(), holder.like, holder.numLikesText);
     }
 
     @Override
