@@ -46,9 +46,11 @@
     <!-- strings for profile page. -->
     <string name="profile_name">Jordan Doe</string>
     <string name="profile_location">Berkeley, CA</string>
-    <string name="profile_bio">Here is a bio. It was written by Jordan, about Jordan.
-                                There are words here, describing the things Jordan wants
-                                to share about themselves on this app. Words words words.
+    <string name="profile_bio">Hello! I\'m a Berkeley local, avid cyclist, and I love to
+                                travel. When it comes to the best outdoorsy activities
+                                in the SF Bay Area, I\'m your guy. From hike and bike trails,
+                                to hidden gem camping grounds, check my itineraries out
+                                for your next weekend getaway in the area!
                                 </string>
 
     <string name="hello_blank_fragment">Hi Im blank</string>
