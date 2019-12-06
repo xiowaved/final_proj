@@ -28,20 +28,20 @@ public class ProfileViewModel extends AndroidViewModel {
 
     public LiveData<ArrayList<ItineraryObject>> getSavedItineraries() {
         SearchQueryObject searchQueryObjectBookmark = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
-        if (savedItins != null) {
+        //if (savedItins != null) {
             savedItins = new MutableLiveData<>();
             getSavedFirebaseData(searchQueryObjectBookmark);
-        }
+        //}
         return savedItins;
     }
 
     public LiveData<ArrayList<ItineraryObject>> getPostedItineraries() {
 
         SearchQueryObject searchQueryObjectCreated = new SearchQueryObject(new String[]{"created"}, "Berkeley");
-        if (postedItins != null) {
+        //if (postedItins != null) {
             postedItins = new MutableLiveData<>();
             getPostedFirebaseData(searchQueryObjectCreated);
-        }
+        //}
         return postedItins;
     }
 
