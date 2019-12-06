@@ -1,6 +1,7 @@
 package cs160.final_proj_drawer.ui.itin;
 
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import cs160.final_proj_drawer.R;
 
@@ -20,12 +21,16 @@ public class DisplayItinHelperFuncs {
         }
     }
 
-    public static void updateLikeView(Boolean isLiked, ImageView likeView) {
+    public static void updateLikeView(Boolean isLiked, ImageView likeView, TextView numLikesView) {
+        int numLikes = Integer.valueOf(numLikesView.getText().toString());
         if (isLiked) {
             likeView.setImageResource(filledLike);
+            numLikes++;
         } else {
             likeView.setImageResource(emptyLike);
-
+            numLikes--;
         }
+        numLikesView.setText("" + numLikes);
+
     }
 }

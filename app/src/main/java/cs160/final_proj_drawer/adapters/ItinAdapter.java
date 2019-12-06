@@ -76,7 +76,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
                     //todo make the like come from in the itin
                     //todo put to firebase appropaitely
                     //todo also changenumLikes in the itin and in firebase
-                    DisplayItinHelperFuncs.updateLikeView(liked, like);
+                    DisplayItinHelperFuncs.updateLikeView(liked, like, numLikesText);
                 }
             }));
         }
@@ -109,7 +109,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
         String image = itins.get(position).getCoverPhoto();
         Picasso.get().load(image).into(holder.cover);
         DisplayItinHelperFuncs.updateBookmarkView(holder.itin.getBookmarked(), holder.bookmark);
-        DisplayItinHelperFuncs.updateLikeView(holder.liked, holder.like);
+        DisplayItinHelperFuncs.updateLikeView(holder.liked, holder.like, holder.numLikesText);
     }
 
     @Override
