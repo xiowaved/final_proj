@@ -18,7 +18,9 @@ import cs160.final_proj_drawer.logic.SearchQueryObject;
 public class ProfileViewModel extends AndroidViewModel {
 
     private FirebaseFuncs firebaseFuncs = new FirebaseFuncs();
-    private MutableLiveData<ArrayList<ItineraryObject>> loadedItins;
+    private MutableLiveData<ArrayList<ItineraryObject>> postedItins;
+    private MutableLiveData<ArrayList<ItineraryObject>> savedItins;
+
 
     public ProfileViewModel(@NonNull Application application) {
         super(application);
@@ -26,21 +28,21 @@ public class ProfileViewModel extends AndroidViewModel {
 
     public LiveData<ArrayList<ItineraryObject>> getSavedItineraries() {
         SearchQueryObject searchQueryObjectBookmark = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
-        //if (loadedItins != null) {
-            loadedItins = new MutableLiveData<>();
-            getFirebaseData(searchQueryObjectBookmark);
-        //}
-        return loadedItins;
+        if (savedItins != null) {
+            savedItins = new MutableLiveData<>();
+            getSavedFirebaseData(searchQueryObjectBookmark);
+        }
+        return savedItins;
     }
 
     public LiveData<ArrayList<ItineraryObject>> getPostedItineraries() {
 
         SearchQueryObject searchQueryObjectCreated = new SearchQueryObject(new String[]{"created"}, "Berkeley");
-        //if (loadedItins != null) {
-            loadedItins = new MutableLiveData<>();
-            getFirebaseData(searchQueryObjectCreated);
-        //}
-        return loadedItins;
+        if (postedItins != null) {
+            postedItins = new MutableLiveData<>();
+            getPostedFirebaseData(searchQueryObjectCreated);
+        }
+        return postedItins;
     }
 
     @Override
@@ -48,25 +50,43 @@ public class ProfileViewModel extends AndroidViewModel {
         firebaseFuncs.removeListener();
     }
 
-    public LiveData<ArrayList<ItineraryObject>> getFirebaseData(SearchQueryObject searchQueryObject) {
+    public LiveData<ArrayList<ItineraryObject>> getSavedFirebaseData(SearchQueryObject searchQueryObject) {
         firebaseFuncs.addListener(new FirebaseFuncs.FirebaseFuncsCallback<ItineraryObject>() {
             @Override
             public void onSuccess(ArrayList<ItineraryObject> result) {
-                loadedItins.setValue(result);
+                savedItins.setValue(result);
             }
 
             @Override
             public void onError(Exception e) {
-                loadedItins.setValue(null);
+                savedItins.setValue(null);
             }
         }, searchQueryObject);
 
-        return loadedItins;
+        return savedItins;
     }
 
-    public MutableLiveData<ArrayList<ItineraryObject>> getLoadedItins() {
-        return this.loadedItins;
+    public LiveData<ArrayList<ItineraryObject>> getPostedFirebaseData(SearchQueryObject searchQueryObject) {
+        firebaseFuncs.addListener(new FirebaseFuncs.FirebaseFuncsCallback<ItineraryObject>() {
+            @Override
+            public void onSuccess(ArrayList<ItineraryObject> result) {
+                postedItins.setValue(result);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                postedItins.setValue(null);
+            }
+        }, searchQueryObject);
+
+        return postedItins;
     }
 
+    public MutableLiveData<ArrayList<ItineraryObject>> getPostedItins() {
+        return postedItins;
+    }
+    public MutableLiveData<ArrayList<ItineraryObject>> getSavedItins() {
+        return savedItins;
+    }
 
 }
