@@ -73,8 +73,8 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         viewModel.getPostedItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
-                savedAdapter = new HorizItinAdapter(viewModel.getPostedItins().getValue(), listener);
-                savedItins.setAdapter(savedAdapter);
+                postedAdapter = new HorizItinAdapter(viewModel.getPostedItins().getValue(), listener);
+                postedItins.setAdapter(postedAdapter);
 
             }
         });
