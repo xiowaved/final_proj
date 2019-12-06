@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
     private ProfileViewModel viewModel;
     private OnRecyclerCardListener listener;
 
-    private SearchQueryObject searchQueryObject;
+    private SearchQueryObject searchQueryObjectBookmark;
     private SearchQueryObject searchQueryObjectCreated;
 
     private RecyclerView savedItins;
@@ -61,19 +61,25 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         postedItins.setLayoutManager(postedLayoutManager);
 
         // populate saved itins
-        searchQueryObject = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
-        viewModel.getItineraries(searchQueryObject).observe(this, new Observer<ArrayList<ItineraryObject>>() {
+        searchQueryObjectBookmark = new SearchQueryObject(new String[]{"bookmarked"}, "Berkeley");
+        viewModel.getItineraries(searchQueryObjectBookmark).observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
                 savedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
                 savedItins.setAdapter(savedAdapter);
+
+            }
+        });
+
+        searchQueryObjectCreated = new SearchQueryObject(new String[]{"created"}, "Berkeley");
+        viewModel.getItineraries(searchQueryObjectCreated).observe(this, new Observer<ArrayList<ItineraryObject>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
                 postedAdapter = new HorizItinAdapter(viewModel.getLoadedItins().getValue(), listener);
                 postedItins.setAdapter(postedAdapter);
 
             }
         });
-        // populated crated itins
-        searchQueryObjectCreated = new SearchQueryObject(new String[]{"created"}, "Berkeley");
 
         return root;
     }
