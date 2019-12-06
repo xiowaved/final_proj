@@ -34,9 +34,6 @@ import cs160.final_proj_drawer.logic.Stop;
  */
 public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCardListener{
 
-    public String urlRoot = "https://travelr-7feac.firebaseio.com/Locations";
-    public JSONObject Tags;
-
     //stuff for architecture
     private NavController navController;
     private DisplayMultItinsViewModel viewModel;
@@ -99,7 +96,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         return root;
     }
 
-    //this is when the image is clcked, and we navigate to a specific itinerary
+    //this is when the image is clicked, and we navigate to a specific itinerary
     @Override
     public void onCardClick(int position, cardAction action) {
         ItineraryObject selectedItin = viewModel.getLoadedItins().getValue().get(position);

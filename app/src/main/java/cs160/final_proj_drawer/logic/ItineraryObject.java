@@ -23,8 +23,8 @@ public class ItineraryObject implements Serializable {
      private ArrayList<Stop> stops;
      private ArrayList<String> tags;
      private ArrayList<String> access;
-    static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    static DatabaseReference myRef = database.getReference("Locations");
+    //static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //static DatabaseReference myRef = database.getReference("Locations");
 
      public ItineraryObject() {}
 
@@ -178,18 +178,18 @@ public class ItineraryObject implements Serializable {
     public void setBookmarked(boolean isBookmarked) {
          if (isBookmarked){
              this.tags.add("bookmarked");
-             myRef.child(this.location).child(this.itineraryName).setValue(this);
+             //myRef.child(this.location).child(this.itineraryName).setValue(this);
              //            Below this fixes the random new fields that it added
-             myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
-             myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
+             //myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+             //myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
 
 
          } else {
              this.tags.remove("bookmarked");
-             myRef.child(this.location).child(this.itineraryName).setValue(this);
+             //myRef.child(this.location).child(this.itineraryName).setValue(this);
              //            Below this fixes the random new fields that it added
-             myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
-             myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
+             //myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+             //myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
 
          }
     }
@@ -221,17 +221,17 @@ public class ItineraryObject implements Serializable {
         if (isLiked){
             this.tags.add("liked");
             this.numLikes +=1;
-            myRef.child(this.location).child(this.itineraryName).setValue(this);
+            //myRef.child(this.location).child(this.itineraryName).setValue(this);
 //            Below this fixes the random new fields that it added
-            myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
-            myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
+            //myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+            //myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
         } else {
             this.tags.remove("liked");
             this.numLikes -=1;
-            myRef.child(this.location).child(this.itineraryName).setValue(this);
+            //myRef.child(this.location).child(this.itineraryName).setValue(this);
             //            Below this fixes the random new fields that it added
-            myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
-            myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
+            //myRef.child(this.location).child(this.itineraryName).child("liked").removeValue();
+            //myRef.child(this.location).child(this.itineraryName).child("bookmarked").removeValue();
         }
     }
     public boolean getLiked(){
