@@ -81,10 +81,6 @@ public class CreateOverviewFragment extends Fragment {
         coverPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getContext(), "clicked on plus button",
-                        Toast.LENGTH_LONG); toast.show();
-                //todo -- Chaitanya this is where you add the code that you want to execute when user
-                // clicks on the button to add a cover photo
                 switch (v.getId()) {
                     case R.id.coverPhoto:
                         selectimage();
@@ -106,9 +102,6 @@ public class CreateOverviewFragment extends Fragment {
 
                 // if user left name, location field, or cover photo blank, do not let them navigate to next page yet
                 if (itineraryName.isEmpty() || itineraryLocation.isEmpty() || coverPhoto.isEmpty()) {
-                // todo IGNORING NO COVER PHOTO SET FOR NOW TO TEST LATER PARTS OF CREATION PROCESS
-                //  use the commented out conditional that checks all 3 fields in final version of app
-//                if (itineraryName.isEmpty() || itineraryLocation.isEmpty()) {
 
                 // user did not fill in required fields
                     errorMsg.setText("Fill in all fields to continue.");
@@ -170,7 +163,6 @@ public class CreateOverviewFragment extends Fragment {
                 });
 
             } catch (IOException e) {
-                Log.i("TAG", "Some exception " + e);
             }
 
         }else {
