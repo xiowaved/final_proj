@@ -1,26 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- general colors -->
     <color name="colorPrimary">@color/colorBlueDark</color>
-    <color name="colorPrimaryDark">#0A1553</color>
+    <color name="colorPrimaryDark">@color/colorGreenDark</color>
     <color name="colorAccent">@color/colorTealLight</color>
     <color name="colorAccentDark">@color/colorTeal</color>
 
-    <!-- these are the hex codes from the color pallets on figma -->
-    <color name="colorGreenLight">#007973</color>
-    <color name= "colorGreen">#004E53</color>
-    <color name= "colorGreenDark">#093E42</color>
-    <color name="colorGrey">#E2E3E3</color>
-    <color name="colorTealLight">#00B8C4</color>
-    <color name="colorTeal">#018C9B</color>
-    <color name="colorBlueLight">#D3E3F1</color>
-    <color name="colorBlueMedium">#3B88CC</color>
-    <color name="colorBlue">#184FA2</color>
-    <color name="colorBlueDark">#1C2974</color>
-    <color name="colorOffWhite">#F6F6F6</color>
+    <color name="colorBg">@color/colorOffWhite</color>
+    <color name="colorTriangleBig">@color/colorBlueLight</color>
+    <color name="colorTriangleSmall">@color/colorTealLight</color>
 
-    <!-- these colors are for the nav drawer -->
+
+    <color name="colorNormalText">@color/colorGreyStroke</color>
+    <color name="colorTitle">@color/colorBlue</color>
+    <color name="colorFunText">@color/colorBlue</color>
+    <color name="colorButton">@color/colorBlueBright</color>
+    <color name="colorSeekBar">#ababab</color>
+
+
+    <!-- these colors are for the gradient in the nav drawer -->
     <color name="centerColor">@color/colorPrimary</color>
     <color name="endColor">@color/colorPrimaryDark</color>
     <color name="startColor">@color/colorPrimary</color>
+
+    <!-- background of textEdits or other user input sections -->
+
+    <color name="colorInputBG">@color/colorGrey</color>
+    <color name="colorGreyStroke">@color/colorDarkGrey</color>
+
+    <!-- text color on buttons -->
+    <color name="colorButtonText">@color/colorOffWhite</color>
+    <color name="colorErrorMessage"> @color/colorRedError</color>
+
+    <!-- these are the hex codes from specific colors. use to populate sections above this line -->
+    <!-- NOTE:
+        please do not directly use these colors! please only use colors in the
+        above section! if you don't have a color you want in the above section,
+        please make it and put the color you want from this section in it
+        eg:
+        want a blue button, but there is no colorButton above? make one! and put your
+        desired blue into it.
+        -->
+
+    <color name= "colorGreenLight">#007973</color>
+    <color name= "colorGreen">#004E53</color>
+    <color name= "colorGreenDark">#0A1553</color>
+
+    <color name="colorTealLight">#00B8C4</color>
+    <color name="colorTeal">#018C9B</color>
+
+    <color name="colorBlueLight">#D3E3F1</color>
+    <color name="colorBlue">#184FA2</color>
+    <color name="colorBlueDark">#1C2974</color>
+
+
+    <color name="colorBlueMedium">#3B88CC</color>
+    <color name="colorBlueHeader">#194FA2</color>
+    <color name="colorBlueBright">#3B88CC</color>
+
+    <color name="colorPurple">#BA91DC</color>
+
+    <color name="colorGrey">#E2E3E3</color>
+    <color name="colorDarkGrey">#828181</color>
+
+    <color name="colorOffWhite">#F6F6F6</color>
+
+    <color name="colorRedError">#BD0F03</color>
+
+
+
 
 </resources>

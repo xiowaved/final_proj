@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
-        android:id="@+id/text_saved"
+        android:id="@+id/saved_intro"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="@dimen/fun_text_box_height"
+        android:fontFamily="@font/primary"
+        android:text="@string/saved_intro"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColor="@color/colorFunText"
+        android:textSize="@dimen/fun_text" />
+
+    <SearchView
+        android:layout_width="@dimen/search_bar_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/defaultPadding"
+        android:layout_marginBottom="@dimen/defaultPadding"
+        android:background="@drawable/searchview_rounded" />
+
+    <fragment
+        android:id="@+id/display_saved_itins"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -4,140 +4,484 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBg"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:id="@+id/layout"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/reviewItin"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Review Your Itinerary"
-        android:textSize="@dimen/fun_text"
-        android:fontFamily="@font/manjaribold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/reviewItin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/manjaribold"
+            android:text="Review Your Itinerary"
+            android:textSize="@dimen/fun_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:fontFamily="@font/manjaribold"
-        android:text="Name"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/name"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reviewItin" />
+        <ImageView
+            android:id="@+id/coverPhoto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/sceniclookouts" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="36dp"
-        android:background="@drawable/rounded_corner_input"
-        android:ems="10"
-        android:hint="Family Getaway"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reviewItin" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_gravity="start|right"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="50dp">
+
+            <TextView
+                android:id="@+id/textName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Name"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textName"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/rounded_corner_input"
+                android:ems="10"
+                android:hint="Family Getaway"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/textLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="110dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Location"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textLocation"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/rounded_corner_input"
+                android:ems="10"
+                android:hint="Bay Area, CA"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
 
 
-    <TextView
-        android:id="@+id/textLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:fontFamily="@font/manjaribold"
-        android:text="Location"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/location"
-        app:layout_constraintHorizontal_bias="0.654"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textName" />
+        </RelativeLayout>
 
-    <EditText
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="36dp"
-        android:background="@drawable/rounded_corner_input"
-        android:ems="10"
-        android:hint="Bay Area, CA"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="207dp"
-        android:layout_height="523dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/zoo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stops"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="207dp"
-        android:layout_height="523dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/farm"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tags"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:fontFamily="@font/manjaribold"
-        android:text="Tags"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/textLocation"
-        app:layout_constraintTop_toBottomOf="@+id/textLocation" />
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <ImageView
-        android:id="@+id/tagsSS"
-        android:layout_width="293dp"
-        android:layout_height="293dp"
-        android:layout_marginTop="250dp"
-        android:src="@drawable/tags"
-        app:layout_constraintStart_toStartOf="@id/tags"
-        app:layout_constraintTop_toBottomOf="@+id/location" />
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/search_button"
-        android:fontFamily="@font/manjaribold"
-        android:gravity="center"
-        android:onClick="login"
-        android:layout_marginTop="460dp"
-        android:layout_marginLeft="230dp"
-        android:textAllCaps="false"
-        android:paddingTop="5dp"
-        android:text="Submit"
-        android:textAlignment="center"
-        android:textColor="@color/colorOffWhite"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location" />
+        <TextView
+            android:id="@+id/errorMsg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/manjaribold"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/colorErrorMessage"
+            android:textSize="@dimen/card_text"></TextView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/priceText"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_alignTop="@+id/priceGroup"-->
+        <!--                android:layout_alignBottom="@+id/priceGroup"-->
+        <!--                android:layout_alignParentStart="true"-->
+        <!--                android:layout_marginStart="30dp"-->
+        <!--                android:layout_marginTop="5dp"-->
+        <!--                android:fontFamily="@font/primary"-->
+        <!--                android:gravity="center_vertical"-->
+        <!--                android:text="Price"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:textColor="@color/colorGreyStroke"-->
+        <!--                android:textSize="20sp"></TextView>-->
+
+        <!--            <RadioGroup-->
+        <!--                android:id="@+id/priceGroup"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_alignParentEnd="true"-->
+        <!--                android:layout_marginEnd="20dp"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/free"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
+
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="free" />-->
+
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/price_1"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
+
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="$" />-->
+
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/price_2"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
+
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="$$" />-->
+
+        <!--                <RadioButton-->
+        <!--                    android:id="@+id/price_3"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="24dp"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:buttonTint="@color/colorBlueBright"-->
+        <!--                    android:text="$$$" />-->
+
+        <!--            </RadioGroup>-->
+        <!--        </RelativeLayout>-->
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:max="3"
+                android:progressDrawable="@drawable/seek_bar"
+                android:thumb="@drawable/seek_thumb"
+                android:tickMark="@drawable/tickmark" />
+        </RelativeLayout>
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/sb_task_detail_status"
+            android:layout_alignStart="@+id/sb_task_detail_status"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:id="@+id/statusRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/free"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
+                    android:paddingStart="32dp"
+                    android:text="Free"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorGreyStroke"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/price_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
+                    android:paddingRight="3dp"
+                    android:text="$"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorGreyStroke"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/price_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
+                    android:paddingStart="4dp"
+                    android:text="$$"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorGreyStroke"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/price_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/primary_thin"
+                    android:paddingEnd="35dp"
+                    android:text="$$$"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorGreyStroke"
+                    android:textSize="14dp" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/manjaribold"
+            android:text="Tags"
+            android:textColor="@color/colorBlueHeader"
+            android:textSize="24sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Food"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tags" />
+
+            <TextView
+                android:id="@+id/music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/food"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Music"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/food" />
+
+            <TextView
+                android:id="@+id/hike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/music"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Hike"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/music" />
+
+            <TextView
+                android:id="@+id/art"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hike"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Art"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hike" />
+
+            <TextView
+                android:id="@+id/family_friendly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/art"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manjaribold"
+                android:text="Family Friendly"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/art" />
+
+            <LinearLayout
+                android:id="@+id/LLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+
+                <CheckBox
+                    android:id="@+id/checkBox5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:buttonTint="@color/colorBlueBright" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/rounded_corner_button"
+            android:fontFamily="@font/primary"
+            android:paddingTop="@dimen/textPadding"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/colorButtonText" />
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/imageView2"-->
+        <!--        android:layout_width="207dp"-->
+        <!--        android:layout_height="523dp"-->
+        <!--        android:layout_marginStart="20dp"-->
+        <!--        android:layout_marginTop="90dp"-->
+        <!--        android:src="@drawable/zoo"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/imageView3"-->
+        <!--        android:layout_width="207dp"-->
+        <!--        android:layout_height="523dp"-->
+        <!--        android:layout_marginStart="20dp"-->
+        <!--        android:layout_marginTop="90dp"-->
+        <!--        android:src="@drawable/farm"-->
+        <!--        app:layout_constraintStart_toEndOf="@+id/imageView2"-->
+        <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/tags"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="300dp"-->
+        <!--        android:fontFamily="@font/manjaribold"-->
+        <!--        android:text="Tags"-->
+        <!--        android:textSize="20sp"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/textLocation"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/textLocation" />-->
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/tagsSS"-->
+        <!--        android:layout_width="293dp"-->
+        <!--        android:layout_height="293dp"-->
+        <!--        android:layout_marginTop="250dp"-->
+        <!--        android:src="@drawable/tags"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/tags"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/location" />-->
+
+        <!--    <Button-->
+        <!--        android:id="@+id/submit"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginLeft="230dp"-->
+        <!--        android:layout_marginTop="460dp"-->
+        <!--        android:background="@drawable/search_button"-->
+        <!--        android:fontFamily="@font/manjaribold"-->
+        <!--        android:gravity="center"-->
+        <!--        android:paddingTop="5dp"-->
+        <!--        android:text="Submit"-->
+        <!--        android:textAlignment="center"-->
+        <!--        android:textAllCaps="false"-->
+        <!--        android:textColor="@color/colorOffWhite"-->
+        <!--        android:textSize="18sp"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/location" />-->
+
+    </LinearLayout>
+
 </ScrollView>

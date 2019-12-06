@@ -4,16 +4,74 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- text -->
+    <dimen name="titleTextSize">48sp</dimen>
+    <dimen name="fun_text">24sp</dimen>
+    <dimen name="fun_text_box_height">30sp</dimen>
+
+    <!--general shapes and dimens-->
+    <dimen name="roundCorners">9dp</dimen>
+    <dimen name="defaultPadding">10dp</dimen>
+
 
     <!-- cards -->
-    <dimen name="card_icons">40dp</dimen>
     <dimen name="card_text">18sp</dimen>
+    <dimen name="cardTextPadding">9dp</dimen>
 
-    <!-- fun text sizes -->
-    <dimen name="fun_text">24sp</dimen>
+    <dimen name="cardHorizSize">20dp</dimen>
+    <dimen name="cardHorizPadding">5dp</dimen>
+    <dimen name="recyclerHorizHeight">100dp</dimen>
 
-    <dimen name="roundCorners">9dp</dimen>
-    <dimen name="catPaddingRight">9dp</dimen>
+
+    <dimen name="card_icons">24dp</dimen>
+    <dimen name="card_icon_margin_right">7dp</dimen>
+    <dimen name="card_numLikes_margin_right">7dp</dimen>
+    <dimen name="card_numLikes_textSize">14sp</dimen>
+    <dimen name="card_thumb_margin_bottom">15dp</dimen>
+    <dimen name="card_bkmk_margin_top">10dp</dimen>
+    <dimen name="cardItinSize">150dp</dimen>
+    <dimen name="cardItinPadding">5dp</dimen>
+
+    <!-- stop cards -->
+    <dimen name="vert_stop_height">190dp</dimen>
+
+    <!-- login page -->
+    <dimen name="login_triangle_big">150dp</dimen>
+    <dimen name="login_triangle_small">100dp</dimen>
+    <dimen name="login_triangle_small_top_shift">50dp</dimen>
+    <dimen name="login_triangle_small_right_shift">155dp</dimen>
+
+    <dimen name="login_boxes_width">250dp</dimen>
+    <dimen name="login_buttons_width">75dp</dimen>
+    <dimen name="login_big_button_margin">25dp</dimen>
+    <dimen name="largePadding">65dp</dimen>
+
+    <!-- home page -->
+    <dimen name="search_button_width">70dp</dimen>
+    <dimen name="search_button_height">30dp</dimen>
+
+    <dimen name="search_bar_width">250dp</dimen>
+
+    <!-- display single itin -->
+    <dimen name="single_itin_title_img_height">150dp</dimen>
+
+    <!-- profile page -->
+    <dimen name="profile_img_size">100dp</dimen>
+
+    <!--settings page -->
+    <dimen name="marginSettingsColorSwatches">10dp</dimen>
+
+    <!-- centering text inside submit button -->
+    <dimen name="textPadding"> 16dp </dimen>
+
+    <!-- stop cards -->
+    <dimen name="iconPadding"> 4dp </dimen>
+    <dimen name="layoutPadding"> 20dp </dimen>
+    <dimen name="stopHeight"> 220dp </dimen>
+    <dimen name="stopWidth"> 190dp </dimen>
+    <dimen name="dropShadowElevation"> 6dp </dimen>
+
+    <dimen name="seekbar_thumb_width">25dp</dimen>
 
 </resources>

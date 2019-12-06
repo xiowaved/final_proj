@@ -8,103 +8,79 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="cs160.final_proj_drawer.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" >
-
-        <action
-            android:id="@+id/action_nav_home_to_search"
-            app:destination="@id/fragment_search"
-            app:launchSingleTop="false" />
-        <action
-            android:id="@+id/action_nav_home_to_itin"
-            app:destination="@id/fragment_itin" />
-        <action
-            android:id="@+id/action_itin_to_single_itin"
-            app:destination="@+id/fragment_single_itin"/>
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_profile"
         android:name="cs160.final_proj_drawer.ui.profile.ProfileFragment"
-        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/nav_create"
-        android:name="cs160.final_proj_drawer.ui.create.CreateFragment"
-        android:label="@string/menu_create"
-        tools:layout="@layout/fragment_create" >
-        <action
-            android:id="@+id/action_nav_create_to_review"
-            app:destination="@id/reviewItineraryFragment" />
+        android:id="@+id/fragment_create_stops"
+        android:name="cs160.final_proj_drawer.ui.create.CreateStopsFragment"
+        tools:layout="@layout/fragment_create_stops">
+        <argument
+            android:name="itinerary"
+            app:argType="cs160.final_proj_drawer.logic.ItineraryObject"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="stopIndex"
+            app:argType="integer"
+            android:defaultValue="0" />
+
     </fragment>
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="cs160.final_proj_drawer.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_create_overview"
+        android:name="cs160.final_proj_drawer.ui.create.CreateOverviewFragment"
+        tools:layout="@layout/fragment_create_overview" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="cs160.final_proj_drawer.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_saved"
         android:name="cs160.final_proj_drawer.ui.saved.SavedFragment"
-        android:label="@string/menu_saved"
         tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/nav_posted"
         android:name="cs160.final_proj_drawer.ui.posted.PostedFragment"
-        android:label="@string/menu_posted"
         tools:layout="@layout/fragment_posted" />
-    <fragment
-        android:id="@+id/fragment_search"
-        android:name="cs160.final_proj_drawer.ui.home.SearchFragment"
-        android:label=" "
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_search_to_itin"
-            app:destination="@id/fragment_itin" />
-    </fragment>
 
     <fragment
-        android:id="@+id/reviewItineraryFragment"
+        android:id="@+id/fragment_review"
         android:name="cs160.final_proj_drawer.ui.create.ReviewItineraryFragment"
-        android:label=""
-        tools:layout="@layout/fragment_review_itinerary" />
-
-    <fragment
-        android:id="@+id/fragment_itin"
-        android:name="cs160.final_proj_drawer.ui.itin.ItinFragment"
-        android:label=" "
-        tools:layout="@layout/fragment_itin" >
-        <action
-            android:id="@+id/action_itin_to_filter"
-            app:destination="@+id/fragment_filter"/>
+        tools:layout="@layout/fragment_review_itinerary" >
         <argument
-            android:name="locationQuery"
-            app:argType="string"
-            android:defaultValue=" " />
-        <argument
-            android:name="tagQuery"
-            app:argType="string"
-            android:defaultValue="Current Location" />
-        <action
-            android:id="@+id/action_itin_to_single_itin"
-            app:destination="@+id/fragment_single_itin"/>
+            android:name="itinerary"
+            app:argType="cs160.final_proj_drawer.logic.ItineraryObject"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_filter"
-        android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
-        android:label=" "
-        tools:layout="@layout/fragment_filter" />
+        android:id="@+id/fragment_display_itins"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
+        tools:layout="@layout/fragment_display_itins" >
+
+        <argument
+            android:name="searchQuery"
+            app:argType="cs160.final_proj_drawer.logic.SearchQueryObject" />
+    </fragment>
 
     <fragment
-        android:id="@+id/fragment_single_itin"
+        android:id="@+id/fragment_display_single_itin"
         android:name="cs160.final_proj_drawer.ui.itin.DisplaySingleItinFragment"
-        android:label=""
-        tools:layout="@layout/fragment_single_itin">
+        tools:layout="@layout/fragment_display_itin" >
+        <argument
+            android:name="itinerary"
+            app:argType="cs160.final_proj_drawer.logic.ItineraryObject"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
-
 
 </navigation>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_child_navigation"
+    app:startDestination="@id/fragment_splash">
+
+    <fragment
+        android:id="@+id/fragment_display_itins"
+        android:name="cs160.final_proj_drawer.ui.itin.DisplayMultItinsFragment"
+        tools:layout="@layout/fragment_display_itins" />
+    <fragment
+        android:id="@+id/fragment_filter"
+        android:name="cs160.final_proj_drawer.ui.home.FilterFragment"
+        tools:layout="@layout/fragment_filter" >
+        <argument
+            android:name="searchQueryObject"
+            app:argType="cs160.final_proj_drawer.logic.SearchQueryObject" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_splash"
+        android:name="cs160.final_proj_drawer.ui.home.SplashFragment"
+        tools:layout="@layout/fragment_splash" >
+        <argument
+            android:name="searchQueryObject"
+            app:argType="cs160.final_proj_drawer.logic.SearchQueryObject"
+            app:nullable="true" />
+    </fragment>
+</navigation>

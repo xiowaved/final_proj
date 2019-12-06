@@ -1,101 +1,114 @@
 package cs160.final_proj_drawer.adapters;
 
 
-import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
-import com.squareup.picasso.Picasso;
-
 
 import java.util.ArrayList;
 
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
-import cs160.final_proj_drawer.ItineraryObject;
+
+import com.squareup.picasso.Picasso;
+
+import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
+import cs160.final_proj_drawer.ui.itin.DisplayItinHelperFuncs;
 
 public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
 {
-    //        private ArrayList<DataNote> dataList;
-    private ArrayList<ItineraryObject> dataList;
-    Context context;
-    private NavController navController;
+    private ArrayList<ItineraryObject> itins;
+    private OnRecyclerCardListener onItinListener;
 
-//        public Adapter(ArrayList<DataNote> data)
-//        {
-//            this.dataList = data;
-//        }
 
-    public ItinAdapter(Context context, ArrayList<ItineraryObject> data, NavController navController)
+    public ItinAdapter( ArrayList<ItineraryObject> itins, OnRecyclerCardListener onItinListener)
     {
-        this.dataList = data;
-        this.context = context;
-        this.navController = navController;
-
+        this.itins = itins;
+        this.onItinListener = onItinListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        //this is all the stuff contained within your cardview, however you define it
-//            TextView textViewText;
-//            TextView textViewComment;
-//            TextView textViewDate;
+        //UI
         TextView itineraryName;
-        int numLikes;
-        String coverPhoto;
         TextView numLikesText;
-        ImageView photo;
+        ImageView bookmark;
+        ImageView like;
+        ImageView cover;
+        OnRecyclerCardListener onItinListener;
 
-        public ViewHolder(View itemView)
+        //logic
+        ItineraryObject itin;
+
+        public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
         {
             super(itemView);
-//                this.textViewText = (TextView) itemView.findViewById(R.id.text);
-//                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
-//                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
-            this.itineraryName = (TextView) itemView.findViewById(R.id.text);
-            this.numLikesText = (TextView) itemView.findViewById(R.id.numLikes);
-            this.photo = (ImageView) itemView.findViewById(R.id.cover_img);
+            this.itineraryName = itemView.findViewById(R.id.text);
+            this.numLikesText = itemView.findViewById(R.id.numLikes);
+            this.bookmark = itemView.findViewById(R.id.bkmark);
+            this.like = itemView.findViewById(R.id.like);
+            this.cover = itemView.findViewById(R.id.cover_img);
+            this.onItinListener = onItinListener;
+
+            itemView.setOnClickListener(this);
+
+            this.bookmark.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itin.clickBookmark();
+                    //todo make sure the bookmmarking here writes to firebase
+                    DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bookmark);
+                }
+            }));
+            this.like.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itin.clickLiked();
+                    //todo put to firebase appropaitely
+                    DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikesText);
+                }
+            }));
+        }
+
+        @Override
+        public void onClick(View view) {
+            onItinListener.onCardClick(getAdapterPosition(), null);
+            Log.i("NOTE", "was a click");
         }
     }
 
     @Override
-    public ItinAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itinerary_card, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_itinerary, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view, onItinListener);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ItinAdapter.ViewHolder holder, final int position)
     {
-//            holder.textViewText.setText(dataList.get(position).getText());
-//            holder.textViewComment.setText(dataList.get(position).getComment());
-//            holder.textViewDate.setText(dataList.get(position).getDate());
+        holder.itin = itins.get(position);
+        holder.itineraryName.setText(itins.get(position).getItineraryName());
+        holder.numLikesText.setText(String.valueOf(itins.get(position).getNumLikes()));
 
-        holder.itineraryName.setText(dataList.get(position).getItineraryName());
-        holder.numLikesText.setText(String.valueOf(dataList.get(position).getNumLikes()));
-        String image = dataList.get(position).getCoverPhoto();
-        Picasso.get().load(image).into(holder.photo);
-        holder.itemView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                //Toast.makeText(context, "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                navController.navigate(R.id.action_itin_to_single_itin);
-            }
-        });
+        String image = itins.get(position).getCoverPhoto();
+        Picasso.get().load(image).into(holder.cover);
+        DisplayItinHelperFuncs.updateBookmarkView(holder.itin.getBookmarked(), holder.bookmark);
+        DisplayItinHelperFuncs.updateLikeView(holder.itin.getLiked(), holder.like, holder.numLikesText);
     }
 
     @Override
     public int getItemCount()
     {
-        return dataList.size();
+        return itins.size();
     }
+
 }

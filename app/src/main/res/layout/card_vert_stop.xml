@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/vert_stop_height"
+    android:layout_marginBottom="@dimen/cardItinPadding"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardElevation="@dimen/dropShadowElevation"
+    app:cardCornerRadius="@dimen/roundCorners"
+    app:cardPreventCornerOverlap="false">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/stopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardTextPadding"
+            android:fontFamily="@font/primary"
+            android:text="Stop Name"
+            android:textColor="@color/colorNormalText"
+            android:textSize="@dimen/card_text" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/stopName"
+            android:layout_marginLeft="@dimen/cardTextPadding"
+            android:fontFamily="@font/primary"
+            android:text="Address"
+            android:textColor="@color/colorNormalText"
+            android:textSize="@dimen/card_text" />
+
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/address"
+            android:layout_marginLeft="@dimen/cardTextPadding"
+            android:fontFamily="@font/primary"
+            android:text="Description"
+            android:textColor="@color/colorNormalText"
+            android:textSize="@dimen/card_text" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

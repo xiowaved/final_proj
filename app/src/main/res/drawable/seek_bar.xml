@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+     >
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="line">
+            <stroke
+                android:color="@color/colorSeekBar"
+                android:width="5dp"/>
+        </shape>
+    </item>
+</layer-list>
