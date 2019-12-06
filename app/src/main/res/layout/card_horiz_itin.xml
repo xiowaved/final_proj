@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="match_parent"
+    android:layout_marginRight="@dimen/cardHorizPadding"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/colorBg"
+    app:cardCornerRadius="@dimen/roundCorners"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- hard-coded category images in horizontal scroll -->
+        <!-- pics are dynamically set in HorizAdapter.java -->
+        <ImageView
+            android:id="@+id/bg_img"
+            android:layout_width="@dimen/cardHorizItinSize"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:scaleX="1"
+            android:scaleY="1" />
+
+        <!-- text is dynamically set in HorizAdapter.java -->
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/bg_img"
+            android:text="text"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingRight="@dimen/cardTextPadding"
+            android:textColor="@color/colorBg"
+            android:fontFamily="@font/primary_thin"
+            android:textSize="@dimen/card_text"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
