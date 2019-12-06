@@ -50,9 +50,6 @@ public class CreateStopsFragment extends Fragment {
 
 
     ArrayList<Stop> stops;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Locations");
-
     // store the itinerary object that is passed into this fragment
     private ItineraryObject itineraryObject;
 
@@ -77,9 +74,6 @@ public class CreateStopsFragment extends Fragment {
         itineraryNameTextView = (TextView) getView().findViewById(R.id.itineraryName);
         itineraryNameTextView.setText(itineraryObject.getItineraryName());
 
-        // index to keep track of which stop we're on; used to populate/clear text in UI
-//        currentStopIndex = 0;
-
         // get UI elements
         stopNameTextView = (EditText) getView().findViewById(R.id.name);
         stopLocationTextView = (EditText) getView().findViewById(R.id.location);
@@ -90,21 +84,16 @@ public class CreateStopsFragment extends Fragment {
         reviewItinerary = (Button) getView().findViewById(R.id.reviewItinerary);
 
 
-//        stops = new ArrayList<Stop>();
         // get the list of stops from the itinerary object passed into this fragment
         stops = itineraryObject.getStops();
         if (stops.isEmpty()) {
             // if fragment received an itinerary with NO stops, then navigated here from CREATEOVERVIEW
             Log.i("Create Stops", "navigated from CreateOverview");
             editing = false;
-//            currentStopIndex = 0;
         } else {
             // if fragment received an itinerary WITH stops, then navigated here from REVIEWITINERARY
             Log.i("Create Stops", "navigated from ReviewItin");
             editing = true;
-            // get current stop index from fragment bundle
-//            currentStopIndex = ;
-            // populate the editTexts
             Stop currStop = stops.get(currentStopIndex);
             stopNameTextView.setText(currStop.getName());
             stopLocationTextView.setText(currStop.getLocation());
@@ -150,36 +139,19 @@ public class CreateStopsFragment extends Fragment {
         String savedDescription = stopDescriptionTextView.getText().toString();
             // before navigating to reviewItin page, save the current stop entry in the UI
         if (currentStopIndex > stops.size() - 1) { // if you are adding a new stop
-//            String savedName = stopNameTextView.getText().toString();
-//            String savedLocation = stopLocationTextView.getText().toString();
-//            String savedDescription = stopDescriptionTextView.getText().toString();
-        // if no fields left blank, add this stop to the global list of stops
             if (!(savedName.equals("")) && !(savedLocation.equals("")) && !(savedDescription.equals(""))) {
                 Stop stop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
                 stops.add(stop);
 
-    //                    if (creating) {
-    //                        itineraryObject.addStop(stop);
-    //                    } else {
-    //                        // replace stop at position you are editing
-    //                        itineraryObject.replaceStop(currentStopIndex,stop);
-    //                    }
             } else {
                 // some fields left blank in UI by user
             }
         }
-            // replace currentStopIndex'th entry in stops to reflect user's updates in textviews
-            //todo breaking @ oldStop w index out of bounds error
-//            String savedName = stopNameTextView.getText().toString();
-//            String savedLocation = stopLocationTextView.getText().toString();
-//            String savedDescription = stopDescriptionTextView.getText().toString();
         if (!(savedName.equals("")) && !(savedLocation.equals("")) && !(savedDescription.equals(""))) {
             Stop oldStop = stops.get(currentStopIndex);
             Stop revisedStop = new Stop(new ArrayList<String>(), savedName, savedLocation, savedDescription, currentStopIndex);
             stops.set(currentStopIndex, revisedStop);
         }
-
-
         // clear the UI textviews
         stopNameTextView.getText().clear();
         stopLocationTextView.getText().clear();

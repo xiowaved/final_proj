@@ -79,15 +79,6 @@ public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
             holder.catName.setText(categories[position]);
             // set image resource to drawable id for the picture
             holder.coverPhoto.setImageResource(drawableIds[position]);
-            // this listener is the only log showing up currently
-//            holder.itemView.setOnClickListener(new View.OnClickListener()
-//            {
-//                @Override
-//                public void onClick(View v)
-//                {
-//                    Log.i("NOTE", "user clicked horizAdapter " + position );
-//                }
-//            });
         }
 
         @Override
