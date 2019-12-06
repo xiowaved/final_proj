@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.SearchQueryObject;
 
 import android.util.Log;

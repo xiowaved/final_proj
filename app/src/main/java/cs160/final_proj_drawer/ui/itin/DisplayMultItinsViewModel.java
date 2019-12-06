@@ -11,6 +11,10 @@ import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.logic.SearchQueryObject;
 
+/*
+    This class displays multiple itineraries
+    It takes in a SearchQuery and Executes that search in our firebase database.
+ */
 public class DisplayMultItinsViewModel extends AndroidViewModel {
 
     private FirebaseFuncs firebaseFuncs = new FirebaseFuncs();

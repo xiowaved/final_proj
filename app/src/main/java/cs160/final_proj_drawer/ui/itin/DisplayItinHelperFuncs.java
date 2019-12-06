@@ -10,7 +10,6 @@ public class DisplayItinHelperFuncs {
     static int emptyBookmark = R.drawable.ic_bkmark;
     static int filledBookmark = R.drawable.ic_bookmark_filled;
     static int emptyLike = R.drawable.like;
-    //todo change this to a filled like drawable
     static int filledLike = R.drawable.like_filled;
 
     public static void updateBookmarkView(Boolean isBookmarked, ImageView bkmkView) {

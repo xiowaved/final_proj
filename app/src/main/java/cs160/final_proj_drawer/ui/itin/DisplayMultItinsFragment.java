@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import androidx.annotation.NonNull;
@@ -24,7 +23,6 @@ import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.logic.SearchQueryObject;
-import cs160.final_proj_drawer.logic.Stop;
 
 /*
 **  Displays a recyclerView with multiple Itineraries

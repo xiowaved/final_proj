@@ -3,9 +3,6 @@ package cs160.final_proj_drawer.logic;
 
 import android.util.Log;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +40,8 @@ public class ItineraryObject implements Serializable {
         this.access = access;
     }
 
+    // this creates an itineraryObject from a JSON Object
+    // we get itins this way from Firebase.
     public ItineraryObject(JSONObject itin) {
         Log.i("ItinJsonConst", "inside");
         String creator = "";
