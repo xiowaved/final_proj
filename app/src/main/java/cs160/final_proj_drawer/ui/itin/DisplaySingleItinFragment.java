@@ -102,7 +102,7 @@ public class DisplaySingleItinFragment extends Fragment implements OnRecyclerCar
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                liked = !liked;
+                itin.clickLiked();
                 //todo tell firebase and the itin that like was clicked for this itin
                 //todo add or subtract a like from numLikes, depending on the action taken.
                 // communicate that to firebase, and update numLikes on the screen
