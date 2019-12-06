@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import cs160.final_proj_drawer.logic.FirebaseFuncs;
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.ui.itin.DisplayItinHelperFuncs;
@@ -63,7 +64,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
                 @Override
                 public void onClick(View v) {
                     itin.clickBookmark();
-                    //todo make sure the bookmmarking here writes to firebase
+                    FirebaseFuncs.writeSingleItin(itin);
                     DisplayItinHelperFuncs.updateBookmarkView(itin.getBookmarked(), bookmark);
                 }
             }));
@@ -71,7 +72,7 @@ public class ItinAdapter extends RecyclerView.Adapter<ItinAdapter.ViewHolder>
                 @Override
                 public void onClick(View v) {
                     itin.clickLiked();
-                    //todo put to firebase appropaitely
+                    FirebaseFuncs.writeSingleItin(itin);
                     DisplayItinHelperFuncs.updateLikeView(itin.getLiked(), like, numLikesText);
                 }
             }));
