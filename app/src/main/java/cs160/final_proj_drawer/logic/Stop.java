@@ -9,7 +9,6 @@ public class Stop {
     private String description;
     private int index;
 
-
     public Stop(List<String> photos, String name, String location, String description, int index) {
         // Create a Stop instance
         this.photos = photos;
@@ -17,7 +16,6 @@ public class Stop {
         this.location = location;
         this.description = description;
         this.index = index;
-
     }
 
     public String getName() {

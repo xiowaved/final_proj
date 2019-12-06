@@ -19,9 +19,6 @@ import java.util.ArrayList;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import cs160.final_proj_drawer.logic.ItineraryObject;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.Stop;

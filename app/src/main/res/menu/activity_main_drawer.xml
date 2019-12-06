@@ -16,6 +16,7 @@
             android:id="@+id/nav_create_overview"
             android:icon="@drawable/ic_menu_create"
             android:title="@string/menu_create" />
+        <!--
         <item
             android:id="@+id/nav_saved"
             android:icon="@drawable/bkmark_filled"
@@ -24,6 +25,7 @@
             android:id="@+id/nav_posted"
             android:icon="@drawable/ic_menu_posted"
             android:title="@string/menu_posted" />
+            -->
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_settings"

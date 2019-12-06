@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import cs160.final_proj_drawer.R;
-import cs160.final_proj_drawer.adapters.ItinAdapter;
 import cs160.final_proj_drawer.adapters.OnRecyclerCardListener;
 import cs160.final_proj_drawer.adapters.VertStopAdapter;
 import cs160.final_proj_drawer.logic.FirebaseFuncs;

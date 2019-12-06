@@ -1,9 +1,7 @@
 package cs160.final_proj_drawer.ui.create;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,15 +19,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -37,17 +29,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import cs160.final_proj_drawer.R;
@@ -92,8 +76,7 @@ public class CreateOverviewFragment extends Fragment {
         final EditText itinName = (EditText) getView().findViewById(R.id.name);
         final EditText itinLocation = (EditText) getView().findViewById(R.id.location);
         final TextView errorMsg = (TextView) getView().findViewById(R.id.errorMsg);
-//        coverPhoto = "";
-        // set onClick listener for the buttons
+
         coverPhotoButton = (ImageButton) getView().findViewById(R.id.coverPhoto);
         coverPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +97,7 @@ public class CreateOverviewFragment extends Fragment {
 
 
 
-        addStopsButton = (Button) getView().findViewById(R.id.button);
+        addStopsButton = getView().findViewById(R.id.button);
         addStopsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,8 +121,6 @@ public class CreateOverviewFragment extends Fragment {
                             new ArrayList<String>(), new ArrayList<String>());
                     bundle.putSerializable("itinerary", itinerary);
 
-//                    bundle.putString("name", itineraryName);
-//                    bundle.putString("location", itineraryLocation);
                     navController.navigate(R.id.fragment_create_stops,bundle);
                 }
             }

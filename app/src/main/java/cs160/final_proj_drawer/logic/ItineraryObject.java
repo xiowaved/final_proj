@@ -20,8 +20,6 @@ public class ItineraryObject implements Serializable {
      private ArrayList<Stop> stops;
      private ArrayList<String> tags;
      private ArrayList<String> access;
-    //static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //static DatabaseReference myRef = database.getReference("Locations");
 
      public ItineraryObject() {}
 
