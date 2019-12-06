@@ -82,145 +82,145 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cancel" />
 
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/price_free"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_marginStart="30dp"-->
-<!--                android:background="@drawable/rounded_corner_grey_outline"-->
-<!--                android:fontFamily="@font/manjaribold"-->
-<!--                android:text="Free"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/colorDarkGrey"-->
-<!--                android:textSize="15sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/price_1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_toEndOf="@+id/price_free"-->
-<!--                android:background="@drawable/rounded_corner_grey_outline"-->
-<!--                android:fontFamily="@font/manjaribold"-->
-<!--                android:text="$"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/colorDarkGrey"-->
-<!--                android:textSize="15sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/price_2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_toEndOf="@+id/price_1"-->
-<!--                android:background="@drawable/rounded_corner_grey_outline"-->
-<!--                android:fontFamily="@font/manjaribold"-->
-<!--                android:text="$$"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/colorDarkGrey"-->
-<!--                android:textSize="15sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/price_3"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_toEndOf="@+id/price_2"-->
-<!--                android:background="@drawable/rounded_corner_grey_outline"-->
-<!--                android:fontFamily="@font/manjaribold"-->
-<!--                android:text="$$$"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/colorDarkGrey"-->
-<!--                android:textSize="15sp" />-->
-<!--        </RelativeLayout>-->
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal">
-
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:max="3"
-                android:progressDrawable="@drawable/seek_bar"
-                android:thumb="@drawable/seek_thumb"
-                android:tickMark="@drawable/tickmark" />
-        </RelativeLayout>
-
-
-        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*">
+            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/statusRow"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/price_free"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/rounded_corner_grey_outline"
+                android:fontFamily="@font/manjaribold"
+                android:text="Free"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/free"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/primary_thin"
-                    android:paddingStart="32dp"
-                    android:text="Free"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorGreyStroke"
-                    android:textSize="14dp" />
+            <TextView
+                android:id="@+id/price_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/price_free"
+                android:background="@drawable/rounded_corner_grey_outline"
+                android:fontFamily="@font/manjaribold"
+                android:text="$"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/price_1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/primary_thin"
-                    android:paddingRight="3dp"
-                    android:text="$"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorGreyStroke"
-                    android:textSize="14dp" />
+            <TextView
+                android:id="@+id/price_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/price_1"
+                android:background="@drawable/rounded_corner_grey_outline"
+                android:fontFamily="@font/manjaribold"
+                android:text="$$"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/price_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/primary_thin"
-                    android:paddingStart="4dp"
-                    android:text="$$"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorGreyStroke"
-                    android:textSize="14dp" />
+            <TextView
+                android:id="@+id/price_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/price_2"
+                android:background="@drawable/rounded_corner_grey_outline"
+                android:fontFamily="@font/manjaribold"
+                android:text="$$$"
+                android:textAlignment="center"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+<!--        <RelativeLayout-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="fill_parent"-->
+<!--            android:orientation="horizontal">-->
 
-                <TextView
-                    android:id="@+id/price_3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/primary_thin"
-                    android:paddingEnd="35dp"
-                    android:text="$$$"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorGreyStroke"
-                    android:textSize="14dp" />
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekBar"-->
+<!--                android:layout_width="350dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:max="3"-->
+<!--                android:progressDrawable="@drawable/seek_bar"-->
+<!--                android:thumb="@drawable/seek_thumb"-->
+<!--                android:tickMark="@drawable/tickmark" />-->
+<!--        </RelativeLayout>-->
 
-            </TableRow>
 
-        </TableLayout>
+<!--        <TableLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:stretchColumns="*">-->
+
+<!--            <TableRow-->
+<!--                android:id="@+id/statusRow"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/free"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_column="0"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/primary_thin"-->
+<!--                    android:paddingStart="32dp"-->
+<!--                    android:text="Free"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textColor="@color/colorGreyStroke"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/price_1"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_column="1"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/primary_thin"-->
+<!--                    android:paddingRight="3dp"-->
+<!--                    android:text="$"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/colorGreyStroke"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/price_2"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_column="2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/primary_thin"-->
+<!--                    android:paddingStart="4dp"-->
+<!--                    android:text="$$"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textAllCaps="true"-->
+<!--                    android:textColor="@color/colorGreyStroke"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/price_3"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_column="3"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/primary_thin"-->
+<!--                    android:paddingEnd="35dp"-->
+<!--                    android:text="$$$"-->
+<!--                    android:textAlignment="textEnd"-->
+<!--                    android:textColor="@color/colorGreyStroke"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--            </TableRow>-->
+
+<!--        </TableLayout>-->
 
         <TextView
             android:id="@+id/distance"
