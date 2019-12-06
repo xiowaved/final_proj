@@ -195,11 +195,5 @@ public class FirebaseFuncs<Model> {
 
     }
 
-    //toDo make a function in itinObject that converts it to a json object, and vice versa
-
-    // todo vaguely understand what is happening here
-    // this needs application context, not activity context
-    // (otherwise itll die every time activity is redrawn, like rotation)
-
 
 }
