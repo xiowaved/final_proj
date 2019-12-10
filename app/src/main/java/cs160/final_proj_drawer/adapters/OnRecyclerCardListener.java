@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 public interface OnRecyclerCardListener {
     enum cardAction
     {
-        EDIT, DELETE, BOOKMARK;
+        EDIT, DELETE, SAVED, POSTED;
     }
 
     //if null is given, that means no action was taken

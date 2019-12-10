@@ -14,15 +14,18 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.ItineraryObject;
+import cs160.final_proj_drawer.adapters.OnRecyclerCardListener.cardAction;
 
 public class HorizItinAdapter extends RecyclerView.Adapter<HorizItinAdapter.ViewHolder> {
 
     private ArrayList<ItineraryObject> itins;
     private OnRecyclerCardListener onItinListener;
+    private cardAction action;
 
 
-    public HorizItinAdapter( ArrayList<ItineraryObject> itins, OnRecyclerCardListener onItinListener)
+    public HorizItinAdapter( ArrayList<ItineraryObject> itins, OnRecyclerCardListener onItinListener, cardAction action)
     {
+        this.action = action;
         this.itins = itins;
         this.onItinListener = onItinListener;
     }
@@ -36,10 +39,12 @@ public class HorizItinAdapter extends RecyclerView.Adapter<HorizItinAdapter.View
 
         //logic
         ItineraryObject itin;
+        cardAction action;
 
-        public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener)
+        public ViewHolder(View itemView, final OnRecyclerCardListener onItinListener, cardAction action)
         {
             super(itemView);
+            this.action = action;
             this.itineraryName = itemView.findViewById(R.id.text);
             this.image = itemView.findViewById(R.id.bg_img);
             this.onItinListener = onItinListener;
@@ -49,7 +54,7 @@ public class HorizItinAdapter extends RecyclerView.Adapter<HorizItinAdapter.View
 
         @Override
         public void onClick(View view) {
-            onItinListener.onCardClick(getAdapterPosition(), null);
+            onItinListener.onCardClick(getAdapterPosition(), action);
             Log.i("NOTE", "was a click");
         }
     }
@@ -58,7 +63,7 @@ public class HorizItinAdapter extends RecyclerView.Adapter<HorizItinAdapter.View
     public HorizItinAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_horiz_itin, parent, false);
-        HorizItinAdapter.ViewHolder viewHolder = new HorizItinAdapter.ViewHolder(view, onItinListener);
+        HorizItinAdapter.ViewHolder viewHolder = new HorizItinAdapter.ViewHolder(view, onItinListener, action);
         return viewHolder;
     }
 

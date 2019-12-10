@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,12 +45,19 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
     private HorizItinAdapter postedAdapter;
     private TypedArray defaultPics;
 
+    /*
+    the save and posted itins have accidentally been swapped. dont trust the names
+    around here.
+    if you have time, please go thorugh and make them match up again.
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        //find architecture stuff
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
         listener = this;
+
         savedItins = (RecyclerView) root.findViewById(R.id.profile_saved);
         final LinearLayoutManager savedLayoutManager = new LinearLayoutManager(getActivity());
         savedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -64,7 +72,7 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         viewModel.getSavedItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
-                savedAdapter = new HorizItinAdapter(viewModel.getSavedItins().getValue(), listener);
+                savedAdapter = new HorizItinAdapter(viewModel.getSavedItins().getValue(), listener, cardAction.SAVED);
                 savedItins.setAdapter(savedAdapter);
 
             }
@@ -73,7 +81,7 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
         viewModel.getPostedItineraries().observe(this, new Observer<ArrayList<ItineraryObject>>() {
             @Override
             public void onChanged(@Nullable ArrayList<ItineraryObject> s) {
-                postedAdapter = new HorizItinAdapter(viewModel.getPostedItins().getValue(), listener);
+                postedAdapter = new HorizItinAdapter(viewModel.getPostedItins().getValue(), listener, cardAction.POSTED);
                 postedItins.setAdapter(postedAdapter);
 
             }
@@ -83,7 +91,18 @@ public class ProfileFragment extends Fragment implements OnRecyclerCardListener 
 
     @Override
     public void onCardClick(int position, cardAction action) {
-        Log.i("profile", "click");
+        ItineraryObject selectedItin;
+        if (action.equals(cardAction.SAVED)) {
+            selectedItin = viewModel.getSavedItins().getValue().get(position);
+        } else if (action.equals(cardAction.POSTED)) {
+            selectedItin = viewModel.getPostedItins().getValue().get(position);
+        } else {
+            return;
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("itinerary", selectedItin);
+        navController.navigate(R.id.fragment_display_single_itin, bundle);
 
     }
 }

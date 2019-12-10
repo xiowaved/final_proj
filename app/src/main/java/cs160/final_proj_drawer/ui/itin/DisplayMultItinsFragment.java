@@ -100,8 +100,7 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         ItineraryObject selectedItin = viewModel.getLoadedItins().getValue().get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable("itinerary", selectedItin);
-
-            navController.navigate(R.id.fragment_display_single_itin, bundle);
+        navController.navigate(R.id.fragment_display_single_itin, bundle);
     }
 
 }
