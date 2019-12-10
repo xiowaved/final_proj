@@ -1,8 +1,5 @@
 package cs160.final_proj_drawer.adapters;
 
-import android.content.Context;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +50,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     onStopListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.DELETE);
-                    Log.i("StopAdapter", "clicked delete");
+                    //clicked delete
                 }
             }));
             ImageButton editButton = (ImageButton) itemView.findViewById(R.id.editIcon);
@@ -61,7 +58,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     onStopListener.onCardClick(getAdapterPosition(), OnRecyclerCardListener.cardAction.EDIT);
-                    Log.i("StopAdapter", "clicked edit" + ""+ getAdapterPosition());
+                    //clicked edit
                 }
             }));
             this.onStopListener = onStopListener;
@@ -70,8 +67,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
 
         @Override
         public void onClick(View view) {
-//            onStopListener.onCardClick(getAdapterPosition());
-            Log.i("Stop Adapter", "stop clicked");
+            //clicked on the rest of the card, nothing happens
         }
     }
 
@@ -90,14 +86,6 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
         holder.address.setText(dataList.get(position).getLocation());
         holder.description.setText(dataList.get(position).getDescription());
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                Log.i("NOTE", "user clicked stop "+position);
-//            }
-//        });
     }
 
     @Override

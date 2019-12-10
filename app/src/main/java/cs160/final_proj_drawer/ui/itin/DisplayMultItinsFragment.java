@@ -2,7 +2,6 @@ package cs160.final_proj_drawer.ui.itin;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,11 +64,16 @@ public class DisplayMultItinsFragment extends Fragment implements OnRecyclerCard
         } else {
             searchQueryObject = (SearchQueryObject) bundle.get("searchQueryObject");
         }
-        Log.i("LOCATION", searchQueryObject.getLocation());
         String[] tags = searchQueryObject.getTags();
+
+        //uncomment this if u wanna see the stuff in the search object
+        /*
+        Log.i("LOCATION", searchQueryObject.getLocation());
         for (int i = 0; i < tags.length; i++) {
             Log.i("TAGS", tags[i]);
         }
+        */
+
 
         //recycler view setup
         searchItins = (RecyclerView) root.findViewById(R.id.stops);

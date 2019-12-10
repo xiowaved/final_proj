@@ -2,7 +2,6 @@ package cs160.final_proj_drawer.ui.profile;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

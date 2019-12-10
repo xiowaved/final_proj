@@ -2,7 +2,6 @@ package cs160.final_proj_drawer.ui.home;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,12 +43,6 @@ public class SplashFragment extends Fragment implements OnRecyclerCardListener {
         final View root = inflater.inflate(R.layout.fragment_splash, container, false);
 
         childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
-        if (childNavController == null) {
-            Log.i("IN FILTER", "didnt find kiddo");
-        } else {
-            Log.i("IN FILTER", "======== FOUND KIDDO =========");
-        }
-
         listener = this;
         //category recycler view setup
         homeCats = (RecyclerView) root.findViewById(R.id.home_cats);
@@ -80,8 +73,6 @@ public class SplashFragment extends Fragment implements OnRecyclerCardListener {
 
     @Override
     public void onCardClick(int position, cardAction action) {
-        Log.i("splash", "click");
-        //todo clean - string is being saved with category drawable id so it needs to be parsed here
         String[] categoryTag =  {((String) categories.get(position)).split(" ")[0] };
         Bundle bundle = new Bundle();
         categoryQuery = new SearchQueryObject(categoryTag, currentLocation);

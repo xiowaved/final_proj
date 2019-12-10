@@ -10,7 +10,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,17 +128,17 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
         priceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Log.i("progress change", "here");
+                //Log.i("progress change", "here");
 
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
-                Log.i("start tracking", "here");
+                //Log.i("start tracking", "here");
 
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.i("stopped tracking", "" + seekBar.getProgress());
+                //Log.i("stopped tracking", "" + seekBar.getProgress());
                 // this is where you detect where the user has left the pin on the sliding scale
                 pricePosition = seekBar.getProgress();
 
@@ -238,12 +237,16 @@ public class ReviewItineraryFragment extends Fragment implements OnRecyclerCardL
                     itineraryObject.setItineraryName(itinName.getText().toString());
                     itineraryObject.setItineraryLocation(itinLocation.getText().toString());
 
+                    ArrayList<String> tags = itineraryObject.getTags();
+
+                    //uncomment this to see the itinerary obj
+                    /*
                     Log.i("itin name", itineraryObject.getItineraryName());
                     Log.i("itin loc", itineraryObject.getLocation());
-                    ArrayList<String> tags = itineraryObject.getTags();
                     for (int i = 0; i < tags.size(); i++) {
                         Log.i("itin tag", tags.get(i));
                     }
+                    */
 
                     writeSingleItin(itineraryObject);
 

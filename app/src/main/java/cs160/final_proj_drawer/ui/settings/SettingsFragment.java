@@ -1,7 +1,6 @@
 package cs160.final_proj_drawer.ui.settings;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,19 +34,19 @@ public class SettingsFragment extends Fragment {
         green.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {
-                Log.i("NOTE", "green");
+                //CLICKED GREEN
             }
         });
         blue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {
-                Log.i("NOTE", "blue");
+                //CLICKED BLUE
             }
         });
         purple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {
-                Log.i("NOTE", "purple");
+                //CLICKED PURPLE
             }
         });
 

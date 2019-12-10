@@ -1,7 +1,6 @@
 package cs160.final_proj_drawer.ui.create;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,11 +83,9 @@ public class CreateStopsFragment extends Fragment {
         stops = itineraryObject.getStops();
         if (stops.isEmpty()) {
             // if fragment received an itinerary with NO stops, then navigated here from CREATEOVERVIEW
-            Log.i("Create Stops", "navigated from CreateOverview");
             editing = false;
         } else {
             // if fragment received an itinerary WITH stops, then navigated here from REVIEWITINERARY
-            Log.i("Create Stops", "navigated from ReviewItin");
             editing = true;
             Stop currStop = stops.get(currentStopIndex);
             stopNameTextView.setText(currStop.getName());
@@ -96,7 +93,6 @@ public class CreateStopsFragment extends Fragment {
             stopDescriptionTextView.setText(currStop.getDescription());
         }
 
-        Log.i("create stops", "" + currentStopIndex);
         // add onClick listeners for the buttons in the UI
         addNewPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,14 +193,10 @@ public class CreateStopsFragment extends Fragment {
             } else {
                 //incomplete fields
             }
-            Log.i("savedName", savedName);
-            Log.i("savedLocation", savedLocation);
-            Log.i("savedDescription", savedDescription);
             stopNameTextView.getText().clear();
             stopLocationTextView.getText().clear();
             stopDescriptionTextView.getText().clear();
         }
-        Log.i("currentStopIndex", "" + currentStopIndex);
     }
 
     public void onViewPreviousStop(View view) {
@@ -232,7 +224,6 @@ public class CreateStopsFragment extends Fragment {
             stopNameTextView.setText(previousStop.getName());
             stopLocationTextView.setText(previousStop.getLocation());
             stopDescriptionTextView.setText(previousStop.getDescription());
-            Log.i("currentStopIndex", "" + currentStopIndex);
         }
     }
 }

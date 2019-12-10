@@ -10,7 +10,6 @@ import androidx.navigation.Navigation;
 import cs160.final_proj_drawer.R;
 import cs160.final_proj_drawer.logic.SearchQueryObject;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,20 +84,11 @@ public class FilterFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_filter, container, false);
 
         childNavController = Navigation.findNavController(getActivity(), R.id.home_child_nav_host_fragment);
-        if (childNavController == null) {
-            Log.i("IN FILTER", "didnt find kiddo");
-        } else {
-            Log.i("IN FILTER", "======== FOUND KIDDO =========");
-        }
 
         Bundle b = getArguments();
-//        initialTagQuery = b.getString("initialTagQuery");
-//        locationQuery = b.getString("locationQuery");
         searchQueryObject = (SearchQueryObject) b.getSerializable("searchQueryObject");
         initialTagQuery = searchQueryObject.getTags()[0];
         locationQuery = searchQueryObject.getLocation();
-
-        Log.i("filter frag", initialTagQuery + " " + locationQuery);
 
         return root;
     }

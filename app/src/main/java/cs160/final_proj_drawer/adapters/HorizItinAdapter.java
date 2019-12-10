@@ -1,6 +1,5 @@
 package cs160.final_proj_drawer.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,7 @@ public class HorizItinAdapter extends RecyclerView.Adapter<HorizItinAdapter.View
         @Override
         public void onClick(View view) {
             onItinListener.onCardClick(getAdapterPosition(), action);
-            Log.i("NOTE", "was a click");
+            //user clicked on this individual card
         }
     }
 

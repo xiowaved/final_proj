@@ -1,7 +1,6 @@
 package cs160.final_proj_drawer.ui.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +68,6 @@ public class HomeFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {
-                Log.i("NOTE", "clicked search");
                 if (tagSearchBar.getQuery().toString().isEmpty()) {
                     return;
                 }
@@ -94,7 +92,6 @@ public class HomeFragment extends Fragment {
         onSearchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {
-                Log.i("NOTE", "clicked search");
                 onSearchLocation.setVisibility(View.INVISIBLE);
                 locationSearchBar.setVisibility(View.VISIBLE);
             }
@@ -104,7 +101,6 @@ public class HomeFragment extends Fragment {
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View root) {
-                Log.i("NOTE", "clicked filter");
                 Bundle bundle = new Bundle();
                 String[] tags = searchQueryObject.getTags();
                 String location = searchQueryObject.getLocation();

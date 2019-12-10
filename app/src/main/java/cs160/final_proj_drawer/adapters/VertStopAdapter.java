@@ -1,6 +1,5 @@
 package cs160.final_proj_drawer.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,6 @@ public class VertStopAdapter extends RecyclerView.Adapter<VertStopAdapter.ViewHo
         @Override
         public void onClick(View view) {
             onStopListener.onCardClick(getAdapterPosition(), null);
-            Log.i("Stop Adapter", "stop clicked");
         }
     }
 
@@ -73,14 +71,6 @@ public class VertStopAdapter extends RecyclerView.Adapter<VertStopAdapter.ViewHo
         holder.address.setText(dataList.get(position).getLocation());
         holder.description.setText(dataList.get(position).getDescription());
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                Log.i("NOTE", "user clicked stop "+position);
-//            }
-//        });
     }
 
     @Override

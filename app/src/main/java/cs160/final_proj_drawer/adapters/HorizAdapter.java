@@ -59,7 +59,7 @@ public class HorizAdapter extends RecyclerView.Adapter<HorizAdapter.ViewHolder>
             @Override
             public void onClick(View view) {
                 onCatListener.onCardClick(getAdapterPosition(), null);
-                Log.i("horiz adapter", "click");
+                // user clicked on a specific category
             }
         }
 
